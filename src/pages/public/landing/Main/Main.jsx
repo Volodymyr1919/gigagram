@@ -1,7 +1,7 @@
 import React from 'react';
-import first from "../../../../assets/img/rawkkim-1DpPcwAc5J8-unsplash.jpg";
-import second from "../../../../assets/img/rawkkim-2Dd9XxTktMI-unsplash.jpg";
-import third from "../../../../assets/img/rawkkim-7QnoQs7olyw-unsplash.jpg";
+// import first from "../../../../assets/img/rawkkim-1DpPcwAc5J8-unsplash.jpg";
+// import second from "../../../../assets/img/rawkkim-2Dd9XxTktMI-unsplash.jpg";
+// import third from "../../../../assets/img/rawkkim-7QnoQs7olyw-unsplash.jpg";
 // eslint-disable-next-line no-unused-vars
 import mainm from "./mainm.scss";
 
@@ -13,13 +13,13 @@ export default function Main() {
                     <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={first} className="d-block w-100" alt="..." />
+                                {/* <img src={first} className="d-block w-100" alt="..." /> */}
                             </div>
                             <div className="carousel-item">
-                                <img src={second} className="d-block w-100" alt="..." />
+                                {/* <img src={second} className="d-block w-100" alt="..." /> */}
                             </div>
                             <div className="carousel-item">
-                                <img src={third} className="d-block w-100" alt="..." />
+                                {/* <img src={third} className="d-block w-100" alt="..." /> */}
                             </div>
                         </div>
                     </div>
