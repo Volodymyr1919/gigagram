@@ -42,36 +42,25 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Folder structure:
 ```
     │ src
+    ├── assets
+    │   ├── img
+    │   ├── video
     ├── pages
     │   ├── private
+    │   │   ├── feed
+    │   │   ├── myPage
+    │   │   ├── postId
     │   ├── public
     │   │   ├── forgot
     │   │   ├── landing
     │   │   ├── notFound
     │   │   ├── signin
     │   │   ├── signup
-    ├── pages
-    │   ├── home
-    │   ├── servises
-    │   ├── portfolio
-    │   ├── aboutUs
-    │   ├── contactUs
-    │   ├── notFound
-    │   ├── termsPrivacy
-    │   ├── App.js
-    ├── partial
-    │   ├── Navigation.js
-    │   ├── Footer.js
-    │   ├── SideBar.js
-    │   ├── Dots.js
-    ├── routes
-    │   ├── MainRoutes.js
-    ├── layout
-    │   ├── MainLayout.js
-    ├── scss
-    │   ├── colors.scss
-    │   ├── global.scss
-    │   ├── app.scss 
+    │   ├── layouts
+    │   │   ├── LayoutNF.js
+    │   │   ├── MainLayout.js
+    ├── store
+    ├── App.jsx
     └── index.js
 ```
 
