@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
+
+div.main__feed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    header.feed__header{
+        padding: 15px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 180px;
+        display: flex;
+        figure.header__logo{
+            width: 300px;
+            height: 130px;
+            padding: 0;
+            margin: 0;
+            transition: all ease-in-out .4s;
+            border-radius: 10px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            &:hover{
+                cursor: pointer;
+                background: #ebebeb97;
+            }
+        }
+        h2{
+            font-family: 'Play', sans-serif;
+        }
+        div.header__me{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all ease-in-out .3s;
+            border-radius: 50%;
+            figure.me__avatar{
+                margin: 0;
+                padding: 0;
+                width: 100px;
+                height: 100px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+            p.me__username{
+                font-family: 'Edu NSW ACT Foundation', cursive;
+            }
+            &:hover{
+                cursor: pointer;
+                background: #ebebeb97;
+            }
+        }
+    }
+    span.feed__posts{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 940px;
+        h2.errorCase{
+            font-family: 'Play', sans-serif;
+            color: #F47A1D;
+        }
+        span.posts__container{
+            width: 300px;
+            height: 300px;
+            border-radius: 7px;
+            transition: all ease-in-out .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            div.alice-carousel{
+                width: 100%;
+                height: 100%;
+                div{
+                    width: 100%;
+                    height: 100%;
+                }
+                ul.alice-carousel__dots{
+                    margin: 0;
+                    padding: 0;
+                    position: absolute;
+                    bottom: 0;
+                    left: 45%;
+                    z-index: 1;
+                }
+                div.alice-carousel__prev-btn,
+                div.alice-carousel__next-btn{
+                    position: absolute;
+                    margin: 0;
+                    padding: 0;
+                    top: 42%;
+                    z-index: 1;
+                    width: fit-content;
+                    height: fit-content;
+                }
+                div.alice-carousel__prev-btn{
+                    left: 0;
+                    div.alice-carousel__prev-btn-wrapper{
+                        p{
+                            color: #fff;
+                            font-size: 25px;
+                        }
+                    }
+                }
+                div.alice-carousel__next-btn{
+                    right: 0;
+                    div.alice-carousel__next-btn-wrapper{
+                        p{
+                            color: #fff;
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+            .container__img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .container__video{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            &:hover{
+                background: #ebebeb;
+                border: 10px solid #e7e7e7;
+                cursor: pointer;
+                img.container__img,
+                video.container__video{
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+a{
+    text-decoration: none;
+    color: #000;
+}

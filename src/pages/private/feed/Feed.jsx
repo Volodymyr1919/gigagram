@@ -1,12 +1,22 @@
 import React, { useState, useEffect }   from "react";
+import { useNavigate }                  from "react-router-dom";
 import { Modal, Button }                from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
+// eslint-disable-next-line no-unused-vars
+import feed                             from "./feed.scss";
+import logo                             from "../../../assets/img/logo.png";
+import AliceCarousel                    from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import ToMyPage                         from "./ToMyPage";
+import { NavLink }                      from "react-router-dom";
 
 export default function Feed() {
 
     const [posts, setPosts] = useState([]);
     const [show, setShow] = useState(false);
     const [err, setErr] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         function getPosts() {
@@ -27,7 +37,7 @@ export default function Feed() {
                 }
             })
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setPosts(data);
             })
         }
@@ -36,17 +46,47 @@ export default function Feed() {
 
     function handleClose() {
         setShow(false);
+        navigate("/signin");
     };
 
     return(
-        <>
-            <p>Feed page</p>
-            <span>
+        <div className="main__feed">
+            <header className="feed__header">
+                <NavLink to="/">
+                    <figure className="header__logo">
+                        <img src={logo} alt="logo" />
+                    </figure>
+                </NavLink>
+                <h2>Feed page | Favoriets from students</h2>
+                <NavLink to="/my-page">
+                    <div className="header__me">
+                        <ToMyPage />
+                    </div>
+                </NavLink>
+            </header>
+            <span className="feed__posts">
                 {
-                    posts === undefined ? <p>Sorry any posts found</p> : posts.map(item => <div key={item._id}>
-                        {item.image ? <img src={item.image} alt="post" width={240} height={320} /> : ""}
-                        {item.video ? <video autoPlay muted loop><source src={item.video} type="video/mp4" /></video> : ""}
-                    </div>)
+                    posts === undefined ?
+                    <h2 className="errorCase">Sorry any posts found</h2>
+                    :
+                    posts.map(item => 
+                        <span key={item._id} className="posts__container" onClick={() => navigate(`/post/${item._id}`)}>
+                                {
+                                item.image && item.video ?
+                                <AliceCarousel>
+                                    <img src={item.image} alt={item.image} className="container__img"/>
+                                    <video autoPlay loop muted className="container__video">
+                                        <source src={item.video} />
+                                    </video> 
+                                </AliceCarousel>
+                                :
+                                <img src={item.image} alt="" className="container__img"/>
+                                ||
+                                <video autoPlay loop muted className="container__video">
+                                    <source src={item.video} />
+                                </video>
+                                }
+                        </span>)
                 }
             </span>
             <Modal show={show}>
@@ -60,6 +100,6 @@ export default function Feed() {
                     <Button variant="secondary" onClick={handleClose}>OK</Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 }

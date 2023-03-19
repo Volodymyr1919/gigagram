@@ -36,6 +36,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm i node-sass --save
  - npm i react-router-dom --save
  - npm i react-hook-form --save
+ - npm i react-bootstrap --save
+ - npm i react-alice-carousel --save
 
 ## Folder structure:
 ```

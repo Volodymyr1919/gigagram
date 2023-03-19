@@ -38,7 +38,8 @@ export default function Signin() {
                 return data.json();
             } else {
                 setShow(true);
-                setResp(data.statusText);
+                data.statusText === "Bad Request" ? setResp("Wrong username or password") : setResp(data.statusText);
+                // setResp(data.statusText);
             }
         })
         .then((data) => {
