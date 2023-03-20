@@ -70,19 +70,44 @@ export default function Feed() {
                     <h2 className="errorCase">Sorry any posts found</h2>
                     :
                     posts.map(item => 
-                        <span key={item._id} className="posts__container" onClick={() => navigate(`/post/${item._id}`)}>
+                        <span
+                            key={item._id}
+                            className="posts__container"
+                        >
                                 {
                                 item.image && item.video ?
                                 <AliceCarousel>
-                                    <img src={item.image} alt={item.image} className="container__img"/>
-                                    <video autoPlay loop muted className="container__video">
+                                    <img
+                                        src={item.image}
+                                        alt={item.image}
+                                        className="container__img"
+                                        onClick={() => navigate(`/post/${item._id}`)}    
+                                    />
+                                    <video
+                                        autoPlay
+                                        loop
+                                        muted
+                                        className="container__video"
+                                        onClick={() => navigate(`/post/${item._id}`)}    
+                                    >
                                         <source src={item.video} />
                                     </video> 
                                 </AliceCarousel>
                                 :
-                                <img src={item.image} alt="" className="container__img"/>
+                                <img
+                                    src={item.image}
+                                    alt={item.image}
+                                    className="container__img"
+                                    onClick={() => navigate(`/post/${item._id}`)}
+                                />
                                 ||
-                                <video autoPlay loop muted className="container__video">
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="container__video"
+                                    onClick={() => navigate(`/post/${item._id}`)}
+                                >
                                     <source src={item.video} />
                                 </video>
                                 }

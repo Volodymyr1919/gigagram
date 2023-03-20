@@ -2,7 +2,7 @@ import React, { useState }  from 'react';
 import { useForm }          from 'react-hook-form';
 import { Modal, Button }    from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate }      from 'react-router-dom';
 
 export default function Signin() {
 
@@ -44,7 +44,6 @@ export default function Signin() {
         })
         .then((data) => {
             if (data) {
-                console.log(data);
                 localStorage.setItem('token', data.token);
                 navigate("/feed");
             } else {
