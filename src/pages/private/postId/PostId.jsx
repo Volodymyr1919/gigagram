@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import logo from "../../../assets/img/logo.png";
 import ToMyPage from "../feed/ToMyPage";
 import { NavLink } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
-import Feed from "../feed/Feed";
 // eslint-disable-next-line no-unused-vars
 import PostStyle from "./postid.scss";
 
@@ -13,7 +12,6 @@ export default function PostId() {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    // fetch post data using the ID
     fetch(`http://65.109.13.139:9191/post/${id}`, {
       method: "GET",
       headers: {
@@ -66,9 +64,9 @@ export default function PostId() {
             )}
           </span>
 
-          <a href="#" className="blog-post__cta">
+          <Link className="blog-post__cta">
             Follow me
-          </a>
+          </Link>
         </div>
       </article>
       <NavLink to="/feed">
