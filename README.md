@@ -36,40 +36,31 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm i node-sass --save
  - npm i react-router-dom --save
  - npm i react-hook-form --save
+ - npm i react-bootstrap --save
+ - npm i react-alice-carousel --save
 
 ## Folder structure:
 ```
     │ src
+    ├── assets
+    │   ├── img
+    │   ├── video
     ├── pages
     │   ├── private
+    │   │   ├── feed
+    │   │   ├── myPage
+    │   │   ├── postId
     │   ├── public
     │   │   ├── forgot
     │   │   ├── landing
     │   │   ├── notFound
     │   │   ├── signin
     │   │   ├── signup
-    ├── pages
-    │   ├── home
-    │   ├── servises
-    │   ├── portfolio
-    │   ├── aboutUs
-    │   ├── contactUs
-    │   ├── notFound
-    │   ├── termsPrivacy
-    │   ├── App.js
-    ├── partial
-    │   ├── Navigation.js
-    │   ├── Footer.js
-    │   ├── SideBar.js
-    │   ├── Dots.js
-    ├── routes
-    │   ├── MainRoutes.js
-    ├── layout
-    │   ├── MainLayout.js
-    ├── scss
-    │   ├── colors.scss
-    │   ├── global.scss
-    │   ├── app.scss 
+    │   ├── layouts
+    │   │   ├── LayoutNF.js
+    │   │   ├── MainLayout.js
+    ├── store
+    ├── App.jsx
     └── index.js
 ```
 

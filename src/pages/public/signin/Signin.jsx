@@ -1,6 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState }  from 'react';
+import { useForm }          from 'react-hook-form';
+import { Modal, Button }    from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function Signin() {
 
@@ -10,11 +12,14 @@ export default function Signin() {
         formState: { errors },
       } = useForm({ mode: "onChange" });
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername]   = useState("");
+    const [password, setPassword]   = useState("");
+    const [show, setShow]           = useState(false);
+    const [resp, setResp]           = useState("");
 
-    const onSubmit = (data) => {
-        console.log("User data", data);
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
 
         const requestOptions = {
             method: 'POST',
@@ -27,14 +32,30 @@ export default function Signin() {
             })
         };
 
-        fetch('http://65.109.13.139:9191/signin', requestOptions)
+        await fetch('http://65.109.13.139:9191/signin', requestOptions)
         .then((data) => {
-            data.json()
+            if (data.ok) {
+                return data.json();
+            } else {
+                setShow(true);
+                data.statusText === "Bad Request" ? setResp("Wrong username or password") : setResp(data.statusText);
+                // setResp(data.statusText);
+            }
         })
         .then((data) => {
-            console.log(data);
+            if (data) {
+                console.log(data);
+                localStorage.setItem('token', data.token);
+                navigate("/feed");
+            } else {
+                return;
+            }
         })
-    }
+    };
+
+    function handleClose() {
+        setShow(false);
+    };
 
     return (
         <div>
@@ -47,7 +68,7 @@ export default function Signin() {
                         required: "The field is required",
                         minLength: {
                             value: 4,
-                            message: "Usernema is min 4 symbols"
+                            message: "Username is min 4 symbols"
                         },
                         value: username,
                         onChange: (e) => {
@@ -73,8 +94,21 @@ export default function Signin() {
                     })}
                 />
                 <p>{errors.password && errors.password.message}</p>
-                <button type='submit'>Sign In</button>
+               <button type='submit'>Sign In</button>
             </form>
+
+            <Modal show={show}>
+                <Modal.Header closeButton onClick={handleClose}>
+                    <Modal.Title>Error</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {resp}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>OK</Button>
+                </Modal.Footer>
+            </Modal>
+
         </div>
     )
 };
