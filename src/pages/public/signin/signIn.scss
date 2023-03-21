@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 @import "../../../scss/colors.scss";
 
-div.container {
+div.signin {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   background: linear-gradient(90deg, $clear_white, $grey_br);  
 
   * {
@@ -22,13 +23,13 @@ div.container {
     box-shadow: 0px 0px 24px $secondary;
     z-index: 1;
   }
-  
+
   .screen__content {
     z-index: 1;
     position: relative; 
     height: 100%;
   }
-  
+
   .screen__background {   
     position: absolute;
     top: 0;
@@ -37,14 +38,15 @@ div.container {
     bottom: 0;
     z-index: 0;
     -webkit-clip-path: inset(0 0 0 0);
-    clip-path: inset(0 0 0 0);  
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
   }
-  
+
   .screen__background__shape {
     transform: rotate(45deg);
     position: absolute;
   }
-  
+
   .screen__background__shape1 {
     height: 520px;
     width: 520px;
@@ -53,7 +55,7 @@ div.container {
     right: 120px; 
     border-radius: 0 72px 0 0;
   }
-  
+
   .screen__background__shape2 {
     height: 220px;
     width: 220px;
@@ -62,7 +64,7 @@ div.container {
     right: 0; 
     border-radius: 32px;
   }
-  
+
   .screen__background__shape3 {
     height: 540px;
     width: 190px;
@@ -71,7 +73,7 @@ div.container {
     right: 0; 
     border-radius: 32px;
   }
-  
+
   .screen__background__shape4 {
     height: 400px;
     width: 200px;
@@ -80,20 +82,20 @@ div.container {
     right: 50px;  
     border-radius: 60px;
   }
-  
+
   .login {
     width: 320px;
     padding: 30px;
     padding-top: 156px;
     box-sizing: border-box;
   }
-  
+
   .login__field {
     padding: 20px 0px;  
     position: relative; 
     box-sizing: border-box;
   }
-  
+
   .login__input {
     border: none;
     border-bottom: 2px solid #dfe1d7;
@@ -105,14 +107,14 @@ div.container {
     transition: .2s;
     box-sizing: border-box;
   }
-  
+
   .login__input:active,
   .login__input:focus,
   .login__input:hover {
     outline: none;
     border-bottom-color: $main;
   }
-  
+
   .login__submit {
     background: $clear_white;
     font-size: 14px;
@@ -131,14 +133,14 @@ div.container {
     transition: .2s;
     box-sizing: border-box;
   }
-  
+
   .login__submit:active,
   .login__submit:focus,
   .login__submit:hover {
     border-color: $clear_white;
     outline: none;
   }
-  
+
   //animation
 
   .bg-bubbles {
@@ -146,7 +148,8 @@ div.container {
       top: 0;
       left: 0;
       width: 100%;
-      height: 78%;
+      height: 100%;
+      overflow: hidden;
     }
     .bg-bubbles li {
       position: absolute;
@@ -173,7 +176,7 @@ div.container {
     .bg-bubbles li:nth-child(3) {
       left: 25%;
       animation-delay: 4s;
-      
+
     }
     .bg-bubbles li:nth-child(4) {
       left: 40%;
@@ -217,7 +220,7 @@ div.container {
       border-radius: 7px;
     }
     .bg-bubbles li:nth-child(10) {
-      left: 75%;
+      left: 90%;
       width: 160px;
       height: 160px;
       animation-delay: 11s;        
@@ -239,4 +242,3 @@ div.container {
       }
     }
 }
-

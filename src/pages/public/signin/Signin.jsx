@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Modal, Button }    from 'react-bootstrap';
 import { useNavigate }      from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
-import signInStyle from './signIn.scss';
+import signInStyle from './signin.scss';
 
 export default function Signin() {
 
@@ -77,7 +77,7 @@ export default function Signin() {
     };
 
     return (
-        <div className="container">
+        <div className="signin">
             <div className="screen">
                 <div className="screen__content">
                     <form className="login" onSubmit={handleSubmit(onSubmit)}>
@@ -124,7 +124,7 @@ export default function Signin() {
                     </form>
                 </div>
                 <div className="screen__background">
-                    {/* <span className="screen__background__shape screen__background__shape4"></span> */}
+                    <span className="screen__background__shape screen__background__shape4"></span>
                     <span className="screen__background__shape screen__background__shape3"></span>    
                     <span className="screen__background__shape screen__background__shape2"></span>
                     <span className="screen__background__shape screen__background__shape1"></span>

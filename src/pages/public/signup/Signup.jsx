@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // eslint-disable-next-line no-unused-vars
-import signUpStyle from "./signUp.scss";
+import signUpStyle from "./signup.scss";
 
 export default function SignUp() {
     const {
@@ -12,7 +12,6 @@ export default function SignUp() {
     
       const onSubmit = (data) => {
         console.log(data);
-
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -41,7 +40,6 @@ export default function SignUp() {
                 console.error('There was an error!', error);
             });
       };
-
       const [userName, setUserName] = useState("");
       const [password, setPassword] = useState("");
       const [confirmPassword, setConfirmPassword] = useState("");
@@ -49,9 +47,9 @@ export default function SignUp() {
       function checkPassword(value) {
         return password === value ? true : "Passwords not match";
       }
-      
+
     return(
-        <div className="container">
+        <div className="signup">
             <div className="screen">
                 <div className="screen__content">
                     <form className="registration" onSubmit={handleSubmit(onSubmit)}>
@@ -113,7 +111,7 @@ export default function SignUp() {
                     </form>
                 </div>
                 <div className="screen__background">
-                    {/* <span className="screen__background__shape screen__background__shape4"></span> */}
+                    <span className="screen__background__shape screen__background__shape4"></span>
                     <span className="screen__background__shape screen__background__shape3"></span>    
                     <span className="screen__background__shape screen__background__shape2"></span>
                     <span className="screen__background__shape screen__background__shape1r"></span>

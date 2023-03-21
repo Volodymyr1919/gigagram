@@ -20,7 +20,7 @@ export default function Followers() {
                 const data = isJson && await response.json();
                 console.log(data);
                 setFollowers(data.followers);
-    
+
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response status
@@ -38,9 +38,8 @@ export default function Followers() {
     return (
         <div>
             <div
-            className="list-wrapper"
-            ng-app="app"
-            ng-controller="MainCtrl as ctrl">
+                className="list-wrapper"
+            >
                 <p>Followers</p>
                 <ul className="list">
                 {/* сделай массив из... */}

@@ -10,6 +10,8 @@ import Followers from "./pages/private/followers/Followers";
 import Feed from "./pages/private/feed/Feed";
 import MyPage from "./pages/private/myPage/MyPage";
 import PostId from "./pages/private/postId/PostId";
+// eslint-disable-next-line no-unused-vars
+import appStyle from "./scss/app.scss";
 
 
 export default function App() {
