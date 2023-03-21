@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import logo from "../../../assets/img/logo.png";
 import ToMyPage from "../feed/ToMyPage";
 import { NavLink } from "react-router-dom";
@@ -49,10 +49,14 @@ export default function PostId() {
 
       <article className="blog-post">
         <div className="blog-post__info">
-          <figure className="user__avatar">
+          <div className="blog-post-header__info">
+            <figure className="user__avatar">
             <img src={post.author.avatar} alt="my avatar" />
           </figure>
           <p className="user__username">{post.author.username}</p>
+          <NavLink to="/notfound" className="blog-post__cta">Follow me</NavLink>
+          </div>
+          
           <h2 className="blog-post__title">{post.title}</h2>
           <p>{post.description}</p>
           <span className="posts__container">
@@ -72,7 +76,7 @@ export default function PostId() {
             )}
           </span>
 
-          <Link className="blog-post__cta">Follow me</Link>
+          
         </div>
       </article>
       <NavLink to="/feed">
