@@ -1,14 +1,13 @@
-import React, { useState, useEffect }   from "react";
+import React, { useState, useEffect } from 'react';
 import { useNavigate }                  from "react-router-dom";
 import { Modal, Button }                from 'react-bootstrap';
-import feed                             from "./feed.scss";
-import logo                             from "../../../assets/img/logo.png";
 import AliceCarousel                    from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import ToMyPage                         from "./ToMyPage";
+import ToMyPage                         from "../feed/ToMyPage";
 import { NavLink }                      from "react-router-dom";
+import styles from './scss/posts.scss';
 
-export default function Feed() {
+function ProfilePosts() {
 
     const [posts, setPosts] = useState([]);
     const [show, setShow] = useState(false);
@@ -17,7 +16,19 @@ export default function Feed() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        function getPosts() {
+        function getMe(){
+            fetch('http://65.109.13.139:9191/me', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': localStorage.getItem('token')
+                }
+            })
+            .then(response => response.json())
+            .then(data => localStorage.setItem("user_id", data._id))
+        }
+
+        function getUserPosts() {
             fetch('http://65.109.13.139:9191/posts', {
                 method: 'GET',
                 headers: {
@@ -36,10 +47,14 @@ export default function Feed() {
             })
             .then((data) => {
                 // console.log(data);
-                setPosts(data);
+                const filteredData = data.filter(item => item.author._id === localStorage.getItem('user_id'));
+                localStorage.setItem("posts_length", filteredData.length);
+                setPosts(filteredData);
             })
         }
-        getPosts();
+        
+        getUserPosts();
+        getMe()
     },[]);
 
     function handleClose() {
@@ -48,45 +63,32 @@ export default function Feed() {
     };
 
     return(
-        <div className="main__feed">
-            <header className="feed__header">
-                <NavLink to="/">
-                    <figure className="header__logo">
-                        <img src={logo} alt="logo" />
-                    </figure>
-                </NavLink>
-                <h2>Feed page | Favoriets from students</h2>
-                <NavLink to="/my-page">
-                    <div className="header__me">
-                        <ToMyPage />
-                    </div>
-                </NavLink>
-            </header>
-            <span className="feed__posts">
+        <div className='posts_block'>
+            <div className='posts_container'>
                 {
                     posts === undefined ?
                     <h2 className="errorCase">Sorry any posts found</h2>
                     :
                     posts.map(item => 
-                        <span key={item._id} className="posts__container" onClick={() => navigate(`/post/${item._id}`)}>
+                        <span key={item._id} className="" onClick={() => navigate(`/post/${item._id}`)}>
                                 {
                                 item.image && item.video ?
                                 <AliceCarousel>
-                                    <img src={item.image} alt={item.image} className="container__img"/>
-                                    <video autoPlay loop muted className="container__video">
+                                    <img src={item.image} alt={item.image} className="post"/>
+                                    <video autoPlay loop muted className="video">
                                         <source src={item.video} />
                                     </video> 
                                 </AliceCarousel>
                                 :
-                                <img src={item.image} alt="" className="container__img"/>
+                                <img src={item.image} alt="" className="post"/>
                                 ||
-                                <video autoPlay loop muted className="container__video">
+                                <video autoPlay loop muted className="post">
                                     <source src={item.video} />
                                 </video>
                                 }
                         </span>)
                 }
-            </span>
+            </div>
             <Modal show={show}>
                 <Modal.Header closeButton onClick={handleClose}>
                     <Modal.Title>Error</Modal.Title>
@@ -99,5 +101,7 @@ export default function Feed() {
                 </Modal.Footer>
             </Modal>
         </div>
-    );
+    )
 }
+
+export default ProfilePosts;

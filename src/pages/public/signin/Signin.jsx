@@ -1,7 +1,6 @@
 import React, { useState }  from 'react';
 import { useForm }          from 'react-hook-form';
 import { Modal, Button }    from 'react-bootstrap';
-import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function Signin() {
