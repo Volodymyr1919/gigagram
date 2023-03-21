@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 @import "../../../scss/colors.scss";
 
-div.container {
+div.signin {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   background: linear-gradient(90deg, $clear_white, $grey_br);  
 
   * {
@@ -37,7 +38,8 @@ div.container {
     bottom: 0;
     z-index: 0;
     -webkit-clip-path: inset(0 0 0 0);
-    clip-path: inset(0 0 0 0);  
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
   }
 
   .screen__background__shape {
@@ -146,7 +148,8 @@ div.container {
       top: 0;
       left: 0;
       width: 100%;
-      height: 78%;
+      height: 100%;
+      overflow: hidden;
     }
     .bg-bubbles li {
       position: absolute;
@@ -217,7 +220,7 @@ div.container {
       border-radius: 7px;
     }
     .bg-bubbles li:nth-child(10) {
-      left: 75%;
+      left: 90%;
       width: 160px;
       height: 160px;
       animation-delay: 11s;        
