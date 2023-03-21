@@ -38,6 +38,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm i react-hook-form --save
  - npm i react-bootstrap --save
  - npm i react-alice-carousel --save
+ - npm install react-icons --save
 
 ## Folder structure:
 ```
