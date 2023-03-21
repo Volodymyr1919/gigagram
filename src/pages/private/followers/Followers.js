@@ -38,9 +38,8 @@ export default function Followers() {
     return (
         <div>
             <div
-            className="list-wrapper"
-            ng-app="app"
-            ng-controller="MainCtrl as ctrl">
+                className="list-wrapper"
+            >
                 <p>Followers</p>
                 <ul className="list">
                 {/* сделай массив из... */}

@@ -34,7 +34,7 @@ export default function PostId() {
   return (
     <div className="main__postid">
       <header className="postid__header">
-        <NavLink to="/">
+        <NavLink to="/feed">
           <figure className="header__logo">
             <img src={logo} alt="logo" />
           </figure>
@@ -79,8 +79,8 @@ export default function PostId() {
 
         </div>
       </article>
-      <NavLink to="/feed">
-        <div className="blog-post__cta">Favoriets from students</div>
+      <NavLink to="/back">
+        <div className="blog-post__cta">Back</div>
       </NavLink>
     </div>
   );

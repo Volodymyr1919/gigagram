@@ -12,7 +12,7 @@ import { NavLink }                      from "react-router-dom";
 export default function Feed() {
 
     const [posts, setPosts] = useState([]);
-    const [show, setShow] = useState(false);
+    const [isShow, setShow] = useState(false);
     const [err, setErr] = useState("");
 
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ export default function Feed() {
     return(
         <div className="main__feed">
             <header className="feed__header">
-                <NavLink to="/">
+                <NavLink to="/feed">
                     <figure className="header__logo">
                         <img src={logo} alt="logo" />
                     </figure>
@@ -113,7 +113,7 @@ export default function Feed() {
                         </span>)
                 }
             </span>
-            <Modal show={show}>
+            <Modal show={isShow}>
                 <Modal.Header closeButton onClick={handleClose}>
                     <Modal.Title>Error</Modal.Title>
                 </Modal.Header>
