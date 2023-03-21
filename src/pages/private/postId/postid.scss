@@ -55,6 +55,7 @@ div.main__postid{
                 }
             }
             p.me__username{
+                margin-top: 0.5rem;
                 font-family: 'Edu NSW ACT Foundation', cursive;
             }
             &:hover{
@@ -108,8 +109,27 @@ div.main__postid{
       }
 
       .blog-post__info p {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         color: rgba(0, 0, 0, 0.7);
+        
+    }
+    figure.user__avatar{
+          margin: 0;
+          padding: 0;
+          width: 80px;
+          height: 80px;
+          img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 50%;
+          }
+      }
+      p.user__username{
+          margin-left: 1.5rem;
+          margin-top: 0.5rem;
+          font-family: 'Edu NSW ACT Foundation', cursive;
+          
       }
 
     span.postid__posts{
@@ -150,7 +170,7 @@ div.main__postid{
                     margin: 0;
                     padding: 0;
                     top: 42%;
-                    z-index: 1;
+                    z-index: -1;
                     width: fit-content;
                     height: fit-content;
                 }

@@ -19,8 +19,12 @@ export default function PostId() {
         "x-access-token": localStorage.getItem("token"),
       },
     })
-      .then((response) => response.json())
-      .then((data) => setPost(data));
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPost(data);
+      });
   }, [id]);
 
   if (!post) {
@@ -45,6 +49,10 @@ export default function PostId() {
 
       <article className="blog-post">
         <div className="blog-post__info">
+          <figure className="user__avatar">
+            <img src={post.author.avatar} alt="my avatar" />
+          </figure>
+          <p className="user__username">{post.author.username}</p>
           <h2 className="blog-post__title">{post.title}</h2>
           <p>{post.description}</p>
           <span className="posts__container">
@@ -64,9 +72,7 @@ export default function PostId() {
             )}
           </span>
 
-          <Link className="blog-post__cta">
-            Follow me
-          </Link>
+          <Link className="blog-post__cta">Follow me</Link>
         </div>
       </article>
       <NavLink to="/feed">
