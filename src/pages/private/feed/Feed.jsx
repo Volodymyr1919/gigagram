@@ -1,7 +1,6 @@
 import React, { useState, useEffect }   from "react";
 import { useNavigate }                  from "react-router-dom";
 import { Modal, Button }                from 'react-bootstrap';
-import "bootstrap/dist/css/bootstrap.css";
 // eslint-disable-next-line no-unused-vars
 import feed                             from "./feed.scss";
 import logo                             from "../../../assets/img/logo.png";
