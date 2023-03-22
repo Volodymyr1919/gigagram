@@ -61,6 +61,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     │   │   ├── LayoutNF.js
     │   │   ├── MainLayout.js
     ├── store
+    ├── scss
     ├── App.jsx
     └── index.js
 ```

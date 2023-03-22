@@ -1,6 +1,7 @@
 import React, { useState, useEffect }   from "react";
 import { useNavigate }                  from "react-router-dom";
 import { Modal, Button }                from 'react-bootstrap';
+// eslint-disable-next-line no-unused-vars
 import feed                             from "./feed.scss";
 import logo                             from "../../../assets/img/logo.png";
 import AliceCarousel                    from "react-alice-carousel";
@@ -11,7 +12,7 @@ import { NavLink }                      from "react-router-dom";
 export default function Feed() {
 
     const [posts, setPosts] = useState([]);
-    const [show, setShow] = useState(false);
+    const [isShow, setShow] = useState(false);
     const [err, setErr] = useState("");
 
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ export default function Feed() {
     return(
         <div className="main__feed">
             <header className="feed__header">
-                <NavLink to="/">
+                <NavLink to="/feed">
                     <figure className="header__logo">
                         <img src={logo} alt="logo" />
                     </figure>
@@ -68,26 +69,51 @@ export default function Feed() {
                     <h2 className="errorCase">Sorry any posts found</h2>
                     :
                     posts.map(item => 
-                        <span key={item._id} className="posts__container" onClick={() => navigate(`/post/${item._id}`)}>
+                        <span
+                            key={item._id}
+                            className="posts__container"
+                        >
                                 {
                                 item.image && item.video ?
                                 <AliceCarousel>
-                                    <img src={item.image} alt={item.image} className="container__img"/>
-                                    <video autoPlay loop muted className="container__video">
+                                    <img
+                                        src={item.image}
+                                        alt={item.image}
+                                        className="container__img"
+                                        onClick={() => navigate(`/post/${item._id}`)}    
+                                    />
+                                    <video
+                                        autoPlay
+                                        loop
+                                        muted
+                                        className="container__video"
+                                        onClick={() => navigate(`/post/${item._id}`)}    
+                                    >
                                         <source src={item.video} />
                                     </video> 
                                 </AliceCarousel>
                                 :
-                                <img src={item.image} alt="" className="container__img"/>
+                                <img
+                                    src={item.image}
+                                    alt={item.image}
+                                    className="container__img"
+                                    onClick={() => navigate(`/post/${item._id}`)}
+                                />
                                 ||
-                                <video autoPlay loop muted className="container__video">
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="container__video"
+                                    onClick={() => navigate(`/post/${item._id}`)}
+                                >
                                     <source src={item.video} />
                                 </video>
                                 }
                         </span>)
                 }
             </span>
-            <Modal show={show}>
+            <Modal show={isShow}>
                 <Modal.Header closeButton onClick={handleClose}>
                     <Modal.Title>Error</Modal.Title>
                 </Modal.Header>
