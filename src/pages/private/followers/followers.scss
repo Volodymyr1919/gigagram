@@ -46,3 +46,31 @@ $white-two: #aaa;
     }
   }
 }
+.list-item {
+  display: flex;
+  margin: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &:last-child{
+    border-bottom: none;
+  }
+  &-image {
+    border-radius: 50%;
+    width: 64px;
+  }
+  &-content{
+    margin-left: 20px;
+    h4, p{
+      margin: 0;
+    }
+    h4{
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    p{
+      margin-top: 5px;
+      color: $white-two;
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { BsPlusSquareFill } from 'react-icons/bs';
+import ModalWindow from "../../../partial/ModalWindow";
 // eslint-disable-next-line no-unused-vars
 import styles from './scss/info.scss';
 
@@ -69,6 +71,11 @@ function Info(props) {
     getFollowings();
     getFollowers();
   }, []);
+
+  const [modalIsOpen, setmodalIsOpen] = useState(false);
+
+  const handleClick = e => {setmodalIsOpen(true); console.log(modalIsOpen)};
+
   return (
     <div className="profile_info">
     <div className="info-container">
@@ -108,7 +115,9 @@ function Info(props) {
 
     </div>
     <div className="edit">
-    <button className="edit-profile">Отредактировать</button>
+      <button className="edit-profile">Отредактировать</button>
+      <button className='button_create' onClick={(e) => {handleClick(e)}}><BsPlusSquareFill/></button>
+      <ModalWindow isShow={modalIsOpen}/>
     </div>
   </div>
   );
