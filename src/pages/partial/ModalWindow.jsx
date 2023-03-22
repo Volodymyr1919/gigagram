@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Modal, Button } from 'react-bootstrap';
+import modalStyle from './modal.scss'
 
 export default function ModalWindow(props) {
-
-    const [isShow, setShow] = useState(props.isShow);
+    // const {post, setPost} = useState("")
+    const { isShow, onClose: setShow } = props;
     const [newTitle, setNewTitle] = useState("");
     const [newDescription, setNewDescription] = useState("");
     const [newImg, setNewImg] = useState("");
@@ -26,40 +27,36 @@ export default function ModalWindow(props) {
             errors.media = "Image or Video Field is required";
             return;
         }
+        
+
+        
 
         const requestOptions = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('token')
+              'Content-Type': 'application/json',
+              'x-access-token': localStorage.getItem('token')
             },
             body: JSON.stringify({
-                    "title": data.newTitle,
-                    "description": data.newDescription,
-                    "image": data.newImg,
-                    "video": data.newVideo
+              title: newTitle,
+              description: newDescription,
+              image: newImg,
+              video: newVideo,
+              status: "active"
             })
-        };
-        console.log(requestOptions);
-
-        // await fetch('http://65.109.13.139:9191/signin', requestOptions)
-        // .then(async response => {
-        //         const isJson = response.headers.get('content-type')?.includes('application/json');
-        //         const data = isJson && await response.json();
-        //         console.log(data);
-        //         localStorage.setItem("token", data.token);
-        //         localStorage.setItem("user_id", data.id);
-    
-        //         // check for error response
-        //         if (!response.ok) {
-        //             // get error message from body or default to response status
-        //             const error = (data && data.message) || response.status;
-        //             return Promise.reject(error);
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.error('There was an error!', error);
-        //     });
+          };
+          
+          try {
+            const response = await fetch("http://65.109.13.139:9191/post", requestOptions);
+            if (response.ok) {
+              console.log("Post created successfully");
+              setShow(false);
+            } else {
+              console.log("Failed to create post");
+            }
+          } catch (error) {
+            console.log("Error:", error);
+          }
         }
     return (
         <div>
@@ -79,7 +76,7 @@ export default function ModalWindow(props) {
                                     setNewTitle(e.target.value);
                                 }
                             })}/>
-                            <p>{errors.title}</p>
+                            {errors.title && <p>{errors.title.message}</p>}
                         <input 
                             type="text" 
                             placeholder='Description'
@@ -90,11 +87,11 @@ export default function ModalWindow(props) {
                                     setNewDescription(e.target.value);
                                 }
                             })}/>
-                            <p>{errors.description}</p>
+                            {errors.description && <p>{errors.description.message}</p>}
                         <input  
                             type="url" 
                             placeholder='Image'
-                            {...register("img", {
+                            {...register("image", {
                                 value: newImg,
                                 onChange: (e) => {
                                     setNewImg(e.target.value);
@@ -110,10 +107,10 @@ export default function ModalWindow(props) {
                                     setNewVideo(e.target.value);
                                 }
                             })}/>
-                            <p>{errors.media}</p>
+                            {errors.media && <p>{errors.description.media}</p>}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>OK</Button>
+                        <Button variant="secondary" type="submit" onClick={handleClose}>OK</Button>
                     </Modal.Footer>
                 </form>
             </Modal>

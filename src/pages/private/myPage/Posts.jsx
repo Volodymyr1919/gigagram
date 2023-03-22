@@ -14,13 +14,15 @@ function ProfilePosts() {
   const navigate = useNavigate();
 
   useEffect(() => {
+   let user_id = localStorage.getItem("user_id")
+   let url = 'http://65.109.13.139:9191/posts?user_id='+user_id
+   console.log(user_id)
     function getUserPosts() {
-      fetch("http://65.109.13.139:9191/posts", {
+      fetch(url, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          user_id: localStorage.getItem("user_id"),
           "x-access-token": localStorage.getItem("token"),
+          "user_id": user_id,
         },
       })
         .then((data) => {
@@ -34,11 +36,8 @@ function ProfilePosts() {
         })
         .then((data) => {
           // console.log(data);
-          const filteredData = data.filter(
-            (item) => item.author._id === localStorage.getItem("user_id")
-          );
-          localStorage.setItem("posts_length", filteredData.length);
-          setPosts(filteredData);
+          localStorage.setItem("posts_length", data.length);
+          setPosts(data);
         });
     }
 

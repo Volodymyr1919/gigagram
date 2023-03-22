@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header/Header";
-import Info from "./ProfileInfo";
-import Posts from "./ProfilePosts";
+import Info from "./Info";
+import Posts from "./Posts";
 
 export default function MyPage() {
   return (
