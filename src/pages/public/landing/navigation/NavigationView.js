@@ -1,32 +1,28 @@
-import React from "react";
+import * as React from "react";
+import logo from '../../../../assets/img/logo.png'
 import { NavLink } from "react-router-dom";
 import headerStyle from '../scss/header.scss'
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 function Navigation() {
   return (
-    <header className="header-top">
-      <div className="logo">
-        <a href="/">
-          <h2 className="logo">Gigagram</h2>
-        </a>
-      </div>
-
-      <div className="links">
-        <ul>
-          <li>
-            <NavLink to="/signin" className="nav_link">
-              signin
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/signup" className="nav_link">
-              signup
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </header>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Gigagram
+          </Typography>
+          <Button component={NavLink} to="/signin" color="inherit">Sign In</Button>
+          <Button component={NavLink} to="/signup" color="inherit">Sign Up</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
 
 export default Navigation;
+

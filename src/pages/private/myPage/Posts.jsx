@@ -14,15 +14,14 @@ function ProfilePosts() {
   const navigate = useNavigate();
 
   useEffect(() => {
-   let user_id = localStorage.getItem("user_id")
-   let url = 'http://65.109.13.139:9191/posts?user_id='+user_id
-   console.log(user_id)
+    let user_id = localStorage.getItem("user_id");
+    let url = "http://65.109.13.139:9191/posts?user_id=" + user_id;
     function getUserPosts() {
       fetch(url, {
         method: "GET",
         headers: {
           "x-access-token": localStorage.getItem("token"),
-          "user_id": user_id,
+          user_id: user_id,
         },
       })
         .then((data) => {

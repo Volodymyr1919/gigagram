@@ -1,5 +1,7 @@
 .home {
+  height: calc(100vh - 70px);
   background-color: blueviolet;
+  overflow-y: none;
 
   .bg-video {
     position: fixed;
@@ -10,23 +12,20 @@
     z-index: -1;
 
     video {
-
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
 
-
   .main {
+    height: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 5%;
-    height: 20%;
+    align-items: center;
 
     .home__main {
       display: flex;
-      align-items: center;
 
       .info {
         margin-bottom: 5%;
@@ -35,40 +34,27 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
 
-        h1 {
-          font-size: xx-large
-        }
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 400;
+        color: white
+      }
 
-        p {
-          color: #fff;
-          font-size: x-large;
-          width: 62%;
-        }
+      h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        color: rgb(218, 204, 204);
+      }
 
-        h3 {
-          color: #413f3f;
-          ;
-        }
+      button {
+        margin-top: 20px;
+      }
 
-        button {
-          display: flex;
-          justify-content: center;
-          margin-top: 5px;
-          padding: 12px 30px;
-          background-color: white;
-          font-size: 25px;
-          text-decoration: none;
-          color: black;
-          border: 2px;
-          border-radius: 50px;
-          transition: all 0.2s ease-in-out;
-
-          &:hover {
-            background-color: black;
-            color: gray;
-          }
-        }
+      p {
+        text-align: center;
       }
 
       .info__slider {

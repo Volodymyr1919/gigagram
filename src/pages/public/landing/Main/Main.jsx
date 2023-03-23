@@ -1,23 +1,29 @@
 import React from "react";
 import laptop from "../../../../assets/img/laptop.png";
 import SliderView from "../slider/SliderView";
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 function Home() {
   return (
-    
     <div className="main">
       <div className="home__main">
         <div className="info">
-          <h1>Gigagram - social network special for Tel-Ran</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-            exercitationem.
-          </p>
-          <h3>created by group Gigacom</h3>
-          <button>some some</button>
+          <Typography variant="h1" gutterBottom>
+            New broadcast channel for students for Tel-Ran school
+          </Typography>
+
+          <Typography variant="h3" gutterBottom>
+            A New Way For Creators to Deepen Connections With Followers
+          </Typography>
+
+          <NavLink to="/signup">
+            <Button variant="contained">Get started now</Button>
+          </NavLink>
         </div>
         <div className="info__slider">
-            <SliderView />
+          <SliderView />
           <img className="laptop" src={laptop} alt="" />
         </div>
       </div>
