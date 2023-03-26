@@ -1,13 +1,12 @@
 import React, { useState, useEffect }   from "react";
 import { useNavigate }                  from "react-router-dom";
-import { Modal, Button }                from 'react-bootstrap';
 // eslint-disable-next-line no-unused-vars
 import feed                             from "./feed.scss";
 import logo                             from "../../../assets/img/logo.png";
-import AliceCarousel                    from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
 import ToMyPage                         from "./ToMyPage";
 import { NavLink }                      from "react-router-dom";
+import PostCard                         from "./PostCard";
+import ErrorModal                       from "../../partial/ErrorModal";
 
 export default function Feed() {
 
@@ -30,7 +29,7 @@ export default function Feed() {
                 if (data.ok) {
                     return data.json();
                 } else {
-                    setErr(data.statusText);
+                    data.statusText === "Forbidden" ? setErr("Token has been burned") : setErr(data.statusText);
                     setShow(true);
                     return;
                 }
@@ -63,67 +62,15 @@ export default function Feed() {
                     </div>
                 </NavLink>
             </header>
-            <span className="feed__posts">
+            <div className="feed__posts">
                 {
                     posts === undefined ?
                     <h2 className="errorCase">Sorry any posts found</h2>
                     :
-                    posts.map(item => 
-                        <span
-                            key={item._id}
-                            className="posts__container"
-                        >
-                                {
-                                item.image && item.video ?
-                                <AliceCarousel>
-                                    <img
-                                        src={item.image}
-                                        alt={item.image}
-                                        className="container__img"
-                                        onClick={() => navigate(`/post/${item._id}`)}    
-                                    />
-                                    <video
-                                        autoPlay
-                                        loop
-                                        muted
-                                        className="container__video"
-                                        onClick={() => navigate(`/post/${item._id}`)}    
-                                    >
-                                        <source src={item.video} />
-                                    </video> 
-                                </AliceCarousel>
-                                :
-                                <img
-                                    src={item.image}
-                                    alt={item.image}
-                                    className="container__img"
-                                    onClick={() => navigate(`/post/${item._id}`)}
-                                />
-                                ||
-                                <video
-                                    autoPlay
-                                    loop
-                                    muted
-                                    className="container__video"
-                                    onClick={() => navigate(`/post/${item._id}`)}
-                                >
-                                    <source src={item.video} />
-                                </video>
-                                }
-                        </span>)
+                    posts.map(item => <PostCard item={item} key={item._id}/>)
                 }
-            </span>
-            <Modal show={isShow}>
-                <Modal.Header closeButton onClick={handleClose}>
-                    <Modal.Title>Error</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {err}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>OK</Button>
-                </Modal.Footer>
-            </Modal>
+            </div>
+            <ErrorModal isShow={isShow} setShow={setShow} err={err} onClose={handleClose} />
         </div>
     );
 }
