@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 .header-top {
     display: flex;
-    justify-content: space-between;
     width: 98%;
     align-items: center;
     .header_image{
@@ -23,14 +22,14 @@
         margin-right: 10px;
     }
     .links{
-
+        
         flex: 1;
 
         ul {
             list-style: none;
             display: flex;
             justify-content: flex-end;
-
+            
                 li {
                     margin-right: 5vh;
                     transition: transform 0.5s;
@@ -39,21 +38,21 @@
                         color: black;
                         font-weight: 500;
                         border-radius: 5px;
-
+    
                       }
                       &:hover{
                         transform: rotateY(10deg) scale(1.09);
                         color: black;
                     }
                 }
-
+                
                 .active {
                     font-size: 17px;
                     color: black;
                 }
           }
-
+          
     }
-
-
+    
+      
   }

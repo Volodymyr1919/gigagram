@@ -1,0 +1,120 @@
+.home {
+  height: calc(100vh - 70px);
+  background-color: blueviolet;
+  overflow-y: none;
+
+  .bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .home__main {
+      display: flex;
+
+      .info {
+        margin-bottom: 5%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 400;
+        color: white
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        color: rgb(218, 204, 204);
+      }
+
+      button {
+        margin-top: 20px;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      .info__slider {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #carouselExampleFade {
+
+          position: absolute;
+          width: 65%;
+          top: 34%;
+          left: 35%;
+          transform: translate(-27%, -44%);
+          z-index: 1;
+
+          .carousel-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+
+          }
+
+          .carousel-control-prev {
+            z-index: 3;
+          }
+
+          .carousel-control-next {
+            z-index: 4;
+          }
+
+          .la-angle-double-left,
+          .la-angle-double-right {
+            color: rgb(255, 133, 46);
+            font-size: 40px;
+            font-weight: bolder;
+          }
+        }
+
+        .d-block {
+          position: relative;
+          object-fit: contain;
+          max-height: 35vh;
+        }
+
+        .laptop {
+          border: none;
+          width: 80%;
+          z-index: 2;
+          pointer-events: none;
+          height: 50vh;
+        }
+      }
+
+    }
+
+
+  }
+}
