@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // eslint-disable-next-line no-unused-vars
-import signUpStyle from "./signUp.scss";
+import signUpStyle from "./signup.scss";
 
 export default function SignUp() {
     const {

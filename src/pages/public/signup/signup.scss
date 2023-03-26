@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 @import "../../../scss/colors.scss";
 
-div.container {
+div.signup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,7 +144,7 @@ div.container {
     top: 0;
     left: 0;
     width: 100%;
-    height: 78%;
+    height: 100%;
   }
   .bg-bubbles li {
     position: absolute;
@@ -215,7 +215,7 @@ div.container {
     border-radius: 7px;
   }
   .bg-bubbles li:nth-child(10) {
-    left: 75%;
+    left: 90%;
     width: 160px;
     height: 160px;
     animation-delay: 11s;        
