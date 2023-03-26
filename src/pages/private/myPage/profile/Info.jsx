@@ -5,13 +5,14 @@ import ModalWindow from "../../../partial/ModalWindow";
 // eslint-disable-next-line no-unused-vars
 import styles from './scss/info.scss';
 
-function Info(props) {
+function Info() {
   const [followers, setFollowers] = useState();
   const [followings, setFollowings] = useState();
   const [fullname, setFullname] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
   const [username, setUsername] = useState("");
+  const [isShow, setIsShow] = useState(false);
 
 
   let posts_length = localStorage.getItem("posts_length");
@@ -72,9 +73,7 @@ function Info(props) {
     getFollowers();
   }, []);
 
-  const [modalIsOpen, setmodalIsOpen] = useState(false);
-
-  const handleClick = e => {setmodalIsOpen(true); console.log(modalIsOpen)};
+  // const handleClick = e => {setIsShow(true)};
 
   return (
     <div className="profile_info">
@@ -116,8 +115,8 @@ function Info(props) {
     </div>
     <div className="edit">
       <button className="edit-profile">Отредактировать</button>
-      <button className='button_create' onClick={(e) => {handleClick(e)}}><BsPlusSquareFill/></button>
-      <ModalWindow isShow={modalIsOpen}/>
+      <button className='button_create' onClick={() => {setIsShow(true)}}><BsPlusSquareFill /></button>
+      <ModalWindow isShow={isShow}/>
     </div>
   </div>
   );

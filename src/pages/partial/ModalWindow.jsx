@@ -4,7 +4,9 @@ import { Modal, Button } from 'react-bootstrap';
 
 export default function ModalWindow(props) {
 
-    const [isShow, setShow] = useState(props.isShow);
+    console.log(props);
+
+    const [isOpen, setIsOpen] = useState(props.isShow);
     const [newTitle, setNewTitle] = useState("");
     const [newDescription, setNewDescription] = useState("");
     const [newImg, setNewImg] = useState("");
@@ -16,8 +18,9 @@ export default function ModalWindow(props) {
         formState: { errors },
       } = useForm({ mode: "onChange" });
 
-    function handleClose() {
-        setShow(false);
+    function handleClose(e) {
+        // console.log(e.target.parentNode.parentNode.show);
+        setIsOpen(false)
     };
 
     const onSubmit = async (data) => {
@@ -60,11 +63,12 @@ export default function ModalWindow(props) {
         //     .catch(error => {
         //         console.error('There was an error!', error);
         //     });
-        }
+    }
+        
     return (
         <div>
-            <Modal show={isShow}>
-                <Modal.Header closeButton onClick={handleClose}>
+            <Modal show={isOpen}>
+                <Modal.Header closeButton onClick={(e) => handleClose(e)}>
                     <Modal.Title>Error</Modal.Title>
                 </Modal.Header>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -113,7 +117,7 @@ export default function ModalWindow(props) {
                             <p>{errors.media}</p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>OK</Button>
+                        <Button variant="secondary">OK</Button>
                     </Modal.Footer>
                 </form>
             </Modal>

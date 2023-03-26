@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 @import "../../../scss/colors.scss";
 
-div.signup {
+div.container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(90deg, $clear_white, $grey_br);  
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(90deg, $clear_white, $grey_br);   
 
   * {
     box-sizing: border-box;
@@ -15,7 +15,7 @@ div.signup {
     padding: 0; 
     font-family: Raleway, sans-serif;
   }
-
+  
 .screen {   
   background: linear-gradient(90deg, $clear_white, $secondary);   
   position: relative; 
@@ -39,8 +39,7 @@ div.signup {
   bottom: 0;
   z-index: 0;
   -webkit-clip-path: inset(0 0 0 0);
-  clip-path: inset(0 0 0 0);
-  overflow: hidden; 
+  clip-path: inset(0 0 0 0);  
 }
 
 .screen__background__shape {
@@ -145,8 +144,7 @@ div.signup {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: 78%;
   }
   .bg-bubbles li {
     position: absolute;
@@ -173,7 +171,7 @@ div.signup {
   .bg-bubbles li:nth-child(3) {
     left: 25%;
     animation-delay: 4s;
-
+    
   }
   .bg-bubbles li:nth-child(4) {
     left: 40%;
@@ -217,7 +215,7 @@ div.signup {
     border-radius: 7px;
   }
   .bg-bubbles li:nth-child(10) {
-    left: 90%;
+    left: 75%;
     width: 160px;
     height: 160px;
     animation-delay: 11s;        
