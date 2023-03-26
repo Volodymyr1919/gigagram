@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./header/Header";
+import Header from "./Header/Header";
 import Info from "./Info";
 import Posts from "./Posts";
 
