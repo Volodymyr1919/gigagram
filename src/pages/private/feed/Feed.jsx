@@ -7,6 +7,7 @@ import ToMyPage                         from "./ToMyPage";
 import { NavLink }                      from "react-router-dom";
 import PostCard                         from "./PostCard";
 import ErrorModal                       from "../../partial/ErrorModal";
+import RecomendUsers                    from "./RecomendUsers";
 
 export default function Feed() {
 
@@ -62,14 +63,17 @@ export default function Feed() {
                     </div>
                 </NavLink>
             </header>
-            <div className="feed__posts">
-                {
-                    posts === undefined ?
-                    <h2 className="errorCase">Sorry any posts found</h2>
-                    :
-                    posts.map(item => <PostCard item={item} key={item._id}/>)
-                }
-            </div>
+            <main className="feed">
+                <div className="feed__posts">
+                    {
+                        posts === undefined ?
+                        <h2 className="errorCase">Sorry any posts found</h2>
+                        :
+                        posts.map(item => <PostCard item={item} key={item._id} />)
+                    }
+                </div>
+                <RecomendUsers />
+            </main>
             <ErrorModal isShow={isShow} setShow={setShow} err={err} onClose={handleClose} />
         </div>
     );

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
+@import "../../../scss/colors.scss";
 
 div.main__feed{
     display: flex;
@@ -7,6 +8,8 @@ div.main__feed{
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    height: fit-content;
+    background: #d9d9d973;
     header.feed__header{
         padding: 15px;
         box-sizing: border-box;
@@ -29,7 +32,6 @@ div.main__feed{
             }
             &:hover{
                 cursor: pointer;
-                background: #ebebeb97;
             }
         }
         h2{
@@ -63,86 +65,20 @@ div.main__feed{
             }
         }
     }
-    div.feed__posts{
+    main.feed{
         display: flex;
-        flex-direction: column;
-        gap: 40px;
-        h2.errorCase{
-            font-family: 'Play', sans-serif;
-            color: #F47A1D;
+        gap: 100px;
+        width: 100%;
+        div.feed__posts{
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-left: 22%;
+            h2.errorCase{
+                font-family: 'Play', sans-serif;
+                color: #F47A1D;
+            }
         }
-        // span.posts__container{
-        //     width: 300px;
-        //     height: 300px;
-        //     border-radius: 7px;
-        //     transition: all ease-in-out .2s;
-        //     display: flex;
-        //     align-items: center;
-        //     justify-content: center;
-        //     div.alice-carousel{
-        //         width: 100%;
-        //         height: 100%;
-        //         div{
-        //             width: 100%;
-        //             height: 100%;
-        //         }
-        //         ul.alice-carousel__dots{
-        //             margin: 0;
-        //             padding: 0;
-        //             position: absolute;
-        //             bottom: 0;
-        //             left: 45%;
-        //             z-index: 1;
-        //         }
-        //         div.alice-carousel__prev-btn,
-        //         div.alice-carousel__next-btn{
-        //             position: absolute;
-        //             margin: 0;
-        //             padding: 0;
-        //             top: 42%;
-        //             z-index: 1;
-        //             width: fit-content;
-        //             height: fit-content;
-        //         }
-        //         div.alice-carousel__prev-btn{
-        //             left: 0;
-        //             div.alice-carousel__prev-btn-wrapper{
-        //                 p{
-        //                     color: #fff;
-        //                     font-size: 25px;
-        //                 }
-        //             }
-        //         }
-        //         div.alice-carousel__next-btn{
-        //             right: 0;
-        //             div.alice-carousel__next-btn-wrapper{
-        //                 p{
-        //                     color: #fff;
-        //                     font-size: 25px;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     .container__img{
-        //         width: 100%;
-        //         height: 100%;
-        //         object-fit: cover;
-        //     }
-        //     .container__video{
-        //         width: 100%;
-        //         height: 100%;
-        //         object-fit: cover;
-        //     }
-        //     &:hover{
-        //         background: #ebebeb;
-        //         border: 10px solid #e7e7e7;
-        //         cursor: pointer;
-        //         img.container__img,
-        //         video.container__video{
-        //             object-fit: contain;
-        //         }
-        //     }
-        // }
     }
 }
 a{
