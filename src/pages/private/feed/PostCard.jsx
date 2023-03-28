@@ -17,18 +17,18 @@ export default function PostCard(props) {
     const navigate = useNavigate();
 
   return (
-        <Card sx={{ width: 945 }}>
+        <Card sx={{ width: 600 }}>
             <CardHeader />
             {item.video && item.video !== "any" && item.image ? 
                 <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
                     <CardMedia
                         component="img"
-                        height="540"
+                        height="300"
                         image={item.image}
                     />
                     <CardMedia
                         component="video"
-                        height="540"
+                        height="300"
                         image={item.video}
                         autoPlay
                         loop
@@ -40,13 +40,13 @@ export default function PostCard(props) {
             :
                 <CardMedia
                     component="img"
-                    height="540"
+                    height="300"
                     image={item.image}
                 />
                 ||
                 <CardMedia
                     component="video"
-                    height="540"
+                    height="300"
                     image={item.video}
                     autoPlay
                     loop

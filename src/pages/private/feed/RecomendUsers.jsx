@@ -32,7 +32,7 @@ export default function RecomendUsers() {
     },[])
 
   return (
-    <List dense sx={{ width: '360px', maxWidth: 360, bgcolor: 'background.paper', height: 'fit-content' }}>
+    <List dense sx={{ width: '360px', maxWidth: 360, bgcolor: 'background.paper', height: 'fit-content', paddingTop: '32px'}}>
       {users.map((person) => {
         const labelId = `checkbox-list-secondary-label-${person._id}`;
         return (

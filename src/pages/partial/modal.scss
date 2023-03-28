@@ -1,4 +1,10 @@
-.modal-body {
-    display: flex;
-    flex-direction: column;
+input{
+    width: 100%;
+}
+p.validError{
+    margin-top: 1px;
+    font-size: 12px;
+    color: red;
+    height: 15px;
+    width: 100%;
 }

@@ -42,7 +42,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm install @mui/material @emotion/react @emotion/styled --save
  - npm install @mui/material @mui/styled-engine-sc styled-components --save
  - npm install @fontsource/roboto --save
- - npm install @mui/icons-material --save 
+ - npm install @mui/icons-material --save
+ - npm install react-material-ui-form-validator --save
 
 
 
@@ -95,3 +96,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Troubleshooting
+- Проблема с "eslint/jest": 
+    1.) 
+    ```
+    "scripts": {
+    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
+    }
+    ```
+    or
+    2.)
+    ```
+    "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    }
+    ```

@@ -17,7 +17,9 @@ export default function ToMyPage() {
                 return data.json();
             })
             .then((data) => {
+                console.log(data);
                 setMe(data);
+                localStorage.setItem("avatar", data.avatar);
             })
         }
         getMe();
