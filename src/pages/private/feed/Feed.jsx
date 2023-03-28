@@ -57,22 +57,20 @@ export default function Feed() {
                 </NavLink>
                 <h2>Feed page | Favoriets from students</h2>
                 <NavLink to="/my-page">
+                    
                     <div className="header__me">
                         <ToMyPage />
                     </div>
                 </NavLink>
             </header>
-            <div>
-                {posts.map(item => <PostCard post={item}/>)}
-            </div>
-            <span className="feed__posts">
+            <div className="feed__posts">
                 {
                     posts === undefined ?
                     <h2 className="errorCase">Sorry any posts found</h2>
                     :
                     posts.map(item => <PostCard item={item} key={item._id}/>)
                 }
-            </span>
+            </div>
             <ErrorModal isShow={isShow} setShow={setShow} err={err} onClose={handleClose} />
         </div>
     );
