@@ -6,7 +6,6 @@ import logo                             from "../../../assets/img/logo.png";
 import ToMyPage                         from "./ToMyPage";
 import PostCard                         from "./PostCard";  
 import { NavLink }                      from "react-router-dom";
-import PostCard                         from "./PostCard";
 import ErrorModal                       from "../../partial/ErrorModal";
 
 export default function Feed() {

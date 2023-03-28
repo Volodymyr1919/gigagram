@@ -6,10 +6,6 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
-<<<<<<< HEAD
-=======
-    "@mui/icons-material": "^5.11.11",
->>>>>>> 417ba03f02f4c680216b042a4995961bb05d9c54
     "@mui/material": "^5.11.14",
     "@mui/styled-engine-sc": "^5.11.11",
     "@testing-library/jest-dom": "^5.16.5",
@@ -17,11 +13,6 @@
     "@testing-library/user-event": "^13.5.0",
     "mobx": "^6.8.0",
     "mobx-react": "^7.6.0",
-<<<<<<< HEAD
-=======
-    "node": "^19.8.1",
-    "node-sass": "^7.0.3",
->>>>>>> 417ba03f02f4c680216b042a4995961bb05d9c54
     "react": "^18.2.0",
     "react-alice-carousel": "^2.7.0",
     "react-bootstrap": "^2.7.2",
@@ -30,11 +21,6 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-=======
-    "sass": "^1.59.3",
-    "scss": "^0.2.4",
->>>>>>> 417ba03f02f4c680216b042a4995961bb05d9c54
     "styled-components": "^5.3.9",
     "web-vitals": "^2.1.4"
   },
