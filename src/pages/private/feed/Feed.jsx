@@ -7,6 +7,7 @@ import logo                             from "../../../assets/img/logo.png";
 import AliceCarousel                    from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import ToMyPage                         from "./ToMyPage";
+import PostCard                         from "./PostCard";  
 import { NavLink }                      from "react-router-dom";
 
 export default function Feed() {
@@ -63,6 +64,9 @@ export default function Feed() {
                     </div>
                 </NavLink>
             </header>
+            <div>
+                {posts.map(item => <PostCard post={item}/>)}
+            </div>
             <span className="feed__posts">
                 {
                     posts === undefined ?
