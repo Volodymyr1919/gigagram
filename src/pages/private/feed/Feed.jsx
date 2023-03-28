@@ -7,6 +7,9 @@ import ToMyPage                         from "./ToMyPage";
 import { NavLink }                      from "react-router-dom";
 import PostCard                         from "./PostCard";
 import ErrorModal                       from "../../partial/ErrorModal";
+import RecomendUsers                    from "./RecomendUsers";
+import Container                        from '@mui/material/Container';
+import Box                              from '@mui/material/Box';
 
 export default function Feed() {
 
@@ -50,26 +53,30 @@ export default function Feed() {
     return(
         <div className="main__feed">
             <header className="feed__header">
-                <NavLink to="/feed">
+                {/* <NavLink to="/feed">
                     <figure className="header__logo">
                         <img src={logo} alt="logo" />
                     </figure>
-                </NavLink>
+                </NavLink> */}
                 <h2>Feed page | Favoriets from students</h2>
-                <NavLink to="/my-page">
-                    <div className="header__me">
-                        <ToMyPage />
-                    </div>
-                </NavLink>
             </header>
-            <div className="feed__posts">
-                {
-                    posts === undefined ?
-                    <h2 className="errorCase">Sorry any posts found</h2>
-                    :
-                    posts.map(item => <PostCard item={item} key={item._id}/>)
-                }
-            </div>
+            <main className="feed">
+                <Container
+                    maxWidth="xl"
+                    style={{background: "#fff"}}
+                    sx={{display: 'flex', justifyContent: 'space-between'}}
+                >
+                    <div className="feed__posts">
+                        {
+                            posts === undefined ?
+                            <h2 className="errorCase">Sorry any posts found</h2>
+                            :
+                            posts.map(item => <PostCard item={item} key={item._id} />)
+                        }
+                    </div>
+                    <RecomendUsers />
+                </Container>
+            </main>
             <ErrorModal isShow={isShow} setShow={setShow} err={err} onClose={handleClose} />
         </div>
     );

@@ -1,0 +1,22 @@
+header{
+    div{
+        div.MuiToolbar-root{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    figure.header__logo{
+        margin: 0;
+        padding: 10px;
+        width: 250px;
+        height: 80px;
+        box-sizing: border-box;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: invert(97%) sepia(50%) saturate(0%) hue-rotate(323deg) brightness(101%) contrast(104%);
+        }
+    }
+}
