@@ -6,6 +6,8 @@ $white-two: #aaa;
 //   font-family: sans-serif;
 // }
 
+.followers{
+
 .list-wrapper {
   max-width: 400px;
   margin: 50px auto;
@@ -45,4 +47,33 @@ $white-two: #aaa;
       color: $white-two;
     }
   }
+}
+.list-item {
+  display: flex;
+  margin: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &:last-child{
+    border-bottom: none;
+  }
+  &-image {
+    border-radius: 50%;
+    width: 64px;
+  }
+  &-content{
+    margin-left: 20px;
+    h4, p{
+      margin: 0;
+    }
+    h4{
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    p{
+      margin-top: 5px;
+      color: $white-two;
+    }
+  }
+}
 }

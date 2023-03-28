@@ -1,14 +1,16 @@
+
+
 .posts_block{
     display: flex;
     margin-bottom: 5%;
     flex-direction: column;
-
+    
   .posts_container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 0px;
-
+    
         span{
             margin-top: 20px;
             margin-right: 0;
@@ -63,7 +65,7 @@
       width: 300px;
       height: 300px;
       .post { 
-
+        
         border-radius: 10px;
         border-radius: 20px;
         width: 300px;
@@ -75,3 +77,5 @@
     }   
     }
 }
+
+  

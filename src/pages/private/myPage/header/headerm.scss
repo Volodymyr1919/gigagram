@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 .header-top {
     display: flex;
+    justify-content: space-between;
     width: 98%;
     align-items: center;
     .header_image{

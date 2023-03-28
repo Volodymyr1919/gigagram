@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Modal, Button }    from 'react-bootstrap';
-import { useNavigate }      from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import ErrorModal from '../../partial/ErrorModal';
 // eslint-disable-next-line no-unused-vars
 import signInStyle from './signin.scss';
 
@@ -16,8 +16,8 @@ export default function Signin() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [show, setShow] = useState(false);
-    const [resp, setResp] = useState("");
+    const [isShow, setShow] = useState(false);
+    const [err, setErr] = useState("");
 
     const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export default function Signin() {
                 return data.json();
             } else {
                 setShow(true);
-                data.statusText === "Bad Request" ? setResp("Wrong username or password") : setResp(data.statusText);
+                data.statusText === "Bad Request" ? setErr("Wrong username or password") : setErr(data.statusText);
                 // setResp(data.statusText);
             }
         })
@@ -142,17 +142,7 @@ export default function Signin() {
                 <li></li>
                 <li></li>
             </ul>
-            <Modal show={show}>
-                <Modal.Header closeButton onClick={handleClose}>
-                    <Modal.Title>Error</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {resp}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>OK</Button>
-                </Modal.Footer>
-            </Modal>
+            <ErrorModal isShow={isShow} setShow={setShow} err={err} onClose={handleClose} />
         </div>
     )
 };
