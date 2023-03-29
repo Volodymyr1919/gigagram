@@ -6,7 +6,7 @@ import LayoutNF from "./pages/layouts/LayoutNF";
 import NotFound from "./pages/public/notFound/NotFound";
 import Signin from "./pages/public/signin/Signin";
 import Signup from "./pages/public/signup/Signup";
-import Followers from "./pages/private/followers/Followers";
+import Followers from "./pages/private/followers/FollowersView";
 import Feed from "./pages/private/feed/Feed";
 import MyPage from "./pages/private/myPage/MyPage";
 import PostId from "./pages/private/postId/PostId";

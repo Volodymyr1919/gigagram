@@ -1,51 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react";
+import SignupStore from "../../../stores/publicStores/SignupStore";
 // eslint-disable-next-line no-unused-vars
 import signUpStyle from "./signup.scss";
 
-export default function SignUp() {
+ const SignUp = observer(() => {
     const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm({ mode: "onChange" });
-    
-      const onSubmit = (data) => {
-        console.log(data);
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "username": data.userName,
-                "password": data.password,
-                "confirm_password": data.confirmPassword
-              })
-        };
-        fetch('http://65.109.13.139:9191/signup', requestOptions)
-            .then(async response => {
-                const isJson = response.headers.get('content-type')?.includes('application/json');
-                const data = isJson && await response.json();
-                console.log(data);
-                localStorage.setItem("token", data.jwt);
-                localStorage.setItem("user_id", data.id);
-    
-                // check for error response
-                if (!response.ok) {
-                    // get error message from body or default to response status
-                    const error = (data && data.message) || response.status;
-                    return Promise.reject(error);
-                }
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-      };
-      const [userName, setUserName] = useState("");
-      const [password, setPassword] = useState("");
-      const [confirmPassword, setConfirmPassword] = useState("");
-       
+      const navigate = useNavigate();
+      
+      async function onSubmit(data) {
+        const success = await SignupStore.onSubmit();
+        if (success) {
+          navigate("/feed");
+        }
+      }
+
       function checkPassword(value) {
-        return password === value ? true : "Passwords not match";
+        return SignupStore.password === value ? true : "Passwords not match";
       }
 
     return(
@@ -56,18 +33,18 @@ export default function SignUp() {
                         <div className="registration__field">
                             <input
                             type="email"
-                            name="userName"
+                            name="username"
                             placeholder="E-Mail"
                             className="registration__input"
                             {...register("userName", {
                                 required: "Field is required",
                                 minLength: { value: 8, message: "Min 8 symbols" },
                                 pattern: { value: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/, message: "Invalid email address"},
-                                value: userName,
+                                value: SignupStore.username,
                                 onChange: (e) => {
-                                    setUserName(e.target.value);
+                                  SignupStore.setUsername(e.target.value);
                                 },
-                            })}
+                              })}
                             />
                         <p>{errors.userName && errors.userName.message}</p>
                     </div>
@@ -81,9 +58,9 @@ export default function SignUp() {
                             required: "Field is required",
                             minLength: { value: 8, message: "Min 8 symbols" },
                             pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, message: "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"},
-                            value: password,
+                            value: SignupStore.password,
                             onChange: (e) => {
-                                setPassword(e.target.value);
+                                SignupStore.setPassword(e.target.value);
                             },
                         })}
                         />
@@ -97,9 +74,9 @@ export default function SignUp() {
                         className="registration__input"
                         {...register("confirmPassword", {
                             validate: checkPassword,
-                            value: confirmPassword,
+                            value: SignupStore.confirmPassword,
                             onChange: (e) => {
-                                setConfirmPassword(e.target.value);
+                                SignupStore.setConfirmPassword(e.target.value);
                             },
                         })}
                         />
@@ -131,4 +108,5 @@ export default function SignUp() {
             </ul>
         </div>
     )
-}
+})
+export default SignUp

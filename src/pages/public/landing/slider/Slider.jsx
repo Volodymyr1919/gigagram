@@ -1,8 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react";
-import sliderStore from "./SliderStore";
+import sliderStore from "../../../../stores/publicStores/SliderStore"
 
-const SliderView = observer(() => {
+const Slider = observer(() => {
   return (
     <div id="carouselExampleFade" className="carousel slide carousel-fade">
       <div className="carousel-inner">
@@ -20,4 +20,4 @@ const SliderView = observer(() => {
   );
 });
 
-export default SliderView;
+export default Slider;
