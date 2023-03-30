@@ -33,20 +33,6 @@ const PostId = observer(() => {
 
   return (
     <div className="main__postid">
-      <header className="postid__header">
-        <NavLink to="/feed">
-          <figure className="header__logo">
-            <img src={logo} alt="logo" />
-          </figure>
-        </NavLink>
-
-        <NavLink to="/my-page">
-          <div className="header__me">
-            <ToMyPage />
-          </div>
-        </NavLink>
-      </header>
-
       <article className="blog-post">
         <div className="blog-post__info">
           <div className="blog-post-header__info">
@@ -55,10 +41,9 @@ const PostId = observer(() => {
             </figure>
             <p className="user__username">{PostIdStore.post.author.username}</p>
             <NavLink to="/notfound" className="blog-post__cta">
-              Follow me
+              Edit
             </NavLink>
           </div>
-
           <h2 className="blog-post__title">{PostIdStore.post.title}</h2>
           <p>{PostIdStore.post.description}</p>
           <span className="posts__container">
@@ -88,8 +73,10 @@ const PostId = observer(() => {
           </span>
         </div>
       </article>
-      <NavLink to="/back">
-        <div className="blog-post__cta">Back</div>
+      <NavLink to="/my-page">
+        <div className="blog-post__cta">
+          Back
+        </div>
       </NavLink>
     </div>
   );

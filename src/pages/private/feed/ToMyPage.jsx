@@ -47,9 +47,12 @@ export default function ToMyPage() {
 
     return(
         <>
-            <figure className="me__avatar">
-                <img src={me.avatar} alt="my avatar" />
-            </figure>
+            <Avatar
+              className="me__avatar"
+              src={me.avatar}
+              alt="my avatar"
+              sx={{ width: 90, height: 90 }}
+            />
             <p className="me__username">{me.username}</p>
         </>
     );
