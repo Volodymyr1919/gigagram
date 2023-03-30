@@ -6,20 +6,6 @@ import Main from "./Main/Main"
 import homeStyle from './scss/home.scss'
 
 function Home() {
-  function greet(person) {
-
-    if (person.name === "amy") {
-  
-      console.log("hey amy"); 
-  
-    } else {
-  
-      console.log("hey arnold");
-  
-    }
-  
-  }
-  
   greet({ name: "amy" })
   return (
     <div className="home">
