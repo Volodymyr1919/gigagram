@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import logo from "../../../assets/img/logo.png";
 import ToMyPage from "../feed/ToMyPage";
 import { NavLink } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
+import { observer } from "mobx-react";
+import PostIdStore from "../../../stores/privateStores/PostIdStore";
 // eslint-disable-next-line no-unused-vars
 import PostStyle from "./postid.scss";
 
-export default function PostId() {
+const PostId = observer(() => {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
-
   useEffect(() => {
     fetch(`http://65.109.13.139:9191/post/${id}`, {
       method: "GET",
@@ -23,11 +23,11 @@ export default function PostId() {
         return response.json();
       })
       .then((data) => {
-        setPost(data);
+        PostIdStore.setPost(data);
       });
   }, [id]);
 
-  if (!post) {
+  if (!PostIdStore.post) {
     return <div className="loader">Loading...</div>;
   }
 
@@ -51,32 +51,41 @@ export default function PostId() {
         <div className="blog-post__info">
           <div className="blog-post-header__info">
             <figure className="user__avatar">
-            <img src={post.author.avatar} alt="my avatar" />
-          </figure>
-          <p className="user__username">{post.author.username}</p>
-          <NavLink to="/notfound" className="blog-post__cta">Follow me</NavLink>
+              <img src={PostIdStore.post.author.avatar} alt="my avatar" />
+            </figure>
+            <p className="user__username">{PostIdStore.post.author.username}</p>
+            <NavLink to="/notfound" className="blog-post__cta">
+              Follow me
+            </NavLink>
           </div>
 
-          <h2 className="blog-post__title">{post.title}</h2>
-          <p>{post.description}</p>
+          <h2 className="blog-post__title">{PostIdStore.post.title}</h2>
+          <p>{PostIdStore.post.description}</p>
           <span className="posts__container">
-            {post.image && post.video ? (
+            {PostIdStore.post.image && PostIdStore.post.video ? (
               <AliceCarousel className="blog-post__img">
-                <img src={post.image} alt={post.image} />
+                <img
+                  src={PostIdStore.post.image}
+                  alt={PostIdStore.post.image}
+                />
                 <video autoPlay loop muted className="container__video">
-                  <source src={post.video} />
+                  <source src={PostIdStore.post.video} />
                 </video>
               </AliceCarousel>
             ) : (
-              <img src={post.image} alt="" className="container__img" /> || (
+              (
+                <img
+                  src={PostIdStore.post.image}
+                  alt=""
+                  className="container__img"
+                />
+              ) || (
                 <video autoPlay loop muted className="container__video">
-                  <source src={post.video} />
+                  <source src={PostIdStore.post.video} />
                 </video>
               )
             )}
           </span>
-
-
         </div>
       </article>
       <NavLink to="/back">
@@ -84,4 +93,5 @@ export default function PostId() {
       </NavLink>
     </div>
   );
-}
+});
+export default PostId;

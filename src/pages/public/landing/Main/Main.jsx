@@ -1,6 +1,6 @@
 import React from "react";
 import laptop from "../../../../assets/img/laptop.png";
-import SliderView from "../slider/SliderView";
+import Slider from "../slider/Slider";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -23,7 +23,7 @@ function Home() {
           </NavLink>
         </div>
         <div className="info__slider">
-          <SliderView />
+          <Slider />
           <img className="laptop" src={laptop} alt="" />
         </div>
       </div>

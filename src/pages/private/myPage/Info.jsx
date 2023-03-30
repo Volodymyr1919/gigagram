@@ -1,81 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { BsPlusSquareFill } from "react-icons/bs";
 import ModalWindow from "../../partial/ModalWindow";
+import UserInfoStore from "../../../stores/privateStores/UserInfoStore";
+import { observer } from "mobx-react";
 // eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
 
-function Info(props) {
-  const [isShow, setShow] = useState(false);
-  const [followers, setFollowers] = useState();
-  const [followings, setFollowings] = useState();
-  const [fullname, setFullname] = useState("");
-  const [bio, setBio] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [username, setUsername] = useState("");
-
+const Info = observer(() => {
   const handleClick = () => {
-    setShow(false);
+    UserInfoStore.setShow(false);
   };
 
   let posts_length = localStorage.getItem("posts_length");
 
   useEffect(() => {
-    function getMe() {
-      fetch("http://65.109.13.139:9191/me", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          localStorage.setItem("user_id", data._id);
-
-          setUsername(data.username);
-          setBio(data.bio);
-          setFullname(data.fullName);
-          setAvatar(data.avatar);
-        });
-    }
-
-    function getFollowers() {
-      fetch("http://65.109.13.139:9191/followers", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setFollowers(data.followers.length);
-        });
-    }
-
-    function getFollowings() {
-      fetch("http://65.109.13.139:9191/followings", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": localStorage.getItem("token"),
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setFollowings(data.following.length);
-        });
-    }
-    getMe();
-    getFollowings();
-    getFollowers();
+    UserInfoStore.getMe();
+    UserInfoStore.getFollowers();
+    UserInfoStore.getFollowings();
   }, []);
 
   return (
@@ -83,16 +25,16 @@ function Info(props) {
       <div className="info-container">
         <div className="title_header">
           <div className="profile-picture">
-            <img src={avatar} alt="Profile avatar" />
+            <img src={UserInfoStore.avatar} alt="Profile avatar" />
           </div>
           <div className="user_title">
-            <p>{fullname}</p>
-            <p>@{username}</p>
+            <p>{UserInfoStore.fullname}</p>
+            <p>@{UserInfoStore.username}</p>
           </div>
         </div>
 
         <div className="profile-info">
-          <p>{bio}</p>
+          <p>{UserInfoStore.bio}</p>
           <div className="profile-counts">
             <div className="count_block">
               <span className="count">{posts_length}</span>
@@ -100,12 +42,12 @@ function Info(props) {
             </div>
             <div className="count_block">
               <NavLink to="/followers">
-                <span className="count">{followers}</span>
+                <span className="count">{UserInfoStore.followers}</span>
                 <span className="stat">Подписчиков</span>
               </NavLink>
             </div>
             <div className="count_block">
-              <span className="count">{followings}</span>
+              <span className="count">{UserInfoStore.followings}</span>
               <span className="stat">Подписок</span>
             </div>
           </div>
@@ -113,13 +55,20 @@ function Info(props) {
       </div>
       <div className="edit">
         <button className="edit-profile">Отредактировать</button>
-        <button className="button_create" onClick={() => setShow(true)}>
+        <button
+          className="button_create"
+          onClick={() => UserInfoStore.setShow(true)}
+        >
           <BsPlusSquareFill />
         </button>
-        <ModalWindow isShow={isShow} setShow={setShow} onClose={handleClick} />
+        <ModalWindow
+          isShow={UserInfoStore.isShow}
+          setShow={UserInfoStore.setShow}
+          onClose={handleClick}
+        />
       </div>
     </div>
   );
-}
+});
 
 export default Info;
