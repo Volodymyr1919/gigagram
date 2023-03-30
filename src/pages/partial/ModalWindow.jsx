@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Modal, Button } from "react-bootstrap";
-// eslint-disable-next-line no-unused-vars
-// import modalStyle from "./modal.scss";
+import TextField from '@mui/material/TextField';
+import modalStyle from "./modal.scss";
 
 export default function ModalWindow(props) {
 
@@ -58,9 +58,11 @@ export default function ModalWindow(props) {
       </Modal.Header>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
-          <input
+          <TextField
             type="text"
-            placeholder="Title"
+            id="outlined-normal"
+            label="Title"
+            fullWidth
             {...register("title", {
               required: "The field is required",
               value: newTitle,
@@ -69,10 +71,12 @@ export default function ModalWindow(props) {
               },
             })}
           />
-          <p>{errors.title && errors.title.message}</p>
-          <input
+          <p className="validError">{errors.title && errors.title.message}</p>
+          <TextField
             type="text"
-            placeholder="Description"
+            id="outlined-normal"
+            label="Description"
+            fullWidth
             {...register("description", {
               required: "The field is required",
               value: newDescription,
@@ -81,10 +85,12 @@ export default function ModalWindow(props) {
               },
             })}
           />
-          <p>{errors.description && errors.description.message}</p>
-          <input
+          <p className="validError">{errors.description && errors.description.message}</p>
+          <TextField
             type="url"
-            placeholder="Image"
+            id="outlined-normal"
+            label="Image"
+            fullWidth
             {...register("image", {
               value: newImg,
               onChange: (e) => {
@@ -92,10 +98,12 @@ export default function ModalWindow(props) {
               },
             })}
           />
-          <p>{reqMedia}</p>
-          <input
+          <p className="validError">{reqMedia}</p>
+          <TextField
             type="url"
-            placeholder="Video"
+            id="outlined-normal"
+            label="Video"
+            fullWidth
             {...register("video", {
               value: newVideo,
               onChange: (e) => {
@@ -103,7 +111,7 @@ export default function ModalWindow(props) {
               },
             })}
           />
-          <p>{reqMedia}</p>
+          <p className="validError">{reqMedia}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" type="submit">

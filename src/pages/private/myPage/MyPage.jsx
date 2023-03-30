@@ -6,7 +6,7 @@ import Posts from "./Posts";
 export default function MyPage() {
   return (
     <div className="profile-container">
-      <Header />
+      {/* <Header /> */}
       <Info />
       <Posts />
     </div>
