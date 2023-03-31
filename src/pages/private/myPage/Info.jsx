@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 import ModalWindow from "../../partial/ModalWindow";
 import UserInfoStore from "../../../stores/privateStores/UserInfoStore";
 import { observer } from "mobx-react";
+import Followers from "../followers/FollowersView";
 // eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
 
 const Info = observer(() => {
+
+  const [showFollowers, setShowFollowers] = useState(false);
+
   const handleClick = () => {
     UserInfoStore.setShow(false);
+  };
+
+  const handleClickFollower = () => {
+    setShowFollowers(false);
   };
 
   let posts_length = localStorage.getItem("posts_length");
@@ -41,10 +48,8 @@ const Info = observer(() => {
               <span className="stat">Публикаций</span>
             </div>
             <div className="count_block">
-              <NavLink to="/followers">
-                <span className="count">{UserInfoStore.followers}</span>
-                <span className="stat">Подписчиков</span>
-              </NavLink>
+              <button onClick={() => setShowFollowers(true)}>{UserInfoStore.followers} Подписчиков</button>
+              <Followers showFollowers={showFollowers} setShowFollowers={setShowFollowers} onClose={handleClickFollower} />
             </div>
             <div className="count_block">
               <span className="count">{UserInfoStore.followings}</span>

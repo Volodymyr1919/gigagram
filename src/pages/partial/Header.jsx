@@ -49,7 +49,7 @@ function HeaderMain() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <figure className='header__logo' onClick={() => navigate("/feed")}>
+          <figure className='header__logo' onClick={() => navigate("/")}>
             <img src={logoH} alt="" />
           </figure>
           

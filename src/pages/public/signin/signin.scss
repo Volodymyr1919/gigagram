@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 @import "../../../scss/colors.scss";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
 div.signin {
   display: flex;
@@ -7,7 +8,8 @@ div.signin {
   justify-content: center;
   height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, $clear_white, $grey_br);  
+  // background: linear-gradient(90deg, $clear_white, $grey_br);  
+  // background: red!important;
 
   * {
     box-sizing: border-box;
@@ -19,7 +21,7 @@ div.signin {
     background: linear-gradient(90deg, $clear_white, $secondary);   
     position: relative; 
     height: 600px;
-    width: 360px; 
+    width: 415px; 
     box-shadow: 0px 0px 24px $secondary;
     z-index: 1;
   }
@@ -28,6 +30,12 @@ div.signin {
     z-index: 1;
     position: relative; 
     height: 100%;
+    h5 {
+      color: $main;
+      padding-left: 10%;
+      margin-top: 25px;
+      font-size: 40px;
+    }
   }
 
   .screen__background {   
@@ -86,7 +94,7 @@ div.signin {
   .login {
     width: 320px;
     padding: 30px;
-    padding-top: 156px;
+    padding-top: 96px;
     box-sizing: border-box;
   }
 
@@ -94,6 +102,9 @@ div.signin {
     padding: 20px 0px;  
     position: relative; 
     box-sizing: border-box;
+    i {
+      color: $grey_br;
+    }
   }
 
   .login__input {
@@ -101,9 +112,8 @@ div.signin {
     border-bottom: 2px solid #dfe1d7;
     background: none;
     padding: 10px;
-    padding-left: 24px;
     font-weight: 700;
-    width: 75%;
+    width: 87%;
     transition: .2s;
     box-sizing: border-box;
   }
@@ -118,12 +128,31 @@ div.signin {
   .login__submit {
     background: $clear_white;
     font-size: 14px;
-    margin-top: 30px;
-    padding: 16px 20px;
-    border-radius: 26px;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 19px;
     border: 1px solid $grey_br;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: $main;
+    box-shadow: 0px 2px 2px $secondary;
+    cursor: pointer;
+    transition: .2s;
+    box-sizing: border-box;
+  }
+
+  .login__submit--small {
+    background: $clear_white;
+    font-size: 14px;
+    margin-top: 13px;
+    padding: 3px 7px;
+    border-radius: 13px;
+    border: 1px solid $grey_br;
+    text-transform: uppercase;
+    font-weight: 300;
     display: flex;
     align-items: center;
     width: 100%;
@@ -139,6 +168,13 @@ div.signin {
   .login__submit:hover {
     border-color: $clear_white;
     outline: none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
   }
 
   //animation
