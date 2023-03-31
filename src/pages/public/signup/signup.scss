@@ -5,8 +5,8 @@ div.signup {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  width: 100vw;
+  min-height: 100%;
+  width: 100%;
   background: linear-gradient(90deg, $clear_white, $grey_br);   
 
   * {
@@ -20,7 +20,7 @@ div.signup {
   background: linear-gradient(90deg, $clear_white, $secondary);   
   position: relative; 
   height: 600px;
-  width: 360px; 
+  width: 415px; 
   box-shadow: 0px 0px 24px $secondary;
   z-index: 1;
 }
@@ -29,6 +29,12 @@ div.signup {
   z-index: 1;
   position: relative; 
   height: 100%;
+  h5 {
+    color: $main;
+    padding-left: 10%;
+    margin-top: 25px;
+    font-size: 40px;
+  }
 }
 
 .screen__background {   
@@ -39,7 +45,7 @@ div.signup {
   bottom: 0;
   z-index: 0;
   -webkit-clip-path: inset(0 0 0 0);
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);  
   overflow: hidden;
 }
 
@@ -87,12 +93,15 @@ div.signup {
 .registration {
   width: 320px;
   padding: 30px;
-  padding-top: 105px;
+  // padding-top: 105px;
 }
 
 .registration__field {
   padding: 20px 0px;  
   position: relative; 
+  i {
+    color: $grey_br;
+  }
 }
 
 .registration__input {
@@ -100,10 +109,10 @@ div.signup {
   border-bottom: 2px solid #dfe1d7;
   background: none;
   padding: 10px;
-  padding-left: 24px;
   font-weight: 700;
-  width: 75%;
+  width: 87%;
   transition: .2s;
+  box-sizing: border-box;
 }
 
 .registration__input:active,
@@ -117,11 +126,11 @@ div.signup {
   background: $clear_white;
   font-size: 14px;
   margin-top: 30px;
-  padding: 16px 20px;
-  border-radius: 26px;
+  padding: 10px 15px;
+  border-radius: 19px;
   border: 1px solid $grey_br;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   align-items: center;
   width: 100%;
@@ -131,11 +140,37 @@ div.signup {
   transition: .2s;
 }
 
+.registration__submit--small {
+    background: $clear_white;
+    font-size: 14px;
+    margin-top: 13px;
+    padding: 3px 7px;
+    border-radius: 13px;
+    border: 1px solid $grey_br;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: $main;
+    box-shadow: 0px 2px 2px $secondary;
+    cursor: pointer;
+    transition: .2s;
+    box-sizing: border-box;
+  }
+
 .registration__submit:active,
 .registration__submit:focus,
 .registration__submit:hover {
   border-color: $clear_white;
   outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000;
+  -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
 }
 
 //animations

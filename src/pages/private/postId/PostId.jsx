@@ -1,13 +1,18 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import logo from "../../../assets/img/logo.png";
-import ToMyPage from "../feed/ToMyPage";
-import { NavLink } from "react-router-dom";
-import AliceCarousel from "react-alice-carousel";
-import { observer } from "mobx-react";
-import PostIdStore from "../../../stores/privateStores/PostIdStore";
+import * as React               from 'react';
+import { useEffect }            from "react";
+import { useParams }            from "react-router-dom";
+import AliceCarousel            from "react-alice-carousel";
+import { observer }             from "mobx-react";
+import PostIdStore              from "../../../stores/privateStores/PostIdStore";
 // eslint-disable-next-line no-unused-vars
-import PostStyle from "./postid.scss";
+import PostStyle                from "./postid.scss";
+import Card                     from '@mui/material/Card';
+import Fab                      from "@mui/material/Fab";
+import EditIcon                 from "@mui/icons-material/Edit";
+import Avatar                   from "@mui/material/Avatar";
+import CardMedia                from '@mui/material/CardMedia';
+import CardHeader               from '@mui/material/CardHeader';
+
 
 const PostId = observer(() => {
   const { id } = useParams();
@@ -30,38 +35,35 @@ const PostId = observer(() => {
   if (!PostIdStore.post) {
     return <div className="loader">Loading...</div>;
   }
-
+  
   return (
-    <div className="main__postid">
-      <header className="postid__header">
-        <NavLink to="/feed">
-          <figure className="header__logo">
-            <img src={logo} alt="logo" />
-          </figure>
-        </NavLink>
-
-        <NavLink to="/my-page">
-          <div className="header__me">
-            <ToMyPage />
-          </div>
-        </NavLink>
-      </header>
-
-      <article className="blog-post">
-        <div className="blog-post__info">
-          <div className="blog-post-header__info">
-            <figure className="user__avatar">
-              <img src={PostIdStore.post.author.avatar} alt="my avatar" />
-            </figure>
-            <p className="user__username">{PostIdStore.post.author.username}</p>
-            <NavLink to="/notfound" className="blog-post__cta">
-              Follow me
-            </NavLink>
-          </div>
-
-          <h2 className="blog-post__title">{PostIdStore.post.title}</h2>
-          <p>{PostIdStore.post.description}</p>
-          <span className="posts__container">
+      <Card className='main__postid'
+        style={{ backgroundColor: '#F8B819'}}
+        sx={{ 
+          maxWidth: 600, 
+          boxShadow: 1,
+          borderRadius: 5,
+          p: 2,
+          minWidth: 300
+          }}>
+        <CardHeader
+        
+        avatar={
+          <Avatar className="user__avatar"
+          src={PostIdStore.post.author.avatar}
+          alt="my avatar"
+          sx={{ width: 60, height: 60 }} aria-label="recipe">
+          </Avatar>
+        }
+        action={
+          <Fab size="small" color="warning" aria-label="edit" sx={{m:2}}>
+                <EditIcon />
+          </Fab>
+        }
+        title={PostIdStore.post.title}
+        subheader={PostIdStore.post.description}
+       />
+      <CardMedia className='posts__container'>
             {PostIdStore.post.image && PostIdStore.post.video ? (
               <AliceCarousel className="blog-post__img">
                 <img
@@ -85,13 +87,8 @@ const PostId = observer(() => {
                 </video>
               )
             )}
-          </span>
-        </div>
-      </article>
-      <NavLink to="/back">
-        <div className="blog-post__cta">Back</div>
-      </NavLink>
-    </div>
+          </CardMedia>
+    </Card> 
   );
 });
 export default PostId;

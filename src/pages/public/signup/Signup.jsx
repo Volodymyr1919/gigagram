@@ -2,9 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react";
+import { NavLink } from "react-router-dom";
 import SignupStore from "../../../stores/publicStores/SignupStore";
 // eslint-disable-next-line no-unused-vars
 import signUpStyle from "./signup.scss";
+import Button from '@mui/material/Button';
 
  const SignUp = observer(() => {
     const {
@@ -29,8 +31,10 @@ import signUpStyle from "./signup.scss";
         <div className="signup">
             <div className="screen">
                 <div className="screen__content">
+                    <h5>Sign Up</h5>
                     <form className="registration" onSubmit={handleSubmit(onSubmit)}>
                         <div className="registration__field">
+                            <i class="bi bi-person-fill"></i>
                             <input
                             type="email"
                             name="username"
@@ -46,9 +50,10 @@ import signUpStyle from "./signup.scss";
                                 },
                               })}
                             />
-                        <p>{errors.userName && errors.userName.message}</p>
+                        <p className='validError'>{errors.userName && errors.userName.message}</p>
                     </div>
                     <div className="registration__field">
+                        <i class="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="password"
@@ -64,9 +69,10 @@ import signUpStyle from "./signup.scss";
                             },
                         })}
                         />
-                        <p>{errors.password && errors.password.message}</p>
+                        <p className='validError'>{errors.password && errors.password.message}</p>
                     </div>
                     <div className="registration__field">
+                        <i class="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="confirmPassword"
@@ -80,11 +86,14 @@ import signUpStyle from "./signup.scss";
                             },
                         })}
                         />
-                        <p>{errors.confirmPassword && errors.confirmPassword.message}</p>
+                        <p className='validError'>{errors.confirmPassword && errors.confirmPassword.message}</p>
                     </div>
-                    <button className="button registration__submit"type='submit'>
+                    <Button className="button registration__submit"type='submit'>
                         <span className="button__text">Sign Up</span>
-                    </button> 
+                    </Button> 
+                    <Button component={NavLink} to="/signin" className="button registration__submit--small">
+                        <span className="button__text">Go to Sign In</span>
+                    </Button> 
                     </form>
                 </div>
                 <div className="screen__background">
