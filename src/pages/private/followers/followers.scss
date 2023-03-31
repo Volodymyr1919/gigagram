@@ -1,6 +1,6 @@
+@import "../../../scss/colors.scss";
 $color: #555;
 $white: #fff;
-$white-two: #aaa;
 // body {
 //   color: #555;
 //   font-family: sans-serif;
@@ -8,72 +8,55 @@ $white-two: #aaa;
 
 .followers{
 
-.list-wrapper {
-  max-width: 400px;
-  margin: 50px auto;
-}
+  .list-wrapper {
+    max-width: 400px;
+    margin: 50px auto;
+    h2 {
+      margin-left: 130px;
+      color: $main;
+    }
+  }
 
-.list {
-  background: $white;
-  border-radius: 2px;
-  list-style: none;
-  padding: 10px 20px;
-}
+  .list {
+    background: $white;
+    border-radius: 2px;
+    list-style: none;
+    padding: 10px 20px;
+  }
 
-.list-item {
-  display: flex;
-  margin: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  &:last-child{
-    border-bottom: none;
-  }
-  &-image {
-    border-radius: 50%;
-    width: 64px;
-  }
-  &-content{
-    margin-left: 20px;
-    h4, p{
-      margin: 0;
+  .list-item {
+    display: flex;
+    height: 100%;
+    border: 0px solid rgba(123, 123, 123, 0.498039);
+    border-radius: 4px;
+    color: rgb(153, 153, 153);
+    line-height: 90px;
+    padding-left: 32px;
+    margin: 15px;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0,0,0,0.2) 0px 2px 4px 0px;
+    &:last-child{
+      border-bottom: none;
     }
-    h4{
-      margin-top: 10px;
-      font-size: 18px;
+    &-image {
+      border-radius: 50%;
+      width: 64px;
     }
-    p{
-      margin-top: 5px;
-      color: $white-two;
-    }
-  }
-}
-.list-item {
-  display: flex;
-  margin: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  &:last-child{
-    border-bottom: none;
-  }
-  &-image {
-    border-radius: 50%;
-    width: 64px;
-  }
-  &-content{
-    margin-left: 20px;
-    h4, p{
-      margin: 0;
-    }
-    h4{
-      margin-top: 10px;
-      font-size: 18px;
-    }
-    p{
-      margin-top: 5px;
-      color: $white-two;
+    &-content{
+      margin-left: 20px;
+      h4, p{
+        margin: 0;
+      }
+      h4{
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      p{
+        margin-top: 5px;
+        color: $clear_black;
+      }
     }
   }
-}
 }
