@@ -1,13 +1,32 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ErrorModal from "../../partial/ErrorModal";
 import { observer } from "mobx-react";
 import SigninStore from "../../../stores/publicStores/SigninStore";
 // eslint-disable-next-line no-unused-vars
 import signInStyle from "./signin.scss";
+import Button from '@mui/material/Button';
+import styled from 'styled-components';
 
 const Signin = observer(() => {
+
+  // const GoToSignin = styled.div`
+    //     background-color: ${(props) => (props.$background ? "red" : "white")};
+    //     width: 100px;
+    //     height: 100px;
+    // `;
+
+    // const style = {
+    //     signin: {
+    //         background: "#599fe3"
+    //     },
+    //     screen: {
+    //         background: "yellow"
+    //     }
+    // };
+
   const {
     register,
     handleSubmit,
@@ -33,8 +52,10 @@ const Signin = observer(() => {
     <div className="signin">
       <div className="screen">
         <div className="screen__content">
+          <h5>Sign In</h5>
           <form className="login" onSubmit={handleSubmit(onSubmit)}>
             <div className="login__field">
+              <i class="bi bi-person-fill"></i>
               <input
                 className="login__input"
                 type="text"
@@ -44,7 +65,7 @@ const Signin = observer(() => {
                   required: "The field is required",
                   minLength: {
                     value: 4,
-                    message: "Usernema is min 4 symbols",
+                    message: "Username is min 4 symbols",
                   },
                   value: SigninStore.username,
                   onChange: (e) => {
@@ -52,9 +73,10 @@ const Signin = observer(() => {
                   },
                 })}
               />
-              <p>{errors.username && errors.username.message}</p>
+              <p className='validError'>{errors.username && errors.username.message}</p>
             </div>
             <div className="login__field">
+              <i class="bi bi-lock-fill"></i>
               <input
                 className="login__input"
                 type="password"
@@ -72,12 +94,13 @@ const Signin = observer(() => {
                   },
                 })}
               />
-              <p>{errors.password && errors.password.message}</p>
+              <p className='validError'>{errors.password && errors.password.message}</p>
             </div>
-            <button className="button login__submit" type="submit">
-              <span className="button__text">Sign In</span>
-              <i className="button__icon fas fa-chevron-right"></i>
-            </button>
+            <Button className="button login__submit"type='submit'>
+                <span className="button__text">Sign In</span>
+            </Button>
+            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}}>Or Sign Up</Button> 
+            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}}>Forgot Password?</Button>
           </form>
         </div>
         <div className="screen__background">
