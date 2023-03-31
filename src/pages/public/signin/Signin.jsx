@@ -55,7 +55,7 @@ const Signin = observer(() => {
           <h5>Sign In</h5>
           <form className="login" onSubmit={handleSubmit(onSubmit)}>
             <div className="login__field">
-              <i class="bi bi-person-fill"></i>
+              <i className="bi bi-person-fill"></i>
               <input
                 className="login__input"
                 type="text"
@@ -76,7 +76,7 @@ const Signin = observer(() => {
               <p className='validError'>{errors.username && errors.username.message}</p>
             </div>
             <div className="login__field">
-              <i class="bi bi-lock-fill"></i>
+              <i className="bi bi-lock-fill"></i>
               <input
                 className="login__input"
                 type="password"
