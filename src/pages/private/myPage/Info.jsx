@@ -4,11 +4,10 @@ import ModalWindow from "../../partial/ModalWindow";
 import UserInfoStore from "../../../stores/privateStores/UserInfoStore";
 import { observer } from "mobx-react";
 import Followers from "../followers/FollowersView";
-// eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
+import UserPostsStore from "../../../stores/privateStores/UserPostsStore";
 
 const Info = observer(() => {
-
   const [showFollowers, setShowFollowers] = useState(false);
 
   const handleClick = () => {
@@ -19,12 +18,18 @@ const Info = observer(() => {
     setShowFollowers(false);
   };
 
-  let posts_length = localStorage.getItem("posts_length");
-
   useEffect(() => {
-    UserInfoStore.getMe();
-    UserInfoStore.getFollowers();
-    UserInfoStore.getFollowings();
+    async function loadData() {
+      try {
+        await UserInfoStore.getMe(),
+          UserInfoStore.getFollowers(),
+          UserInfoStore.getFollowings();
+      } catch (error) {
+        UserInfoStore.setErr(error.message);
+        UserInfoStore.setShow(true);
+      }
+    }
+    loadData();
   }, []);
 
   return (
@@ -43,13 +48,19 @@ const Info = observer(() => {
         <div className="profile-info">
           <p>{UserInfoStore.bio}</p>
           <div className="profile-counts">
-            <div className="count_block">
-              <span className="count">{posts_length}</span>
+            <div className="count_block-posts">
+              <span className="count">{UserPostsStore.posts_length}</span>
               <span className="stat">Публикаций</span>
             </div>
             <div className="count_block">
-              <button onClick={() => setShowFollowers(true)}>{UserInfoStore.followers} Подписчиков</button>
-              <Followers showFollowers={showFollowers} setShowFollowers={setShowFollowers} onClose={handleClickFollower} />
+              <span onClick={() => setShowFollowers(true)}>
+                {UserInfoStore.followers} Подписчиков
+              </span>
+              <Followers
+                showFollowers={showFollowers}
+                setShowFollowers={setShowFollowers}
+                onClose={handleClickFollower}
+              />
             </div>
             <div className="count_block">
               <span className="count">{UserInfoStore.followings}</span>
@@ -60,12 +71,13 @@ const Info = observer(() => {
       </div>
       <div className="edit">
         <button className="edit-profile">Отредактировать</button>
-        <button
+        <span
           className="button_create"
           onClick={() => UserInfoStore.setShow(true)}
         >
-          <BsPlusSquareFill />
-        </button>
+          <BsPlusSquareFill className="add_button" />
+        </span>
+
         <ModalWindow
           isShow={UserInfoStore.isShow}
           setShow={UserInfoStore.setShow}

@@ -4,8 +4,9 @@ class UserPostsStore {
   posts = [];
   IsShow = false;
   err = "";
-  user_id = localStorage.getItem("user_id");
-  url = "http://65.109.13.139:9191/posts?user_id=" + this.user_id;
+  user_id = "";
+  url = "";
+  posts_length = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -23,7 +24,18 @@ class UserPostsStore {
     this.err = err;
   }
 
+  setUserId(userId) {
+    this.user_id = userId;
+    this.url = "http://65.109.13.139:9191/posts?user_id=" + this.user_id;
+  }
+
   getUserPosts() {
+    const userId = localStorage.getItem("user_id");
+    if (!userId) {
+      throw new Error("user_id not found in localStorage");
+    }
+    this.setUserId(userId);
+
     fetch(this.url, {
       method: "GET",
       headers: {
@@ -41,10 +53,11 @@ class UserPostsStore {
         }
       })
       .then((data) => {
-        // console.log(data);
         localStorage.setItem("posts_length", data.length);
+        this.posts_length = localStorage.getItem("posts_length");
         this.setPosts(data);
       });
   }
 }
+
 export default new UserPostsStore();

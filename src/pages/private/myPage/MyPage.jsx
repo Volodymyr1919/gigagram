@@ -5,10 +5,12 @@ import Posts from "./Posts";
 
 export default function MyPage() {
   return (
-    <div className="profile-container">
-      {/* <Header /> */}
-      <Info />
-      <Posts />
+    <div className="body_myPage">
+      <div className="profile-container">
+        {/* <Header /> */}
+        <Info />
+        <Posts />
+      </div>
     </div>
   );
 }

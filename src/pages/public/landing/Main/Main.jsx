@@ -11,7 +11,7 @@ function Home() {
       <div className="home__main">
         <div className="info">
           <Typography variant="h1" gutterBottom>
-            New broadcast channel for students for Tel-Ran school
+            New broadcast channel for students of Tel-Ran school
           </Typography>
 
           <Typography variant="h3" gutterBottom>

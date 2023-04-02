@@ -34,7 +34,7 @@ import Button from '@mui/material/Button';
                     <h5>Sign Up</h5>
                     <form className="registration" onSubmit={handleSubmit(onSubmit)}>
                         <div className="registration__field">
-                            <i class="bi bi-person-fill"></i>
+                            <i className="bi bi-person-fill"></i>
                             <input
                             type="email"
                             name="username"
@@ -53,7 +53,7 @@ import Button from '@mui/material/Button';
                         <p className='validError'>{errors.userName && errors.userName.message}</p>
                     </div>
                     <div className="registration__field">
-                        <i class="bi bi-lock-fill"></i>
+                        <i className="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="password"
@@ -72,7 +72,7 @@ import Button from '@mui/material/Button';
                         <p className='validError'>{errors.password && errors.password.message}</p>
                     </div>
                     <div className="registration__field">
-                        <i class="bi bi-lock-fill"></i>
+                        <i className="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="confirmPassword"
