@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 import ModalWindow from "../../partial/ModalWindow";
-import UserInfoStore from "../../../stores/privateStores/UserInfoStore";
+import UserInfoStore from "../../../stores/privateStores/myPageStores/UserInfoStore";
 import { observer } from "mobx-react";
 import Followers from "../followers/FollowersView";
 import styles from "./scss/info.scss";
-import UserPostsStore from "../../../stores/privateStores/UserPostsStore";
+import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
+import EditModal from "../../partial/EditModal";
 
 const Info = observer(() => {
   const [showFollowers, setShowFollowers] = useState(false);
 
   const handleClick = () => {
     UserInfoStore.setShow(false);
+  };
+  const handleEdit = () => {
+    UserInfoStore.setEditShow(false);
   };
 
   const handleClickFollower = () => {
@@ -62,7 +66,7 @@ const Info = observer(() => {
                 onClose={handleClickFollower}
               />
             </div>
-            <div className="count_block">
+            <div className="count_block_followings">
               <span className="count">{UserInfoStore.followings}</span>
               <span className="stat">Подписок</span>
             </div>
@@ -70,14 +74,23 @@ const Info = observer(() => {
         </div>
       </div>
       <div className="edit">
-        <button className="edit-profile">Отредактировать</button>
+        <button
+          className="edit-profile"
+          onClick={() => UserInfoStore.setEditShow(true)}
+        >
+          Отредактировать
+        </button>
         <span
           className="button_create"
           onClick={() => UserInfoStore.setShow(true)}
         >
           <BsPlusSquareFill className="add_button" />
         </span>
-
+        <EditModal
+          isShow={UserInfoStore.editShow}
+          setShow={UserInfoStore.setEditShow}
+          onClose={handleEdit}
+        />
         <ModalWindow
           isShow={UserInfoStore.isShow}
           setShow={UserInfoStore.setShow}

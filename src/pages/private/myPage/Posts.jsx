@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { observer } from "mobx-react";
-import UserPostsStore from "../../../stores/privateStores/UserPostsStore";
+import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
 import styles from "./scss/posts.scss";
 
 const ProfilePosts = observer(() => {

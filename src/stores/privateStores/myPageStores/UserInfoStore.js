@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class UserInfoStore {
   isShow = false;
+  editShow = false;
   followers = "";
   followings = "";
   fullname = "";
@@ -15,6 +16,9 @@ class UserInfoStore {
 
   setShow(isShow) {
     this.isShow = isShow;
+  }
+  setEditShow(editShow){
+    this.editShow = editShow
   }
 
   setFollowers(followers) {
