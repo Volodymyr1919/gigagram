@@ -4,13 +4,15 @@ import { Modal, Button } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { observer } from "mobx-react";
-import UserPostsStore from "../../../stores/privateStores/UserPostsStore";
-// eslint-disable-next-line no-unused-vars
+import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
 import styles from "./scss/posts.scss";
 
 const ProfilePosts = observer(() => {
+  console.log("DATA", UserPostsStore.posts);
   const navigate = useNavigate();
-
+  if (UserPostsStore.posts === undefined) {
+    UserPostsStore.getUserPosts();
+  }
   useEffect(() => {
     UserPostsStore.getUserPosts();
   }, []);
@@ -28,13 +30,21 @@ const ProfilePosts = observer(() => {
         ) : (
           UserPostsStore.posts.map((item) => (
             <span
+              style={{ cursor: "pointer" }}
               key={item._id}
               className=""
               onClick={() => navigate(`/post/${item._id}`)}
             >
               {item.image && item.video ? (
-                <AliceCarousel>
-                  <img src={item.image} alt={item.image} className="post" />
+                <AliceCarousel
+                  disableButtonsControls="true"
+                  touchTracking="true"
+                  touchMoveDefaultEvents="false"
+                >
+                  <span onClick={() => navigate(`/post/${item._id}`)}>
+                    <img src={item.image} alt={item.image} className="post" />
+                  </span>
+
                   <video autoPlay loop muted className="video">
                     <source src={item.video} />
                   </video>

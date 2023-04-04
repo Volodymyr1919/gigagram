@@ -14,6 +14,7 @@ const FeedPage = observer(() => {
 
   useEffect(() => {
     FeedStore.getPosts();
+    FeedStore.getMe();
   }, []);
 
   function handleClose() {

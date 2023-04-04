@@ -3,6 +3,7 @@ import { makeAutoObservable } from "mobx";
 class FeedStore {
   posts = [];
   isShow = false;
+  avatar = "";
   err = "";
 
   constructor() {
@@ -42,6 +43,25 @@ class FeedStore {
       })
       .then((data) => {
         this.setPosts(data);
+      });
+  }
+
+  getMe() {
+    fetch("http://65.109.13.139:9191/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data._id);
+        localStorage.setItem("user_id", data._id);
+        localStorage.setItem("avatar", data.avatar);
+        this.avatar = localStorage.getItem("avatar");
       });
   }
 }
