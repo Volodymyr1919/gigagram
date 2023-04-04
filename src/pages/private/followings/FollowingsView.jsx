@@ -1,31 +1,30 @@
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import React, { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
-import FollowersStore from "../../../stores/privateStores/FollowersStore";
-// eslint-disable-next-line no-unused-vars
-import followersStyle from "./followers.scss";
+import FollowingsStore from "../../../stores/privateStores/FollowingsStore"
+import followerStyle from "../followers/followers.scss";
 
-const Followers = observer((props) => {
+const Followings = observer((props) => {
 
-  const { showFollowers, onClose: setShowFollowers } = props;
+  const { showFollowings, onClose: setShowFollowings } = props;
 
   useEffect(() => {
-    FollowersStore.getFollowers()
+    FollowingsStore.getFollowings()
   }, []);
 
   function handleClose() {
-    setShowFollowers(false);
+    setShowFollowings(false);
   }
 
   return (
-    <Modal show={showFollowers} className="followers"  onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Followers</Modal.Title>
+    <Modal show={showFollowings} className="followers" onHide={handleClose}> 
+      <Modal.Header closeButton >
+        <Modal.Title>Followings</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ul className="list">
           {/* сделай массив из... */}
-          {FollowersStore.followers.map((arrayF) => (
+          {FollowingsStore.followings.map((arrayF) => (
             <li
               key={arrayF._id}
               ng-repeat="user in ctrl.users"
@@ -48,4 +47,5 @@ const Followers = observer((props) => {
     </Modal>
   );
 })
-export default Followers
+
+export default Followings;

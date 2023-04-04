@@ -91,9 +91,7 @@ import Button from '@mui/material/Button';
                     <Button className="button registration__submit"type='submit'>
                         <span className="button__text">Sign Up</span>
                     </Button> 
-                    <Button component={NavLink} to="/signin" className="button registration__submit--small">
-                        <span className="button__text">Go to Sign In</span>
-                    </Button> 
+                    <Button size="small" component={NavLink} to="/signin" style={{marginTop: "20%", color: "#000000"}} className="line-btn">Or Sign In</Button> 
                     </form>
                 </div>
                 <div className="screen__background">

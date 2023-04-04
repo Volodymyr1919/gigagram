@@ -4,12 +4,16 @@ import ModalWindow from "../../partial/ModalWindow";
 import UserInfoStore from "../../../stores/privateStores/myPageStores/UserInfoStore";
 import { observer } from "mobx-react";
 import Followers from "../followers/FollowersView";
+import FollowingsView from "../followings/FollowingsView";
+// eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
 import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
 import EditModal from "../../partial/EditModal";
 
 const Info = observer(() => {
+
   const [showFollowers, setShowFollowers] = useState(false);
+  const [showFollowings, setShowFollowings] = useState(false);
 
   const handleClick = () => {
     UserInfoStore.setShow(false);
@@ -21,6 +25,12 @@ const Info = observer(() => {
   const handleClickFollower = () => {
     setShowFollowers(false);
   };
+
+  const handleClickFollowings = () => {
+    setShowFollowings(false);
+  };
+
+  let posts_length = localStorage.getItem("posts_length");
 
   useEffect(() => {
     async function loadData() {
@@ -57,23 +67,18 @@ const Info = observer(() => {
               <span className="stat">Публикаций</span>
             </div>
             <div className="count_block">
-              <span onClick={() => setShowFollowers(true)}>
-                {UserInfoStore.followers} Подписчиков
-              </span>
-              <Followers
-                showFollowers={showFollowers}
-                setShowFollowers={setShowFollowers}
-                onClose={handleClickFollower}
-              />
+              <button onClick={() => setShowFollowers(true)}>{UserInfoStore.followers} Подписчиков</button>
+              <Followers showFollowers={showFollowers} setShowFollowers={setShowFollowers} onClose={handleClickFollower} />
             </div>
-            <div className="count_block_followings">
-              <span className="count">{UserInfoStore.followings}</span>
-              <span className="stat">Подписок</span>
+            <div className="count_block">
+              <button onClick={() => setShowFollowings(true)}>{UserInfoStore.followings} Подписок</button>
+              <FollowingsView showFollowings={showFollowings} setShowFollowings={setShowFollowings} onClose={handleClickFollowings} />
             </div>
           </div>
         </div>
       </div>
       <div className="edit">
+        <button className="edit-profile">Отредактировать</button>
         <button
           className="edit-profile"
           onClick={() => UserInfoStore.setEditShow(true)}

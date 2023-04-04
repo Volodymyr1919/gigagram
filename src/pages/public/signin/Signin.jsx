@@ -55,7 +55,7 @@ const Signin = observer(() => {
           <h5>Sign In</h5>
           <form className="login" onSubmit={handleSubmit(onSubmit)}>
             <div className="login__field">
-              <i class="bi bi-person-fill"></i>
+              <i className="bi bi-person-fill"></i>
               <input
                 className="login__input"
                 type="text"
@@ -76,7 +76,7 @@ const Signin = observer(() => {
               <p className='validError'>{errors.username && errors.username.message}</p>
             </div>
             <div className="login__field">
-              <i class="bi bi-lock-fill"></i>
+              <i className="bi bi-lock-fill"></i>
               <input
                 className="login__input"
                 type="password"
@@ -99,8 +99,8 @@ const Signin = observer(() => {
             <Button className="button login__submit"type='submit'>
                 <span className="button__text">Sign In</span>
             </Button>
-            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}}>Or Sign Up</Button> 
-            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}}>Forgot Password?</Button>
+            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}} className="line-btn">Or Sign Up</Button> 
+            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}} className="line-btn">Forgot Password?</Button>
           </form>
         </div>
         <div className="screen__background">

@@ -17,6 +17,17 @@ div.signin {
     padding: 0; 
     font-family: Raleway, sans-serif;
   }
+
+  .line-btn {
+    border-bottom: 1px solid transparent;
+    border-radius: 0px;
+  }
+
+  .line-btn:hover {
+    background: none;
+    border-bottom: 1px solid #000;
+  }
+
   .screen {   
     background: linear-gradient(90deg, $clear_white, $secondary);   
     position: relative; 
