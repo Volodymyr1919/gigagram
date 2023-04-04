@@ -53,7 +53,20 @@ function HeaderMain() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <figure className="header__logo" onClick={() => navigate("/")}>
+          <figure
+            className="header__logo"
+            onClick={() => {
+              window.location.pathname === "/"
+              ||
+              "/signin"
+              ||
+              "/signup"
+              ?
+              navigate("/")
+              :
+              navigate("/feed")
+            }}
+          >
             <img src={logoH} alt="" />
           </figure>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -111,42 +124,57 @@ function HeaderMain() {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="V"
-                  src={localStorage.getItem("avatar")}
-                  style={{ background: "#D9D9D9" }}
-                />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem
-                component={NavLink}
-                to="/my-page"
-                onClick={handleCloseUserMenu}
-              >
-                <Typography textAlign="center">Account</Typography>
-              </MenuItem>
-              <MenuItem onClick={logout}>
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
-            </Menu>
+            {
+              // window.location.pathname === "/signin"
+              // ||
+              // "/"
+              // ||
+              // "/signup"
+              // ?
+              // <Box>
+              //   <Button component={NavLink} to="/signin" color="inherit" style={{background: "#F47A1D"}}>Sign In</Button>
+              //   <Button component={NavLink} to="/signup" color="inherit" style={{background: "#F47A1D"}}>Sign Up</Button>
+              // </Box>
+              // :
+              <Box>
+                <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar
+                        alt="V"
+                        src={localStorage.getItem("avatar")}
+                        style={{ background: "#D9D9D9" }}
+                      />
+                    </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem
+                    component={NavLink}
+                    to="/my-page"
+                    onClick={handleCloseUserMenu}
+                  >
+                    <Typography textAlign="center">Account</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={logout}>
+                    <Typography textAlign="center">Logout</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            }
           </Box>
         </Toolbar>
       </Container>

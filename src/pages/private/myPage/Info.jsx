@@ -30,8 +30,6 @@ const Info = observer(() => {
     setShowFollowings(false);
   };
 
-  let posts_length = localStorage.getItem("posts_length");
-
   useEffect(() => {
     async function loadData() {
       try {
@@ -48,6 +46,7 @@ const Info = observer(() => {
 
   return (
     <div className="profile_info">
+      
       <div className="info-container">
         <div className="title_header">
           <div className="profile-picture">
@@ -78,7 +77,6 @@ const Info = observer(() => {
         </div>
       </div>
       <div className="edit">
-        <button className="edit-profile">Отредактировать</button>
         <button
           className="edit-profile"
           onClick={() => UserInfoStore.setEditShow(true)}
