@@ -1,10 +1,10 @@
-import React from "react";
-import laptop from "../../../../assets/img/laptop.png";
-import Slider from "../slider/Slider";
-import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import BgHome from "../../../../backgrounds/BgHome";
+import React          from "react";
+import laptop         from "../../../../assets/img/laptop.png";
+import Slider         from "../slider/Slider";
+import Button         from "@mui/material/Button";
+import { NavLink }    from "react-router-dom";
+import Typography     from "@mui/material/Typography";
+import BgHome         from "../../../../backgrounds/BgHome";
 
 function Home() {
   return (
