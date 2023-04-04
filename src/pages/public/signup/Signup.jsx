@@ -34,7 +34,7 @@ import Button from '@mui/material/Button';
                     <h5>Sign Up</h5>
                     <form className="registration" onSubmit={handleSubmit(onSubmit)}>
                         <div className="registration__field">
-                            <i class="bi bi-person-fill"></i>
+                            <i className="bi bi-person-fill"></i>
                             <input
                             type="email"
                             name="username"
@@ -53,7 +53,7 @@ import Button from '@mui/material/Button';
                         <p className='validError'>{errors.userName && errors.userName.message}</p>
                     </div>
                     <div className="registration__field">
-                        <i class="bi bi-lock-fill"></i>
+                        <i className="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="password"
@@ -72,7 +72,7 @@ import Button from '@mui/material/Button';
                         <p className='validError'>{errors.password && errors.password.message}</p>
                     </div>
                     <div className="registration__field">
-                        <i class="bi bi-lock-fill"></i>
+                        <i className="bi bi-lock-fill"></i>
                         <input
                         type="password"
                         name="confirmPassword"
@@ -91,9 +91,7 @@ import Button from '@mui/material/Button';
                     <Button className="button registration__submit"type='submit'>
                         <span className="button__text">Sign Up</span>
                     </Button> 
-                    <Button component={NavLink} to="/signin" className="button registration__submit--small">
-                        <span className="button__text">Go to Sign In</span>
-                    </Button> 
+                    <Button size="small" component={NavLink} to="/signin" style={{marginTop: "20%", color: "#000000"}} className="line-btn">Or Sign In</Button> 
                     </form>
                 </div>
                 <div className="screen__background">

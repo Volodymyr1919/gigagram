@@ -3,6 +3,7 @@
 @import "../../../scss/colors.scss";
 
 div.main__feed{
+    background: linear-gradient(45deg, $main, $secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,8 +22,6 @@ div.main__feed{
         figure.header__logo{
             width: 300px;
             height: 130px;
-            padding: 0;
-            margin: 0;
             transition: all ease-in-out .4s;
             border-radius: 10px;
             img{
@@ -30,11 +29,13 @@ div.main__feed{
                 height: 100%;
                 object-fit: contain;
             }
+            
             &:hover{
                 cursor: pointer;
             }
         }
         h2{
+            padding-right: 190px;
             font-family: 'Play', sans-serif;
         }
         div.header__me{
@@ -57,6 +58,7 @@ div.main__feed{
                 }
             }
             p.me__username{
+                font-size: 1.5em;
                 font-family: 'Edu NSW ACT Foundation', cursive;
             }
             &:hover{
@@ -82,6 +84,7 @@ div.main__feed{
     }
 }
 a{
+    padding-right: 20px;
     text-decoration: none;
-    color: #000;
+    color: #4f4848;
 }

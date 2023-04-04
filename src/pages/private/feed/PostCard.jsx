@@ -1,14 +1,14 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CardHeader from '@mui/material/CardHeader';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
-import { useNavigate } from 'react-router-dom';
+import * as React         from 'react';
+import Card               from '@mui/material/Card';
+import CardActions        from '@mui/material/CardActions';
+import CardContent        from '@mui/material/CardContent';
+import CardMedia          from '@mui/material/CardMedia';
+import CardHeader         from '@mui/material/CardHeader';
+import Button             from '@mui/material/Button';
+import Typography         from '@mui/material/Typography';
+import AliceCarousel      from "react-alice-carousel";
+import                          "react-alice-carousel/lib/alice-carousel.css";
+import { useNavigate }    from 'react-router-dom';
 
 export default function PostCard(props) {
 

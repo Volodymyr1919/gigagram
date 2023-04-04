@@ -1,17 +1,19 @@
-import React from "react";
-import laptop from "../../../../assets/img/laptop.png";
-import Slider from "../slider/Slider";
-import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
-import Typography from "@mui/material/Typography";
+import React          from "react";
+import laptop         from "../../../../assets/img/laptop.png";
+import Slider         from "../slider/Slider";
+import Button         from "@mui/material/Button";
+import { NavLink }    from "react-router-dom";
+import Typography     from "@mui/material/Typography";
+import BgHome         from "../../../../backgrounds/BgHome";
 
 function Home() {
   return (
     <div className="main">
+      <BgHome />
       <div className="home__main">
         <div className="info">
           <Typography variant="h1" gutterBottom>
-            New broadcast channel for students for Tel-Ran school
+            New broadcast channel for students of Tel-Ran school
           </Typography>
 
           <Typography variant="h3" gutterBottom>

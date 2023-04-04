@@ -25,6 +25,16 @@ div.signup {
   z-index: 1;
 }
 
+.line-btn {
+  border-bottom: 1px solid transparent;
+  border-radius: 0px;
+}
+
+.line-btn:hover {
+  background: none;
+  border-bottom: 1px solid #000;
+}
+
 .screen__content {
   z-index: 1;
   position: relative; 

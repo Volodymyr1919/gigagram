@@ -17,6 +17,11 @@ $white: #fff;
     }
   }
 
+  .btn-close:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   .list {
     background: $white;
     border-radius: 2px;

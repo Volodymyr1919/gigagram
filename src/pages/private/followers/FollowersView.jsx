@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
-import { Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import FollowersStore from "../../../stores/privateStores/FollowersStore";
 // eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
@@ -18,12 +18,11 @@ const Followers = observer((props) => {
   }
 
   return (
-    <Modal show={showFollowers} className="followers">
-      <Modal.Header closeButton onClick={handleClose} className="list-wrapper">
+    <Modal show={showFollowers} className="followers"  onHide={handleClose}>
+      <Modal.Header closeButton>
         <Modal.Title>Followers</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>Followers</p>
         <ul className="list">
           {/* сделай массив из... */}
           {FollowersStore.followers.map((arrayF) => (
@@ -43,6 +42,9 @@ const Followers = observer((props) => {
           ))}
         </ul>
     </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={handleClose} style={{background: "#F47A1D", border: "none"}}>Close</Button>
+    </Modal.Footer>
     </Modal>
   );
 })
