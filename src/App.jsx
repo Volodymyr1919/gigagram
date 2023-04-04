@@ -10,7 +10,7 @@ import Followers from "./pages/private/followers/FollowersView";
 import Feed from "./pages/private/feed/Feed";
 import MyPage from "./pages/private/myPage/MyPage";
 import PostId from "./pages/private/postId/PostId";
-import Followings from "./pages/private/followings/Followings";
+import FollowingsView from "./pages/private/followings/FollowingsView";
 // eslint-disable-next-line no-unused-vars
 import appStyle from "./scss/app.scss";
 
@@ -25,7 +25,7 @@ export default function App() {
             <Route path="/signin" element={<Signin />}/>
             <Route path="/signup" element={<Signup />}/>
             <Route path="/followers" element={<Followers />}/>
-            <Route path="/followings" element={<Followings />}/>
+            <Route path="/followings" element={<FollowingsView />}/>
             <Route path="/feed" element={<Feed />}/>
             <Route path="/my-page" element={<MyPage />}/>
             <Route path="/post/:id" element={<PostId />}/>

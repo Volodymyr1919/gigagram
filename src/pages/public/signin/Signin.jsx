@@ -99,8 +99,8 @@ const Signin = observer(() => {
             <Button className="button login__submit"type='submit'>
                 <span className="button__text">Sign In</span>
             </Button>
-            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}}>Or Sign Up</Button> 
-            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}}>Forgot Password?</Button>
+            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}} className="line-btn">Or Sign Up</Button> 
+            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}} className="line-btn">Forgot Password?</Button>
           </form>
         </div>
         <div className="screen__background">
