@@ -5,11 +5,14 @@ import Container from "@mui/material/Container";
 import PostCard from "./PostCard";
 import RecomendUsers from "./RecomendUsers";
 import ErrorModal from "../../partial/ErrorModal";
-import FeedStore from "../../../stores/privateStores/FeedStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import feed from "./feed.scss";
 
 const FeedPage = observer(() => {
+
+  const { FeedStore } = useStores();
+
   const navigate = useNavigate();
 
   useEffect(() => {

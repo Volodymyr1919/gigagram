@@ -4,9 +4,10 @@ import { Modal, Button } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import modalStyle from "./modal.scss";
 import { observer } from "mobx-react";
-import EditStore from "../../stores/privateStores/myPageStores/EditStore";
+import { useStores } from "../../stores/MainStore";
 
 const EditModal = observer((props) => {
+  const { EditStore } = useStores();
   const { isShow, onClose: setEditShow } = props;
   const {
     register,

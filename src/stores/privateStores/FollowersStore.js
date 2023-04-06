@@ -34,4 +34,4 @@ class FollowersStore {
     });
   }
 }
-export default new FollowersStore();
+export default FollowersStore;

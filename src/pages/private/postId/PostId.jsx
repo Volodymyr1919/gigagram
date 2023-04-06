@@ -3,7 +3,7 @@ import { useEffect }      from "react";
 import { useParams }      from "react-router-dom";
 import { Box }            from "@mui/material";
 import { observer }       from "mobx-react";
-import PostIdStore        from "../../../stores/privateStores/PostIdStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import PostStyle          from "./postid.scss";
 import Card               from "@mui/material/Card";
@@ -14,6 +14,7 @@ import DeletePost         from "../../partial/DeletePost";
 import AliceCarousel      from "react-alice-carousel";
 
 const PostId = observer(() => {
+  const { PostIdStore } = useStores();
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://65.109.13.139:9191/post/${id}`, {

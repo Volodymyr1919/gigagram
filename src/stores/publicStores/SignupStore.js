@@ -53,5 +53,5 @@ class SignupStore {
     
       
   }
-  export default new SignupStore();
+  export default SignupStore;
   

@@ -1,11 +1,13 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
-import FollowersStore from "../../../stores/privateStores/FollowersStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
 
 const Followers = observer((props) => {
+
+  const { FollowersStore } = useStores();
 
   const { showFollowers, onClose: setShowFollowers } = props;
 

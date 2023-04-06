@@ -51,4 +51,4 @@ class EditStore {
           });
       }
 }
-export default new EditStore()
+export default EditStore;

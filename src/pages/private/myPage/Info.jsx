@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 import ModalWindow from "../../partial/ModalWindow";
-import UserInfoStore from "../../../stores/privateStores/myPageStores/UserInfoStore";
 import { observer } from "mobx-react";
 import Followers from "../followers/FollowersView";
 import FollowingsView from "../followings/FollowingsView";
 // eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
-import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
 import EditModal from "../../partial/EditModal";
+import { useStores } from "../../../stores/MainStore";
 
 const Info = observer(() => {
+
+  const { UserInfoStore, UserPostsStore } = useStores();
 
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
@@ -30,8 +31,6 @@ const Info = observer(() => {
     setShowFollowings(false);
   };
 
-  let posts_length = localStorage.getItem("posts_length");
-
   useEffect(() => {
     async function loadData() {
       try {
@@ -48,6 +47,7 @@ const Info = observer(() => {
 
   return (
     <div className="profile_info">
+      
       <div className="info-container">
         <div className="title_header">
           <div className="profile-picture">
@@ -78,7 +78,6 @@ const Info = observer(() => {
         </div>
       </div>
       <div className="edit">
-        <button className="edit-profile">Отредактировать</button>
         <button
           className="edit-profile"
           onClick={() => UserInfoStore.setEditShow(true)}
