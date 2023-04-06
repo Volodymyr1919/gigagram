@@ -60,4 +60,4 @@ class UserPostsStore {
   }
 }
 
-export default new UserPostsStore();
+export default UserPostsStore;

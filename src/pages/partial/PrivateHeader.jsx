@@ -7,7 +7,8 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import headerStyle from "./headermain.scss";
@@ -15,18 +16,32 @@ import logoH from "../../assets/img/logoWhite.png";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function HeaderMain() {
+function PrivateHeader() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   const navigate = useNavigate();
+
+  const logout = () => {
+    handleCloseUserMenu();
+    localStorage.removeItem("token");
+    navigate("/signin");
+  };
 
   return (
     <AppBar
@@ -38,7 +53,7 @@ function HeaderMain() {
         <Toolbar disableGutters>
           <figure
             className="header__logo"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/feed")}
           >
             <img src={logoH} alt="" />
           </figure>
@@ -97,12 +112,46 @@ function HeaderMain() {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Button component={NavLink} to="/signin" color="inherit" style={{background: "#F47A1D"}}>Sign In</Button>
-            <Button component={NavLink} to="/signup" color="inherit" style={{background: "#F47A1D"}}>Sign Up</Button>
+                <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                        alt="V"
+                        src={localStorage.getItem("avatar")}
+                        style={{ background: "#D9D9D9" }}
+                    />
+                    </IconButton>
+                </Tooltip>
+                <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+                >
+                <MenuItem
+                    component={NavLink}
+                    to="/my-page"
+                    onClick={handleCloseUserMenu}
+                >
+                    <Typography textAlign="center">Account</Typography>
+                </MenuItem>
+                <MenuItem onClick={logout}>
+                    <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+                </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default HeaderMain;
+export default PrivateHeader;

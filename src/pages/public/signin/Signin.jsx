@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ErrorModal from "../../partial/ErrorModal";
 import { observer } from "mobx-react";
-import SigninStore from "../../../stores/publicStores/SigninStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import signInStyle from "./signin.scss";
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 
 const Signin = observer(() => {
+
+  const { SigninStore } = useStores();
 
   // const GoToSignin = styled.div`
     //     background-color: ${(props) => (props.$background ? "red" : "white")};

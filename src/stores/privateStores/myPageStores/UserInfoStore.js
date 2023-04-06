@@ -98,4 +98,4 @@ class UserInfoStore {
       });
   }
 }
-export default new UserInfoStore();
+export default UserInfoStore;

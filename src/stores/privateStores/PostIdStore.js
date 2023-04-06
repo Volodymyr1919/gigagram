@@ -11,4 +11,4 @@ class PostIdStore {
     this.post = post;
   }
 }
-export default new PostIdStore();
+export default PostIdStore;

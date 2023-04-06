@@ -66,4 +66,4 @@ class FeedStore {
   }
 }
 
-export default new FeedStore();
+export default FeedStore;

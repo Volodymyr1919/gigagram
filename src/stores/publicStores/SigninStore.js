@@ -52,4 +52,4 @@ class SigninStore {
     }
   }
 }
-export default new SigninStore();
+export default SigninStore;

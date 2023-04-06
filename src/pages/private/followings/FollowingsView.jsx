@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { Button, Modal } from "react-bootstrap";
-import FollowingsStore from "../../../stores/privateStores/FollowingsStore"
+import { useStores } from "../../../stores/MainStore";
 import followerStyle from "../followers/followers.scss";
 
 const Followings = observer((props) => {
+
+  const { FollowingsStore } = useStores();
 
   const { showFollowings, onClose: setShowFollowings } = props;
 

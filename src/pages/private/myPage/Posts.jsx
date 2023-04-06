@@ -4,10 +4,11 @@ import { Modal, Button } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { observer } from "mobx-react";
-import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
+import { useStores } from "../../../stores/MainStore";
 import styles from "./scss/posts.scss";
 
 const ProfilePosts = observer(() => {
+  const { UserPostsStore } = useStores();
   console.log("DATA", UserPostsStore.posts);
   const navigate = useNavigate();
   if (UserPostsStore.posts === undefined) {

@@ -38,4 +38,4 @@ class FollowingsStore {
   }
 }
 
-export default new FollowingsStore();
+export default FollowingsStore;

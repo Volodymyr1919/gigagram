@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 import ModalWindow from "../../partial/ModalWindow";
-import UserInfoStore from "../../../stores/privateStores/myPageStores/UserInfoStore";
 import { observer } from "mobx-react";
 import Followers from "../followers/FollowersView";
 import FollowingsView from "../followings/FollowingsView";
 // eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
-import UserPostsStore from "../../../stores/privateStores/myPageStores/UserPostsStore";
 import EditModal from "../../partial/EditModal";
+import { useStores } from "../../../stores/MainStore";
 
 const Info = observer(() => {
+
+  const { UserInfoStore, UserPostsStore } = useStores();
 
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);

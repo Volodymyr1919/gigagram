@@ -24,27 +24,6 @@ export default function ToMyPage() {
     getMe();
   }, []);
 
-    useEffect(() => {
-        function getMe() {
-            fetch('http://65.109.13.139:9191/me', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': localStorage.getItem('token')
-                }
-            })
-            .then((data) => {
-                return data.json();
-            })
-            .then((data) => {
-                console.log(data);
-                setMe(data);
-                localStorage.setItem("avatar", data.avatar);
-            })
-        }
-        getMe();
-    },[])
-
     return(
         <>
             <Avatar
