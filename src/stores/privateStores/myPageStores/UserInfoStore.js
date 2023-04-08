@@ -66,8 +66,9 @@ class UserInfoStore {
       });
   }
 
-  getFollowers() {
-    fetch("http://65.109.13.139:9191/followers", {
+  getFollowers(username) {
+    console.log("UserInfoStore.username", username);
+    fetch("http://65.109.13.139:9191/followers/" + username, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -82,8 +83,8 @@ class UserInfoStore {
       });
   }
 
-  getFollowings() {
-    fetch("http://65.109.13.139:9191/followings", {
+  getFollowings(username) {
+    fetch("http://65.109.13.139:9191/followings/" + username, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

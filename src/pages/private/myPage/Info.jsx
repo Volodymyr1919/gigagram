@@ -34,9 +34,10 @@ const Info = observer(() => {
   useEffect(() => {
     async function loadData() {
       try {
-        await UserInfoStore.getMe(),
-          UserInfoStore.getFollowers(),
-          UserInfoStore.getFollowings();
+        await UserInfoStore.getMe();
+        console.log("info await", UserInfoStore.username);
+        await UserInfoStore.getFollowers(UserInfoStore.username);
+        await UserInfoStore.getFollowings(UserInfoStore.username);
       } catch (error) {
         UserInfoStore.setErr(error.message);
         UserInfoStore.setShow(true);

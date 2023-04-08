@@ -25,7 +25,6 @@ export default function RecomendUsers() {
             })
             .then((data) => {
                 setUsers(data);
-                console.log(data);
             })
         }
         getAllUsers();

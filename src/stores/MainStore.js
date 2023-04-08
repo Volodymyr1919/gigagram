@@ -1,6 +1,6 @@
 import * as React from 'react';
-import SigninStore from './publicStores/SigninStore';
-import SignupStore from './publicStores/SignupStore';
+import RequestsStore from './RequestsStore';
+import ConfigStore from './ConfigStore';
 import SliderStore from './publicStores/SliderStore';
 import FeedStore from './privateStores/FeedStore';
 import FollowersStore from './privateStores/FollowersStore';
@@ -12,8 +12,8 @@ import UserPostsStore from './privateStores/myPageStores/UserPostsStore';
 
 class MainStore {
     constructor() {
-        this.SigninStore        = new SigninStore(this);
-        this.SignupStore        = new SignupStore(this);
+        this.RequestsStore      = new RequestsStore(this);
+        this.ConfigStore        = new ConfigStore(this);
         this.SliderStore        = new SliderStore(this);
         this.FeedStore          = new FeedStore(this);
         this.FollowersStore     = new FollowersStore(this);

@@ -11,13 +11,15 @@ import feed from "./feed.scss";
 
 const FeedPage = observer(() => {
 
-  const { FeedStore } = useStores();
+  const { RequestsStore, ConfigStore, FeedStore } = useStores();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    FeedStore.getPosts();
-    FeedStore.getMe();
+    RequestsStore.headers(ConfigStore.token);
+    RequestsStore.doGet(ConfigStore.url + "/posts", FeedStore.setPosts);
+    // FeedStore.getPosts();
+    // FeedStore.getMe();
   }, []);
 
   function handleClose() {
@@ -27,9 +29,9 @@ const FeedPage = observer(() => {
 
   return (
     <div className="main__feed">
-      <header className="feed__header">
+      <div className="feed__header">
         <h2>Feed page | Favoriets from students</h2>
-      </header>
+      </div>
       <main className="feed">
         <Container
           maxWidth="xl"
@@ -45,7 +47,7 @@ const FeedPage = observer(() => {
               ))
             )}
           </div>
-          <RecomendUsers />
+          {/* <RecomendUsers /> */}
         </Container>
       </main>
       <ErrorModal

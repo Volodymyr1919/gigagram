@@ -12,7 +12,7 @@ const Followers = observer((props) => {
   const { showFollowers, onClose: setShowFollowers } = props;
 
   useEffect(() => {
-    FollowersStore.getFollowers()
+    FollowersStore.getFollowerss()
   }, []);
 
   function handleClose() {

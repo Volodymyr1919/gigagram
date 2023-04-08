@@ -3,14 +3,15 @@ import { makeAutoObservable } from "mobx";
 class FollowingsStore {
   followings = [];
 
-  constructor() {
+  constructor(MainStore) {
+    this.MainStore = MainStore;
     makeAutoObservable(this);
   }
   setFollowings(followings) {
     this.followings = followings;
   }
-  getFollowings() {
-    fetch("http://65.109.13.139:9191/followings", {
+  getFollowings(username) {
+    fetch("http://65.109.13.139:9191/followings/" + username, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
