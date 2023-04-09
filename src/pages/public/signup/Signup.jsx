@@ -34,9 +34,10 @@ import Button from '@mui/material/Button';
         });
         if (token.jwt) {
           ConfigStore.setToken(token.jwt);
+          localStorage.setItem("token", token.jwt);
           navigate("/feed");
         } else {
-          ConfigStore.setErr(token.statusText);
+          ConfigStore.setErr(token);
           ConfigStore.setIsShow(true);
         }
     };

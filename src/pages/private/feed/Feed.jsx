@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import Container from "@mui/material/Container";
 import PostCard from "./PostCard";
@@ -11,21 +10,26 @@ import feed from "./feed.scss";
 
 const FeedPage = observer(() => {
 
-  const { RequestsStore, ConfigStore, FeedStore } = useStores();
+  const { RequestsStore, ConfigStore } = useStores();
 
-  const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    RequestsStore.headers(ConfigStore.token);
-    RequestsStore.doGet(ConfigStore.url + "/posts", FeedStore.setPosts);
-    // FeedStore.getPosts();
-    // FeedStore.getMe();
+    new Promise((resolve, rejects) => {
+      resolve();
+    })
+    .then(() => {
+      return RequestsStore.doGet(ConfigStore.url + "/posts");
+    })
+    .then((post) => {
+      if(post === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+        setPosts(post);
+      }
+    })
   }, []);
-
-  function handleClose() {
-    FeedStore.setIsShow(false);
-    navigate("/signin");
-  }
 
   return (
     <div className="main__feed">
@@ -39,23 +43,18 @@ const FeedPage = observer(() => {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <div className="feed__posts">
-            {FeedStore.posts === undefined ? (
+            {posts === undefined ? (
               <h2 className="errorCase">Sorry any posts found</h2>
             ) : (
-              FeedStore.posts.map((item) => (
+              posts.map((item) => (
                 <PostCard item={item} key={item._id} />
               ))
             )}
           </div>
-          {/* <RecomendUsers /> */}
+          <RecomendUsers />
         </Container>
       </main>
-      <ErrorModal
-        isShow={FeedStore.isShow}
-        setShow={FeedStore.setIsShow}
-        err={FeedStore.err}
-        onClose={handleClose}
-      />
+      <ErrorModal />
     </div>
   );
 });

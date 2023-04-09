@@ -25,15 +25,15 @@ const Signin = observer(() => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const token = await RequestsStore.doPost(ConfigStore.url + "/signin", {
+    const resp = await RequestsStore.doPost(ConfigStore.url + "/signin", {
       username: data.username,
       password: data.password
     });
-    if (token.token) {
-      ConfigStore.setToken(token.token);
+    if (resp.token) {
+      localStorage.setItem("token", resp.token);
       navigate("/feed");
     } else {
-      ConfigStore.setErr(token.statusText);
+      ConfigStore.setErr(resp);
       ConfigStore.setIsShow(true);
     }
   };

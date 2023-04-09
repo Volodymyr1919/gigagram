@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
@@ -7,29 +7,48 @@ import { observer } from "mobx-react";
 import { useStores } from "../../../stores/MainStore";
 import styles from "./scss/posts.scss";
 
-const ProfilePosts = observer(() => {
-  const { UserPostsStore } = useStores();
-  console.log("DATA", UserPostsStore.posts);
-  const navigate = useNavigate();
-  if (UserPostsStore.posts === undefined) {
-    UserPostsStore.getUserPosts();
-  }
-  useEffect(() => {
-    UserPostsStore.getUserPosts();
-  }, []);
+const ProfilePosts = observer((props) => {
 
-  function handleClose() {
-    UserPostsStore.setShow(false);
-    navigate("/signin");
-  }
+  const { RequestsStore, ConfigStore } = useStores();
+
+  const { myId } = props;
+
+  const [myPost, setMyPost] = useState([]);
+
+  const navigate = useNavigate();
+
+  // if (UserPostsStore.posts === undefined) {
+  //   UserPostsStore.getUserPosts();
+  // }
+
+  useEffect(() => {
+    if(myId !== undefined) {
+      new Promise((resolve, rejects) => {
+        resolve()
+      })
+      .then(() => {
+        return RequestsStore.doGet(ConfigStore.url + "/posts?user_id=" + myId)
+      })
+      .then((myPosts) => {
+        setMyPost(myPosts)
+      })
+    } else {
+      return;
+    }
+  }, [myId]);
+
+  // function handleClose() {
+  //   UserPostsStore.setShow(false);
+  //   navigate("/signin");
+  // }
 
   return (
     <div className="posts_block">
       <div className="posts_container">
-        {UserPostsStore.posts === undefined ? (
+        {myPost === undefined ? (
           <h2 className="errorCase">Sorry any posts found</h2>
         ) : (
-          UserPostsStore.posts.map((item) => (
+          myPost.map((item) => (
             <span
               style={{ cursor: "pointer" }}
               key={item._id}
@@ -61,7 +80,7 @@ const ProfilePosts = observer(() => {
           ))
         )}
       </div>
-      <Modal IsShow={UserPostsStore.IsShow}>
+      {/* <Modal IsShow={UserPostsStore.IsShow}>
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title>Error</Modal.Title>
         </Modal.Header>
@@ -71,7 +90,7 @@ const ProfilePosts = observer(() => {
             OK
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </div>
   );
 });

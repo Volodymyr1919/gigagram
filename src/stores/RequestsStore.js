@@ -11,19 +11,13 @@ export default class RequestsStore {
     constructor(MainStore) {
         makeAutoObservable(this);
         this.MainStore = MainStore;
-        // this.url = this.MainStore.ConfigStore.url || "";
-        // this.next = next || function() { return; };
-        // this.data = data || {};
-        // this.headers = this.MainStore.ConfigStore.headers;
     };
-
-    headers(token) {
-        this.token = token;
-        console.log(this.token);
+    
+    headers() {
         return {
             "Content-type": "application/json",
             "Access-Control-Allow-Origin": "*",
-            "x-access-token": this.token
+            "x-access-token": localStorage.getItem("token") || ""
         }
     };
 
@@ -39,7 +33,7 @@ export default class RequestsStore {
             if(response.ok) {
                 return response.json();
             } else {
-                return response;
+                return response.statusText;
             }
         })
         .then((response) => {
@@ -47,9 +41,8 @@ export default class RequestsStore {
         })
     };
 
-    doGet(url, next) {
+    doGet(url) {
         this.url = url;
-        this.next = next || function() { return; };
         return fetch(this.url, {
             method: this.requestTypes.get,
             headers: this.headers()
@@ -58,28 +51,27 @@ export default class RequestsStore {
             if(response.ok) {
                 return response.json();
             } else {
-                return response;
+                return response.statusText;
             }
         })
         .then((response) => {
-            this.next(response);
+            return response;
         })
     };
 
-    doPut() {
-        fetch(this.url, {
+    doPut(url, data) {
+        this.url = url;
+        this.data = data;
+        return fetch(this.url, {
             method: this.requestTypes.put,
             headers: this.headers,
             body: JSON.stringify(this.data)
         })
         .then((response) => {
-            switch (response.status) {
-                case 201:
-                    return response.json();
-                case !201:   
-                    return response.status;
-                default:
-                    break;
+            if(response.ok) {
+                return response.json();
+            } else {
+                return response.statusText;
             }
         })
         .then((response) => {

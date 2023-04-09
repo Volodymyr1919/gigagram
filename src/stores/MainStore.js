@@ -15,13 +15,13 @@ class MainStore {
         this.RequestsStore      = new RequestsStore(this);
         this.ConfigStore        = new ConfigStore(this);
         this.SliderStore        = new SliderStore(this);
-        this.FeedStore          = new FeedStore(this);
-        this.FollowersStore     = new FollowersStore(this);
-        this.FollowingsStore    = new FollowingsStore(this);
-        this.PostIdStore        = new PostIdStore(this);
-        this.EditStore          = new EditStore(this);
-        this.UserInfoStore      = new UserInfoStore(this);
-        this.UserPostsStore     = new UserPostsStore(this);
+        // this.FeedStore          = new FeedStore(this);
+        // this.FollowersStore     = new FollowersStore(this);
+        // this.FollowingsStore    = new FollowingsStore(this);
+        // this.PostIdStore        = new PostIdStore(this);
+        // this.EditStore          = new EditStore(this);
+        // this.UserInfoStore      = new UserInfoStore(this);
+        // this.UserPostsStore     = new UserPostsStore(this);
     }
 }
 const StoresContext = React.createContext(new MainStore());

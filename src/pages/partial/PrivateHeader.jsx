@@ -15,10 +15,28 @@ import headerStyle from "./headermain.scss";
 import logoH from "../../assets/img/logoWhite.png";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react";
+import { useStores } from "../../stores/MainStore";
 
-function PrivateHeader() {
+const PrivateHeader = observer(() => {
+
+  const { RequestsStore, ConfigStore } = useStores();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [avatar, setAvatar] = React.useState("");
+
+  React.useEffect(() => {
+    new Promise((resolve, rejects) => {
+      resolve();
+    })
+    .then(() => {
+      return RequestsStore.doGet(ConfigStore.url + "/me");
+    })
+    .then((me) => {
+      setAvatar(me.avatar);
+    })
+  }, [])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -115,8 +133,8 @@ function PrivateHeader() {
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
-                        alt="V"
-                        src={localStorage.getItem("avatar")}
+                        alt=""
+                        src={avatar}
                         style={{ background: "#D9D9D9" }}
                     />
                     </IconButton>
@@ -153,5 +171,5 @@ function PrivateHeader() {
       </Container>
     </AppBar>
   );
-}
+})
 export default PrivateHeader;

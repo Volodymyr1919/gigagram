@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable, observable } from "mobx";
 
 class FeedStore {
   posts = [];
@@ -13,6 +13,7 @@ class FeedStore {
 
   setPosts(posts) {
     this.posts = posts;
+    console.log(this.posts);
   }
 
   setIsShow(isShow) {
@@ -24,27 +25,28 @@ class FeedStore {
   }
 
   // getPosts() {
-  //   fetch("http://65.109.13.139:9191/posts", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "x-access-token": localStorage.getItem("token"),
-  //     },
-  //   })
-  //     .then((data) => {
-  //       if (data.ok) {
-  //         return data.json();
-  //       } else {
-  //         data.statusText === "Forbidden"
-  //           ? this.setErr("Token has been burned")
-  //           : this.setErr(data.statusText);
-  //         this.setIsShow(true);
-  //         return;
-  //       }
-  //     })
-  //     .then((data) => {
-  //       this.setPosts(data);
-  //     });
+  //   // fetch("http://65.109.13.139:9191/posts", {
+  //   //   method: "GET",
+  //   //   headers: {
+  //   //     "Content-Type": "application/json",
+  //   //     "x-access-token": localStorage.getItem("token"),
+  //   //   },
+  //   // })
+  //   //   .then((data) => {
+  //   //     if (data.ok) {
+  //   //       return data.json();
+  //   //     } else {
+  //   //       data.statusText === "Forbidden"
+  //   //         ? this.setErr("Token has been burned")
+  //   //         : this.setErr(data.statusText);
+  //   //       this.setIsShow(true);
+  //   //       return;
+  //   //     }
+  //   //   })
+  //   //   .then((data) => {
+  //   //     this.setPosts(data);
+  //   //   });
+  //   // this.MainStore.RequestsStore.doGet(this.MainStore.ConfigStore.url + "/posts", this.setPosts)
   // }
 
   getMe() {

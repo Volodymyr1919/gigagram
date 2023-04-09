@@ -6,41 +6,58 @@ import followerStyle from "../followers/followers.scss";
 
 const Followings = observer((props) => {
 
-  const { FollowingsStore } = useStores();
+  const { username } = props;
 
-  const { showFollowings, onClose: setShowFollowings } = props;
+  const { RequestsStore, ConfigStore } = useStores();
+
+  const [followings, setFollowings] = useState([]);
 
   useEffect(() => {
-    FollowingsStore.getFollowings()
-  }, []);
+    if(username !== undefined ) {
+      new Promise((resolve, rejects) => {
+        resolve();
+      })
+      .then(() => {
+        return RequestsStore.doGet(ConfigStore.url + "/followings/" + username);
+      })
+      .then((foll) => {
+        setFollowings(foll.following);
+      })
+    } else {
+      return;
+    }
+  }, [username]);
 
   function handleClose() {
-    setShowFollowings(false);
+    ConfigStore.setIsShowFollowings(false);
   }
 
   return (
-    <Modal show={showFollowings} className="followers" onHide={handleClose}> 
+    <Modal show={ConfigStore.isShowFollowings} className="followers" onHide={handleClose}> 
       <Modal.Header closeButton >
         <Modal.Title>Followings</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ul className="list">
-          {/* сделай массив из... */}
-          {FollowingsStore.followings.map((arrayF) => (
-            <li
-              key={arrayF._id}
-              ng-repeat="user in ctrl.users"
-              className="list-item"
-            >
-              <div>
-                <img src={arrayF.avatar} className="list-item-image" alt="" />
-              </div>
-              <div className="list-item-content">
-                <h4>{arrayF.fullName}</h4>
-                <p>{arrayF.username}</p>
-              </div>
-            </li>
-          ))}
+          { followings === undefined ?
+                <div className="loader">Loading...</div>
+                :
+                followings.map((arrayF) => (
+                  <li
+                    key={arrayF._id}
+                    ng-repeat="user in ctrl.users"
+                    className="list-item"
+                  >
+                    <div>
+                      <img src={arrayF.avatar} className="list-item-image" alt="" />
+                    </div>
+                    <div className="list-item-content">
+                      <h4>{arrayF.fullName}</h4>
+                      <p>{arrayF.username}</p>
+                    </div>
+                  </li>
+                ))
+            }
         </ul>
     </Modal.Body>
     <Modal.Footer>

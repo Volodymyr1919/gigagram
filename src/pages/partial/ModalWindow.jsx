@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { Modal, Button } from "react-bootstrap";
 import TextField from '@mui/material/TextField';
 import modalStyle from "./modal.scss";
+import { observer } from "mobx-react";
+import { useStores } from "../../stores/MainStore";
 
-export default function ModalWindow(props) {
+const ModalWindow = observer(() => {
+  const { RequestsStore, ConfigStore } = useStores();
 
-  const { isShow, onClose: setShow } = props;
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newImg, setNewImg] = useState("");
@@ -20,7 +22,7 @@ export default function ModalWindow(props) {
   } = useForm({ mode: "onChange" });
 
   function handleClose() {
-    setShow(false);
+    ConfigStore.setIsShowModalWindow(false);
   }
 
   const onSubmit = async (data) => {
@@ -28,32 +30,41 @@ export default function ModalWindow(props) {
       return setReqMedia("Image or Video Field is required");
     }
 
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
+    const resp = RequestsStore.doPost(ConfigStore.url + "/post", {
         title: data.title,
         description: data.description,
         image: data.image,
         video: data.video,
-        status: "active",
-      }),
-    };
+        status: "active"
+    })
+    console.log(resp);
 
-    fetch("http://65.109.13.139:9191/post", requestOptions)
-      .then((data) => {
-        return data.json()
-      })
-      .then((data) => {
-        console.log(data);
-      })
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "x-access-token": localStorage.getItem("token"),
+    //   },
+    //   body: JSON.stringify({
+    //     title: data.title,
+    //     description: data.description,
+    //     image: data.image,
+    //     video: data.video,
+    //     status: "active",
+    //   }),
+    // };
+
+    // fetch("http://65.109.13.139:9191/post", requestOptions)
+    //   .then((data) => {
+    //     return data.json()
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
   };
   return (
-    <Modal show={isShow}>
-      <Modal.Header closeButton onClick={handleClose}>
+    <Modal show={ConfigStore.isShowModalWindow} onHide={handleClose}>
+      <Modal.Header closeButton>
         <Modal.Title>Add post</Modal.Title>
       </Modal.Header>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,4 +132,6 @@ export default function ModalWindow(props) {
       </form>
     </Modal>
   );
-}
+});
+
+export default ModalWindow;
