@@ -64,7 +64,7 @@ export default class RequestsStore {
         this.data = data;
         return fetch(this.url, {
             method: this.requestTypes.put,
-            headers: this.headers,
+            headers: this.headers(),
             body: JSON.stringify(this.data)
         })
         .then((response) => {
@@ -79,20 +79,21 @@ export default class RequestsStore {
         })
     };
 
-    doDelete() {
-        fetch(this.url, {
+    doDelete(url) {
+        this.url = url;
+        return fetch(this.url, {
             method: this.requestTypes.delete,
-            headers: this.headers
+            headers: this.headers()
         })
         .then((response) => {
-            switch (response.status) {
-                case 201:
-                    return response.json();
-                case !201:   
-                    return response.status;
-                default:
-                    break;
+            if(response.ok) {
+                return response.json();
+            } else {
+                return response.statusText;
             }
+        })
+        .then((response) => {
+            return response;
         })
     };
 }

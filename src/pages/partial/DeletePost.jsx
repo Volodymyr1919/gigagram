@@ -1,5 +1,6 @@
 import * as React                   from 'react';
-import {NavLink, useParams }        from "react-router-dom";
+import { useParams }                from "react-router-dom";
+import { useNavigate }              from 'react-router-dom';
 import Box                          from '@mui/joy/Box';
 import Button                       from '@mui/joy/Button';
 import Divider                      from '@mui/joy/Divider';
@@ -8,30 +9,35 @@ import ModalDialog                  from '@mui/joy/ModalDialog';
 import DeleteForever                from '@mui/icons-material/DeleteForever';
 import WarningRoundedIcon           from '@mui/icons-material/WarningRounded';
 import Typography                   from '@mui/joy/Typography';
+import { observer }                 from 'mobx-react';
+import { useStores }                from '../../stores/MainStore';
 
-export default function AlertDialogModal() {
-   
-    const { id } = useParams();
+const AlertDialogModal = observer(() => {
+
+  const { id } = useParams();
+
+  const { RequestsStore, ConfigStore } = useStores();
+
+  const [modalInfo, setModalInfo] = React.useState("Are you sure you want to discard this post?");
+
+  const navigate = useNavigate();
+
     const handleDeletePost = () => {
-        fetch(`http://65.109.13.139:9191/post/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "x-access-token": localStorage.getItem("token"),
-            },
-        })
-        .then((response) => {
-            if (response.ok) {
-                console.log(response);
-                setOpen(false) &&
-                <NavLink to="/followers"/>;
-            } else {
-               
-            }
-        })
-        .catch((error) => {
-            // handle any other errors, such as network errors
-        });
+      new Promise((resolve, rejects) => {
+        resolve();
+      })
+      .then(() => {
+        return RequestsStore.doDelete(ConfigStore.url + "/post/" + id);
+      })
+      .then((resp) => {
+        console.log(resp.deleted);
+        resp.deleted ? (
+          setOpen(false),
+          navigate(-1)
+        ) : (
+          setModalInfo("Sorry, can not delte this post")
+        )
+      })
     };
 
  const [open, setOpen] = React.useState(false);
@@ -62,18 +68,20 @@ export default function AlertDialogModal() {
           </Typography>
           <Divider />
           <Typography id="alert-dialog-modal-description" textColor="text.tertiary">
-            Are you sure you want to discard all of your notes?
+            {modalInfo}
           </Typography>
           <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', pt: 2 }}>
             <Button variant="plain" color="neutral" onClick={() => setOpen(false)}>
               Cancel
             </Button>
             <Button variant="solid" color="danger" onClick={handleDeletePost}>
-              Discard notes
+              Continue
             </Button>
           </Box>
         </ModalDialog>
       </Modal>
     </React.Fragment>
   );
-}
+});
+
+export default AlertDialogModal;

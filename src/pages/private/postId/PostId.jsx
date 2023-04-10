@@ -28,7 +28,6 @@ const PostId = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/post/" + id);
     })
     .then((data) => {
-      console.log(data);
       setPost(data);
     })
   }, [id]);
