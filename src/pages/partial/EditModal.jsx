@@ -6,15 +6,17 @@ import modalStyle from "./modal.scss";
 import { observer } from "mobx-react";
 import { useStores } from "../../stores/MainStore";
 
-const EditModal = observer(() => {
+const EditModal = observer((props) => {
 
-  const { EditStore, RequestsStore, ConfigStore } = useStores();
+  const { RequestsStore, ConfigStore } = useStores();
 
-  const [newUsername, setNewUsername] = useState("");
-  const [newFullname, setNewFullname] = useState("");
-  const [newAvatar, setNewAvatar] = useState("");
-  const [newAge, setNewAge] = useState("");
-  const [newBio, setNewBio] = useState("");
+  const { me } = props;
+
+  const [newUsername, setNewUsername] = useState(me.username);
+  const [newFullname, setNewFullname] = useState(me.fullName);
+  const [newAvatar, setNewAvatar] = useState(me.avatar);
+  const [newAge, setNewAge] = useState(me.age);
+  const [newBio, setNewBio] = useState(me.bio);
 
   const {
     register,

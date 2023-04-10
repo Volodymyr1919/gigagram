@@ -38,30 +38,8 @@ const ModalWindow = observer(() => {
         status: "active"
     })
     console.log(resp);
-
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "x-access-token": localStorage.getItem("token"),
-    //   },
-    //   body: JSON.stringify({
-    //     title: data.title,
-    //     description: data.description,
-    //     image: data.image,
-    //     video: data.video,
-    //     status: "active",
-    //   }),
-    // };
-
-    // fetch("http://65.109.13.139:9191/post", requestOptions)
-    //   .then((data) => {
-    //     return data.json()
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
   };
+  
   return (
     <Modal show={ConfigStore.isShowModalWindow} onHide={handleClose}>
       <Modal.Header closeButton>

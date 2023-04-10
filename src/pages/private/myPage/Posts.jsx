@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { observer } from "mobx-react";
@@ -17,10 +16,6 @@ const ProfilePosts = observer((props) => {
 
   const navigate = useNavigate();
 
-  // if (UserPostsStore.posts === undefined) {
-  //   UserPostsStore.getUserPosts();
-  // }
-
   useEffect(() => {
     if(myId !== undefined) {
       new Promise((resolve, rejects) => {
@@ -30,17 +25,17 @@ const ProfilePosts = observer((props) => {
         return RequestsStore.doGet(ConfigStore.url + "/posts?user_id=" + myId)
       })
       .then((myPosts) => {
-        setMyPost(myPosts)
+        if(myPosts === "Forbidden") {
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+        } else {
+          setMyPost(myPosts)
+        }
       })
     } else {
       return;
     }
   }, [myId]);
-
-  // function handleClose() {
-  //   UserPostsStore.setShow(false);
-  //   navigate("/signin");
-  // }
 
   return (
     <div className="posts_block">
@@ -80,17 +75,6 @@ const ProfilePosts = observer((props) => {
           ))
         )}
       </div>
-      {/* <Modal IsShow={UserPostsStore.IsShow}>
-        <Modal.Header closeButton onClick={handleClose}>
-          <Modal.Title>Error</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{UserPostsStore.err}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </div>
   );
 });

@@ -11,7 +11,7 @@ const ErrorModal = observer(() => {
 
     function handleClose() {
         ConfigStore.setIsShow(false);
-        if(window.location.pathname === "/feed") {
+        if(window.location.pathname === "/feed" || "/my-page") {
             localStorage.clear();
             navigate("/signin");
         }

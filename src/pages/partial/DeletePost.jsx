@@ -1,6 +1,5 @@
 import * as React                   from 'react';
-import { useParams }                from "react-router-dom";
-import { useNavigate }              from 'react-router-dom';
+import { useNavigate, useParams }   from "react-router-dom";
 import Box                          from '@mui/joy/Box';
 import Button                       from '@mui/joy/Button';
 import Divider                      from '@mui/joy/Divider';
@@ -19,6 +18,7 @@ const AlertDialogModal = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [modalInfo, setModalInfo] = React.useState("Are you sure you want to discard this post?");
+  const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const AlertDialogModal = observer(() => {
         return RequestsStore.doDelete(ConfigStore.url + "/post/" + id);
       })
       .then((resp) => {
-        console.log(resp.deleted);
         resp.deleted ? (
           setOpen(false),
           navigate(-1)
@@ -39,8 +38,6 @@ const AlertDialogModal = observer(() => {
         )
       })
     };
-
- const [open, setOpen] = React.useState(false);
 
   return (
     <React.Fragment>
