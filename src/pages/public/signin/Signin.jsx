@@ -1,31 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ErrorModal from "../../partial/ErrorModal";
 import { observer } from "mobx-react";
-import SigninStore from "../../../stores/publicStores/SigninStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import signInStyle from "./signin.scss";
 import Button from '@mui/material/Button';
-import styled from 'styled-components';
 
 const Signin = observer(() => {
 
-  // const GoToSignin = styled.div`
-    //     background-color: ${(props) => (props.$background ? "red" : "white")};
-    //     width: 100px;
-    //     height: 100px;
-    // `;
+  const { RequestsStore, ConfigStore } = useStores();
 
-    // const style = {
-    //     signin: {
-    //         background: "#599fe3"
-    //     },
-    //     screen: {
-    //         background: "yellow"
-    //     }
-    // };
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const {
     register,
@@ -36,17 +25,18 @@ const Signin = observer(() => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log("User data", data);
-    const token = await SigninStore.signIn(data.username, data.password);
-    if (token) {
-      localStorage.setItem("token", token);
+    const resp = await RequestsStore.doPost(ConfigStore.url + "/signin", {
+      username: data.username,
+      password: data.password
+    });
+    if (resp.token) {
+      localStorage.setItem("token", resp.token);
       navigate("/feed");
+    } else {
+      ConfigStore.setErr(resp);
+      ConfigStore.setIsShow(true);
     }
   };
-
-  function handleClose() {
-    SigninStore.setShow(false);
-  }
 
   return (
     <div className="signin">
@@ -67,9 +57,9 @@ const Signin = observer(() => {
                     value: 4,
                     message: "Username is min 4 symbols",
                   },
-                  value: SigninStore.username,
+                  value: username,
                   onChange: (e) => {
-                    SigninStore.setUsername(e.target.value);
+                    setUsername(e.target.value);
                   },
                 })}
               />
@@ -88,9 +78,9 @@ const Signin = observer(() => {
                     value: 4,
                     message: "Password should be min 4 symbols",
                   },
-                  value: SigninStore.password,
+                  value: password,
                   onChange: (e) => {
-                    SigninStore.setPassword(e.target.value);
+                    setPassword(e.target.value);
                   },
                 })}
               />
@@ -122,12 +112,7 @@ const Signin = observer(() => {
         <li></li>
         <li></li>
       </ul>
-      <ErrorModal
-        isShow={SigninStore.isShow}
-        setShow={SigninStore.setShow}
-        err={SigninStore.err}
-        onClose={handleClose}
-      />
+      <ErrorModal />
     </div>
   );
 });

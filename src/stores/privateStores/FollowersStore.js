@@ -3,15 +3,17 @@ import { makeAutoObservable } from "mobx";
 class FollowersStore {
   followers = [];
 
-  constructor() {
+  constructor(MainStore) {
+    this.MainStore = MainStore;
     makeAutoObservable(this);
   }
   setFollowers(followers) {
     this.followers = followers;
   }
 
-  getFollowers() {
-    fetch("http://65.109.13.139:9191/followers", {
+  getFollowerss(username) {
+    console.log("username", username);
+    fetch("http://65.109.13.139:9191/followers/" + username, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,4 +36,4 @@ class FollowersStore {
     });
   }
 }
-export default new FollowersStore();
+export default FollowersStore;

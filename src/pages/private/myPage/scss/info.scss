@@ -2,6 +2,9 @@
 
 .body_myPage {
   background: url("../../../../assets/img/MyPageBg1.jpg");
+  background-position: center center;
+  background-size: cover;
+  position: relative;
 
   .profile-container {
     margin: 0 auto;
@@ -11,7 +14,6 @@
 }
 
 .profile_info {
-
   .button_create {
 
     .add_button {

@@ -6,29 +6,25 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import { observer } from 'mobx-react';
+import { useStores } from '../../../stores/MainStore';
 
-export default function RecomendUsers() {
+const RecomendUsers = observer(() => {
 
-    const [users, setUsers] = React.useState([]);
+  const { RequestsStore, ConfigStore } = useStores();
+
+  const [users, setUsers] = React.useState([]);
 
     React.useEffect(() => {
-        function getAllUsers() {
-            fetch('http://65.109.13.139:9191/users', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': localStorage.getItem('token')
-                }
-            })
-            .then((data) => {
-                return data.json();
-            })
-            .then((data) => {
-                setUsers(data);
-                console.log(data);
-            })
-        }
-        getAllUsers();
+      new Promise((resolve, rejects) => {
+        resolve();
+      })
+      .then(() => {
+        return RequestsStore.doGet(ConfigStore.url + "/users")
+      })
+      .then((users) => {
+        setUsers(users);
+      })
     },[])
 
   return (
@@ -63,4 +59,6 @@ export default function RecomendUsers() {
       })}
     </List>
   );
-}
+});
+
+export default RecomendUsers;

@@ -1,21 +1,29 @@
 import React from "react";
+import { observer } from "mobx-react";
 import { Modal, Button } from "react-bootstrap";
+import { useStores } from "../../stores/MainStore";
+import { useNavigate } from "react-router-dom";
 
-export default function ErrorModal(props) {
+const ErrorModal = observer(() => {
 
-    const { isShow, onClose: setShow } = props;
+    const { ConfigStore } = useStores();
+    const navigate = useNavigate();
 
     function handleClose() {
-        setShow(false);
+        ConfigStore.setIsShow(false);
+        if(window.location.pathname === "/feed" || "/my-page") {
+            localStorage.clear();
+            navigate("/signin");
+        }
     }
 
     return(
-        <Modal show={isShow}>
-            <Modal.Header closeButton onClick={handleClose}>
+        <Modal show={ConfigStore.isShow} onHide={handleClose}>
+            <Modal.Header closeButton>
                 <Modal.Title>Error</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {props.err}
+                {ConfigStore.err}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" type="submit" onClick={handleClose}>
@@ -24,4 +32,5 @@ export default function ErrorModal(props) {
             </Modal.Footer>
         </Modal>
     );
-}
+});
+export default ErrorModal;

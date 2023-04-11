@@ -9,7 +9,7 @@ import homeStyle from './scss/home.scss'
 function Home() {
   return (
     <div className="home">
-        <Navigation />
+        {/* <Navigation /> */}
         <Main />
         <Footer />
     </div>

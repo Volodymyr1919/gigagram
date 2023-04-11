@@ -1,32 +1,41 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import Container from "@mui/material/Container";
 import PostCard from "./PostCard";
 import RecomendUsers from "./RecomendUsers";
 import ErrorModal from "../../partial/ErrorModal";
-import FeedStore from "../../../stores/privateStores/FeedStore";
+import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import feed from "./feed.scss";
 
 const FeedPage = observer(() => {
-  const navigate = useNavigate();
+
+  const { RequestsStore, ConfigStore } = useStores();
+
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    FeedStore.getPosts();
-    FeedStore.getMe();
+    new Promise((resolve, rejects) => {
+      resolve();
+    })
+    .then(() => {
+      return RequestsStore.doGet(ConfigStore.url + "/posts");
+    })
+    .then((post) => {
+      if(post === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+        setPosts(post);
+      }
+    })
   }, []);
-
-  function handleClose() {
-    FeedStore.setIsShow(false);
-    navigate("/signin");
-  }
 
   return (
     <div className="main__feed">
-      <header className="feed__header">
+      <div className="feed__header">
         <h2>Feed page | Favoriets from students</h2>
-      </header>
+      </div>
       <main className="feed">
         <Container
           maxWidth="xl"
@@ -34,10 +43,10 @@ const FeedPage = observer(() => {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <div className="feed__posts">
-            {FeedStore.posts === undefined ? (
+            {posts === undefined ? (
               <h2 className="errorCase">Sorry any posts found</h2>
             ) : (
-              FeedStore.posts.map((item) => (
+              posts.map((item) => (
                 <PostCard item={item} key={item._id} />
               ))
             )}
@@ -45,12 +54,7 @@ const FeedPage = observer(() => {
           <RecomendUsers />
         </Container>
       </main>
-      <ErrorModal
-        isShow={FeedStore.isShow}
-        setShow={FeedStore.setIsShow}
-        err={FeedStore.err}
-        onClose={handleClose}
-      />
+      <ErrorModal />
     </div>
   );
 });
