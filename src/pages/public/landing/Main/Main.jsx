@@ -24,10 +24,10 @@ function Home() {
             <Button variant="contained">Get started now</Button>
           </NavLink>
         </div>
-        <div className="info__slider">
+        {/* <div className="info__slider">
           <Slider />
           <img className="laptop" src={laptop} alt="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

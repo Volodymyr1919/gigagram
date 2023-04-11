@@ -1,8 +1,8 @@
-import React from "react";
-import { observer } from "mobx-react";
-import { Modal, Button } from "react-bootstrap";
-import { useStores } from "../../stores/MainStore";
-import { useNavigate } from "react-router-dom";
+import React                     from "react";
+import { observer }              from "mobx-react";
+import { Modal, Button }         from "react-bootstrap";
+import { useStores }             from "../../stores/MainStore";
+import { useNavigate }           from "react-router-dom";
 
 const ErrorModal = observer(() => {
 

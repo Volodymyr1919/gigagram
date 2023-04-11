@@ -1,22 +1,26 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import headerStyle from "./headermain.scss";
-import logoH from "../../assets/img/logoWhite.png";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { observer } from "mobx-react";
-import { useStores } from "../../stores/MainStore";
+import * as React         from "react";
+import AppBar             from "@mui/material/AppBar";
+import Box                from "@mui/material/Box";
+import Toolbar            from "@mui/material/Toolbar";
+import IconButton         from "@mui/material/IconButton";
+import Typography         from "@mui/material/Typography";
+import Menu               from "@mui/material/Menu";
+import MenuIcon           from "@mui/icons-material/Menu";
+import Container          from "@mui/material/Container";
+import Avatar             from "@mui/material/Avatar";
+import Tooltip            from "@mui/material/Tooltip";
+import MenuItem           from "@mui/material/MenuItem";
+import AdbIcon            from "@mui/icons-material/Adb";
+import headerStyle        from "./headermain.scss";
+import LogoutIcon         from '@mui/icons-material/Logout';
+import AccountCircleIcon  from '@mui/icons-material/AccountCircle';
+import DeleteAcc          from "./DeleteAcc";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import logoH              from "../../assets/img/logoWhite.png";
+import { NavLink }        from "react-router-dom";
+import { useNavigate }    from "react-router-dom";
+import { observer }       from "mobx-react";
+import { useStores }      from "../../stores/MainStore";
 
 const PrivateHeader = observer(() => {
 
@@ -160,10 +164,13 @@ const PrivateHeader = observer(() => {
                     to="/my-page"
                     onClick={handleCloseUserMenu}
                 >
-                    <Typography textAlign="center">Account</Typography>
+                    <Typography textAlign="center">Account <span style={{    marginLeft: "10px"}}><AccountCircleIcon /></span></Typography>
                 </MenuItem>
                 <MenuItem onClick={logout}>
-                    <Typography textAlign="center">Logout</Typography>
+                    <Typography textAlign="center">Logout <span style={{marginLeft: "21px"}}><LogoutIcon/></span> </Typography>
+                </MenuItem>
+                <MenuItem>
+                    <Typography textAlign="center" style={{color: "red"}}><DeleteAcc sx={{ m: 2 }} /></Typography>
                 </MenuItem>
                 </Menu>
           </Box>

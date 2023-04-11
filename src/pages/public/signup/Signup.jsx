@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import ErrorModal from "../../partial/ErrorModal";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { observer } from "mobx-react";
-import { NavLink } from "react-router-dom";
-import { useStores } from "../../../stores/MainStore";
+import React, { useState }      from "react";
+import ErrorModal               from "../../partial/ErrorModal";
+import { useForm }              from "react-hook-form";
+import { useNavigate }          from "react-router-dom";
+import { observer }             from "mobx-react";
+import { NavLink }              from "react-router-dom";
+import { useStores }            from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
-import signUpStyle from "./signup.scss";
-import Button from '@mui/material/Button';
+import signUpStyle              from "./signup.scss";
+import Button                   from '@mui/material/Button';
+import BgSign from "../../../backgrounds/BgSign";
 
  const SignUp = observer(() => {
 
@@ -48,6 +49,7 @@ import Button from '@mui/material/Button';
 
     return(
         <div className="signup">
+            <BgSign />
             <div className="screen">
                 <div className="screen__content">
                     <h5>Sign Up</h5>
@@ -120,7 +122,7 @@ import Button from '@mui/material/Button';
                     <span className="screen__background__shape screen__background__shape1r"></span>
                 </div> 
             </div>
-            <ul className="bg-bubbles">
+            {/* <ul className="bg-bubbles">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -131,7 +133,7 @@ import Button from '@mui/material/Button';
                 <li></li>
                 <li></li>
                 <li></li>
-            </ul>
+            </ul> */}
             <ErrorModal />
         </div>
     )

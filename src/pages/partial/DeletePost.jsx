@@ -44,7 +44,7 @@ const AlertDialogModal = observer(() => {
       <Button
         variant="outlined"
         color="danger"
-        endDecorator={<DeleteForever />}
+         enddecorator={<DeleteForever />}
         onClick={() => setOpen(true)}
       >
         Discard
@@ -59,7 +59,7 @@ const AlertDialogModal = observer(() => {
           <Typography
             id="alert-dialog-modal-title"
             component="h2"
-            startDecorator={<WarningRoundedIcon />}
+            startdecorator={<WarningRoundedIcon />}
           >
             Confirmation
           </Typography>

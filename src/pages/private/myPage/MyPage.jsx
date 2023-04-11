@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BsPlusSquareFill } from "react-icons/bs";
-import ModalWindow from "../../partial/ModalWindow";
-import { observer } from "mobx-react";
-import Followers from "../followers/FollowersView";
-import Followings from "../followings/FollowingsView";
+import { BsPlusSquareFill }           from "react-icons/bs";
+import ModalWindow                    from "../../partial/ModalWindow";
+import { observer }                   from "mobx-react";
+import Followers                      from "../followers/FollowersView";
+import Followings                     from "../followings/FollowingsView";
 // eslint-disable-next-line no-unused-vars
 import styles from "./scss/info.scss";
 import EditModal from "../../partial/EditModal";
@@ -15,6 +15,10 @@ const MyPage = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [me, setMe] = useState([]);
+
+  const [updatePosts, setUpdatePosts] = useState(false);
+
+  const [updateMe, setUpdateMe] = useState(false);
 
   useEffect(() => {
     new Promise((resolve, rejects) => {
@@ -31,7 +35,7 @@ const MyPage = observer(() => {
         setMe(myInfo);
       }
     })
-  }, []);
+  }, [updateMe]);
 
   return (
     <div className="body_myPage">
@@ -44,7 +48,7 @@ const MyPage = observer(() => {
                 <img src={me.avatar} alt="Profile avatar" />
               </div>
               <div className="user_title">
-                <p>{me.fullname}</p>
+                <p>{me.fullName}</p>
                 <p>@{me.username}</p>
               </div>
             </div>
@@ -57,11 +61,11 @@ const MyPage = observer(() => {
                   <span className="stat">Публикаций</span>
                 </div>
                 <div className="count_block">
-                  <button onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers} Подписчиков</button>
+                  <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers} Подписчиков</span>
                   <Followers username={me.username} />
                 </div>
                 <div className="count_block">
-                  <button onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following} Подписок</button>
+                  <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following} Подписок</span>
                   <Followings username={me.username} />
                 </div>
               </div>
@@ -80,11 +84,13 @@ const MyPage = observer(() => {
             >
               <BsPlusSquareFill className="add_button" />
             </span>
-            <EditModal me={me} />
-            <ModalWindow />
+            <EditModal me={me} setUpdateMe={setUpdateMe} />
+            <ModalWindow setUpdatePosts={setUpdatePosts} />
           </div> 
         </div>
-        <ProfilePosts myId={me._id} />
+        <div className="posts_block">
+        <ProfilePosts myId={me._id} setUpdatePosts={setUpdatePosts} updatePosts={updatePosts}/>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useStores } from "../../../stores/MainStore";
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
 
@@ -12,6 +13,8 @@ const Followers = observer((props) => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [followers, setFollowers] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(username !== undefined ) {
@@ -54,7 +57,7 @@ const Followers = observer((props) => {
                   ng-repeat="user in ctrl.users"
                   className="list-item"
                 >
-                  <div>
+                  <div onClick={() => navigate(`/user-page`)}>
                     <img src={arrayF.avatar} className="list-item-image" alt="" />
                   </div>
                   <div className="list-item-content">

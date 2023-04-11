@@ -2,7 +2,6 @@ import * as React       from "react";
 // import logo from '../../../../assets/img/logo.png'
 import { NavLink } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
-import headerStyle from '../scss/header.scss'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
