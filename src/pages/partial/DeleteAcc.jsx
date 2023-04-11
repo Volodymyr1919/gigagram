@@ -43,7 +43,7 @@ const DeleteAcc = observer(() => {
     <React.Fragment>
       <span
         style={{color: "red"}}
-        endDecorator={<DeleteForever />}
+        enddecorator={<DeleteForever />}
         onClick={() => setOpen(true)}
       >
         Delete account
