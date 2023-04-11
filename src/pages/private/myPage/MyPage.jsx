@@ -84,7 +84,9 @@ const MyPage = observer(() => {
             <ModalWindow setUpdatePosts={setUpdatePosts} />
           </div> 
         </div>
+        <div className="posts_block">
         <ProfilePosts myId={me._id} setUpdatePosts={setUpdatePosts} updatePosts={updatePosts}/>
+        </div>
       </div>
     </div>
   );

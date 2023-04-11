@@ -42,7 +42,7 @@ function HeaderMain() {
           >
             <img src={logoH} alt="" />
           </figure>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -76,8 +76,8 @@ function HeaderMain() {
               </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -94,9 +94,9 @@ function HeaderMain() {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0 }} className="box">
             <Button component={NavLink} to="/signin" color="inherit" style={{background: "#F47A1D"}}>Sign In</Button>
             <Button component={NavLink} to="/signup" color="inherit" style={{background: "#F47A1D"}}>Sign Up</Button>
           </Box>
