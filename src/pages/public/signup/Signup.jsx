@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import ErrorModal from "../../partial/ErrorModal";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { observer } from "mobx-react";
-import { NavLink } from "react-router-dom";
-import { useStores } from "../../../stores/MainStore";
+import React, { useState }      from "react";
+import ErrorModal               from "../../partial/ErrorModal";
+import { useForm }              from "react-hook-form";
+import { useNavigate }          from "react-router-dom";
+import { observer }             from "mobx-react";
+import { NavLink }              from "react-router-dom";
+import { useStores }            from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
-import signUpStyle from "./signup.scss";
-import Button from '@mui/material/Button';
+import signUpStyle              from "./signup.scss";
+import Button                   from '@mui/material/Button';
 
  const SignUp = observer(() => {
 

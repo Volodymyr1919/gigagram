@@ -46,6 +46,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm install react-material-ui-form-validator --save
  - npm install @mui/joy @emotion/react @emotion/styled --save
  - npm i @mui/joy@5.0.0-alpha.24 --save 
+ - npm install @mui/lab --save
 
 
 
@@ -56,10 +57,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     │   ├── img
     │   ├── video
     ├── pages
+    │   ├── partial
+    │   │   ├──
+    │   │   ├──
+    │   │   ├──
     │   ├── private
     │   │   ├── feed
     │   │   ├── myPage
     │   │   ├── postId
+    │   │   ├── userPage
     │   ├── public
     │   │   ├── forgot
     │   │   ├── landing

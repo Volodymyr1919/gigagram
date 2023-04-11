@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate }                from "react-router-dom";
-import AliceCarousel                  from "react-alice-carousel";
+import { useNavigate } from "react-router-dom";
+import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import ImageList                      from "@mui/material/ImageList";
-import ImageListItem                  from "@mui/material/ImageListItem";
-import Paper                          from '@mui/material/Paper';
-import { styled }                     from '@mui/material/styles';
-import { observer }                   from "mobx-react";
-import { useStores }                  from "../../../stores/MainStore";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { observer } from "mobx-react";
+import { useStores } from "../../../stores/MainStore";
 
 const ProfilePosts = observer((props) => {
 

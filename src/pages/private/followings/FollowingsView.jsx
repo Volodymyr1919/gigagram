@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import { Button, Modal } from "react-bootstrap";
-import { useStores } from "../../../stores/MainStore";
-import followerStyle from "../followers/followers.scss";
+import { observer }                   from "mobx-react-lite";
+import { Button, Modal }              from "react-bootstrap";
+import { useStores }                  from "../../../stores/MainStore";
+import followerStyle                  from "../followers/followers.scss";
 
 const Followings = observer((props) => {
 
