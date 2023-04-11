@@ -34,7 +34,7 @@ const AlertDialogModal = observer(() => {
           setOpen(false),
           navigate(-1)
         ) : (
-          setModalInfo("Sorry, can not delte this post")
+          setModalInfo("Sorry, can not delete this post")
         )
       })
     };

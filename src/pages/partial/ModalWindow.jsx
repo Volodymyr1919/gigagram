@@ -7,6 +7,7 @@ import { observer } from "mobx-react";
 import { useStores } from "../../stores/MainStore";
 
 const ModalWindow = observer(() => {
+
   const { RequestsStore, ConfigStore } = useStores();
 
   const [newTitle, setNewTitle] = useState("");
@@ -29,15 +30,26 @@ const ModalWindow = observer(() => {
     if (!data.image && !data.video) {
       return setReqMedia("Image or Video Field is required");
     }
-
-    const resp = RequestsStore.doPost(ConfigStore.url + "/post", {
-        title: data.title,
-        description: data.description,
-        image: data.image,
-        video: data.video,
-        status: "active"
+    new Promise((resolve, rejects) => {
+      resolve();
     })
-    console.log(resp);
+    .then(() => {
+      return RequestsStore.doPost(ConfigStore.url + "/post", {
+          title: data.title,
+          description: data.description,
+          image: data.image,
+          video: data.video,
+          status: "active"
+      })
+    })
+    .then((response) => {
+      if(response.id) {
+        ConfigStore.setIsShowModalWindow(false);
+        window.location.reload();
+      } else {
+        console.log(response);
+      }
+    })
   };
   
   return (

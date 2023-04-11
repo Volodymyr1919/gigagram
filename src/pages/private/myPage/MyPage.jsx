@@ -24,7 +24,12 @@ const MyPage = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/me");
     })
     .then((myInfo) => {
-      setMe(myInfo);
+      if(myInfo === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+        setMe(myInfo);
+      }
     })
   }, []);
 
@@ -79,7 +84,7 @@ const MyPage = observer(() => {
             <ModalWindow />
           </div> 
         </div>
-        <ProfilePosts myId={me._id}/>
+        <ProfilePosts myId={me._id} />
       </div>
     </div>
   );

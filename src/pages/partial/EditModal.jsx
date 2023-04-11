@@ -25,14 +25,26 @@ const EditModal = observer((props) => {
   } = useForm({ mode: "onChange" });
 
   const onSubmit = (data) => {
-    const result = RequestsStore.doPut(ConfigStore.url + "/me", {
-      "username": data.username,
-      "avatar": data.avatar,
-      "age": data.age,
-      "bio": data.bio,
-      "fullName": data.fullname
+    new Promise((resolve, rejects) => {
+      resolve();
     })
-    console.log(result);
+    .then(() => {
+      return RequestsStore.doPut(ConfigStore.url + "/me", {
+        "username": data.username,
+        "avatar": data.avatar,
+        "age": data.age,
+        "bio": data.bio,
+        "fullName": data.fullname
+      })
+    })
+    .then((result) => {
+      if(result) {
+        ConfigStore.setIsShowEditModal(false);
+        window.location.reload();
+      } else {
+        return;
+      }
+    })
   }
 
   function handleClose() {
@@ -62,7 +74,7 @@ const EditModal = observer((props) => {
               {errors.username && errors.title.message}
             </p>
             <TextField
-              type="url"
+              type="text"
               id="outlined-normal"
               label="fullname"
               fullWidth
@@ -77,7 +89,7 @@ const EditModal = observer((props) => {
               {errors.fullname && errors.fullname.message}
             </p>
             <TextField
-              type="text"
+              type="url"
               id="outlined-normal"
               label="avatar"
               fullWidth
