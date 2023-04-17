@@ -10,8 +10,6 @@ import Success                  from "./Success";
 const ModalWindow = observer((props) => {
   const { RequestsStore, ConfigStore } = useStores();
 
-  const {updatePosts, setUpdatePosts } = props;
-
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newImg, setNewImg] = useState("");
@@ -42,7 +40,7 @@ const ModalWindow = observer((props) => {
         status: "active"
     })
     .then(() => {
-      setUpdatePosts(true)
+      ConfigStore.setUpdatePosts(true)
       setOpen(true)
     })
     console.log(resp);

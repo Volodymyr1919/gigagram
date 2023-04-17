@@ -5,7 +5,7 @@ import { observer }                   from "mobx-react";
 import Followers                      from "../followers/FollowersView";
 import Followings                     from "../followings/FollowingsView";
 // eslint-disable-next-line no-unused-vars
-import styles from "./scss/info.scss";
+import styles from "./scss/myPage.scss";
 import EditModal from "../../partial/EditModal";
 import { useStores } from "../../../stores/MainStore";
 import ProfilePosts from "./Posts";
@@ -16,9 +16,7 @@ const MyPage = observer(() => {
 
   const [me, setMe] = useState([]);
 
-  const [updatePosts, setUpdatePosts] = useState(false);
-
-  const [updateMe, setUpdateMe] = useState(false);
+  
 
   useEffect(() => {
     new Promise((resolve, rejects) => {
@@ -29,9 +27,9 @@ const MyPage = observer(() => {
     })
     .then((myInfo) => {
       setMe(myInfo);
-      setUpdateMe(false)
+      ConfigStore.setUpdateMe(false)
     })
-  }, [updateMe]);
+  }, [ConfigStore.updateMe]);
 
   return (
     <div className="body_myPage">
@@ -80,12 +78,12 @@ const MyPage = observer(() => {
             >
               <BsPlusSquareFill className="add_button" />
             </span>
-            <EditModal me={me} setUpdateMe={setUpdateMe} />
-            <ModalWindow setUpdatePosts={setUpdatePosts} />
+            <EditModal me={me}  />
+            <ModalWindow />
           </div> 
         </div>
         <div className="posts_block">
-        <ProfilePosts myId={me._id} setUpdatePosts={setUpdatePosts} updatePosts={updatePosts}/>
+        <ProfilePosts myId={me._id} />
         </div>
       </div>
     </div>

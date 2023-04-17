@@ -10,14 +10,14 @@ import Success from "./Success";
 const EditModal = observer((props) => {
   const { RequestsStore, ConfigStore } = useStores();
 
-  const { me, setUpdateMe: setUpdateMe } = props;
+  const { me } = props;
   
   const [newUsername, setNewUsername] = useState();
   const [newFullname, setNewFullname] = useState();
   const [newAvatar, setNewAvatar] = useState();
   const [newAge, setNewAge] = useState();
   const [newBio, setNewBio] = useState();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
   const {
     register,
     handleSubmit,
@@ -31,8 +31,9 @@ const EditModal = observer((props) => {
       age: data.age,
       bio: data.bio,
       fullName: data.fullname,
-    }).then(() => {
-      setUpdateMe(true);
+    })
+    .then(() => {
+      ConfigStore.setUpdateMe(true);
       setOpen(true) //нужно сделать проверку на ошибку для username
       handleClose();
     });

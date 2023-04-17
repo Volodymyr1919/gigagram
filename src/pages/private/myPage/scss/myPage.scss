@@ -16,7 +16,7 @@
     padding: 20px 20px 5px;
     border-radius: 10px
   }
-
+  
   .profile_info {
     .button_create {
   
@@ -127,6 +127,12 @@
       transition: all 0.3s ease;
     }
   }
+  .alice-carousel {
+    ul li{
+      display: none;
+    }
+  }
 
 }
+
 

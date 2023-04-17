@@ -4,7 +4,13 @@ import footerStyle from '../scss/footer.scss'
 
 function Footer(props) {
     return (
-        <footer className='footer'>      
+        <footer className='footer'>
+            <div className='links'>
+                <li>More about creators</li>
+                <li>Tel-Ran</li>
+                <li>Skilldesk</li>
+                <li>LinkedIn</li>
+            </div>
            <p>Copyright © 2023</p>
         </footer>
     );

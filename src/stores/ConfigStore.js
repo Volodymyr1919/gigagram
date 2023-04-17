@@ -4,6 +4,10 @@ export default class ConfigStore {
 
     url = "http://65.109.13.139:9191";
     token = "";
+    updatePosts = false;
+    updateMe = false;
+    myPosts = [""];
+    me = [""];
     isShow = false;
     isShowFollowers = false;
     isShowFollowings = false;
@@ -15,13 +19,25 @@ export default class ConfigStore {
         this.MainStore = MainStore;
         makeAutoObservable(this);
     };
+    setMe(me) {
+        this.me = me
+    }
+    setMyPost(myPosts){
+        this.myPosts = myPosts
+    }
 
+    setUpdateMe(updateMe) {
+        this.updateMe = updateMe
+    }
+    setUpdatePosts(updatePosts) {
+        this.updatePosts = updatePosts
+    }
     setToken(token) {
         this.token = token;
     };
 
-    setIsShow(show) {
-        this.isShow = show;
+    setIsShow(isShow) {
+        this.isShow = isShow;
     };
 
     setIsShowFollowers(followers) {
@@ -39,6 +55,7 @@ export default class ConfigStore {
     setIsShowModalWindow(modalWindow) {
         this.isShowModalWindow = modalWindow;
     };
+    
 
     setErr(err) {
         this.err = err;

@@ -13,11 +13,10 @@ const ProfilePosts = observer((props) => {
 
   const { RequestsStore, ConfigStore } = useStores();
   
-  const {updatePosts, setUpdatePosts } = props;
+  
   const { myId } = props;
 
-  const [myPost, setMyPost] = useState([]);
-
+ 
   const navigate = useNavigate();
 
   const Label = styled(Paper)(({ theme }) => ({
@@ -43,23 +42,23 @@ const ProfilePosts = observer((props) => {
           ConfigStore.setErr("Token has been burned");
           ConfigStore.setIsShow(true);
         } else {
-          setMyPost(myPosts)
-          setUpdatePosts(false)
+          ConfigStore.setMyPost(myPosts)
+          ConfigStore.setUpdatePosts(false)
         }
       })
     } else {
       return;
     }
-  }, [myId, updatePosts]);
+  }, [myId, ConfigStore.updatePosts]);
 
   return (
   
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
     <ImageList variant="masonry" cols={3} gap={8}>
-      {myPost === undefined ? (
+      {ConfigStore.myPosts === undefined ? (
         <h2 className="errorCase">Sorry any posts found</h2>
       ) : (
-        myPost.map((item) => (
+        ConfigStore.myPosts.map((item) => (
           <ImageListItem
             key={item.image}
             style={{ cursor: "pointer" }}
@@ -67,8 +66,8 @@ const ProfilePosts = observer((props) => {
           >
             {item.image && item.video ? (
               <AliceCarousel
-                dotsContainer={`.${item._id}-dots-container`}
                 disableButtonsControls
+                dotsDisabled={true}
                 touchTracking
                 touchMoveDefaultEvents
               >

@@ -1,18 +1,47 @@
+@import "../../../../scss/app.scss";
 .home {
   .footer {
     height: 70px;
-    background-color: #F8B819;
+    background-color: $clear-white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+  .links{
+    display: flex;
+    li{
+      cursor: pointer;
+      text-decoration: none;
+      list-style: none;
+      color: $main;
+      margin-right: 20px;
 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+      &:hover{
 
+        color: $secondary;
+      }
+    }
+  }
     p{
+      color: $grey_br ;
       margin: 0;
+      font-size: small;
+    }
+  }
+  @media (max-width: 430px) {
+    .links {
+      font-size: x-small;
+    }
+    p{
+      font-size: x-small !important;
+    }
+  }
+  @media (max-width: 300px) {
+    .links {
+      font-size: xx-small;
+    }
+    p{
+      font-size: xx-small !important;
     }
   }
 }
