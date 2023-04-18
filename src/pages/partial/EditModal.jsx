@@ -62,7 +62,7 @@ const EditModal = observer((props) => {
               {errors.username && errors.title.message}
             </p>
             <TextField
-              type="url"
+              type="text"
               id="outlined-normal"
               label="fullname"
               fullWidth
@@ -77,7 +77,7 @@ const EditModal = observer((props) => {
               {errors.fullname && errors.fullname.message}
             </p>
             <TextField
-              type="text"
+              type="url"
               id="outlined-normal"
               label="avatar"
               fullWidth
