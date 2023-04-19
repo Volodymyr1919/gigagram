@@ -132,6 +132,17 @@ div.signup {
   border-bottom-color: $main;
 }
 
+.btn-eye{
+  border: none;
+  outline: none;
+  background-color: none!important;
+  .bi-eye{
+    &:hover {
+      color: red!important;
+    }
+  }
+}
+
 .registration__submit {
   background: $clear_white;
   font-size: 14px;

@@ -46,6 +46,21 @@ import Button from '@mui/material/Button';
         return password === value ? true : "Passwords not match";
     }
 
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange =(evnt)=>{
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword =()=>{
+      console.log("togglePas");
+      if(passwordType==="password")
+      {
+       setPasswordType("text")
+       return;
+      }
+      setPasswordType("password")
+    }
+    
     return(
         <div className="signup">
             <div className="screen">
@@ -88,6 +103,10 @@ import Button from '@mui/material/Button';
                                 },
                             })}
                         />
+                        <span className="btn btn-eye" onClick={togglePassword}>
+                            { passwordType==="password"? 
+                            <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+                        </span>
                         <p className='validError'>{errors.password && errors.password.message}</p>
                     </div>
                     <div className="registration__field">
@@ -105,6 +124,10 @@ import Button from '@mui/material/Button';
                                 },
                             })}
                         />
+                        <span className="btn btn-eye" onClick={togglePassword}>
+                            { passwordType==="password"? 
+                            <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+                        </span>
                         <p className='validError'>{errors.confirmPassword && errors.confirmPassword.message}</p>
                     </div>
                     <Button className="button registration__submit"type='submit'>

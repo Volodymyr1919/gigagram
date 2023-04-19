@@ -38,6 +38,21 @@ const Signin = observer(() => {
     }
   };
 
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange =(evnt)=>{
+      setPasswordInput(evnt.target.value);
+  }
+  const togglePassword =()=>{
+    console.log("togglePas");
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
+  
   return (
     <div className="signin">
       <div className="screen">
@@ -69,7 +84,7 @@ const Signin = observer(() => {
               <i className="bi bi-lock-fill"></i>
               <input
                 className="login__input"
-                type="password"
+                type={passwordType}
                 name="password"
                 placeholder="Password"
                 {...register("password", {
@@ -84,6 +99,10 @@ const Signin = observer(() => {
                   },
                 })}
               />
+              <span className="btn btn-eye" onClick={togglePassword}>
+                { passwordType==="password"? 
+                <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+              </span>
               <p className='validError'>{errors.password && errors.password.message}</p>
             </div>
             <Button className="button login__submit"type='submit'>

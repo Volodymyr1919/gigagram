@@ -135,6 +135,17 @@ div.signin {
     border-bottom-color: $main;
   }
 
+  .btn-eye{
+    border: none;
+    outline: none;
+    background-color: none!important;
+    .bi-eye{
+      &:hover {
+        color: red!important;
+      }
+    }
+  }
+
   .login__submit {
     background: $clear_white;
     font-size: 14px;
