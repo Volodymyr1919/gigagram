@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import footerStyle from '../scss/footer.scss'
+import footerStyle from './footer.scss'
 
 function Footer(props) {
     return (

@@ -20,6 +20,7 @@ const EditModal = observer((props) => {
   const [open, setOpen] = useState(false); 
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onChange" });
@@ -32,11 +33,23 @@ const EditModal = observer((props) => {
       bio: data.bio,
       fullName: data.fullname,
     })
-    .then(() => {
-      ConfigStore.setUpdateMe(true);
-      setOpen(true) //нужно сделать проверку на ошибку для username
-      handleClose();
-    });
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) => {
+      if(response.errors) {
+        console.log("resp",response)
+        setError('username', { type: 'custom', message: 'This username is already taken' });
+      }
+      else{
+        ConfigStore.setUpdateMe(true);
+        setOpen(true)
+        handleClose();
+      }
+      
+    })
+
+    ;
   };
 
   function handleClose() {
@@ -45,7 +58,7 @@ const EditModal = observer((props) => {
 
   return (
     <>
-      <Modal show={ConfigStore.isShowEditModal} onHide={handleClose}>
+      <Modal className="modal" show={ConfigStore.isShowEditModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Me</Modal.Title>
         </Modal.Header>
@@ -61,6 +74,7 @@ const EditModal = observer((props) => {
               label="username"
               fullWidth
               {...register("username")}
+              
               defaultValue={me.username}
               onChange={(e) => setNewUsername(e.target.value)}
             />
@@ -81,13 +95,12 @@ const EditModal = observer((props) => {
               {errors.fullname && errors.fullname.message}
             </p>
             <TextField
-              type="text"
+              type="url"
               id="outlined-normal"
               label="avatar"
               fullWidth
               {...register("avatar", {
                 pattern: {
-                  value: /^(http|https):\/\/[^\s/$.?#].[^\s]*$/,
                   message: "Invalid link",
                 },
                 value: newAvatar,
@@ -119,7 +132,7 @@ const EditModal = observer((props) => {
             <p className="validError">{errors.bio && errors.age.bio}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" type="submit">
+            <Button variant="secondary" className="edit-btn" type="submit">
               Edit
             </Button>
           </Modal.Footer>

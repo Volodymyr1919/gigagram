@@ -15,12 +15,12 @@ import headerStyle        from "./headermain.scss";
 import LogoutIcon         from '@mui/icons-material/Logout';
 import AccountCircleIcon  from '@mui/icons-material/AccountCircle';
 import DeleteAcc          from "./DeleteAcc";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import logoH              from "../../assets/img/logoWhite.png";
 import { NavLink }        from "react-router-dom";
 import { useNavigate }    from "react-router-dom";
 import { observer }       from "mobx-react";
 import { useStores }      from "../../stores/MainStore";
+import SearchModal        from "./SearchModal";
 
 const PrivateHeader = observer(() => {
 
@@ -132,6 +132,9 @@ const PrivateHeader = observer(() => {
           >
             LOGO
           </Typography>
+
+          <button onClick={() => ConfigStore.setIsShowSearchModal(true)}>Search</button>
+          <SearchModal />
 
           <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">

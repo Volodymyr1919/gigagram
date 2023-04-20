@@ -110,7 +110,7 @@ const ModalWindow = observer((props) => {
             <p className="validError">{reqMedia}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" type="submit">
+            <Button variant="secondary" className="edit-btn" type="submit">
               Add
             </Button>
           </Modal.Footer>

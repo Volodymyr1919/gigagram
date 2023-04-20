@@ -14,6 +14,9 @@ export default class ConfigStore {
     isShowEditModal = false;
     isShowModalWindow = false;
     err = "";
+    isShowSearchModal = false
+    loading = true;
+    loadingData = true;
 
     constructor(MainStore) {
         this.MainStore = MainStore;
@@ -48,6 +51,9 @@ export default class ConfigStore {
         this.isShowFollowings = followings;
     };
 
+    setIsShowSearchModal(searchModal) {
+        this.isShowSearchModal = searchModal
+    }
     setIsShowEditModal(editModal) {
         this.isShowEditModal = editModal;
     };
@@ -56,9 +62,15 @@ export default class ConfigStore {
         this.isShowModalWindow = modalWindow;
     };
     
-
     setErr(err) {
         this.err = err;
     };
+    
+    setLoading(loading) {
+        this.loading = loading
+    }
+    setLoadingData(loadingData) {
+        this.loadingData = loadingData
+    }
 
 }

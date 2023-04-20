@@ -1,7 +1,6 @@
 import React from "react";
-import Footer from "./footer/Footer";
+import Footer from "../../partial/footer/Footer";
 import Main from "./Main/Main"
-// eslint-disable-next-line no-unused-vars
 import homeStyle from './scss/home.scss'
 
 

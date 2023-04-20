@@ -181,6 +181,23 @@
             font-size: x-small !important ;
         }
     }
+    @media (min-width: 450px) {
+        info {
+            h2 {
+               font-size: 3vw !important;
+            }
+
+            .welcome {
+                font-size: 4vw !important
+            }
+
+            h3 {
+                font-size: 2vw !important
+            }
+
+
+        }
+    }
     @media (max-width: 650px) {
         .info {
             h2 {
@@ -203,23 +220,7 @@
 
         }
     }
-    @media (min-width: 450px) {
-        info {
-            h2 {
-               font-size: 3vw !important;
-            }
-
-            .welcome {
-                font-size: 4vw !important
-            }
-
-            h3 {
-                font-size: 2vw !important
-            }
-
-
-        }
-    }
+   
     @media (max-width: 700px) {
         .second__block {
             height: auto;

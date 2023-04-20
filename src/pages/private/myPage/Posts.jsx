@@ -5,6 +5,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import ImageList                      from "@mui/material/ImageList";
 import ImageListItem                  from "@mui/material/ImageListItem";
 import Paper                          from '@mui/material/Paper';
+import Loading                        from "../../partial/Loading";
 import { styled }                     from '@mui/material/styles';
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
@@ -52,7 +53,6 @@ const ProfilePosts = observer((props) => {
   }, [myId, ConfigStore.updatePosts]);
 
   return (
-  
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
     <ImageList variant="masonry" cols={3} gap={8}>
       {ConfigStore.myPosts === undefined ? (
