@@ -2,19 +2,23 @@
   display: flex;
   z-index: 200;
   div {
-    max-width: 100%;
     div.MuiToolbar-root {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    a{
+      margin-right: 10px;
     }
   }
   figure.header__logo {
     margin: 0;
     height: 80px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
     img {
-      height: 80px;
+      height: 40px;
       // filter: invert(97%) sepia(50%) saturate(0%) hue-rotate(323deg) brightness(101%) contrast(104%);
     }
   }

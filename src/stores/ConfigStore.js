@@ -4,24 +4,50 @@ export default class ConfigStore {
 
     url = "http://65.109.13.139:9191";
     token = "";
+    updatePosts = false;
+    updateMe = false;
+    myPosts = [""];
+    me = [""];
     isShow = false;
     isShowFollowers = false;
     isShowFollowings = false;
     isShowEditModal = false;
     isShowModalWindow = false;
     err = "";
+    isShowSearchModal = false
+    loading = true;
+    loadingData = true;
+    userProfile = ""
 
     constructor(MainStore) {
         this.MainStore = MainStore;
         makeAutoObservable(this);
     };
+   
+    setUserProfile(userProfile){
+        this.userProfile = userProfile
+    }
+    
 
+    setMe(me) {
+        this.me = me
+    }
+    setMyPost(myPosts){
+        this.myPosts = myPosts
+    }
+
+    setUpdateMe(updateMe) {
+        this.updateMe = updateMe
+    }
+    setUpdatePosts(updatePosts) {
+        this.updatePosts = updatePosts
+    }
     setToken(token) {
         this.token = token;
     };
 
-    setIsShow(show) {
-        this.isShow = show;
+    setIsShow(isShow) {
+        this.isShow = isShow;
     };
 
     setIsShowFollowers(followers) {
@@ -32,6 +58,9 @@ export default class ConfigStore {
         this.isShowFollowings = followings;
     };
 
+    setIsShowSearchModal(searchModal) {
+        this.isShowSearchModal = searchModal
+    }
     setIsShowEditModal(editModal) {
         this.isShowEditModal = editModal;
     };
@@ -39,9 +68,16 @@ export default class ConfigStore {
     setIsShowModalWindow(modalWindow) {
         this.isShowModalWindow = modalWindow;
     };
-
+    
     setErr(err) {
         this.err = err;
     };
+    
+    setLoading(loading) {
+        this.loading = loading
+    }
+    setLoadingData(loadingData) {
+        this.loadingData = loadingData
+    }
 
 }

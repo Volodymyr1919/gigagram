@@ -40,12 +40,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
  - npm i react-alice-carousel --save
  - npm install react-icons --save
  - npm install @mui/material @emotion/react @emotion/styled --save
- - npm install @mui/material @mui/styled-engine-sc styled-components --save
- - npm install @fontsource/roboto --save
+ - y
  - npm install @mui/icons-material --save
  - npm install react-material-ui-form-validator --save
  - npm install @mui/joy @emotion/react @emotion/styled --save
- - npm i @mui/joy@5.0.0-alpha.24 --save
+ - npm i @mui/joy@5.0.0-alpha.24 --save 
+ - npm install @mui/lab --save
 
 
 
@@ -56,10 +56,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     │   ├── img
     │   ├── video
     ├── pages
+    │   ├── partial
+    │   │   ├──
+    │   │   ├──
+    │   │   ├──
     │   ├── private
     │   │   ├── feed
     │   │   ├── myPage
     │   │   ├── postId
+    │   │   ├── userPage
     │   ├── public
     │   │   ├── forgot
     │   │   ├── landing
