@@ -17,11 +17,18 @@ export default class ConfigStore {
     isShowSearchModal = false
     loading = true;
     loadingData = true;
+    userProfile = ""
 
     constructor(MainStore) {
         this.MainStore = MainStore;
         makeAutoObservable(this);
     };
+   
+    setUserProfile(userProfile){
+        this.userProfile = userProfile
+    }
+    
+
     setMe(me) {
         this.me = me
     }
