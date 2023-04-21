@@ -48,7 +48,7 @@ const FeedPage = observer(() => {
               {posts === undefined ? (
                 <h2 className="errorCase">Sorry any posts found</h2>
               ) : (
-                posts.map((item) => (
+                posts.slice().reverse().map((item) => (
                   <PostCard item={item} key={item._id} />
                 ))
               )}
