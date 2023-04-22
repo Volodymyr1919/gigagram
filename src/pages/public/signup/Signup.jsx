@@ -1,5 +1,5 @@
 import React, { useState }  from "react";
-import ErrorModal           from "../../partial/ErrorModal";
+import ErrorModal           from "../../partial/modal/ErrorModal";
 import { useForm }          from "react-hook-form";
 import { useNavigate }      from "react-router-dom";
 import { observer }         from "mobx-react";

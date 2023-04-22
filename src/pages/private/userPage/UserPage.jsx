@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams }                  from "react-router-dom";
 import { BsPlusSquareFill }           from "react-icons/bs";
-import ModalWindow                    from "../../partial/ModalWindow";
+import ModalWindow                    from "../../partial/modal/ModalWindow";
 import { observer }                   from "mobx-react";
 import Followers                      from "../followers/FollowersView";
 import Followings                     from "../followings/FollowingsView";
 import Footer                         from "../../partial/footer/Footer";
 import styles                         from "./scss/myPage.scss";
-import EditModal from "../../partial/EditModal";
-import { useStores } from "../../../stores/MainStore";
-import ProfilePosts from "./UserPosts";
-import Loading from "../../partial/Loading";
+import EditModal                      from "../../partial/modal/EditModal";
+import { useStores }                  from "../../../stores/MainStore";
+import ProfilePosts                   from "./UserPosts";
+import Loading                        from "../../partial/Loading";
 
 const UserPage = observer(() => {
 
@@ -34,7 +34,7 @@ const UserPage = observer(() => {
       ConfigStore.setUpdateMe(false);
       ConfigStore.setLoading(false);
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading ]);
+  }, [ConfigStore.updateMe, ConfigStore.loading, username ]);
 
   return (
     <>  

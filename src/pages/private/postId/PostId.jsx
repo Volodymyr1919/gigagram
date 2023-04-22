@@ -9,7 +9,7 @@ import Card               from "@mui/material/Card";
 import Avatar             from "@mui/material/Avatar";
 import CardMedia          from "@mui/material/CardMedia";
 import CardHeader         from "@mui/material/CardHeader";
-import DeletePost         from "../../partial/DeletePost";
+import DeletePost         from "../../partial/modal/DeletePost";
 import AliceCarousel      from "react-alice-carousel";
 
 const PostId = observer(() => {

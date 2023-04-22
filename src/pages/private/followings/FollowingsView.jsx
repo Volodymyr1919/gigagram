@@ -39,7 +39,10 @@ const Followings = observer((props) => {
     .then(response => {
       return response;
     })
-    .catch(error => {
+    .then(() => {
+      setFollowings(followings.filter((user) => user.username !== username));
+    })
+    .catch(error => {npm 
       console.error(error);
     });
   };

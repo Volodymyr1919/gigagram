@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm }         from "react-hook-form";
 import { useNavigate }     from "react-router-dom";
 import { NavLink }         from "react-router-dom";
-import ErrorModal          from "../../partial/ErrorModal";
+import ErrorModal          from "../../partial/modal/ErrorModal";
 import { observer }        from "mobx-react";
 import { useStores }       from "../../../stores/MainStore";
 import BgSign              from "../../../backgrounds/BgSign";

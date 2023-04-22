@@ -4,8 +4,8 @@ import { Modal, Button }              from "react-bootstrap";
 import TextField                      from "@mui/material/TextField";
 import modalStyle                     from "./modal.scss";
 import { observer }                   from "mobx-react";
-import { useStores }                  from "../../stores/MainStore";
-import Success from "./Success";
+import { useStores }                  from "../../../stores/MainStore";
+import Success                        from "../Success";
 
 const EditModal = observer((props) => {
   const { RequestsStore, ConfigStore } = useStores();

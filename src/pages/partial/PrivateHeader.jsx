@@ -14,7 +14,7 @@ import AdbIcon            from "@mui/icons-material/Adb";
 import headerStyle        from "./headermain.scss";
 import LogoutIcon         from '@mui/icons-material/Logout';
 import AccountCircleIcon  from '@mui/icons-material/AccountCircle';
-import DeleteAcc          from "./DeleteAcc";
+import DeleteAcc          from "./modal/DeleteAcc";
 import logoH              from "../../assets/img/logoWhite.png";
 import { NavLink }        from "react-router-dom";
 import { useNavigate }    from "react-router-dom";

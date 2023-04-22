@@ -9,45 +9,46 @@ import DeleteForever                from '@mui/icons-material/DeleteForever';
 import WarningRoundedIcon           from '@mui/icons-material/WarningRounded';
 import Typography                   from '@mui/joy/Typography';
 import { observer }                 from 'mobx-react';
-import { useStores }                from '../../stores/MainStore';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import MoodIcon from '@mui/icons-material/Mood';
+import { useStores }                from '../../../stores/MainStore';
 
-const DeleteAcc = observer(() => {
+const AlertDialogModal = observer(() => {
+
+  const { id } = useParams();
 
   const { RequestsStore, ConfigStore } = useStores();
 
-  const [modalInfo, setModalInfo] = React.useState("Are you sure you want to delete your account?");
+  const [modalInfo, setModalInfo] = React.useState("Are you sure you want to discard this post?");
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
 
-    const handleDeleteMe = () => {
+    const handleDeletePost = () => {
       new Promise((resolve, rejects) => {
         resolve();
       })
       .then(() => {
-        return RequestsStore.doDelete(ConfigStore.url + "/me");
+        return RequestsStore.doDelete(ConfigStore.url + "/post/" + id);
       })
       .then((resp) => {
         resp.deleted ? (
           setOpen(false),
-          navigate("/signin")
+          navigate(-1)
         ) : (
-          setModalInfo("Sorry, can not delete your account")
+          setModalInfo("Sorry, can not delte this post")
         )
       })
     };
 
   return (
     <React.Fragment>
-      <span
-        style={{color: "red"}}
-        enddecorator={<DeleteForever />}
+      <Button
+        variant="outlined"
+        color="danger"
+         enddecorator={<DeleteForever />}
         onClick={() => setOpen(true)}
       >
-        Delete account
-      </span>
+        Discard
+      </Button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog
           variant="outlined"
@@ -58,7 +59,7 @@ const DeleteAcc = observer(() => {
           <Typography
             id="alert-dialog-modal-title"
             component="h2"
-            startDecorator={<WarningRoundedIcon />}
+            startdecorator={<WarningRoundedIcon />}
           >
             Confirmation
           </Typography>
@@ -68,10 +69,10 @@ const DeleteAcc = observer(() => {
           </Typography>
           <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', pt: 2 }}>
             <Button variant="plain" color="neutral" onClick={() => setOpen(false)}>
-              No <span style={{marginLeft: "5px"}}><MoodIcon /></span>
+              Cancel
             </Button>
-            <Button variant="solid" color="danger" onClick={handleDeleteMe}>
-              Yes <span style={{marginLeft: "5px"}}><SentimentDissatisfiedIcon/></span>
+            <Button variant="solid" color="danger" onClick={handleDeletePost}>
+              Continue
             </Button>
           </Box>
         </ModalDialog>
@@ -80,4 +81,4 @@ const DeleteAcc = observer(() => {
   );
 });
 
-export default DeleteAcc;
+export default AlertDialogModal;
