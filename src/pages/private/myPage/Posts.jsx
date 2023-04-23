@@ -14,10 +14,8 @@ const ProfilePosts = observer((props) => {
 
   const { RequestsStore, ConfigStore } = useStores();
   
-  
   const { myId } = props;
 
- 
   const navigate = useNavigate();
 
   const Label = styled(Paper)(({ theme }) => ({
