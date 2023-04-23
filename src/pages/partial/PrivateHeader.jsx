@@ -1,15 +1,6 @@
 import * as React         from "react";
-import AppBar             from "@mui/material/AppBar";
-import Box                from "@mui/material/Box";
-import Toolbar            from "@mui/material/Toolbar";
-import IconButton         from "@mui/material/IconButton";
-import Typography         from "@mui/material/Typography";
-import Menu               from "@mui/material/Menu";
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem, } from "@mui/material/";
 import MenuIcon           from "@mui/icons-material/Menu";
-import Container          from "@mui/material/Container";
-import Avatar             from "@mui/material/Avatar";
-import Tooltip            from "@mui/material/Tooltip";
-import MenuItem           from "@mui/material/MenuItem";
 import AdbIcon            from "@mui/icons-material/Adb";
 import headerStyle        from "./headermain.scss";
 import LogoutIcon         from '@mui/icons-material/Logout';
@@ -28,7 +19,6 @@ const PrivateHeader = observer(() => {
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [avatar, setAvatar] = React.useState("");
 
   React.useEffect(() => {
     new Promise((resolve, rejects) => {
@@ -38,13 +28,14 @@ const PrivateHeader = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/me");
     })
     .then((me) => {
-      setAvatar(me.avatar);
+      ConfigStore.setMe(me);
     })
   }, [])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -141,7 +132,7 @@ const PrivateHeader = observer(() => {
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                         alt=""
-                        src={avatar}
+                        src={ConfigStore.me.avatar}
                         style={{ background: "#D9D9D9" }}
                     />
                     </IconButton>

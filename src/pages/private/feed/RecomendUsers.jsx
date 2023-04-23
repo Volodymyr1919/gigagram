@@ -1,19 +1,15 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { List, ListItem, ListItemButton, ListItemText, Avatar, ListItemAvatar, Button, TextField } from '@mui/material/';
 import { observer } from 'mobx-react';
 import { useStores } from '../../../stores/MainStore';
+import { useNavigate } from "react-router-dom/dist";
 
 const RecomendUsers = observer(() => {
 
   const { RequestsStore, ConfigStore } = useStores();
-
   const [users, setUsers] = React.useState([]);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const navigate = useNavigate();
 
     React.useEffect(() => {
       new Promise((resolve, rejects) => {
@@ -27,25 +23,44 @@ const RecomendUsers = observer(() => {
       })
     },[])
 
+    const toUser = (username) => {
+    navigate(`/user/${username}`);
+  };
+
+  const filteredUsers = users.filter((person) => {
+    return (
+      person.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (person.fullName &&
+        person.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+  });
+
+  function handleSearch(event) {
+    setSearchTerm(event.target.value);
+  }
+
   return (
     <List dense sx={{ width: '360px', maxWidth: 360, bgcolor: 'background.paper', height: 'fit-content', paddingTop: '32px'}}>
-      {users.map((person) => {
+      <TextField 
+          onChange={handleSearch}
+          size='small'
+          fullWidth
+          id="filled-textarea"
+          placeholder="Username"
+          multiline
+          variant="filled"
+        />
+      {filteredUsers.map((person) => {
         const labelId = `checkbox-list-secondary-label-${person._id}`;
         return (
           <ListItem
             key={person._id}
              secondaryAction={
                 <Button id={person.username}>Follow</Button>
-            //   <Checkbox
-            //     edge="end"
-            //     onChange={handleToggle(value)}
-            //     checked={checked.indexOf(value) !== -1}
-            //     inputProps={{ 'aria-labelledby': labelId }}
-            //   />
              }
             disablePadding
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => toUser(person.username)}>
               <ListItemAvatar>
                 <Avatar
                   alt=""

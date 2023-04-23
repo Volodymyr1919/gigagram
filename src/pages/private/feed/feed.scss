@@ -80,6 +80,26 @@ div.main__feed{
                 color: #F47A1D;
             }
         }
+        div.MuiFormControl-root {
+            div.MuiInputBase-root {
+                padding: 5px 15px;
+                border-radius: 20px;
+                &::before {
+                    border-bottom: 1px solid #d9d9d9;
+                    width: 91%;
+                    margin-left: 5%;
+                }
+                input.MuiInputBase-input {
+                    border-radius: 20px;
+                    
+                }
+                &::after {
+                    border-bottom: 1px solid #F47A1D;
+                    width: 91%;
+                    margin-left: 5%;
+                }
+            }
+        }
     }
 }
 a{

@@ -2,16 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useForm }                    from "react-hook-form";
 import { Modal, Button, ModalBody }   from "react-bootstrap";
 import modalStyle                     from "../partial/modal/modal.scss";
-import Avatar                         from "@mui/material/Avatar";
-import ListItem                       from "@mui/material/ListItem";
-import ListItemButton                 from "@mui/material/ListItemButton";
-import ListItemText                   from "@mui/material/ListItemText";
-import ListItemAvatar                 from "@mui/material/ListItemAvatar";
+import { Avatar, ListItem, ListItemButton, ListItemText, ListItemAvatar} from "@mui/material/";
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../stores/MainStore";
 import { useNavigate }                from "react-router-dom/dist";
 
-const SearchModal = observer((props) => {
+const SearchModal = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

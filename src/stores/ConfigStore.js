@@ -14,10 +14,10 @@ export default class ConfigStore {
     isShowEditModal = false;
     isShowModalWindow = false;
     err = "";
-    isShowSearchModal = false
+    isShowSearchModal = false;
     loading = true;
     loadingData = true;
-    userProfile = ""
+    userProfile = "";
 
     constructor(MainStore) {
         this.MainStore = MainStore;
@@ -26,22 +26,24 @@ export default class ConfigStore {
    
     setUserProfile(userProfile){
         this.userProfile = userProfile
-    }
+    };
     
-
     setMe(me) {
         this.me = me
-    }
+    };
+
     setMyPost(myPosts){
         this.myPosts = myPosts
-    }
+    };
 
     setUpdateMe(updateMe) {
         this.updateMe = updateMe
-    }
+    };
+
     setUpdatePosts(updatePosts) {
         this.updatePosts = updatePosts
-    }
+    };
+
     setToken(token) {
         this.token = token;
     };
@@ -60,7 +62,8 @@ export default class ConfigStore {
 
     setIsShowSearchModal(searchModal) {
         this.isShowSearchModal = searchModal
-    }
+    };
+
     setIsShowEditModal(editModal) {
         this.isShowEditModal = editModal;
     };
@@ -75,9 +78,9 @@ export default class ConfigStore {
     
     setLoading(loading) {
         this.loading = loading
-    }
+    };
+
     setLoadingData(loadingData) {
         this.loadingData = loadingData
-    }
-
+    };
 }
