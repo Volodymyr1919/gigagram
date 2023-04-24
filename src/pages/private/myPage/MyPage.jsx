@@ -32,7 +32,7 @@ const MyPage = observer(() => {
       ConfigStore.setUpdateMe(false);
       ConfigStore.setLoading(false);
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading, me ]);
+  }, [ConfigStore.updateMe, ConfigStore.loading, me]);
 
   return (
     <>  
