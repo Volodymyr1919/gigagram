@@ -41,6 +41,18 @@ const Followers = observer((props) => {
     ConfigStore.setIsShowFollowers(false);
   }
 
+  const followUser = (username) => {
+    RequestsStore.doPost(ConfigStore.url + "/follow", {
+      username: username
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  };
+
   return (
     <Modal show={ConfigStore.isShowFollowers} className="followers" onHide={handleClose}>
       <Modal.Header closeButton>
@@ -64,6 +76,7 @@ const Followers = observer((props) => {
                     <h4>{arrayF.fullName}</h4>
                     <p>{arrayF.username}</p>
                   </div>
+                  <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => followUser(arrayF.username)}>Follow</Button>
                 </li>
               ))
           }

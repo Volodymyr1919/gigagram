@@ -1,17 +1,15 @@
-import React, { useState }          from "react";
-import { useForm }                  from "react-hook-form";
-import { useNavigate }              from "react-router-dom";
-import { NavLink }                  from "react-router-dom";
-import ErrorModal                   from "../../partial/ErrorModal";
-import { observer }                 from "mobx-react";
-import { useStores }                from "../../../stores/MainStore";
-// eslint-disable-next-line no-unused-vars
-import signInStyle                  from "./signin.scss";
-import Button                       from '@mui/material/Button';
-import BgSign from "../../../backgrounds/BgSign";
+import React, { useState } from "react";
+import { useForm }         from "react-hook-form";
+import { useNavigate }     from "react-router-dom";
+import { NavLink }         from "react-router-dom";
+import ErrorModal          from "../../partial/modal/ErrorModal";
+import { observer }        from "mobx-react";
+import { useStores }       from "../../../stores/MainStore";
+import BgSign              from "../../../backgrounds/BgSign";
+import Button              from "@mui/material/Button";
+import signInStyle         from "./signin.scss";
 
 const Signin = observer(() => {
-
   const { RequestsStore, ConfigStore } = useStores();
 
   const [username, setUsername] = useState("");
@@ -28,7 +26,7 @@ const Signin = observer(() => {
   const onSubmit = async (data) => {
     const resp = await RequestsStore.doPost(ConfigStore.url + "/signin", {
       username: data.username,
-      password: data.password
+      password: data.password,
     });
     if (resp.token) {
       localStorage.setItem("token", resp.token);
@@ -39,9 +37,23 @@ const Signin = observer(() => {
     }
   };
 
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange = (evnt) => {
+    setPasswordInput(evnt.target.value);
+  };
+  const togglePassword = () => {
+    console.log("togglePas");
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   return (
     <div className="signin">
-       <BgSign />
+      <BgSign />
       <div className="screen">
         <div className="screen__content">
           <h5>Sign In</h5>
@@ -65,13 +77,15 @@ const Signin = observer(() => {
                   },
                 })}
               />
-              <p className='validError'>{errors.username && errors.username.message}</p>
+              <p className="validError">
+                {errors.username && errors.username.message}
+              </p>
             </div>
             <div className="login__field">
               <i className="bi bi-lock-fill"></i>
               <input
                 className="login__input"
-                type="password"
+                type={passwordType}
                 name="password"
                 placeholder="Password"
                 {...register("password", {
@@ -86,13 +100,38 @@ const Signin = observer(() => {
                   },
                 })}
               />
-              <p className='validError'>{errors.password && errors.password.message}</p>
+              <span className="btn btn-eye" onClick={togglePassword}>
+                {passwordType === "password" ? (
+                  <i className="bi bi-eye-slash"></i>
+                ) : (
+                  <i className="bi bi-eye"></i>
+                )}
+              </span>
+              <p className="validError">
+                {errors.password && errors.password.message}
+              </p>
             </div>
-            <Button className="button login__submit"type='submit'>
-                <span className="button__text">Sign In</span>
+            <Button className="button login__submit" type="submit">
+              <span className="button__text">Sign In</span>
             </Button>
-            <Button size="small" component={NavLink} to="/signup" style={{marginTop: "20%", color: "#000000"}} className="line-btn">Or Sign Up</Button> 
-            <Button size="small" component={NavLink} to="/forgot" style={{marginTop: "20%", marginLeft: "15%", color: "#000000"}} className="line-btn">Forgot Password?</Button>
+            <Button
+              size="small"
+              component={NavLink}
+              to="/signup"
+              style={{ marginTop: "20%", color: "#000000" }}
+              className="line-btn"
+            >
+              Or Sign Up
+            </Button>
+            <Button
+              size="small"
+              component={NavLink}
+              to="/forgot"
+              style={{ marginTop: "20%", marginLeft: "15%", color: "#000000" }}
+              className="line-btn"
+            >
+              Forgot Password?
+            </Button>
           </form>
         </div>
         <div className="screen__background">

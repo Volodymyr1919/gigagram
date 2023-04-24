@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AliceCarousel from "react-alice-carousel";
+import { useNavigate }                from "react-router-dom";
+import AliceCarousel                  from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import { observer } from "mobx-react";
-import { useStores } from "../../../stores/MainStore";
+import ImageList                      from "@mui/material/ImageList";
+import ImageListItem                  from "@mui/material/ImageListItem";
+import Paper                          from '@mui/material/Paper';
+import Loading                        from "../../partial/Loading";
+import { styled }                     from '@mui/material/styles';
+import { observer }                   from "mobx-react";
+import { useStores }                  from "../../../stores/MainStore";
 
-const ProfilePosts = observer((props) => {
+const UserProfilePosts = observer((props) => {
 
   const { RequestsStore, ConfigStore } = useStores();
   
-  const {updatePosts, setUpdatePosts } = props;
+  
   const { myId } = props;
 
-  const [myPost, setMyPost] = useState([]);
-
+ 
   const navigate = useNavigate();
 
   const Label = styled(Paper)(({ theme }) => ({
@@ -43,37 +43,36 @@ const ProfilePosts = observer((props) => {
           ConfigStore.setErr("Token has been burned");
           ConfigStore.setIsShow(true);
         } else {
-          setMyPost(myPosts)
-          setUpdatePosts(false)
+          ConfigStore.setMyPost(myPosts)
+          ConfigStore.setUpdatePosts(false)
         }
       })
     } else {
       return;
     }
-  }, [myId, updatePosts]);
+  }, [myId, ConfigStore.updatePosts]);
 
   return (
-  
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
     <ImageList variant="masonry" cols={3} gap={8}>
-      {myPost === undefined ? (
+      {ConfigStore.myPosts === undefined ? (
         <h2 className="errorCase">Sorry any posts found</h2>
       ) : (
-        myPost.map((item) => (
+        ConfigStore.myPosts.map((item) => (
           <ImageListItem
-            key={item.image}
+            key={item._id + Math.random()}
             style={{ cursor: "pointer" }}
             onClick={() => navigate(`/post/${item._id}`)}
           >
             {item.image && item.video ? (
               <AliceCarousel
-                dotsContainer={`.${item._id}-dots-container`}
                 disableButtonsControls
+                dotsDisabled={true}
                 touchTracking
                 touchMoveDefaultEvents
               >
                 <img
-                  src={`${item.image}?w=248&fit=crop&auto=format`}
+                  src={`${item.image}`}
                   alt={item.image}
                   loading="lazy"
                   className="post"
@@ -102,11 +101,11 @@ const ProfilePosts = observer((props) => {
                 </video>
               </AliceCarousel>
             ) : (
-              <>
+              <div>
                 {item.image && (
                   <img
-                    src={`${item.image}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item.image}`}
+                    srcSet={`${item.image}`}
                     alt={item.image}
                     loading="lazy"
                     className="post"
@@ -133,10 +132,10 @@ const ProfilePosts = observer((props) => {
                       height: "auto",
                     }}
                   >
-                    <source src={`${item.video}?w=248&fit=crop&auto=format`} />
+                    <source src={`${item.video}`} />
                   </video>
                 )}
-              </>
+              </div>
             )}
           </ImageListItem>
         ))
@@ -146,4 +145,4 @@ const ProfilePosts = observer((props) => {
   );
 });
 
-export default ProfilePosts;
+export default UserProfilePosts;

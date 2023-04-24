@@ -1,5 +1,5 @@
 import * as React         from "react";
-import { useParams }      from "react-router-dom";
+import { useParams, useNavigate }      from "react-router-dom";
 import { Box }            from "@mui/material";
 import { observer }       from "mobx-react";
 import { useStores } from "../../../stores/MainStore";
@@ -9,11 +9,11 @@ import Card               from "@mui/material/Card";
 import Avatar             from "@mui/material/Avatar";
 import CardMedia          from "@mui/material/CardMedia";
 import CardHeader         from "@mui/material/CardHeader";
-import DeletePost         from "../../partial/DeletePost";
+import DeletePost         from "../../partial/modal/DeletePost";
 import AliceCarousel      from "react-alice-carousel";
 
 const PostId = observer(() => {
-
+  const navigate = useNavigate()
   const { RequestsStore, ConfigStore } = useStores();
 
   const { id } = useParams();
@@ -31,6 +31,8 @@ const PostId = observer(() => {
       setPost(data);
     })
   }, [id]);
+
+
 
   if (!post) {
     return <div className="loader">Loading...</div>;
@@ -52,7 +54,7 @@ const PostId = observer(() => {
         >
           <CardHeader
             avatar={
-              <Avatar
+              <Avatar onClick = {() => navigate(`/user/${post.author.username}`)}
                 className="user__avatar"
                 src={post.author.avatar}
                 alt="my avatar"

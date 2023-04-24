@@ -9,7 +9,7 @@ import DeleteForever                from '@mui/icons-material/DeleteForever';
 import WarningRoundedIcon           from '@mui/icons-material/WarningRounded';
 import Typography                   from '@mui/joy/Typography';
 import { observer }                 from 'mobx-react';
-import { useStores }                from '../../stores/MainStore';
+import { useStores }                from '../../../stores/MainStore';
 
 const AlertDialogModal = observer(() => {
 

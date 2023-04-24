@@ -1,0 +1,28 @@
+.modal{
+    display: flex !important;
+    align-content: center;
+    align-items: center;
+    *{
+        border-radius: 3%;
+    }
+    .modal-content{
+        width: 30vw ;
+    }
+    
+    backdrop-filter: blur(8px);
+    background-color: #ffffff97;
+    input{
+        width: 100%;
+    }
+    p.validError{
+        margin-top: 1px;
+        font-size: 12px;
+        color: red;
+        height: 15px;
+        width: 100%;
+    }
+    .edit-btn{
+        background-color: #096bde;
+        color: #fff;
+    }
+}

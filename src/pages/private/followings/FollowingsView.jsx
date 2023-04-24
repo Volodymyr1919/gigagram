@@ -37,6 +37,22 @@ const Followings = observer((props) => {
     ConfigStore.setIsShowFollowings(false);
   }
 
+  const unfollowUser = (username) => {
+    RequestsStore.doPost(ConfigStore.url + "/unfollow", {
+      username: username
+    })
+    .then(response => {
+      return response;
+    })
+    .then(() => {
+      setFollowings(followings.filter((user) => user.username !== username));
+    })
+    .catch(error => {npm 
+      console.error(error);
+    });
+  };
+  
+
   return (
     <Modal show={ConfigStore.isShowFollowings} className="followers" onHide={handleClose}> 
       <Modal.Header closeButton >
@@ -60,6 +76,7 @@ const Followings = observer((props) => {
                       <h4>{arrayF.fullName}</h4>
                       <p>{arrayF.username}</p>
                     </div>
+                    <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => unfollowUser(arrayF.username)}>Unfollow</Button>
                   </li>
                 ))
             }

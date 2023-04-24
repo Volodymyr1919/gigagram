@@ -4,7 +4,10 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background: none !important;
+    background: none!important;
+    box-sizing: border-box;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
     div#root{
         height: 100%;
         width: 100%;

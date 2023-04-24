@@ -32,7 +32,7 @@ export default function App() {
             <Route path="/followings" element={<FollowingsView />}/>
             <Route path="/feed" element={<Feed />}/>
             <Route path="/my-page" element={<MyPage />}/>
-            <Route path="/user-page" element={<UserPage/>}/>
+            <Route path="/user/:username" element={<UserPage/>}/>
             <Route path="/post/:id" element={<PostId />}/>
           </Route>
           <Route element={<LayoutNF />}>

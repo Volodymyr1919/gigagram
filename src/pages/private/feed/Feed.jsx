@@ -3,10 +3,11 @@ import { observer } from "mobx-react-lite";
 import Container from "@mui/material/Container";
 import PostCard from "./PostCard";
 import RecomendUsers from "./RecomendUsers";
-import ErrorModal from "../../partial/ErrorModal";
+import ErrorModal from "../../partial/modal/ErrorModal";
 import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import feed from "./feed.scss";
+import Footer from "../../partial/footer/Footer";
 
 const FeedPage = observer(() => {
 
@@ -32,30 +33,33 @@ const FeedPage = observer(() => {
   }, []);
 
   return (
-    <div className="main__feed">
-      <div className="feed__header">
-        <h2>Feed page | Favoriets from students</h2>
+    <>
+      <div className="main__feed">
+        <div className="feed__header">
+          <h2>Feed page | Favoriets from students</h2>
+        </div>
+        <main className="feed">
+          <Container
+            maxWidth="xl"
+            style={{ background: "#fff" }}
+            sx={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <div className="feed__posts">
+              {posts === undefined ? (
+                <h2 className="errorCase">Sorry any posts found</h2>
+              ) : (
+                posts.slice().reverse().map((item) => (
+                  <PostCard item={item} key={item._id} />
+                ))
+              )}
+            </div>
+            <RecomendUsers />
+          </Container>
+        </main>
+        <ErrorModal />
       </div>
-      <main className="feed">
-        <Container
-          maxWidth="xl"
-          style={{ background: "#fff" }}
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <div className="feed__posts">
-            {posts === undefined ? (
-              <h2 className="errorCase">Sorry any posts found</h2>
-            ) : (
-              posts.map((item) => (
-                <PostCard item={item} key={item._id} />
-              ))
-            )}
-          </div>
-          <RecomendUsers />
-        </Container>
-      </main>
-      <ErrorModal />
-    </div>
+      <Footer />
+    </>
   );
 });
 
