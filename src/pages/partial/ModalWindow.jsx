@@ -25,10 +25,6 @@ const ModalWindow = observer((props) => {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
-  function handleClose() {
-    ConfigStore.setIsShowModalWindow(false);
-  }
-
   const onSubmit = async (data) => {
     if (!data.image && !data.video) {
       return setReqMedia("Image or Video Field is required");
@@ -61,7 +57,7 @@ const ModalWindow = observer((props) => {
         <Modal.Header closeButton>
           <Modal.Title>Add post</Modal.Title>
         </Modal.Header>
-        <form onSubmit={handleSubmit((data) => {onSubmit(data); handleClose()})}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Body>
             <TextField
               type="text"
