@@ -1,6 +1,9 @@
 @import "../../../scss/colors.scss";
 
   .footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
     height: 70px;
     background-color: $clear-white;
     display: flex;
@@ -28,14 +31,6 @@
       font-size: small;
     }
   }
-  @media (max-width: 430px) {
-    .links {
-      font-size: x-small;
-    }
-    p{
-      font-size: x-small !important;
-    }
-  }
   @media (max-width: 300px) {
     .links {
       font-size: xx-small;
@@ -44,3 +39,19 @@
       font-size: xx-small !important;
     }
   }
+
+  @media (max-width: 430px) {
+    .links {
+      font-size: x-small;
+    }
+    p{
+      font-size: x-small !important;
+    }
+  }
+
+  @media screen and (max-height: 800px) {
+    .footer {
+      padding: 5px;
+      height: 60px;
+    }
+}

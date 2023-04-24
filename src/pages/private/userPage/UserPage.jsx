@@ -30,9 +30,13 @@ const UserPage = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/user/" + username);
     })
     .then((myInfo) => {
-      setMe(myInfo);
-      ConfigStore.setUpdateMe(false);
-      ConfigStore.setLoading(false);
+      if (myInfo === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+        setMe(myInfo);
+        ConfigStore.setLoading(false);
+      }
     })
   }, [ConfigStore.updateMe, ConfigStore.loading, username ]);
 
@@ -59,14 +63,14 @@ const UserPage = observer(() => {
                 <div className="profile-counts">
                   <div className="count_block-posts">
                     <span className="count">{me.posts_count}</span>
-                    <span className="stat">Публикаций</span>
+                    <span className="stat">Posts</span>
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers} Подписчиков</span>
+                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers}Followers</span>
                     <Followers username={me.username} />
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following} Подписок</span>
+                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following}Followings</span>
                     <Followings username={me.username} />
                   </div>
                 </div>
@@ -77,7 +81,7 @@ const UserPage = observer(() => {
                 className="edit-profile"
                 onClick={() => ConfigStore.setIsShowEditModal(true)}
               >
-                Отредактировать
+                Edit Profile
               </button>
               <span
                 className="button_create"

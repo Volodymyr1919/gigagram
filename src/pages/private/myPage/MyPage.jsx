@@ -11,12 +11,13 @@ import EditModal                      from "../../partial/modal/EditModal";
 import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./Posts";
 import Loading                        from "../../partial/Loading";
+import ErrorModal                     from "../../partial/modal/ErrorModal"               
 
 const MyPage = observer(() => {
 
   const { RequestsStore, ConfigStore } = useStores();
 
-  const [me, setMe] = useState([]);
+  
 
 
 
@@ -28,11 +29,15 @@ const MyPage = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/me");
     })
     .then((myInfo) => {
-      setMe(myInfo);
-      ConfigStore.setUpdateMe(false);
       ConfigStore.setLoading(false);
+      if (myInfo === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+        ConfigStore.setMe(myInfo);
+      }
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading, me ]);
+  }, [ConfigStore.updateMe, ConfigStore.loading, ConfigStore.me ]);
 
   return (
     <>  
@@ -44,28 +49,28 @@ const MyPage = observer(() => {
             <div className="info-container">
               <div className="title_header">
                 <div className="profile-picture">
-                  <img src={me.avatar} alt="Profile avatar" />
+                  <img src={ConfigStore.me.avatar} alt="Profile avatar" />
                 </div>
                 <div className="user_title">
-                  <p>{me.fullName}</p>
-                  <p>@{me.username}</p>
+                  <p>{ConfigStore.me.fullName}</p>
+                  <p>@{ConfigStore.me.username}</p>
                 </div>
               </div>
 
               <div className="profile-info">
-                <p>{me.bio}</p>
+                <p>{ConfigStore.me.bio}</p>
                 <div className="profile-counts">
                   <div className="count_block-posts">
-                    <span className="count">{me.posts_count}</span>
+                    <span className="count">{ConfigStore.me.posts_count}</span>
                     <span className="stat">Posts</span>
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers} Followers</span>
-                    <Followers username={me.username} />
+                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{ConfigStore.me.followers} Followers</span>
+                    <Followers username={ConfigStore.me.username} />
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following} Followings</span>
-                    <Followings username={me.username} />
+                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{ConfigStore.me.following} Followings</span>
+                    <Followings username={ConfigStore.me.username} />
                   </div>
                 </div>
               </div>
@@ -83,15 +88,16 @@ const MyPage = observer(() => {
               >
                 <BsPlusSquareFill className="add_button" />
               </span>
-              <EditModal me={me}  />
+              <EditModal me={ConfigStore.me}  />
               <ModalWindow />
             </div> 
           </div>
           <div className="posts_block">
-            <ProfilePosts myId={me._id} />
+            <ProfilePosts myId={ConfigStore.me._id} />
           </div>
         </div>
         <Footer />
+        <ErrorModal />
       </div>
     }
   </>

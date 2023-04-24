@@ -17,7 +17,7 @@ export default class RequestsStore {
         return {
             "Content-type": "application/json",
             "Access-Control-Allow-Origin": "*",
-            "x-access-token": localStorage.getItem("token") || ""
+            "x-access-token": localStorage.getItem("toke") || ""
         }
     };
 

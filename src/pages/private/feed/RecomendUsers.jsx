@@ -19,7 +19,12 @@ const RecomendUsers = observer(() => {
         return RequestsStore.doGet(ConfigStore.url + "/users")
       })
       .then((users) => {
-        setUsers(users);
+        if (users === "Forbidden") {
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+        } else {
+          setUsers(users);
+        }
       })
     },[])
 

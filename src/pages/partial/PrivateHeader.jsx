@@ -28,7 +28,12 @@ const PrivateHeader = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/me");
     })
     .then((me) => {
-      ConfigStore.setMe(me);
+      if (me === "Forbidden") {
+        ConfigStore.setErr("Token has been burned");
+        ConfigStore.setIsShow(true);
+      } else {
+       ConfigStore.setMe(me);
+      }
     })
   }, [])
 

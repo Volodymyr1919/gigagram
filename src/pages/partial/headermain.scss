@@ -1,25 +1,61 @@
 .header {
   display: flex;
   z-index: 200;
+
   div {
     div.MuiToolbar-root {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    a{
+
+    a {
       margin-right: 10px;
     }
   }
+
   figure.header__logo {
     margin: 0;
     height: 80px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+
     img {
       height: 40px;
-      // filter: invert(97%) sepia(50%) saturate(0%) hue-rotate(323deg) brightness(101%) contrast(104%);
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .header {
+    a {
+      margin-right: 5px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    a {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .header {
+    figure.header__logo {
+      margin: 0;
+      min-height: 60px;
+      height: 60px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 40px;
+      }
     }
   }
 }
