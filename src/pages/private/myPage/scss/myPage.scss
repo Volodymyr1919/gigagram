@@ -1,8 +1,8 @@
 @import "../../../../scss/colors.scss";
 
 .body_myPage {
-  height: 100vh;
   background: url("../../../../assets/img/MyPageBg1.jpg");
+  background-size: 100vh;
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -52,9 +52,9 @@
       justify-content: center;
   
       img {
-        border-radius: 50%;
-        height: 20vh;
-        width: 20vh;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   

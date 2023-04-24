@@ -6,8 +6,8 @@ export default class ConfigStore {
     token = "";
     updatePosts = false;
     updateMe = false;
-    myPosts = [""];
-    me = [""];
+    myPosts = [];
+    me = "";
     isShow = false;
     isShowFollowers = false;
     isShowFollowings = false;

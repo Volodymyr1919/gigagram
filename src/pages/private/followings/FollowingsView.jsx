@@ -21,7 +21,7 @@ const Followings = observer((props) => {
         return RequestsStore.doGet(ConfigStore.url + "/followings/" + username);
       })
       .then((foll) => {
-        if(foll === "Forbidden") {
+        if (foll === "Forbidden") {
           ConfigStore.setErr("Token has been burned");
           ConfigStore.setIsShow(true);
         } else {

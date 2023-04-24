@@ -1,13 +1,15 @@
-import React, {useEffect}    from "react";
-import laptop                from "../../../../assets/img/laptop.png";
-import Slider                from "../slider/Slider";
+import React, { useEffect }  from "react";
+import { observer }          from "mobx-react";
 import Button                from "@mui/material/Button";
 import { NavLink }           from "react-router-dom";
 import Typography            from "@mui/material/Typography";
 import BgHome                from "../../../../backgrounds/BgHome";
+import Slider1               from "./Slider1";
+import Slider2               from "./Slider2";
 
 
-function Home() {
+const Home = observer(() => {
+
   useEffect(() => {
     const elements = document.querySelectorAll(".animate-on-scroll");
     function animateOnScroll() {
@@ -58,46 +60,10 @@ function Home() {
           </div>
         </div>
       </div>
-
-      <div className="second__block">
-
-          <div className="block__info">
-            <Typography variant="h2" gutterBottom className="animate-on-scroll" style={{animationDelay: "0.5s"}}>
-              Why is Gigagram needed?
-            </Typography>
-
-            <p className="animate-on-scroll" style={{animationDelay: "1s"}}>
-              You can use this web as a social network. Upload interesting code options, implementations, memes, and anything else that props into your head!
-            </p>
-          </div>
-
-          <div className="block__img">
-            <img src="https://images.ctfassets.net/az3stxsro5h5/PN5eYL4R5zinDWRiWAFOn/cfdea360c0d02e914926b9cda1b6b919/Jun16-This_Is_How_the_Instagram_Algorithm_Works-Horizontal.png?w=920&h=800&q=50&fm=png" alt="" />
-          </div>
-
-      </div>
-      
-      <div className="third__block">
-
-      <div className="block__info">
-            <Typography variant="h2" gutterBottom className="animate-on-scroll" style={{animationDelay: "0.5s"}}>
-              Introduction
-            </Typography>
-
-            <p className="animate-on-scroll" style={{animationDelay: "1s"}}>
-              After authorisation, you will be redirected to the feed page. There you can spand your time looking at all users posts
-            </p>
-      </div>
-
-          <div className="block__img">
-            <img src="https://i.ibb.co/Yc7Jw7m/Screenshot-2023-04-16-at-23-11-41.png" alt="" />
-          </div>
-      </div>
-      
-    
-
+      <Slider1 />
+      <Slider2 />
     </div>
   );
 }
-
+)
 export default Home;
