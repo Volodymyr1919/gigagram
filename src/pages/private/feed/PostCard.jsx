@@ -1,24 +1,69 @@
 import * as React         from 'react';
-import Card               from '@mui/material/Card';
-import CardActions        from '@mui/material/CardActions';
-import CardContent        from '@mui/material/CardContent';
-import CardMedia          from '@mui/material/CardMedia';
-import CardHeader         from '@mui/material/CardHeader';
-import Button             from '@mui/material/Button';
-import Typography         from '@mui/material/Typography';
+import { Avatar, Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card  } from '@mui/material';
 import AliceCarousel      from "react-alice-carousel";
 import                          "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate }    from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AvatarGroup from '@mui/joy/AvatarGroup';
+import { useStores } from '../../../stores/MainStore';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function PostCard(props) {
+    const { RequestsStore, ConfigStore } = useStores();
+    const [likes, setLikes] = React.useState(0);
+    const [iconColor, setIconColor] = React.useState("action");
+    const [avatars, setAvatars] = React.useState([]);
+    const [surplus, setSurplus] = React.useState(0);
+    const [userLike, setUserLike] = React.useState([]);
+
+    const { id } = useParams();
 
     let item = props.item;
-
     const navigate = useNavigate();
+
+    function handleLike() {
+        RequestsStore.doPost(ConfigStore.url + "/like", {
+            post_id: item._id
+        })
+          .then((data) => {
+            setLikes(data.likes);
+            setIconColor("red");
+         })
+          .catch((error) => console.error(error));
+      };
+
+      useEffect(() => {
+        if (item) {
+            RequestsStore.doGet(ConfigStore.url + "/likes/" + item._id)
+            .then((res) => {
+                if(res.count >= 0) {
+                    return res.data.map((item) => (item.fromUser.username));
+                }
+            })
+            .then((data) => {
+                setUserLike(data);
+                if(data.includes(ConfigStore.me.username)) {
+                    setIconColor("red");
+                }
+            })
+        }
+      }, [item]);
 
   return (
         <Card sx={{ width: 600 }}>
-            <CardHeader />
+            <CardHeader 
+            avatar={
+              <Avatar onClick = {() => navigate(`/user/${item.author.username}`)}
+                className="user__avatar"
+                src={item && item.author ? item.author.avatar : 'some defaul src'}
+                alt="my avatar"
+                sx={{ width: 60, height: 60 }}
+                aria-label="recipe"
+              ></Avatar>
+            }
+            title={item && item.author ? item.author.username : 'some defaul src'}
+          />
             {item.video && item.video !== "any" && item.image ? 
                 <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
                     <CardMedia
@@ -62,8 +107,15 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
+            <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+            {/* <AvatarGroup>
+            {avatars.map((avatar, index) => (
+                <Avatar key={index} {...avatar} />
+                ))}
+
+                {!!surplus && <Avatar>+{surplus}</Avatar>}
+            </AvatarGroup> */}
             <CardActions>
-                <Button size="small">Share</Button>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
         </Card>
