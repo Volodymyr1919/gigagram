@@ -9,6 +9,7 @@ import Loading                        from "../../partial/Loading";
 import { styled }                     from '@mui/material/styles';
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
+import ReceiptLongIcon                from '@mui/icons-material/ReceiptLong';
 
 const UserProfilePosts = observer((props) => {
 
@@ -55,8 +56,11 @@ const UserProfilePosts = observer((props) => {
   return (
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
     <ImageList variant="masonry" cols={3} gap={8}>
-      {ConfigStore.myPosts === undefined ? (
-        <h2 className="errorCase">Sorry any posts found</h2>
+      {ConfigStore.myPosts.length === 0 ? (
+        <div className="postEmptyState">
+          <ReceiptLongIcon className="postEmptyState__icon"/>
+          <h2 className="errorCase"> Sorry any posts found</h2>
+        </div>
       ) : (
         ConfigStore.myPosts.map((item) => (
           <ImageListItem

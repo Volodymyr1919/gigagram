@@ -26,7 +26,7 @@ const RecomendUsers = observer(() => {
           setUsers(users);
         }
       })
-    },[])
+    },[]);
 
     const toUser = (username) => {
     navigate(`/user/${username}`);

@@ -15,7 +15,22 @@
   .posts_block{
     background-color: rgb(255 255 255 / 22%);
     padding: 10px 10px 5px;
-    border-radius: 10px
+    border-radius: 10px;
+    div.postEmptyState{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 800px;
+      .postEmptyState__icon{
+        font-size: 200px;
+        color: rgb(211, 211, 211);
+      }
+      .errorCase{
+        color: rgb(211, 211, 211);
+      }
+    }
   }
   
   .profile_info {

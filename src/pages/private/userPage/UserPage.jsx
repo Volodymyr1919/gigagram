@@ -10,6 +10,7 @@ import ProfilePosts                   from "./UserPosts";
 import Loading                        from "../../partial/Loading";
 import Success                        from "../../partial/Success";
 import { useNavigate } from "react-router-dom";
+import deletedUser from "../../../assets/img/deletedUser.png"
 
 const UserPage = observer(() => {
 
@@ -33,12 +34,19 @@ const UserPage = observer(() => {
       }
     })
     .then((myInfo) => {
-      if (myInfo === "Forbidden") {
-        ConfigStore.setErr("Token has been burned");
-        ConfigStore.setIsShow(true);
-      } else {
-        setMe(myInfo);
-        ConfigStore.setLoading(false);
+      switch (myInfo) {
+        case "Forbidden":
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+          break;
+        case "Not Found":
+          setMe("deleted");
+          ConfigStore.setLoading(false);
+          break;
+        default:
+          setMe(myInfo);
+          ConfigStore.setLoading(false);
+          break;
       }
     })
   }, [ConfigStore.updateMe, ConfigStore.loading, username]);
@@ -70,17 +78,19 @@ const UserPage = observer(() => {
             <div className="info-container">
               <div className="title_header">
                 <div className="profile-picture">
-                  <img src={me.avatar} alt="Profile avatar" />
+                  <img src={me !== "deleted" ? me.avatar : deletedUser} alt="Profile avatar" />
                 </div>
                 <div className="user_title">
                   <p>{me.fullName}</p>
-                  <p>@{me.username}</p>
+                  <p>@{me !== "deleted" ? me.username : "Account deleted"}</p>
                 </div>
               </div>
 
               <div className="profile-info">
-                <p>{me.bio}</p>
-                <div className="profile-counts">
+                <p>{me !== "deleted" ? me.bio : "This account has been deleted by owner"}</p>
+                <div
+                  className="profile-counts"
+                  style={me !== "deleted" ? {display: "block"} : {display: "none"}}>
                   <div className="count_block-posts">
                     <span className="count">{me.posts_count}</span>
                     <span className="stat">Posts</span>
@@ -96,7 +106,7 @@ const UserPage = observer(() => {
                 </div>
               </div>
             </div>
-            <div className="edit">
+            <div className="edit" style={me !== "deleted" ? {display: "block"} : {display: "none"}}>
               <button
                 className="edit-profile"
                 onClick={follow}

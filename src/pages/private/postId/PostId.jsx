@@ -63,7 +63,10 @@ const PostId = observer(() => {
                 ></Avatar>
               }
               action={
-                <Box sx={{ m: 2 }}>
+                <Box
+                  sx={{ m: 2 }}
+                  style={post.author.username === ConfigStore.me.username ? {display: "block"} : {display: "none"}}
+                >
                   <DeletePost sx={{ m: 2 }} />
                 </Box>
               }
