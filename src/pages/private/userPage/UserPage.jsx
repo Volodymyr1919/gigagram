@@ -9,6 +9,7 @@ import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./UserPosts";
 import Loading                        from "../../partial/Loading";
 import Success                        from "../../partial/Success";
+import { useNavigate } from "react-router-dom";
 
 const UserPage = observer(() => {
 
@@ -18,12 +19,18 @@ const UserPage = observer(() => {
 
   const [me, setMe] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     new Promise((resolve, rejects) => {
       resolve();
     })
     .then(() => {
-      return RequestsStore.doGet(ConfigStore.url + "/user/" + username);
+      if (username === ConfigStore.me.username) {
+        navigate("/my-page");
+      } else {
+        return RequestsStore.doGet(ConfigStore.url + "/user/" + username);
+      }
     })
     .then((myInfo) => {
       if (myInfo === "Forbidden") {
@@ -79,11 +86,11 @@ const UserPage = observer(() => {
                     <span className="stat">Posts</span>
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers}Followers</span>
+                    <span onClick={() => ConfigStore.setIsShowFollowers(true)}>{me.followers} Followers</span>
                     <Followers username={me.username} />
                   </div>
                   <div className="count_block">
-                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following}Followings</span>
+                    <span onClick={() => ConfigStore.setIsShowFollowings(true)}>{me.following} Followings</span>
                     <Followings username={me.username} />
                   </div>
                 </div>

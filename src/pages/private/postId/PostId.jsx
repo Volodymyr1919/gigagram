@@ -44,7 +44,6 @@ const PostId = observer(() => {
         {!post ? <div className="loader">Loading...</div> :
           <Card
             className="main__postid"
-            style={{ backgroundColor: "#F8B819" }}
             sx={{
               maxWidth: 600,
               boxShadow: 1,
