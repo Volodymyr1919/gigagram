@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams }                  from "react-router-dom";
-import { BsPlusSquareFill }           from "react-icons/bs";
-import ModalWindow                    from "../../partial/modal/ModalWindow";
 import { observer }                   from "mobx-react";
 import Followers                      from "../followers/FollowersView";
 import Followings                     from "../followings/FollowingsView";
 import Footer                         from "../../partial/footer/Footer";
 import styles                         from "./scss/myPage.scss";
-import EditModal                      from "../../partial/modal/EditModal";
 import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./UserPosts";
 import Loading                        from "../../partial/Loading";
+import Success                        from "../../partial/Success";
 
 const UserPage = observer(() => {
 
@@ -19,8 +17,6 @@ const UserPage = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [me, setMe] = useState([]);
-
-
 
   useEffect(() => {
     new Promise((resolve, rejects) => {
@@ -38,7 +34,24 @@ const UserPage = observer(() => {
         ConfigStore.setLoading(false);
       }
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading, username ]);
+  }, [ConfigStore.updateMe, ConfigStore.loading, username]);
+
+  const follow = () => {
+    RequestsStore.doPost(ConfigStore.url + "/follow", {
+      username: username
+    })
+    .then((response) => {
+      if (response.status === "OK") {
+        ConfigStore.setSnackSeverity("success");
+        ConfigStore.setSnackText("Subscribed!");
+        ConfigStore.setIsShowSnack(true);
+      } else {
+        ConfigStore.setSnackSeverity("error");
+        ConfigStore.setSnackText("You already Subscribed!");
+        ConfigStore.setIsShowSnack(true);
+      }
+    });
+  }
 
   return (
     <>  
@@ -79,18 +92,10 @@ const UserPage = observer(() => {
             <div className="edit">
               <button
                 className="edit-profile"
-                onClick={() => ConfigStore.setIsShowEditModal(true)}
+                onClick={follow}
               >
-                Edit Profile
+                Follow
               </button>
-              <span
-                className="button_create"
-                onClick={() => ConfigStore.setIsShowModalWindow(true)}
-              >
-                <BsPlusSquareFill className="add_button" />
-              </span>
-              <EditModal me={me}  />
-              <ModalWindow />
             </div> 
           </div>
           <div className="posts_block">
@@ -100,6 +105,7 @@ const UserPage = observer(() => {
         <Footer />
       </div>
     }
+    <Success />
   </>
   );
 });

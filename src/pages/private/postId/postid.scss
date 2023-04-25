@@ -1,81 +1,110 @@
 @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap");
 
-.main__postid {
-  margin: 3em auto;
 
-  .posts__container {
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    border-radius: 7px;
-    transition: all ease-in-out 0.2s;
+div.postId{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 80px);
+  width: 100%;
+  background-position: center center !important;
+  background-size: cover !important;
+  position: relative;
+  .main__postid {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    div.alice-carousel {
+    flex-direction: column;
+    z-index: 200;
+    width: 500px;
+    height: 600px;
+    .posts__container {
+      margin: auto;
+      height: 500px;
       width: 100%;
-      height: 100%;
-      div {
+      border-radius: 7px;
+      transition: all ease-in-out 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      div.alice-carousel {
         width: 100%;
         height: 100%;
-      }
-      ul.alice-carousel__dots {
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        bottom: 0;
-        left: 45%;
-        z-index: 1;
-      }
-      div.alice-carousel__prev-btn,
-      div.alice-carousel__next-btn {
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        top: 42%;
-        z-index: -1;
-        width: fit-content;
-        height: fit-content;
-      }
-      div.alice-carousel__prev-btn {
-        left: 0;
-        div.alice-carousel__prev-btn-wrapper {
-          p {
-            color: #fff;
-            font-size: 25px;
+        div {
+          width: 100%;
+          height: 100%;
+          div.alice-carousel__wrapper{
+            width: 100%;
+            height: 100%;
+            ul{
+              height: 100%;
+              width: 100%;
+              li{
+                height: 100%;
+                width: 100%;
+                img,
+                video{
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                }
+              }
+            }
+          }
+        }
+        ul.alice-carousel__dots {
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          bottom: 0;
+          left: 45%;
+          z-index: 1;
+        }
+        div.alice-carousel__prev-btn,
+        div.alice-carousel__next-btn {
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          top: 42%;
+          z-index: -1;
+          width: fit-content;
+          height: fit-content;
+        }
+        div.alice-carousel__prev-btn {
+          left: 0;
+          div.alice-carousel__prev-btn-wrapper {
+            p {
+              color: #fff;
+              font-size: 25px;
+            }
+          }
+        }
+        div.alice-carousel__next-btn {
+          right: 0;
+          div.alice-carousel__next-btn-wrapper {
+            p {
+              color: #fff;
+              font-size: 25px;
+            }
           }
         }
       }
-      div.alice-carousel__next-btn {
-        right: 0;
-        div.alice-carousel__next-btn-wrapper {
-          p {
-            color: #fff;
-            font-size: 25px;
-          }
+      &:hover {
+        background: #ebebeb;
+        border: 10px solid #e7e7e7;
+        cursor: pointer;
+        img.container__img,
+        video.container__video {
+          object-fit: contain;
         }
       }
     }
-    .container__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .container__video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    &:hover {
-      background: #ebebeb;
-      border: 10px solid #e7e7e7;
-      cursor: pointer;
-      img.container__img,
-      video.container__video {
-        object-fit: contain;
-      }
-    }
+  }
+  div.bg_blur{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(6px);
   }
 }
 

@@ -25,7 +25,7 @@ const Followers = observer((props) => {
         return RequestsStore.doGet(ConfigStore.url + "/followers/" + username);
       })
       .then((foll) => {
-        if (myInfo === "Forbidden") {
+        if (foll === "Forbidden") {
           ConfigStore.setErr("Token has been burned");
           ConfigStore.setIsShow(true);
         } else {
@@ -69,7 +69,7 @@ const Followers = observer((props) => {
                   ng-repeat="user in ctrl.users"
                   className="list-item"
                 >
-                  <div onClick={() => navigate(`/user-page`)}>
+                  <div onClick={() => navigate(`/user/${arrayF.username}`)}>
                     <img src={arrayF.avatar} className="list-item-image" alt="" />
                   </div>
                   <div className="list-item-content">

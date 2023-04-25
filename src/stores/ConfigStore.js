@@ -13,6 +13,9 @@ export default class ConfigStore {
     isShowFollowings = false;
     isShowEditModal = false;
     isShowModalWindow = false;
+    isShowSnack = false;
+    snackSeverity = "";
+    snackText = "";
     err = "";
     isShowSearchModal = false;
     loading = true;
@@ -22,6 +25,18 @@ export default class ConfigStore {
     constructor(MainStore) {
         this.MainStore = MainStore;
         makeAutoObservable(this);
+    };
+
+    setIsShowSnack(snack) {
+        this.isShowSnack = snack;
+    };
+
+    setSnackSeverity(severity) {
+        this.snackSeverity = severity;
+    };
+
+    setSnackText(text) {
+        this.snackText = text;
     };
    
     setUserProfile(userProfile){
