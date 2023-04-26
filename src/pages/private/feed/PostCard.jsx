@@ -1,5 +1,5 @@
 import * as React         from 'react';
-import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card  } from '@mui/material';
+import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card, Box  } from '@mui/material';
 import AliceCarousel      from "react-alice-carousel";
 import                          "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate }    from 'react-router-dom';
@@ -34,29 +34,13 @@ export default function PostCard(props) {
 
       useEffect(() => {
         if(item) {
-            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
-        }
-      }, [item.likes]);
-
-    function handleLike() {
-        RequestsStore.doPost(ConfigStore.url + "/like", {
-            post_id: item._id
-        })
-          .then((data) => {
-            setLikes(data.likes);
-            setIconColor("error");
-         })
-          .catch((error) => console.error(error));
-      };
-
-      useEffect(() => {
-        if(item) {
-            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
+            item.likes.find((liked) => liked.fromUser === ConfigStore.me._id) ? setIconColor("error") : setIconColor("action");
         }
       }, [item.likes]);
 
   return (
-        <Card sx={{ width: 600 }} key={item._id}>
+        <Card sx={{ width: 600, borderRadius: "25px",
+        boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px" }} key={item._id}>
             <CardHeader 
             avatar={
               <Avatar onClick = {() => navigate(`/user/${item.user[0].username}`)}
@@ -128,13 +112,15 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
-            <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
-            <AvatarGroup>
-            {item.likes.map((element, index) => (
-                <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
-                ))}
-                {!!surplus && <Avatar>+{surplus}</Avatar>}
-            </AvatarGroup>
+            <Box style={{display: "flex", alignItems: "center"}}>
+                <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+                <AvatarGroup sx={{ ml: 2}}>
+                {item.likes.map((element, index) => (
+                    <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                    ))}
+                    {!!surplus && <Avatar>+{surplus}</Avatar>}
+                </AvatarGroup>
+            </Box>
             <CardActions>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
