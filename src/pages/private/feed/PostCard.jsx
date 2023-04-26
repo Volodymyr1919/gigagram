@@ -1,24 +1,74 @@
 import * as React         from 'react';
-import Card               from '@mui/material/Card';
-import CardActions        from '@mui/material/CardActions';
-import CardContent        from '@mui/material/CardContent';
-import CardMedia          from '@mui/material/CardMedia';
-import CardHeader         from '@mui/material/CardHeader';
-import Button             from '@mui/material/Button';
-import Typography         from '@mui/material/Typography';
+import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card  } from '@mui/material';
 import AliceCarousel      from "react-alice-carousel";
 import                          "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate }    from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Avatar from '@mui/joy/Avatar';
+import AvatarGroup from '@mui/joy/AvatarGroup';
+import { useStores } from '../../../stores/MainStore';
+import { useEffect } from 'react';
 
 export default function PostCard(props) {
+    const { RequestsStore, ConfigStore } = useStores();
+    const [likes, setLikes] = React.useState(0);
+    const [iconColor, setIconColor] = React.useState("action");
+    const [avatars, setAvatars] = React.useState([]);
+    const [surplus, setSurplus] = React.useState(0);
+
+
 
     let item = props.item;
-
     const navigate = useNavigate();
 
+    function handleLike() {
+        RequestsStore.doPost(ConfigStore.url + "/like", {
+            post_id: item._id
+        })
+          .then((data) => {
+            setLikes(data.likes);
+            setIconColor("error");
+         })
+          .catch((error) => console.error(error));
+      };
+
+      useEffect(() => {
+        if(item) {
+            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
+        }
+      }, [item.likes]);
+
+    function handleLike() {
+        RequestsStore.doPost(ConfigStore.url + "/like", {
+            post_id: item._id
+        })
+          .then((data) => {
+            setLikes(data.likes);
+            setIconColor("error");
+         })
+          .catch((error) => console.error(error));
+      };
+
+      useEffect(() => {
+        if(item) {
+            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
+        }
+      }, [item.likes]);
+
   return (
-        <Card sx={{ width: 600, borderRadius: "25px", boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px" }}>
-            <CardHeader />
+        <Card sx={{ width: 600 }} key={item._id}>
+            <CardHeader 
+            avatar={
+              <Avatar onClick = {() => navigate(`/user/${item.user[0].username}`)}
+                className="user__avatar"
+                src={item && item.user[0] ? item.user[0].avatar : 'some defaul src'}
+                alt="my avatar"
+                sx={{ width: 60, height: 60 }}
+                aria-label="recipe"
+              ></Avatar>
+            }
+            title={item && item.user[0] ? item.user[0].username : 'some defaul src'}
+          />
             {item.video && item.video !== "any" && item.image ? 
                 <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
                     <CardMedia
@@ -78,8 +128,14 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
+            <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+            <AvatarGroup>
+            {item.likes.map((element, index) => (
+                <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                ))}
+                {!!surplus && <Avatar>+{surplus}</Avatar>}
+            </AvatarGroup>
             <CardActions>
-                <Button size="small">Share</Button>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
         </Card>

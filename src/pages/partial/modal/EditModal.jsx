@@ -46,10 +46,7 @@ const EditModal = observer((props) => {
         setOpen(true)
         handleClose();
       }
-      
-    })
-
-    ;
+    });
   };
 
   function handleClose() {
