@@ -4,6 +4,7 @@
 div.signup {
 
   .bg-video {
+    background-image: url(../../../assets/img/BgSignImage.png);
     position: fixed;
     top: 0;
     left: 0;
@@ -218,4 +219,21 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: #000;
   -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
 }
+@media (max-width: 500px) {
+  height: calc(100vh - 120px);
+  .bg-video {
+    video{
+      display: none;
+    }
+  }
+ }
+
+@media (max-height: 700px) {
+  .signin{
+    height: 70% !important;
+  }
+  .screen {
+    height: 90%;
+  }
+ }
 }

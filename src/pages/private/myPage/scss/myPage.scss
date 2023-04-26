@@ -16,7 +16,12 @@
   .posts_block{
     background-color: rgb(255 255 255 / 22%);
     padding: 10px 10px 5px;
-    border-radius: 10px
+    border-radius: 10px;
+    div {
+      ul {
+        overflow-y: hidden; 
+      }
+    }
   }
   
   .profile_info {
@@ -57,7 +62,7 @@
         object-fit: cover;
       }
     }
-  
+    
     .user_title {
       display: flex;
       flex-direction: column;
@@ -93,12 +98,12 @@
     justify-content: center;
     margin-top: 10px;
   }
-  .count_block_followings{
-    margin-left: -4px;
-  }
+
   .count_block {
-    margin: 0 10px;
     cursor: pointer;
+    :last-child {
+      margin: 0 0 0 10px;
+    }
   
     .stat {
       color: black;
@@ -129,9 +134,23 @@
       transition: all 0.3s ease;
     }
   }
-  .alice-carousel {
-    ul li{
-      display: none;
+  .set-icon {
+    right: 5px;
+    position: absolute;
+    color: $secondary;
+    background-color: black;
+    border-radius: 10%;
+  }
+
+  .item_video{
+    height: 100%;
+    img, video{
+      min-height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+      margin: auto;
+      width: 100%;
+      height: auto,
     }
   }
 

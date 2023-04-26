@@ -25,6 +25,14 @@
       height: 40px;
     }
   }
+  .search {
+    color: black;
+    margin-right: 10px;
+    cursor: pointer;
+      :hover {
+        color: grey;
+      }
+  }
 }
 
 @media screen and (max-width: 330px) {

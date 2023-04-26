@@ -88,6 +88,7 @@ const UserProfilePosts = observer((props) => {
                   autoPlay
                   loop
                   muted
+                  playsInline
                   className="post"
                   style={{
                     objectFit: "cover",
@@ -123,6 +124,7 @@ const UserProfilePosts = observer((props) => {
                     autoPlay
                     loop
                     muted
+                    playsInline
                     className="post"
                     style={{
                       objectFit: "cover",

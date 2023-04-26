@@ -8,7 +8,7 @@ function BgHome() {
   
   return (
     <div className="bg-video">
-      <video autoPlay loop muted>
+      <video autoPlay loop muted playsInline>
         <source src={video} type="video/mp4" />
       </video>
     </div>

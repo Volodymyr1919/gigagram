@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BsPlusSquareFill }           from "react-icons/bs";
 import ModalWindow                    from "../../partial/modal/ModalWindow";
 import { observer }                   from "mobx-react";
 import Followers                      from "../followers/FollowersView";
 import Followings                     from "../followings/FollowingsView";
 import Footer                         from "../../partial/footer/Footer"
-// eslint-disable-next-line no-unused-vars
 import styles                         from "./scss/myPage.scss";
 import EditModal                      from "../../partial/modal/EditModal";
 import { useStores }                  from "../../../stores/MainStore";
@@ -37,7 +36,7 @@ const MyPage = observer(() => {
         ConfigStore.setMe(myInfo);
       }
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading, ConfigStore.me ]);
+  }, [ConfigStore.updateMe, ConfigStore.loading]);
 
   return (
     <>  
