@@ -34,29 +34,16 @@ export default function PostCard(props) {
 
       useEffect(() => {
         if(item) {
-            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
-        }
-      }, [item.likes]);
-
-    function handleLike() {
-        RequestsStore.doPost(ConfigStore.url + "/like", {
-            post_id: item._id
-        })
-          .then((data) => {
-            setLikes(data.likes);
-            setIconColor("error");
-         })
-          .catch((error) => console.error(error));
-      };
-
-      useEffect(() => {
-        if(item) {
-            item.likes.find((liked) => liked.fromUser) ? setIconColor("error") : setIconColor("action");
+            item.likes.find((liked) => liked.fromUser === ConfigStore.me._id) ? setIconColor("error") : setIconColor("action");
         }
       }, [item.likes]);
 
   return (
-        <Card sx={{ width: 600 }} key={item._id}>
+        <Card sx={{ 
+                width: 600,
+                borderRadius: "25px",
+                boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px"
+            }} key={item._id}>
             <CardHeader 
             avatar={
               <Avatar onClick = {() => navigate(`/user/${item.user[0].username}`)}
