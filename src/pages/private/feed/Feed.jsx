@@ -8,6 +8,7 @@ import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import feed from "./feed.scss";
 import Footer from "../../partial/footer/Footer";
+import Aside from "./Aside";
 
 const FeedPage = observer(() => {
 
@@ -41,10 +42,11 @@ const FeedPage = observer(() => {
         <main className="feed">
           <Container
             maxWidth="xl"
-            style={{ background: "#fff" }}
-            sx={{ display: "flex", justifyContent: "space-between" }}
+            style={{ background: "none", position: "relative" }}
+            sx={{ display: "flex", justifyContent: "center" }}
           >
-            <div className="feed__posts">
+            <Aside />
+            <div className="feed__posts" style={{ background: "none", width: "100%" }}>
               {posts === undefined ? (
                 <h2 className="errorCase">Sorry any posts found</h2>
               ) : (

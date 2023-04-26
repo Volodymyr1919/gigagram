@@ -47,11 +47,13 @@ div.postId{
               li{
                 height: 100%;
                 width: 100%;
+                overflow: hidden;
                 img,
                 video{
                   width: 100%;
                   height: 100%;
                   object-fit: contain;
+                  transition: all ease-in-out 0.5s;
                 }
               }
             }
@@ -94,20 +96,20 @@ div.postId{
           }
         }
       }
-      &:hover {
-        background: #ebebeb;
-        border: 10px solid #e7e7e7;
-        cursor: pointer;
-        img.container__img,
-        video.container__video {
-          object-fit: contain;
-        }
-      }
       img,
       video{
         width: 100%;
         height: 100%;
         object-fit: contain;
+        transition: all ease-in-out .5s;
+      }
+      &:hover {
+        cursor: pointer;
+        img,
+        video{
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
       }
     }
   }

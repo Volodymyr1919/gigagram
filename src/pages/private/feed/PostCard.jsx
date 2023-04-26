@@ -23,8 +23,12 @@ export default function PostCard(props) {
                 <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
                     <CardMedia
                         component="img"
-                        height="300"
                         image={item.image}
+                        style={{
+                            objectFit: "contain",
+                            width: "100%",
+                            height: "fit-content"
+                        }}
                     />
                     <CardMedia
                         component="video"
@@ -34,6 +38,11 @@ export default function PostCard(props) {
                         loop
                         muted
                         mediaGroup='mp4'
+                        style={{
+                            objectFit: "contain",
+                            width: "100%",
+                            height: "fit-content"
+                        }}
                     />
                 </AliceCarousel>
                 
@@ -42,6 +51,11 @@ export default function PostCard(props) {
                     component="img"
                     height="300"
                     image={item.image}
+                    style={{
+                        objectFit: "contain",
+                        width: "100%",
+                        height: "fit-content"
+                    }}
                 />
                 ||
                 <CardMedia
@@ -52,6 +66,11 @@ export default function PostCard(props) {
                     loop
                     muted
                     mediaGroup='mp4'
+                    style={{
+                        objectFit: "contain",
+                        width: "100%",
+                        height: "fit-content"
+                    }}
                 />
             }
             <CardContent>

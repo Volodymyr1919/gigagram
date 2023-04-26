@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
 @import "../../../scss/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 
 div.main__feed{
     display: flex;
@@ -10,14 +11,41 @@ div.main__feed{
     width: 100%;
     height: fit-content;
     background: #d9d9d9;
+    section.gigagram{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 360px;
+        height: 620px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffff;
+        border-radius: 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        span{
+            rotate: 270deg;
+            font-size: 80px;
+            font-family: 'Bruno Ace SC', cursive;
+            color: #e26252;
+            border: 15px solid #f6d09a;
+            border-radius: 5px;
+        }
+    }
     div.feed__header{
         padding: 15px;
         box-sizing: border-box;
         width: 100%;
         height: 180px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        h2{
+            margin: 0;
+            padding: 0 !important;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         figure.header__logo{
             width: 300px;
             height: 130px;
@@ -68,13 +96,14 @@ div.main__feed{
     }
     main.feed{
         display: flex;
-        gap: 100px;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         div.feed__posts{
             display: flex;
             flex-direction: column;
             gap: 40px;
-            margin-left: 22%;
+            align-items: center;
             h2.errorCase{
                 font-family: 'Play', sans-serif;
                 color: #F47A1D;
