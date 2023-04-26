@@ -134,6 +134,31 @@ div.main__feed{
                 }
             }
         }
+        div.MuiBox-root {
+            div.MuiAvatarGroup-root {
+                div.MuiAvatar-root {
+                    width: 2rem !important;
+                    height: 2rem !important;
+                }
+            }
+        }
+        div.MuiCardActions-root {
+            button {
+                color:#F47A1D !important;
+                &:hover {
+                    background-color: #fdd27525;
+                }
+            }
+        }
+        div.MuiListItemSecondaryAction-root {
+            button {
+                font-size: 12px;
+                color:#F47A1D !important;
+                &:hover {
+                    background-color: #fdd27525;
+                }
+            }
+        }
     }
 }
 a{

@@ -1,5 +1,5 @@
 import * as React         from 'react';
-import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card  } from '@mui/material';
+import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card, Box  } from '@mui/material';
 import AliceCarousel      from "react-alice-carousel";
 import                          "react-alice-carousel/lib/alice-carousel.css";
 import { useNavigate }    from 'react-router-dom';
@@ -115,13 +115,15 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
-            <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
-            <AvatarGroup>
-            {item.likes.map((element, index) => (
-                <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
-                ))}
-                {!!surplus && <Avatar>+{surplus}</Avatar>}
-            </AvatarGroup>
+            <Box style={{display: "flex", alignItems: "center"}}>
+                <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+                <AvatarGroup sx={{ ml: 2}}>
+                {item.likes.map((element, index) => (
+                    <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                    ))}
+                    {!!surplus && <Avatar>+{surplus}</Avatar>}
+                </AvatarGroup>
+            </Box>
             <CardActions>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
