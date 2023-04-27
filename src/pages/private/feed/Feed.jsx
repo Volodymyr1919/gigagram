@@ -95,7 +95,7 @@ const FeedPage = observer(() => {
           >
             <Aside />
             <div className="feed__posts" style={{ background: "none", width: "100%" }}>
-              {posts === undefined ? (
+              {posts === "Not Found" ? (
                 <h2 className="errorCase">Sorry any posts found</h2>
               ) : (
                 posts.slice().reverse().map((item) => (
