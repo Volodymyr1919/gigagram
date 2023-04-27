@@ -3,12 +3,15 @@ import { observer }                   from "mobx-react-lite";
 import { Button, Modal }              from "react-bootstrap";
 import { useStores }                  from "../../../stores/MainStore";
 import followerStyle                  from "../followers/followers.scss";
+import { useNavigate } from "react-router-dom";
 
 const Followings = observer((props) => {
 
   const { username } = props;
 
   const { RequestsStore, ConfigStore } = useStores();
+
+  const navigate = useNavigate();
 
   const [followings, setFollowings] = useState([]);
 
@@ -37,19 +40,9 @@ const Followings = observer((props) => {
     ConfigStore.setIsShowFollowings(false);
   }
 
-  const unfollowUser = (username) => {
-    RequestsStore.doPost(ConfigStore.url + "/unfollow", {
-      username: username
-    })
-    .then(response => {
-      return response;
-    })
-    .then(() => {
-      setFollowings(followings.filter((user) => user.username !== username));
-    })
-    .catch(error => {npm 
-      console.error(error);
-    });
+  const toUser = (username) => {
+    handleClose();
+    navigate(`/user/${username}`);
   };
   
 
@@ -69,14 +62,14 @@ const Followings = observer((props) => {
                     ng-repeat="user in ctrl.users"
                     className="list-item"
                   >
-                    <div>
-                      <img src={arrayF.avatar} className="list-item-image" alt="" />
+                    <div className="list-item-image">
+                      <img src={arrayF.avatar} className="image__item" alt="" />
                     </div>
                     <div className="list-item-content">
                       <h4>{arrayF.fullName}</h4>
                       <p>{arrayF.username}</p>
                     </div>
-                    <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => unfollowUser(arrayF.username)}>Unfollow</Button>
+                    <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => toUser(arrayF.username)}>GO TO</Button>
                   </li>
                 ))
             }

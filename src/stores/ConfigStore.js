@@ -4,6 +4,7 @@ export default class ConfigStore {
 
     url = "http://65.109.13.139:9191";
     token = "";
+    followings = [];
     updatePosts = false;
     updateMe = false;
     myPosts = [];
@@ -25,6 +26,10 @@ export default class ConfigStore {
     constructor(MainStore) {
         this.MainStore = MainStore;
         makeAutoObservable(this);
+    };
+
+    setFollowings(followings) {
+        this.followings = followings;
     };
 
     setIsShowSnack(snack) {

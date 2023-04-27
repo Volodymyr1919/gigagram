@@ -41,16 +41,9 @@ const Followers = observer((props) => {
     ConfigStore.setIsShowFollowers(false);
   }
 
-  const followUser = (username) => {
-    RequestsStore.doPost(ConfigStore.url + "/follow", {
-      username: username
-    })
-    .then(response => {
-      return response;
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  const toUser = (username) => {
+    handleClose();
+    navigate(`/user/${username}`);
   };
 
   return (
@@ -69,14 +62,14 @@ const Followers = observer((props) => {
                   ng-repeat="user in ctrl.users"
                   className="list-item"
                 >
-                  <div onClick={() => navigate(`/user/${arrayF.username}`)}>
-                    <img src={arrayF.avatar} className="list-item-image" alt="" />
+                  <div className="list-item-image">
+                    <img src={arrayF.avatar} className="image__item" alt="" />
                   </div>
                   <div className="list-item-content">
                     <h4>{arrayF.fullName}</h4>
                     <p>{arrayF.username}</p>
                   </div>
-                  <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => followUser(arrayF.username)}>Follow</Button>
+                  <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => toUser(arrayF.username)}>GO TO</Button>
                 </li>
               ))
           }

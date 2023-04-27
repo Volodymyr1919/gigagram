@@ -33,6 +33,17 @@ const FeedPage = observer(() => {
     })
   }, []);
 
+  useEffect(() => {
+    if(ConfigStore.me.username) {
+      RequestsStore.doGet(ConfigStore.url + "/followings/" + ConfigStore.me.username)
+      .then((resp) => {
+        ConfigStore.setFollowings(resp.following);
+      })
+    } else{
+      return;
+    }
+  }, [ConfigStore.me.username]);
+
   return (
     <>
       <div className="main__feed">

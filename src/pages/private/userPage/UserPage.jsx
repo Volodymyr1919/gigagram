@@ -19,6 +19,7 @@ const UserPage = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [me, setMe] = useState([]);
+  const [isFollow, setIsFollow] = useState("Follow");
 
   const navigate = useNavigate();
 
@@ -49,24 +50,72 @@ const UserPage = observer(() => {
           break;
       }
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading, username]);
-
-  const follow = () => {
-    RequestsStore.doPost(ConfigStore.url + "/follow", {
-      username: username
+    .then(() => {
+      return RequestsStore.doGet(ConfigStore.url + "/followings/" + ConfigStore.me.username)
     })
-    .then((response) => {
-      if (response.status === "OK") {
-        ConfigStore.setSnackSeverity("success");
-        ConfigStore.setSnackText("Subscribed!");
-        ConfigStore.setIsShowSnack(true);
-      } else {
-        ConfigStore.setSnackSeverity("error");
-        ConfigStore.setSnackText("You already Subscribed!");
-        ConfigStore.setIsShowSnack(true);
+    .then((resp) => {
+      switch (resp) {
+        case "Forbidden":
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+          break;
+        case null:
+          return;
+        default:
+          ConfigStore.setFollowings(resp.following);
+          break;
       }
-    });
-  }
+    })
+  }, [ConfigStore.updateMe, ConfigStore.loading, username, isFollow]);
+
+  useEffect(() => {
+    if (ConfigStore.followings) {
+      ConfigStore.followings.find((user) => user.username === me.username) ? setIsFollow("Unfollow") : setIsFollow("Follow") 
+    } else {
+      return;
+    }
+  },[ConfigStore.followings, me.username, isFollow]);
+
+  const follow = (_switch) => {
+    switch (_switch) {
+      case "Follow":
+        RequestsStore.doPost(ConfigStore.url + "/follow", {
+          username: username
+        })
+        .then((response) => {
+          if (response.status === "OK") {
+            setIsFollow("Unfollow");
+            ConfigStore.setSnackSeverity("success");
+            ConfigStore.setSnackText("Subscribed!");
+            ConfigStore.setIsShowSnack(true);
+          } else {
+            ConfigStore.setSnackSeverity("error");
+            ConfigStore.setSnackText("Some error ocured :(");
+            ConfigStore.setIsShowSnack(true);
+          }
+        });
+        break;
+      case "Unfollow":
+        RequestsStore.doPost(ConfigStore.url + "/unfollow", {
+          username: username
+        })
+        .then((response) => {
+          if (response.status === "OK") {
+            setIsFollow("Follow");
+            ConfigStore.setSnackSeverity("success");
+            ConfigStore.setSnackText("Unsubscribed!");
+            ConfigStore.setIsShowSnack(true);
+          } else {
+            ConfigStore.setSnackSeverity("error");
+            ConfigStore.setSnackText("Some error ocured :(");
+            ConfigStore.setIsShowSnack(true);
+          }
+        });
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <>  
@@ -109,9 +158,9 @@ const UserPage = observer(() => {
             <div className="edit" style={me !== "deleted" ? {display: "block"} : {display: "none"}}>
               <button
                 className="edit-profile"
-                onClick={follow}
+                onClick={() => follow(isFollow)}
               >
-                Follow
+                {isFollow}
               </button>
             </div> 
           </div>

@@ -54,7 +54,7 @@ const ProfilePosts = observer((props) => {
   return (
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
     <ImageList variant="masonry" cols={3} gap={8}>
-      {ConfigStore.myPosts.length === 0 ? (
+      {ConfigStore.myPosts === "Not Found" ? (
         <div className="postEmptyState">
           <ReceiptLongIcon className="postEmptyState__icon"/>
           <h2 className="errorCase"> Sorry any posts found</h2>
