@@ -29,7 +29,7 @@ const Success = observer(() => {
           horizontal: "right"
         }}
         open={ConfigStore.isShowSnack}
-        autoHideDuration={30000000}
+        autoHideDuration={3000}
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity={ConfigStore.snackSeverity} sx={{ width: '100%' }}>
