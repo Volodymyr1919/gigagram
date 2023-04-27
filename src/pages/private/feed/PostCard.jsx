@@ -13,8 +13,8 @@ export default function PostCard(props) {
     const { RequestsStore, ConfigStore } = useStores();
     const [likes, setLikes] = React.useState(0);
     const [iconColor, setIconColor] = React.useState("action");
-    const [avatars, setAvatars] = React.useState([]);
-    const [surplus, setSurplus] = React.useState(0);
+    // const [avatars, setAvatars] = React.useState([]);
+    // const [surplus, setSurplus] = React.useState(0);
 
 
 
@@ -37,6 +37,24 @@ export default function PostCard(props) {
             item.likes.find((liked) => liked.fromUser === ConfigStore.me._id) ? setIconColor("error") : setIconColor("action");
         }
       }, [item.likes]);
+
+    function clampAvatars(avatars, options = { max: 5 }) {
+        const { max = 5, total } = options;
+        let clampedMax = max < 2 ? 2 : max;
+        const totalAvatars = total || avatars.length;
+        if (totalAvatars === clampedMax) {
+            clampedMax += 1;
+        }
+        clampedMax = Math.min(totalAvatars + 1, clampedMax);
+        const maxAvatars = Math.min(avatars.length, clampedMax - 1);
+        const surplus = Math.max(totalAvatars - clampedMax, totalAvatars - maxAvatars, 0);
+        return { avatars: avatars.slice(0, maxAvatars).reverse(), surplus };
+    };
+
+    const { avatars, surplus } = clampAvatars(item.likes, {
+        max: 4,
+        total: item.likes.length,
+    });
 
   return (
         <Card sx={{ 
@@ -118,7 +136,7 @@ export default function PostCard(props) {
             <Box style={{display: "flex", alignItems: "center"}}>
                 <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
                 <AvatarGroup sx={{ ml: 2}}>
-                    {item.likes.map((element, index) => (
+                    {avatars.map((element, index) => (
                         <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
                     ))}
                     {!!surplus && <Avatar>+{surplus}</Avatar>}
