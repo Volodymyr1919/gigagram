@@ -9,6 +9,42 @@ import { useStores } from "../../../stores/MainStore";
 import feed from "./feed.scss";
 import Footer from "../../partial/footer/Footer";
 import Aside from "./Aside";
+import { Fade, Toolbar, useScrollTrigger, Fab, Box } from '@mui/material';
+import { KeyboardArrowUp } from '@mui/icons-material';
+
+function ScrollTop(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
+
+  const handleClick = (event) => {
+    const anchor = (event.target.ownerDocument || document).querySelector(
+      '#back-to-top-anchor',
+    );
+
+    if (anchor) {
+      anchor.scrollIntoView({
+        block: 'center',
+      });
+    }
+  };
+
+  return (
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
+      >
+        {children}
+      </Box>
+    </Fade>
+  );
+};
+
 
 const FeedPage = observer(() => {
 
@@ -46,6 +82,7 @@ const FeedPage = observer(() => {
 
   return (
     <>
+      <Toolbar id="back-to-top-anchor" />
       <div className="main__feed">
         <div className="feed__header">
           <h2>Feed page | Favoriets from students</h2>
@@ -72,6 +109,11 @@ const FeedPage = observer(() => {
         <ErrorModal />
       </div>
       <Footer />
+      <ScrollTop>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUp />
+        </Fab>
+      </ScrollTop>
     </>
   );
 });
