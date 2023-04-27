@@ -165,3 +165,10 @@ a{
     text-decoration: none;
     color: #4f4848;
 }
+.card__footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-bottom: 19px !important;
+}

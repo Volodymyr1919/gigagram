@@ -133,16 +133,16 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
-            <Box style={{display: "flex", alignItems: "center"}}>
-                <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
-                <AvatarGroup sx={{ ml: 2}}>
-                    {avatars.map((element, index) => (
-                        <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
-                    ))}
-                    {!!surplus && <Avatar>+{surplus}</Avatar>}
-                </AvatarGroup>
-            </Box>
-            <CardActions>
+            <CardActions className='card__footer'>
+                <Box style={{display: "flex", alignItems: "center"}}>
+                    <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+                    <AvatarGroup sx={{ ml: 2}}>
+                        {avatars.map((element, index) => (
+                            <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                        ))}
+                        {!!surplus && <Avatar>+{surplus}</Avatar>}
+                    </AvatarGroup>
+                </Box>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
         </Card>

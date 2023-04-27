@@ -16,11 +16,7 @@ import ErrorModal                     from "../../partial/modal/ErrorModal"
 const MyPage = observer(() => {
 
   const { RequestsStore, ConfigStore } = useStores();
-
   
-
-
-
   useEffect(() => {
     new Promise((resolve, rejects) => {
       resolve();

@@ -23,7 +23,15 @@ const Success = observer(() => {
 
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar open={ConfigStore.isShowSnack} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right"
+        }}
+        open={ConfigStore.isShowSnack}
+        autoHideDuration={30000000}
+        onClose={handleClose}
+      >
         <Alert onClose={handleClose} severity={ConfigStore.snackSeverity} sx={{ width: '100%' }}>
           {ConfigStore.snackText}
         </Alert>
