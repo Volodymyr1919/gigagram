@@ -7,36 +7,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Avatar from '@mui/joy/Avatar';
 import AvatarGroup from '@mui/joy/AvatarGroup';
 import { useStores } from '../../../stores/MainStore';
-import { useEffect } from 'react';
+
+import Like from '../../partial/like/Like';
 
 export default function PostCard(props) {
-    const { RequestsStore, ConfigStore } = useStores();
-    const [likes, setLikes] = React.useState(0);
-    const [iconColor, setIconColor] = React.useState("action");
-    const [avatars, setAvatars] = React.useState([]);
+    const { ConfigStore } = useStores();
     const [surplus, setSurplus] = React.useState(0);
-
-
 
     let item = props.item;
     const navigate = useNavigate();
 
-    function handleLike() {
-        RequestsStore.doPost(ConfigStore.url + "/like", {
-            post_id: item._id
-        })
-          .then((data) => {
-            setLikes(data.likes);
-            setIconColor("error");
-         })
-          .catch((error) => console.error(error));
-      };
-
-      useEffect(() => {
-        if(item) {
-            item.likes.find((liked) => liked.fromUser === ConfigStore.me._id) ? setIconColor("error") : setIconColor("action");
-        }
-      }, [item.likes]);
+   
 
   return (
         <Card sx={{ 
@@ -116,7 +97,7 @@ export default function PostCard(props) {
                 </Typography>
             </CardContent>
             <Box style={{display: "flex", alignItems: "center"}}>
-                <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
+                <Like like_id={item._id} userLikes={item.likes}/>
                 <AvatarGroup sx={{ ml: 2}}>
                 {item.likes.map((element, index) => (
                     <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>

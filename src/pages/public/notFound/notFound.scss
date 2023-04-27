@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Gamja+Flower');
+
+body{
+  font-family: 'Gamja Flower', cursive;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color: #fff;
+  margin:0px;
+  flex-direction:column;
+  div.nfmain {
+    figure.nf-figure {
+        display: flex;
+        img {
+            height: 50px;
+        }
+        .not-found{
+            font-family: 'Comfortaa', cursive;
+            font-size:30px;
+            text-align:center;
+            color:rgb(255, 129, 11);
+            padding:15px;
+            padding-left:30px;
+            padding-right:30px;
+            margin-left: 33%;
+          }
+    }
+    
+    .tipsiz{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:150px;
+        flex-direction:column;
+
+        .tipsiz-body{
+          display:flex;
+          align-items:center;
+          margin:10px;
+
+          .left-arm{
+            border-right:3px solid rgb(247, 150, 23);
+            transform: skew(20deg);
+          }
+          .face{
+            width:300px;
+            height:200px;
+            border:3px solid rgb(247, 150, 23);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction: column;
+            margin-left:20px;
+            margin-right:20px;
+            border-radius:15px;
+
+            .upper-face{
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              letter-spacing:80px;
+              margin-left:80px;
+  
+              .element{
+                font-size:60px;
+              }
+            }
+            .mouth{
+              width:20px;
+              height:10px;
+              border-top-left-radius: 25px;
+              border-top-right-radius: 25px;
+              border: 3px solid black;
+              border-bottom: 0;
+            }
+          }
+          .right-arm{
+            border-left:3px solid rgb(247, 150, 23);
+            transform: skew(-20deg);
+          }
+          .arm{
+            align-self:flex-end;
+            width: 50px;
+            height: 90px;
+            border-top:3px solid rgb(247, 150, 23);
+            
+          }
+        }
+    }
+
+  }
+  p.goBack{
+    font-family: 'Comfortaa', cursive;
+    font-size:30px;
+    text-align:center;
+
+    a.aNF{
+      color:red !important;
+      text-decoration:none;
+    }
+  }
+}
+
+
+
+
+
+
+
