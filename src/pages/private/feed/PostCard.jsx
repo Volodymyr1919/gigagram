@@ -118,8 +118,8 @@ export default function PostCard(props) {
             <Box style={{display: "flex", alignItems: "center"}}>
                 <FavoriteIcon sx={{ ml: 2}} color={iconColor} onClick={handleLike} />
                 <AvatarGroup sx={{ ml: 2}}>
-                {item.likes.map((element, index) => (
-                    <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                    {item.likes.map((element, index) => (
+                        <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
                     ))}
                     {!!surplus && <Avatar>+{surplus}</Avatar>}
                 </AvatarGroup>

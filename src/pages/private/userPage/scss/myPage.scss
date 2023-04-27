@@ -59,16 +59,25 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
+    div.title_header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   
     .profile-picture {
       margin-top: 20px;
       display: flex;
       justify-content: center;
+      width: 150px;
+      height: 150px;
   
-      img {
+      .picture__img {
         border-radius: 50%;
-        height: 20vh;
-        width: 20vh;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
       }
     }
   

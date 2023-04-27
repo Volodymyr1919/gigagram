@@ -10,7 +10,8 @@ import ProfilePosts                   from "./UserPosts";
 import Loading                        from "../../partial/Loading";
 import Success                        from "../../partial/Success";
 import { useNavigate } from "react-router-dom";
-import deletedUser from "../../../assets/img/deletedUser.png"
+import deletedUser from "../../../assets/img/deletedUser.png";
+import { Avatar } from "@mui/material";
 
 const UserPage = observer(() => {
 
@@ -127,7 +128,7 @@ const UserPage = observer(() => {
             <div className="info-container">
               <div className="title_header">
                 <div className="profile-picture">
-                  <img src={me !== "deleted" ? me.avatar : deletedUser} alt="Profile avatar" />
+                  <Avatar src={me !== "deleted" ? me.avatar : deletedUser} alt="Profile avatar" className="picture__img"/>
                 </div>
                 <div className="user_title">
                   <p>{me.fullName}</p>
@@ -139,7 +140,7 @@ const UserPage = observer(() => {
                 <p>{me !== "deleted" ? me.bio : "This account has been deleted by owner"}</p>
                 <div
                   className="profile-counts"
-                  style={me !== "deleted" ? {display: "block"} : {display: "none"}}>
+                  style={me !== "deleted" ? {display: "flex"} : {display: "none"}}>
                   <div className="count_block-posts">
                     <span className="count">{me.posts_count}</span>
                     <span className="stat">Posts</span>
