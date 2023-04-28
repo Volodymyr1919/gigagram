@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useForm }                    from "react-hook-form";
 import { Modal, Button, ModalBody }   from "react-bootstrap";
-import modalStyle                     from "../partial/modal/modal.scss";
-import { Avatar, ListItem, ListItemButton, ListItemText, ListItemAvatar} from "@mui/material/";
+import modalStyle                     from "./modal.scss";
+import { Avatar, ListItem, ListItemButton, ListItemText, ListItemAvatar, TextField, InputAdornment } from "@mui/material/";
 import { observer }                   from "mobx-react";
-import { useStores }                  from "../../stores/MainStore";
+import { useStores }                  from "../../../stores/MainStore";
 import { useNavigate }                from "react-router-dom/dist";
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 const SearchModal = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
@@ -60,13 +61,31 @@ const SearchModal = observer(() => {
           <Modal.Title>Search</Modal.Title>
         </Modal.Header>
 
-        <input type="text" onChange={handleSearch} />
+        <TextField 
+          onChange={handleSearch}
+          size='small'
+          fullWidth
+          id="input-with-icon-textfield"
+          placeholder="Username"
+          multiline
+          variant="standard"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" style={{ margin: 0, marginRight: "5px" }}>
+                <PersonSearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          style={{
+            marginBottom: "10px"
+          }}
+        />
         {filteredUsers.slice(0, 5).map((person) => {
           const labelId = `checkbox-list-secondary-label-${person._id}`;
           return (
             <ListItem
               key={person._id}
-              secondaryAction={<Button id={person.username}>Follow</Button>}
+              secondaryAction={<Button onClick = {() => toUser(person.username)} className="edit-btn" >GO TO</Button>}
               disablePadding
             >
               <ListItemButton onClick = {() => toUser(person.username)}>

@@ -22,7 +22,31 @@
         width: 100%;
     }
     .edit-btn{
-        background-color: #096bde;
-        color: #fff;
+        background: #F47A1D;
+        border: none;
+        color:#FFF !important;
+    }
+    label.Mui-focused{
+        color: #F47A1D;
+    }
+    .MuiInputBase-root.Mui-focused{ 
+        .MuiOutlinedInput-notchedOutline{
+            border-color: #F47A1D;
+        }
+    }
+    .btn-close:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    div.MuiFormControl-root {
+        div.MuiInputBase-root {
+            padding: 5px 15px;
+            &::before {
+                border-bottom: 1px solid #d9d9d9;
+            }
+            &::after {
+                border-bottom: 1px solid #F47A1D;
+            }
+        }
     }
 }

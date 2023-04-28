@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { List, ListItem, ListItemButton, ListItemText, Avatar, ListItemAvatar, Button, TextField } from '@mui/material/';
+import { List, ListItem, ListItemButton, ListItemText, Avatar, ListItemAvatar, Button, TextField, InputAdornment } from '@mui/material/';
 import { observer } from 'mobx-react';
 import { useStores } from '../../../stores/MainStore';
 import { useNavigate } from "react-router-dom/dist";
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 const RecomendUsers = observer(() => {
 
@@ -63,10 +64,17 @@ const RecomendUsers = observer(() => {
           onChange={handleSearch}
           size='small'
           fullWidth
-          id="filled-textarea"
+          id="input-with-icon-textfield"
           placeholder="Username"
           multiline
           variant="filled"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" style={{ margin: 0, marginRight: "5px" }}>
+                <PersonSearchIcon />
+              </InputAdornment>
+            ),
+          }}
           style={{
             marginBottom: "10px"
           }}

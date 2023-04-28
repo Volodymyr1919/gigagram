@@ -55,7 +55,9 @@ const UserProfilePosts = observer((props) => {
 
   return (
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
-    <ImageList variant="masonry" cols={3} gap={8}>
+    <ImageList variant="masonry" cols={3} gap={8} style={{
+      minHeight: "455px"
+    }}>
       {ConfigStore.myPosts === "Not Found" || myId === undefined ? (
         <div className="postEmptyState">
           <ReceiptLongIcon className="postEmptyState__icon"/>

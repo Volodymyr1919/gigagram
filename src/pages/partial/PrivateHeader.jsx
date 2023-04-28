@@ -11,7 +11,10 @@ import { NavLink }        from "react-router-dom";
 import { useNavigate }    from "react-router-dom";
 import { observer }       from "mobx-react";
 import { useStores }      from "../../stores/MainStore";
-import SearchModal        from "./SearchModal";
+import SearchModal        from "./modal/SearchModal";
+import SearchIcon from '@mui/icons-material/Search';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import ModalWindow from "./modal/ModalWindow";
 
 const PrivateHeader = observer(() => {
 
@@ -129,10 +132,15 @@ const PrivateHeader = observer(() => {
             LOGO
           </Typography>
 
-          <button onClick={() => ConfigStore.setIsShowSearchModal(true)}>Search</button>
-          <SearchModal />
+          
 
           <Box sx={{ flexGrow: 0 }}>
+            <button onClick={() => ConfigStore.setIsShowSearchModal(true)} className="search__button" >
+              <SearchIcon className="search__icon"/>
+            </button>
+            <button onClick={() => ConfigStore.setIsShowModalWindow(true)} className="plus__button" >
+              <PostAddIcon className="plus__icon"/>
+            </button>
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
@@ -175,6 +183,8 @@ const PrivateHeader = observer(() => {
           </Box>
         </Toolbar>
       </Container>
+      <ModalWindow />
+      <SearchModal />
     </AppBar>
   );
 })
