@@ -1,40 +1,50 @@
-import * as React         from 'react';
-import { Typography, Button, CardHeader, CardMedia, CardContent, CardActions, Card, Box  } from '@mui/material';
-import AliceCarousel      from "react-alice-carousel";
-import                          "react-alice-carousel/lib/alice-carousel.css";
-import { useNavigate }    from 'react-router-dom';
+import * as React from 'react';
+import {
+  Typography,
+  Button,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Card,
+  Box,
+} from '@mui/material';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Avatar from '@mui/joy/Avatar';
 import AvatarGroup from '@mui/joy/AvatarGroup';
 import { useStores } from '../../../stores/MainStore';
-
 import Like from '../../partial/like/Like';
 
 export default function PostCard(props) {
-    const { ConfigStore } = useStores();
+    
+  const { ConfigStore } = useStores();
 
-    let item = props.item;
-    const navigate = useNavigate();
+  const item = props.item;
+  const navigate = useNavigate();
 
-   
+  const clampAvatars = React.useCallback(
+    (avatars, options = { max: 5 }) => {
+      const { max = 5, total } = options;
+      let clampedMax = max < 2 ? 2 : max;
+      const totalAvatars = total || avatars.length;
+      if (totalAvatars === clampedMax) {
+        clampedMax += 1;
+      }
+      clampedMax = Math.min(totalAvatars + 1, clampedMax);
+      const maxAvatars = Math.min(avatars.length, clampedMax - 1);
+      const surplus = Math.max(totalAvatars - clampedMax, totalAvatars - maxAvatars, 0);
+      return { avatars: avatars.slice(0, maxAvatars).reverse(), surplus };
+    },
+    []
+  );
 
-    function clampAvatars(avatars, options = { max: 5 }) {
-        const { max = 5, total } = options;
-        let clampedMax = max < 2 ? 2 : max;
-        const totalAvatars = total || avatars.length;
-        if (totalAvatars === clampedMax) {
-            clampedMax += 1;
-        }
-        clampedMax = Math.min(totalAvatars + 1, clampedMax);
-        const maxAvatars = Math.min(avatars.length, clampedMax - 1);
-        const surplus = Math.max(totalAvatars - clampedMax, totalAvatars - maxAvatars, 0);
-        return { avatars: avatars.slice(0, maxAvatars).reverse(), surplus };
-    };
-
-    const { avatars, surplus } = clampAvatars(item.likes, {
-        max: 4,
-        total: item.likes.length,
-    });
+  const { avatars, surplus } = clampAvatars(item.likes, {
+    max: 4,
+    total: item.likes.length,
+  });
 
   return (
         <Card sx={{ 
@@ -113,16 +123,16 @@ export default function PostCard(props) {
                     {item.description}
                 </Typography>
             </CardContent>
-            <Box style={{display: "flex", alignItems: "center"}}>
-                <Like like_id={item._id} userLikes={item.likes}/>
-                <AvatarGroup sx={{ ml: 2}}>
-                {avatars.map((element, index) => (
-                    <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
-                    ))}
-                    {!!surplus && <Avatar>+{surplus}</Avatar>}
-                </AvatarGroup>
-            </Box>
-            <CardActions>
+            <CardActions style={{display: "flex", justifyContent: "space-between"}}>
+                <Box style={{display: "flex", alignItems: "center"}}>
+                    <Like like_id={item._id} userLikes={item.likes}/>
+                    <AvatarGroup sx={{ ml: 2}}>
+                    {avatars.map((element, index) => (
+                        <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                        ))}
+                        {!!surplus && <Avatar>+{surplus}</Avatar>}
+                    </AvatarGroup>
+                </Box>
                 <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
             </CardActions>
         </Card>
