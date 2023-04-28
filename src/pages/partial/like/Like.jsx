@@ -7,44 +7,36 @@ function Like(props) {
 
     const { RequestsStore, ConfigStore } = useStores();
 
-    let like = props.like_id.toString();
-    let userLikes = props.userLikes;
-    let liked = userLikes.some((liked) => liked.fromUser === ConfigStore.me._id);
-    // props.userLikes.find((liked) => liked.fromUser === ConfigStore.me._id) ? (liked = true) : (liked = false);
+    const like = props.like_id.toString();
+    const userLikes = props.userLikes;
 
-    
-    function handleLike(e) {
-        if(e.target.checked){
-            RequestsStore.doPost(ConfigStore.url + "/like", {
-                post_id: like
-            })
-              .then((data) => {
-                liked = true;
-                // setLikes(data.likes);
-                // setIconColor("error");
-             })
-              .catch((error) => console.error(error)); 
-        } else {
-            RequestsStore.doDelete(ConfigStore.url + "/like/" + like)
-            .then(() => {
-                liked = false;
-            })
-        }
-      };
+    const handleLike = React.useCallback((e) => {
+        const isChecked = e.target.checked;
+        const likeUrl = ConfigStore.url + "/like";
+        const deleteLikeUrl = ConfigStore.url + "/like/" + like;
 
-      React.useEffect(() => {
-        if (userLikes.some((liked) => liked.fromUser === ConfigStore.me._id)) {
-          liked = true;
-        } else {
-          liked = false;
-        }
-      }, [userLikes, ConfigStore.me._id, liked]);
+        const likePromise = isChecked ?
+            RequestsStore.doPost(likeUrl, { post_id: like }) :
+            RequestsStore.doDelete(deleteLikeUrl);
+
+        likePromise.then(() => {
+            setLikes(isChecked);
+        }).catch((error) => console.error(error));
+    }, [RequestsStore, ConfigStore, like]);
+
+    const [likes, setLikes] = React.useState(() =>
+        userLikes.some((liked) => liked.fromUser === ConfigStore.me._id)
+    );
+
+    React.useEffect(() => {
+        setLikes(userLikes.some((liked) => liked.fromUser === ConfigStore.me._id));
+    }, [userLikes, ConfigStore.me._id]);
 
         return (
             <div id="like-content">
                 <div>
                     <input 
-                    checked={liked}
+                    checked={likes}
                     className='like-input' 
                     type="checkbox" 
                     onChange={e => handleLike(e)} 

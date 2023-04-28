@@ -82,7 +82,7 @@ const FeedPage = observer(() => {
 
   return (
     <>
-      <Toolbar id="back-to-top-anchor" />
+      <Toolbar id="back-to-top-anchor" style={{position: "absolute", top: 0, zIndex: "-1"}} />
       <div className="main__feed">
         <div className="feed__header">
           <h2>Feed page | Favoriets from students</h2>
