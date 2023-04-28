@@ -5,6 +5,7 @@ import { useStores } from "../../../stores/MainStore";
 import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
+import { Avatar } from "@mui/material";
 
 const Followers = observer((props) => {
 
@@ -53,7 +54,7 @@ const Followers = observer((props) => {
       </Modal.Header>
       <Modal.Body>
         <ul className="list">
-          { followers === undefined ?
+          { followers === "Not Found" ?
               <div className="loader">Loading...</div>
               :
               followers.map((arrayF) => (
@@ -63,7 +64,7 @@ const Followers = observer((props) => {
                   className="list-item"
                 >
                   <div className="list-item-image">
-                    <img src={arrayF.avatar} className="image__item" alt="" />
+                    <Avatar src={arrayF.avatar} className="image__item" alt="" />
                   </div>
                   <div className="list-item-content">
                     <h4>{arrayF.fullName}</h4>

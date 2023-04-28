@@ -132,7 +132,7 @@ const UserPage = observer(() => {
                 </div>
                 <div className="user_title">
                   <p>{me.fullName}</p>
-                  <p>@{me !== "deleted" ? me.username : "Account deleted"}</p>
+                  <p>{me !== "deleted" ? me.username : "Account deleted"}</p>
                 </div>
               </div>
 

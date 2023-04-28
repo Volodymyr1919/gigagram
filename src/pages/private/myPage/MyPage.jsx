@@ -11,7 +11,8 @@ import EditModal                      from "../../partial/modal/EditModal";
 import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./Posts";
 import Loading                        from "../../partial/Loading";
-import ErrorModal                     from "../../partial/modal/ErrorModal"               
+import ErrorModal                     from "../../partial/modal/ErrorModal";
+import { Avatar } from "@mui/material";            
 
 const MyPage = observer(() => {
 
@@ -45,11 +46,11 @@ const MyPage = observer(() => {
             <div className="info-container">
               <div className="title_header">
                 <div className="profile-picture">
-                  <img src={ConfigStore.me.avatar} alt="Profile avatar" />
+                  <Avatar src={ConfigStore.me.avatar} alt="Profile avatar" className="picture__avatar"/>
                 </div>
                 <div className="user_title">
                   <p>{ConfigStore.me.fullName}</p>
-                  <p>@{ConfigStore.me.username}</p>
+                  <p>{ConfigStore.me.username}</p>
                 </div>
               </div>
 

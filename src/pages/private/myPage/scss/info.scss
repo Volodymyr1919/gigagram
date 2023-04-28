@@ -48,11 +48,14 @@
       margin-top: 20px;
       display: flex;
       justify-content: center;
+      width: 70px;
+      height: 70px;
   
-      img {
+      .picture__avatar {
         border-radius: 50%;
-        height: 20vh;
-        width: 20vh;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
     }
   

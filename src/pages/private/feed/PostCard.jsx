@@ -12,7 +12,6 @@ import Like from '../../partial/like/Like';
 
 export default function PostCard(props) {
     const { ConfigStore } = useStores();
-    const [surplus, setSurplus] = React.useState(0);
 
     let item = props.item;
     const navigate = useNavigate();
@@ -117,7 +116,7 @@ export default function PostCard(props) {
             <Box style={{display: "flex", alignItems: "center"}}>
                 <Like like_id={item._id} userLikes={item.likes}/>
                 <AvatarGroup sx={{ ml: 2}}>
-                {item.likes.map((element, index) => (
+                {avatars.map((element, index) => (
                     <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
                     ))}
                     {!!surplus && <Avatar>+{surplus}</Avatar>}

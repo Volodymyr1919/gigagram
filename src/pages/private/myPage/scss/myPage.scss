@@ -1,8 +1,8 @@
 @import "../../../../scss/colors.scss";
 
 .body_myPage {
+  height: calc(100vh - 80px);
   background: url("../../../../assets/img/MyPageBg1.jpg");
-  background-size: 100vh;
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -65,10 +65,13 @@
       margin-top: 20px;
       display: flex;
       justify-content: center;
+      width: 70px;
+      height: 70px;
   
-      img {
-        width: 100%;
+      .picture__avatar {
+        border-radius: 50%;
         height: 100%;
+        width: 100%;
         object-fit: cover;
       }
     }

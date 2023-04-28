@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import likeStyle from './like.scss';
 import { useStores } from '../../../stores/MainStore';
-import { useEffect } from 'react';
+
 
 function Like(props) {
-    let like = props.like_id.toString();
-    let liked = false;
-    
+
     const { RequestsStore, ConfigStore } = useStores();
 
-    props.userLikes.find((liked) => liked.fromUser === ConfigStore.me._id) ? liked=true : null;
+    let like = props.like_id.toString();
+    let userLikes = props.userLikes;
+    let liked = userLikes.some((liked) => liked.fromUser === ConfigStore.me._id);
+    // props.userLikes.find((liked) => liked.fromUser === ConfigStore.me._id) ? (liked = true) : (liked = false);
 
     
     function handleLike(e) {
@@ -18,20 +19,26 @@ function Like(props) {
                 post_id: like
             })
               .then((data) => {
+                liked = true;
                 // setLikes(data.likes);
                 // setIconColor("error");
              })
               .catch((error) => console.error(error)); 
         } else {
             RequestsStore.doDelete(ConfigStore.url + "/like/" + like)
+            .then(() => {
+                liked = false;
+            })
         }
       };
 
-    //   useEffect(() => {
-    //     if(item) {
-    //         item.likes.find((liked) => liked.fromUser === ConfigStore.me._id) ? setIconColor("error") : setIconColor("action");
-    //     }
-    //   }, [item.likes]);
+      React.useEffect(() => {
+        if (userLikes.some((liked) => liked.fromUser === ConfigStore.me._id)) {
+          liked = true;
+        } else {
+          liked = false;
+        }
+      }, [userLikes, ConfigStore.me._id, liked]);
 
         return (
             <div id="like-content">

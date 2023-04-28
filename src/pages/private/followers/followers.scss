@@ -1,10 +1,6 @@
 @import "../../../scss/colors.scss";
 $color: #555;
 $white: #fff;
-// body {
-//   color: #555;
-//   font-family: sans-serif;
-// }
 
 .followers{
 
@@ -46,6 +42,7 @@ $white: #fff;
 
   .list-item {
     display: flex;
+    align-items: center;
     height: 100%;
     border: 0px solid rgba(123, 123, 123, 0.498039);
     border-radius: 4px;
@@ -64,7 +61,7 @@ $white: #fff;
       border-radius: 50%;
       width: 64px;
       height: 64px;
-      img{
+      .image__item{
         border-radius: 50%;
         height: 100%;
         width: 100%;
@@ -73,16 +70,10 @@ $white: #fff;
     }
     &-content{
       margin-left: 20px;
-      h4, p{
-        margin: 0;
-      }
-      h4{
-        margin-top: 10px;
-        font-size: 18px;
-      }
       p{
-        margin-top: 5px;
+        margin: 0;
         color: $clear_black;
+        font-size: 18px;
       }
     }
   }

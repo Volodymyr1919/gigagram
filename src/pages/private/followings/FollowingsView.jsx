@@ -4,6 +4,7 @@ import { Button, Modal }              from "react-bootstrap";
 import { useStores }                  from "../../../stores/MainStore";
 import followerStyle                  from "../followers/followers.scss";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 const Followings = observer((props) => {
 
@@ -16,7 +17,7 @@ const Followings = observer((props) => {
   const [followings, setFollowings] = useState([]);
 
   useEffect(() => {
-    if(username !== undefined ) {
+    if(username !== "Not Found" ) {
       new Promise((resolve, rejects) => {
         resolve();
       })
@@ -24,11 +25,16 @@ const Followings = observer((props) => {
         return RequestsStore.doGet(ConfigStore.url + "/followings/" + username);
       })
       .then((foll) => {
-        if (foll === "Forbidden") {
-          ConfigStore.setErr("Token has been burned");
-          ConfigStore.setIsShow(true);
-        } else {
-          setFollowings(foll.following);
+        switch (foll) {
+          case "Forbidden":
+            ConfigStore.setErr("Token has been burned");
+            ConfigStore.setIsShow(true);
+            break;
+          case null:
+            return;
+          default:
+            setFollowings(foll.following);
+            break;
         }
       })
     } else {
@@ -53,7 +59,7 @@ const Followings = observer((props) => {
       </Modal.Header>
       <Modal.Body>
         <ul className="list">
-          { followings === undefined ?
+          { followings === "Not Found" ?
                 <div className="loader">Loading...</div>
                 :
                 followings.map((arrayF) => (
@@ -63,10 +69,9 @@ const Followings = observer((props) => {
                     className="list-item"
                   >
                     <div className="list-item-image">
-                      <img src={arrayF.avatar} className="image__item" alt="" />
+                      <Avatar src={arrayF.avatar} className="image__item" alt="" />
                     </div>
                     <div className="list-item-content">
-                      <h4>{arrayF.fullName}</h4>
                       <p>{arrayF.username}</p>
                     </div>
                     <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => toUser(arrayF.username)}>GO TO</Button>
