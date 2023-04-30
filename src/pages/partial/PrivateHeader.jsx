@@ -11,8 +11,6 @@ import {
   Tooltip,
   MenuItem,
 } from "@mui/material/";
-import MenuIcon from "@mui/icons-material/Menu";
-import AdbIcon from "@mui/icons-material/Adb";
 import headerStyle from "./headermain.scss";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -22,7 +20,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { useStores } from "../../stores/MainStore";
-import SearchModal from "./SearchModal";
+import SearchModal from "./modal/SearchModal";
 import SearchIcon from '@mui/icons-material/Search';
 
 const PrivateHeader = observer(() => {
@@ -48,17 +46,10 @@ const PrivateHeader = observer(() => {
       });
   }, []);
 
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null);
-  // };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);

@@ -6,6 +6,7 @@ import Paper                          from "@mui/material/Paper";
 import { styled }                     from "@mui/material/styles";
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
+import ReceiptLongIcon                from '@mui/icons-material/ReceiptLong';
 import VideoLibraryIcon               from "@mui/icons-material/VideoLibrary";
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -42,24 +43,36 @@ const ProfilePosts = observer((props) => {
             ConfigStore.setIsShow(true);
           } else {
             ConfigStore.setMyPost(myPosts);
+            console.log(myPosts)
             ConfigStore.setUpdatePosts(false);
           }
         });
     } else {
       return;
     }
-  }, [myId, ConfigStore.updatePosts]);
+  }, [myId, ConfigStore.updatePosts, ConfigStore.err]);
 
   return (
     <div style={{ overflowWrap: "anywhere", width: "inherhit" }}>
-      <ImageList cols={3} style={{ height: "100%" }}>
-        {ConfigStore.myPosts === undefined ? (
-          <h2 className="errorCase">Sorry any posts found</h2>
-        ) : (
+    <ImageList
+    cols={3}
+    style={{
+    height: "100%",
+    display: ConfigStore.myPosts === "Not Found" ? "flex" : "grid",
+    flexDirection: "column",
+    }}
+    className={!ConfigStore.myPosts.includes("postEmptyState") ? "imageListFlex" : ""}
+    >
+      {ConfigStore.myPosts === "Not Found" ? (
+        <div className="postEmptyState">
+          <ReceiptLongIcon className="postEmptyState__icon"/>
+          <h2 className="errorCase"> Sorry any posts found</h2>
+      </div>
+      ) : (
           ConfigStore.myPosts.map((item) => (
             <ImageListItem
               style={{ cursor: "pointer" }}
-              key="{item._id}"
+              key={item._id + Math.random()}
               onClick={() => navigate(`/post/${item._id}`)}
             >
               {item.image && item.video ? (

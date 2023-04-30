@@ -9,15 +9,14 @@
   .profile-container {
     margin: 0 auto;
     width: 70%;
-    padding-bottom: 20px;
   }
 
   .posts_block{
-    background-color: rgb(255 255 255 / 22%);
-    padding: 10px 10px 5px;
+    background-color: #ffffff5c;
+    padding: 20px 20px 5px;
     border-radius: 10px
   }
-  
+
   .profile_info {
     .button_create {
   
@@ -128,12 +127,6 @@
       transition: all 0.3s ease;
     }
   }
-  .alice-carousel {
-    ul li{
-      display: none;
-    }
-  }
 
 }
-
 

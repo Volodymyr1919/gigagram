@@ -7,12 +7,16 @@ export default class ConfigStore {
     updatePosts = false;
     updateMe = false;
     myPosts = [];
+    userPosts = [];
     me = "";
     isShow = false;
     isShowFollowers = false;
     isShowFollowings = false;
     isShowEditModal = false;
     isShowModalWindow = false;
+    isShowSnack = false;
+    snackSeverity = "";
+    snackText = "";
     err = "";
     isShowSearchModal = false;
     loading = true;
@@ -22,6 +26,18 @@ export default class ConfigStore {
     constructor(MainStore) {
         this.MainStore = MainStore;
         makeAutoObservable(this);
+    };
+
+    setIsShowSnack(snack) {
+        this.isShowSnack = snack;
+    };
+
+    setSnackSeverity(severity) {
+        this.snackSeverity = severity;
+    };
+
+    setSnackText(text) {
+        this.snackText = text;
     };
    
     setUserProfile(userProfile){
@@ -35,6 +51,9 @@ export default class ConfigStore {
     setMyPost(myPosts){
         this.myPosts = myPosts
     };
+    setUserPost(userPosts){
+        this.userPosts = userPosts
+    }
 
     setUpdateMe(updateMe) {
         this.updateMe = updateMe

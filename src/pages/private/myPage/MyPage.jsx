@@ -10,15 +10,12 @@ import EditModal                      from "../../partial/modal/EditModal";
 import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./Posts";
 import Loading                        from "../../partial/Loading";
-import ErrorModal                     from "../../partial/modal/ErrorModal"               
+import ErrorModal                     from "../../partial/modal/ErrorModal"  
+import Success                        from "../../partial/Success";
 
 const MyPage = observer(() => {
 
   const { RequestsStore, ConfigStore } = useStores();
-
-  
-
-
 
   useEffect(() => {
     new Promise((resolve, rejects) => {
@@ -34,6 +31,7 @@ const MyPage = observer(() => {
         ConfigStore.setIsShow(true);
       } else {
         ConfigStore.setMe(myInfo);
+        ConfigStore.setUpdateMe(false);
       }
     })
   }, [ConfigStore.updateMe, ConfigStore.loading]);
@@ -52,13 +50,13 @@ const MyPage = observer(() => {
                 </div>
                 <div className="user_title">
                   <p>{ConfigStore.me.fullName}</p>
-                  <p>@{ConfigStore.me.username}</p>
+                  <p>{ConfigStore.me.username}</p>
                 </div>
               </div>
 
               <div className="profile-info">
                 <p>{ConfigStore.me.bio}</p>
-                <div className="profile-counts">
+                <div className="profile-counts" style={{display: "flex"}}>
                   <div className="count_block-posts">
                     <span className="count">{ConfigStore.me.posts_count}</span>
                     <span className="stat">Posts</span>
@@ -91,12 +89,15 @@ const MyPage = observer(() => {
               <ModalWindow />
             </div> 
           </div>
+
           <div className="posts_block">
             <ProfilePosts myId={ConfigStore.me._id} />
           </div>
+
         </div>
         <Footer />
         <ErrorModal />
+        <Success />
       </div>
     }
   </>

@@ -3,33 +3,33 @@ import Stack      from '@mui/material/Stack';
 import Button     from '@mui/material/Button';
 import Snackbar   from '@mui/material/Snackbar';
 import MuiAlert   from '@mui/material/Alert';
+import { observer } from 'mobx-react';
+import { useStores } from '../../stores/MainStore';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function Success(props) {
-  const {open, setOpen} = props;
+const Success = observer(() => {
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+  const { ConfigStore } = useStores();
 
-  const handleClose = (event, reason) => {
+  const handleClose = (reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
-    setOpen(false);
+    ConfigStore.setIsShowSnack(false);
   };
 
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Success!
+      <Snackbar open={ConfigStore.isShowSnack} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={ConfigStore.snackSeverity} sx={{ width: '100%' }}>
+          {ConfigStore.snackText}
         </Alert>
       </Snackbar>
     </Stack>
   );
-}
+});
+
+export default Success;

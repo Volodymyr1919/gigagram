@@ -26,11 +26,11 @@ const RecomendUsers = observer(() => {
           setUsers(users);
         }
       })
-    },[])
+    },[]);
 
     const toUser = (username) => {
     navigate(`/user/${username}`);
-  };
+    };
 
   const filteredUsers = users.filter((person) => {
     return (
@@ -42,10 +42,20 @@ const RecomendUsers = observer(() => {
 
   function handleSearch(event) {
     setSearchTerm(event.target.value);
-  }
+  };
 
   return (
-    <List dense sx={{ width: '360px', maxWidth: 360, bgcolor: 'background.paper', height: 'fit-content', paddingTop: '32px'}}>
+    <List className='usersList' dense sx={{
+        width: '700px',
+        maxWidth: 360,
+        bgcolor: 'background.paper',
+        height: 'fit-content',
+        padding: '10px',
+        paddingTop: '32px',
+        borderRadius: '5px',
+        boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
+        borderRadius: "25px"
+      }}>
       <TextField 
           onChange={handleSearch}
           size='small'
@@ -54,6 +64,9 @@ const RecomendUsers = observer(() => {
           placeholder="Username"
           multiline
           variant="filled"
+          style={{
+            marginBottom: "10px"
+          }}
         />
       {filteredUsers.map((person) => {
         const labelId = `checkbox-list-secondary-label-${person._id}`;
@@ -61,7 +74,7 @@ const RecomendUsers = observer(() => {
           <ListItem
             key={person._id}
              secondaryAction={
-                <Button id={person.username}>Follow</Button>
+                <Button onClick={() => toUser(person.username)}>Follow</Button>
              }
             disablePadding
           >

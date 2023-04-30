@@ -8,18 +8,18 @@ export default function Slider1() {
       title: 'Название изображения 1',
       description: 'Описание изображения 1',
       url:
-        'https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_1290x726/dam/pnr/2023/Products/911-Carrera-GTS-30-Years-Porsche-Thailand-Edition/M12_Thai30Y_HIGH_RES.jpg/jcr:content/M12_Thai30Y_HIGH_RES.jpg',
+        'https://tyyliniekka.fi/wp-content/uploads/2021/06/Porsche-1068x601.jpeg',
     },
     {
       title: 'Название изображения 2',
       description: 'Описание изображения 2',
       url:
-        'https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/teaser_720x406x2/dam/pnr/2023/Products/911-Carrera-GTS-30-Years-Porsche-Thailand-Edition/Galerie-2/M07_Thai30Y_HIGH_RES.jpg/jcr:content/M07_Thai30Y_HIGH_RES.jpg',
+        'https://cdn.motor1.com/images/mgl/Kbbj1A/s1/porsche-tequipment-roof-tent.jpg',
     },
   ];
 
   return (
-    <Carousel fade className='slider' >
+    <Carousel fade className='slider' interval={null} >
       {slides1.map((slide, index) => (
         <Carousel.Item key={index}>
           <div className="second__block">

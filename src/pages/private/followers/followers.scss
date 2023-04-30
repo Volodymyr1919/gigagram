@@ -29,6 +29,21 @@ $white: #fff;
     padding: 10px 20px;
   }
 
+  div.modal-dialog{
+    div.modal-content{
+      div.modal-body{
+        height: 773px;
+        ul.list{
+          height: 100%;
+          overflow-y: scroll;
+          li.list-item{
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+
   .list-item {
     display: flex;
     height: 100%;

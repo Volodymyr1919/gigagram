@@ -23,7 +23,7 @@ export default function Slider2() {
 
   return (
     
-     <Carousel fade className='slider' >
+     <Carousel fade className='slider' interval={null} >
       {slides1.map((slide, index) => (
         <Carousel.Item key={index}>
           <div className="third__block">

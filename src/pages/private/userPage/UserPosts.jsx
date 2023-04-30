@@ -6,9 +6,11 @@ import ImageList                      from "@mui/material/ImageList";
 import ImageListItem                  from "@mui/material/ImageListItem";
 import Paper                          from '@mui/material/Paper';
 import Loading                        from "../../partial/Loading";
+import VideoLibraryIcon               from "@mui/icons-material/VideoLibrary";
 import { styled }                     from '@mui/material/styles';
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
+import ReceiptLongIcon                from '@mui/icons-material/ReceiptLong';
 
 const UserProfilePosts = observer((props) => {
 
@@ -17,7 +19,6 @@ const UserProfilePosts = observer((props) => {
   
   const { myId } = props;
 
- 
   const navigate = useNavigate();
 
   const Label = styled(Paper)(({ theme }) => ({
@@ -54,10 +55,21 @@ const UserProfilePosts = observer((props) => {
 
   return (
     <div style={{overflowWrap: "anywhere", width: "inherhit"}}>
-    <ImageList variant="masonry" cols={3} gap={8}>
-      {ConfigStore.myPosts === undefined ? (
-        <h2 className="errorCase">Sorry any posts found</h2>
-      ) : (
+    <ImageList
+  cols={3}
+  style={{
+    height: "100%",
+    display: ConfigStore.myPosts === "Not Found" ? "flex" : "grid",
+    flexDirection: "column",
+  }}
+  className={!ConfigStore.myPosts.includes("postEmptyState") ? "imageListFlex" : ""}
+>
+  {ConfigStore.myPosts === "Not Found" ? (
+    <div className="postEmptyState">
+      <ReceiptLongIcon className="postEmptyState__icon" />
+      <h2 className="errorCase"> Sorry any posts found</h2>
+    </div>
+  ) : (
         ConfigStore.myPosts.map((item) => (
           <ImageListItem
             key={item._id + Math.random()}
@@ -65,44 +77,36 @@ const UserProfilePosts = observer((props) => {
             onClick={() => navigate(`/post/${item._id}`)}
           >
             {item.image && item.video ? (
-              <AliceCarousel
-                disableButtonsControls
-                dotsDisabled={true}
-                touchTracking
-                touchMoveDefaultEvents
-              >
-                <img
-                  src={`${item.image}`}
-                  alt={item.image}
-                  loading="lazy"
-                  className="post"
-                  style={{
-                    objectFit: "cover",
-                    maxWidth: "100%",
-                    margin: "auto",
-                    width: "100%",
-                    height: "auto",
-                  }}
-                />
+              // <AliceCarousel
+              //   disableButtonsControls
+              //   dotsDisabled={true}
+              //   touchTracking
+              //   touchMoveDefaultEvents
+              // >
+              <div className="item_video">
+                <span className="set-icon">
+                    <VideoLibraryIcon />
+                  </span>
+                  <img
+                    src={`${item.image}`}
+                    alt={item.image}
+                    loading="lazy"
+                    className="post"
+                  />
                 <video
                   autoPlay
                   loop
                   muted
                   playsInline
                   className="post"
-                  style={{
-                    objectFit: "cover",
-                    maxWidth: "100%",
-                    margin: "auto",
-                    width: "100%",
-                    height: "auto",
-                  }}
+                  style={{ display: "none" }}
                 >
                   <source src={item.video} />
                 </video>
-              </AliceCarousel>
+              </div>
+              // </AliceCarousel>
             ) : (
-              <div>
+              <div className="item_video">
                 {item.image && (
                   <img
                     src={`${item.image}`}
@@ -110,32 +114,12 @@ const UserProfilePosts = observer((props) => {
                     alt={item.image}
                     loading="lazy"
                     className="post"
-                    style={{
-                      objectFit: "cover",
-                      maxWidth: "100%",
-                      margin: "auto",
-                      width: "100%",
-                      height: "auto",
-                    }}
                   />
                 )}
                 {item.video && (
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="post"
-                    style={{
-                      objectFit: "cover",
-                      maxWidth: "100%",
-                      margin: "auto",
-                      width: "100%",
-                      height: "auto",
-                    }}
-                  >
-                    <source src={`${item.video}`} />
-                  </video>
+                <video autoPlay loop muted playsInline className="post">
+                   <source src={`${item.video}`} />
+                </video>
                 )}
               </div>
             )}

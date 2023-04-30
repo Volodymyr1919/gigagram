@@ -1,23 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
 @import "../../../scss/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 
 div.main__feed{
+    @media (max-width: 580px) {
+        .postCard {
+            width: 100%;
+            div{
+                font-size: 100% ;
+            }
+            p {
+                font-size: 1rem !important;
+            }
+
+        }
+    }
+    @media (max-width: 700px) and (min-width: 580px) {
+        .postCard {
+            width: 100%;
+
+            p {
+                font-size: 1rem !important;
+            }
+
+        }
+        
+    }
+    @media (max-width: 1400px) {
+        .gigagram {
+            display: none !important; 
+        }
+        .usersList {
+            display: none
+        }
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: fit-content;
-    background: #d9d9d973;
+    background: rgb(150,187,189);
+    background: linear-gradient(180deg, rgb(231, 249, 250) 0%, rgb(255, 255, 255) 100%);
+    // background: #d9d9d9;
+    section.gigagram{
+        top: 0;
+        left: 0;
+        width: 360px;
+        height: 620px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffff;
+        border-radius: 25px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        span{
+            rotate: 270deg;
+            font-size: 80px;
+            font-family: 'Bruno Ace SC', cursive;
+            color: transparent;
+            background: linear-gradient(141deg, rgba(226,98,82,1) 23%, rgb(255, 192, 103) 84%);
+            border-radius: 5px;
+            text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+        }
+    }
     div.feed__header{
         padding: 15px;
         box-sizing: border-box;
         width: 100%;
         height: 180px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        h2{
+            margin: 0;
+            padding: 0 !important;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         figure.header__logo{
             width: 300px;
             height: 130px;
@@ -68,13 +132,14 @@ div.main__feed{
     }
     main.feed{
         display: flex;
-        gap: 100px;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         div.feed__posts{
             display: flex;
             flex-direction: column;
             gap: 40px;
-            margin-left: 22%;
+            align-items: center;
             h2.errorCase{
                 font-family: 'Play', sans-serif;
                 color: #F47A1D;
@@ -100,6 +165,34 @@ div.main__feed{
                 }
             }
         }
+        div.MuiBox-root {
+            div.MuiAvatarGroup-root {
+                div.MuiAvatar-root {
+                    width: 2rem !important;
+                    height: 2rem !important;
+                }
+            }
+        }
+        div.MuiCardActions-root {
+            button {
+                color:#F47A1D !important;
+                &:hover {
+                    background-color: #fdd27525;
+                }
+            }
+        }
+        div.MuiListItemSecondaryAction-root {
+            button {
+                font-size: 12px;
+                color:#F47A1D !important;
+                &:hover {
+                    background-color: #fdd27525;
+                }
+            }
+        }
+    }
+    .footer{
+        margin-top: 30px;
     }
 }
 a{
