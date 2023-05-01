@@ -116,7 +116,6 @@ $white: #fff;
       li {
         img {
           width: 45px;
-          ;
         }
 
         .list-item-content {
@@ -136,7 +135,6 @@ $white: #fff;
       li {
         img {
           width: 45px;
-          ;
         }
 
         .list-item-content {
@@ -152,16 +150,41 @@ $white: #fff;
   @media (max-width: 430px) {
     display: flex !important;
 
+    .h4{
+      font-size: 15px;
+    }
+
     .modal-body {
       padding: 0;
+    }
+
+    .list-item {
+      height: 60px !important;
+      button{
+        width: 60px;
+        height: 25px;
+        font-size: 10px;
+      }
     }
 
     .list-item-content {
       margin-left: 10px;
     }
 
+    .list-item-image{
+      width: 40px;
+      height: 40px;
+    }
+
     .modal-dialog {
       margin: 0 auto !important;
+    }
+    .modal-footer{
+      button{
+        width: 60px;
+        height: 25px;
+        font-size: 10px;
+      }
     }
   }
 
@@ -181,7 +204,6 @@ $white: #fff;
       li {
         img {
           width: 45px;
-          ;
         }
 
         .list-item-content {

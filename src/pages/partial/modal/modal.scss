@@ -2,6 +2,7 @@
 
 
 .modals {
+
     .btn-close:focus {
         outline: none;
         box-shadow: none;
@@ -44,6 +45,16 @@
         color: #fff;
     }
 
+    .MuiInputBase-root{
+        &::after{
+            border-bottom: 2px solid #F47A1D;
+        }
+    }
+    
+    .search__header{
+        padding-bottom: 0;
+    }
+
 
     @media (min-height: 620px) and (min-width: 575px) {
         display: flex !important;
@@ -70,12 +81,75 @@
 
     @media (max-width: 400px) {
 
+        .MuiTextField-root{
+            margin: 0 !important;
+        }
+
         .modal-content {
             width: 300px !important;
         }
 
+        li{
+            .MuiListItemButton-gutters{
+                padding-right: 80px;
+            }
+            .MuiListItemAvatar-root{
+                min-width: 50px;
+            }
+            .MuiListItemText-root{
+                span{
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+            button{
+                width: 60px;
+                height: 25px;
+                font-size: 10px;
+            }
+        }
+
         .modal-dialog {
             margin: 0 auto;
+        }
+
+        .h4{
+            font-size: 15px;
+        }
+
+        form{
+            .modal-body{
+                padding-bottom: 0;
+            }
+            .MuiFormControl-root{
+                height: 30px;
+                label{
+                    font-size: 0.8rem;
+                    top: -10px;
+                }
+                label.Mui-focused{
+                    top: 0;
+                    transform: translate(14px, -9px) scale(0.9);
+                }
+                .MuiInputBase-root{
+                    height: 30px;
+                    input{
+                        padding: 0;
+                        padding-left: 5px;
+                    }
+                }
+            }
+            .validError{
+                height: 12px;
+                font-size: 11px !important;
+            }
+            .modal-footer{
+                button{
+                    width: 60px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+            }
         }
 
     }

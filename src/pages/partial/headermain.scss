@@ -64,10 +64,26 @@
     a {
       font-size: 3vw;
     }
+    .search__button,
+    .plus__button{
+      margin: 0;
+      &:hover{
+        .search__icon{
+          rotate: -60deg;
+        }
+      }
+    }
+    .plus__button{
+      &:hover{
+        .plus__icon{
+          transform: scale(0.9);
+        }
+      }
+    }
   }
 }
 
-@media screen and (max-height: 800px) {
+@media (max-height: 800px) {
   .header {
     figure.header__logo {
       margin: 0;

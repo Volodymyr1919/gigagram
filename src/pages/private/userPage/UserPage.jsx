@@ -128,7 +128,7 @@ const UserPage = observer(() => {
             <div className="info-container">
               <div className="title_header">
                 <div className="profile-picture">
-                  <Avatar src={me !== "deleted" ? me.avatar : deletedUser} alt="Profile avatar" className="picture__img"/>
+                  <Avatar src={me !== "deleted" ? me.avatar : deletedUser} alt="Profile avatar" className="picture__avatar"/>
                 </div>
                 <div className="user_title">
                   <p>{me.fullName}</p>

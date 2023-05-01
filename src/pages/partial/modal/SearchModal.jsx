@@ -58,7 +58,7 @@ const SearchModal = observer(() => {
     <>
       <Modal show={ConfigStore.isShowSearchModal} className="modals" onHide={handleClose}>
         <div className="search">
-        <Modal.Header closeButton>
+        <Modal.Header className="search__header">
           <TextField className="search__input"
           onChange={handleSearch}
           size='small'

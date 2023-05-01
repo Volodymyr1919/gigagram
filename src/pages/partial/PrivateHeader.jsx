@@ -20,7 +20,7 @@ const PrivateHeader = observer(() => {
 
   const { RequestsStore, ConfigStore } = useStores();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  // const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   React.useEffect(() => {
@@ -40,17 +40,17 @@ const PrivateHeader = observer(() => {
     })
   }, [])
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  // const handleOpenNavMenu = (event) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -78,7 +78,7 @@ const PrivateHeader = observer(() => {
           >
             <img src={logoH} alt="" />
           </figure>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -130,28 +130,27 @@ const PrivateHeader = observer(() => {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
 
           
 
-          <Box sx={{ flexGrow: 0 }}>
-            {/* Это сами кнопки поиска пользователя и добавления поста */}
+          <Box sx={{ flexGrow: 0, display: "flex" }}>
             <button onClick={() => ConfigStore.setIsShowSearchModal(true)} className="search__button" >
               <SearchIcon className="search__icon"/>
             </button>
             <button onClick={() => ConfigStore.setIsShowModalWindow(true)} className="plus__button" >
               <PostAddIcon className="plus__icon"/>
             </button>
-                <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                        alt=""
-                        src={ConfigStore.me.avatar}
-                        style={{ background: "#D9D9D9" }}
-                    />
-                    </IconButton>
-                </Tooltip>
-                <Menu
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                      alt=""
+                      src={ConfigStore.me.avatar}
+                      style={{ background: "#D9D9D9" }}
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
@@ -180,7 +179,7 @@ const PrivateHeader = observer(() => {
                 <MenuItem>
                     <Typography textAlign="center" style={{color: "red"}}><DeleteAcc sx={{ m: 2 }} /></Typography>
                 </MenuItem>
-                </Menu>
+              </Menu>
           </Box>
         </Toolbar>
       </Container>
