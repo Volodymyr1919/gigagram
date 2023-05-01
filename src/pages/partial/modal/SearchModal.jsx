@@ -5,7 +5,8 @@ import { Modal, Button }              from "react-bootstrap";
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
 import { useNavigate }                from "react-router-dom/dist";
-import { ListItem, ListItemAvatar, ListItemText, Avatar, ListItemButton } from '@mui/material';
+import { ListItem, ListItemAvatar, ListItemText, Avatar, ListItemButton, TextField, InputAdornment } from '@mui/material';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 const SearchModal = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
@@ -58,14 +59,32 @@ const SearchModal = observer(() => {
       <Modal show={ConfigStore.isShowSearchModal} className="modals" onHide={handleClose}>
         <div className="search">
         <Modal.Header closeButton>
-          <input type="text" onChange={handleSearch} />
+          <TextField className="search__input"
+          onChange={handleSearch}
+          size='small'
+          fullWidth
+          id="input-with-icon-textfield"
+          placeholder="Username"
+          multiline
+          variant="standard"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" style={{ margin: 0, marginRight: "5px" }}>
+                <PersonSearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          style={{
+            marginBottom: "10px"
+          }}
+        />
         </Modal.Header>
         {filteredUsers.slice(0, 5).map((person) => {
           const labelId = `checkbox-list-secondary-label-${person._id}`;
           return (
             <ListItem
               key={person._id}
-              secondaryAction={<Button className="follow" id={person.username}>Follow</Button>}
+              secondaryAction={<Button onClick = {() => toUser(person.username)} className="edit-btn" >GO TO</Button>}
               disablePadding
             >
               <ListItemButton onClick = {() => toUser(person.username)}>

@@ -25,15 +25,25 @@
       height: 40px;
     }
   }
-  .search {
-    color: black;
-    margin-right: 10px;
-    cursor: pointer;
-      :hover {
-        color: grey;
+  .search__button,
+  .plus__button{
+    transition: all ease-in-out .5s;
+    border: none;
+    background: none;
+    margin-right: 20px;
+    &:active{
+      .search__icon{
+        rotate: -60deg;
       }
+    }
   }
-
+  .plus__button{
+    &:active{
+      .plus__icon{
+        transform: scale(0.9);
+      }
+    }
+  }
 }
 @media screen and (max-width: 330px) {
   .header {

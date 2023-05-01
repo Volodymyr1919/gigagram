@@ -2,7 +2,19 @@
 
 
 .modals {
+    .btn-close:focus {
+        outline: none;
+        box-shadow: none;
+    }
 
+    label.Mui-focused{
+        color: #F47A1D;
+    }
+    .MuiInputBase-root.Mui-focused{ 
+        .MuiOutlinedInput-notchedOutline{
+            border-color: #F47A1D;
+        }
+    }
     align-content: center;
     align-items: center;
 
@@ -82,6 +94,12 @@
 }
 
 .search {
+   
+    .btn-close:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
     animation: fadeIn 0.1s;
 
     @keyframes fadeIn {
@@ -94,17 +112,17 @@
         }
     }
 
-    input {
-        padding: 10px;
-        border-radius: 15px;
-        border: solid $main;
-        height: 45px;
-        outline-color: $main;
+    // .search__input {
+    //     padding: 10px;
+    //     border-radius: 15px;
+    //     border: solid $main;
+    //     height: 45px;
+    //     outline-color: $main;
 
-        &:focus {
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-        }
-    }
+    //     &:focus {
+    //         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    //     }
+    // }
 
     .btn-primary {
         border: none;
