@@ -1,7 +1,7 @@
 @import '../../../scss/app.scss';
 
 
-.modal {
+.modals {
 
     align-content: center;
     align-items: center;
@@ -27,22 +27,25 @@
     }
 
     .edit-btn {
-        background-color: #096bde;
+        background-color: $main;
+        border: none;
         color: #fff;
     }
 
 
     @media (min-height: 620px) and (min-width: 575px) {
         display: flex !important;
+
         .modal-content {
             min-height: 355px;
             border-radius: 15px;
             width: 460px;
         }
     }
-   
+
     @media (max-width: 575px) {
-         display: flex !important;
+        display: flex !important;
+
         .modal-content {
             width: 350px !important;
         }

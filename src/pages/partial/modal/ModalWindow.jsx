@@ -48,7 +48,7 @@ const ModalWindow = observer((props) => {
   
   return (
     <>
-      <Modal show={ConfigStore.isShowModalWindow} onHide={handleClose}>
+      <Modal className="modals" show={ConfigStore.isShowModalWindow} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add post</Modal.Title>
         </Modal.Header>

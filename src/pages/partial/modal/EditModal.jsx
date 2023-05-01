@@ -55,7 +55,7 @@ const EditModal = observer((props) => {
 
   return (
     <>
-      <Modal className="modal" show={ConfigStore.isShowEditModal} onHide={handleClose}>
+      <Modal className="modals" show={ConfigStore.isShowEditModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Me</Modal.Title>
         </Modal.Header>

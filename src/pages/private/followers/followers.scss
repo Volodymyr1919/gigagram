@@ -1,16 +1,14 @@
 @import "../../../scss/colors.scss";
 $color: #555;
 $white: #fff;
-// body {
-//   color: #555;
-//   font-family: sans-serif;
-// }
 
-.followers{
+.followers {
+  align-items: center;
 
   .list-wrapper {
     max-width: 400px;
     margin: 50px auto;
+
     h2 {
       margin-left: 130px;
       color: $main;
@@ -29,20 +27,36 @@ $white: #fff;
     padding: 10px 20px;
   }
 
-  div.modal-dialog{
-    div.modal-content{
-      div.modal-body{
-        height: 773px;
-        ul.list{
+  div.modal-dialog {
+    div.modal-content {
+      min-width: 310px;
+
+      div.modal-body {
+        max-height: 500px;
+        overflow-y: scroll;
+        height: 100%;
+
+        ul.list {
           height: 100%;
           overflow-y: scroll;
-          li.list-item{
+
+          li.list-item {
             height: 100px;
           }
         }
       }
     }
   }
+
+  .list {
+    li {
+      button {
+        margin: 2em 0.5em 2em auto !important;
+      }
+    }
+  }
+
+
 
   .list-item {
     display: flex;
@@ -51,32 +65,129 @@ $white: #fff;
     border-radius: 4px;
     color: rgb(153, 153, 153);
     line-height: 90px;
-    padding-left: 32px;
+    padding-left: 20px;
     margin: 15px;
     font-size: 24px;
     font-weight: 400;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0,0,0,0.2) 0px 2px 4px 0px;
-    &:last-child{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+
+    &:last-child {
       border-bottom: none;
     }
+
     &-image {
       border-radius: 50%;
       width: 64px;
     }
-    &-content{
+
+    &-content {
       margin-left: 20px;
-      h4, p{
+
+      h4,
+      p {
         margin: 0;
       }
-      h4{
+
+      h4 {
         margin-top: 10px;
         font-size: 18px;
       }
-      p{
+
+      p {
         margin-top: 5px;
         color: $clear_black;
       }
     }
   }
+
+  @media (max-height: 950px) {
+    display: block !important;
+  }
+
+  @media (min-width: 1100px) {
+    .list {
+      margin: 0;
+      padding: 0;
+
+      li {
+        img {
+          width: 45px;
+          ;
+        }
+
+        .list-item-content {
+          p {
+            font-size: 0.8em !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 510px) and (min-width: 391px) {
+    .list {
+      margin: 0;
+      padding: 0;
+
+      li {
+        img {
+          width: 45px;
+          ;
+        }
+
+        .list-item-content {
+          p {
+            font-size: 0.8rem !important;
+          }
+        }
+      }
+    }
+
+  }
+
+  @media (max-width: 430px) {
+    display: flex !important;
+
+    .modal-body {
+      padding: 0;
+    }
+
+    .list-item-content {
+      margin-left: 10px;
+    }
+
+    .modal-dialog {
+      margin: 0 auto !important;
+    }
+  }
+
+  @media (min-width: 430px) {
+    display: flex !important;
+
+    .modal-dialog {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .list {
+      margin: 0;
+      padding: 0;
+
+      li {
+        img {
+          width: 45px;
+          ;
+        }
+
+        .list-item-content {
+          p {
+            font-size: 0.6rem !important;
+          }
+        }
+      }
+    }
+  }
+
 }
