@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useForm }                    from "react-hook-form";
-import { Modal, Button, ModalBody }   from "react-bootstrap";
 import modalStyle                     from "./modal.scss";
-import { Avatar, ListItem, ListItemButton, ListItemText, ListItemAvatar, TextField, InputAdornment } from "@mui/material/";
+import { Modal, Button }              from "react-bootstrap";
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
 import { useNavigate }                from "react-router-dom/dist";
-// Здесь импорт иконки для поля ввода поиска пользователя
+import { ListItem, ListItemAvatar, ListItemText, Avatar, ListItemButton, TextField, InputAdornment } from '@mui/material';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 const SearchModal = observer(() => {
@@ -57,12 +56,10 @@ const SearchModal = observer(() => {
 
   return (
     <>
-      <Modal show={ConfigStore.isShowSearchModal} onHide={handleClose}>
+      <Modal show={ConfigStore.isShowSearchModal} className="modals" onHide={handleClose}>
+        <div className="search">
         <Modal.Header closeButton>
-          <Modal.Title>Search</Modal.Title>
-        </Modal.Header>
-
-        <TextField 
+          <TextField className="search__input"
           onChange={handleSearch}
           size='small'
           fullWidth
@@ -70,7 +67,6 @@ const SearchModal = observer(() => {
           placeholder="Username"
           multiline
           variant="standard"
-          // Здесь использование иконки для поля ввода поиска пользователя
           InputProps={{
             startAdornment: (
               <InputAdornment position="start" style={{ margin: 0, marginRight: "5px" }}>
@@ -82,6 +78,7 @@ const SearchModal = observer(() => {
             marginBottom: "10px"
           }}
         />
+        </Modal.Header>
         {filteredUsers.slice(0, 5).map((person) => {
           const labelId = `checkbox-list-secondary-label-${person._id}`;
           return (
@@ -99,6 +96,7 @@ const SearchModal = observer(() => {
             </ListItem>
           );
         })}
+        </div>
       </Modal>
     </>
   );

@@ -4,6 +4,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 
 div.main__feed{
+    @media (max-width: 580px) {
+        .postCard {
+            width: 100%;
+            div{
+                font-size: 100% ;
+            }
+            p {
+                font-size: 1rem !important;
+            }
+
+        }
+    }
+    @media (max-width: 700px) and (min-width: 580px) {
+        .postCard {
+            width: 100%;
+
+            p {
+                font-size: 1rem !important;
+            }
+
+        }
+        
+    }
+    @media (max-width: 1400px) {
+        .gigagram {
+            display: none !important; 
+        }
+        .usersList {
+            display: none
+        }
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,6 +189,9 @@ div.main__feed{
                 }
             }
         }
+    }
+    .footer{
+        margin-top: 30px;
     }
 }
 a{

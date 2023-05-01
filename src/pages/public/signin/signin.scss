@@ -6,9 +6,9 @@ div.signin {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 80px);
   width: 100%;
   .bg-video {
+    background-image: url(../../../assets/img/BgSignImage.png);
     position: fixed;
     top: 0;
     left: 0;
@@ -131,6 +131,7 @@ div.signin {
     box-sizing: border-box;
   }
 
+
   .login__field {
     padding: 20px 0px;  
     position: relative; 
@@ -220,6 +221,64 @@ div.signin {
     -webkit-text-fill-color: #000;
     -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
   }
+  @media (max-width: 320px) {
+    .login {
+      width: 100%;
+      .login__input {
+        width: 80%;
+      }
+    }
+   }
 
+  @media (max-width: 418px) {
+    .screen{
+      height: 100%;
+      box-shadow: none;
+    }
+   }
+  @media (max-height: 725px) and (max-width: 500px) {
+    .screen{
+      height: 100%;
+      box-shadow: none;
+    }
+  }
+
+ @media (max-width: 500px) {
+  height: calc(100vh - 120px);
+  .bg-video {
+    video{
+      display: none;
+    }
+  }
+ }
+
+ @media (max-height: 700px) and (max-width: 418px) {
+  .signin{
+    height: 70% ;
+  }
+  .screen {
+    height: 100% !important;
+  }
+ }
+ @media (max-height: 700px) {
+  .signin{
+    height: 70% !important;
+  }
+  .screen {
+    height: 90%;
+  }
+ }
+ @media (max-height: 725px) and (min-width: 500px) {
+  .screen{
+    border-top: 2px solid rgba(111, 111, 111, 0.908);
+    box-shadow: none;
+    min-height: 600px;
+  }
+  .signin{
+    height: unset
+  }
 }
-
+@media (min-height: 680px){
+  height: calc(100% - 80px);
+}
+}

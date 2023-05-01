@@ -31,21 +31,13 @@
       font-size: small;
     }
   }
-  @media (max-width: 300px) {
-    .links {
-      font-size: xx-small;
-    }
-    p{
-      font-size: xx-small !important;
-    }
-  }
-
+  
   @media (max-width: 430px) {
     .links {
-      font-size: x-small;
+      font-size: 8px;
     }
     p{
-      font-size: x-small !important;
+      font-size: small !important;
     }
   }
 

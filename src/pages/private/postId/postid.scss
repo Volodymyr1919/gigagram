@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap");
 
+@media (max-width: 520px) {
+   .main__postid {
+    min-width: 0 !important;
+    margin: 15px;
+  }
+}
 
 div.postId{
   display: flex;

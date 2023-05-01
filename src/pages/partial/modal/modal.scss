@@ -1,36 +1,12 @@
-.modal{
-    display: flex !important;
-    align-content: center;
-    align-items: center;
-    *{
-        border-radius: 3%;
+@import '../../../scss/app.scss';
+
+
+.modals {
+    .btn-close:focus {
+        outline: none;
+        box-shadow: none;
     }
 
-    // Я здесь стилизовал input, кнопки и убрал свечение кнопки Х при нажатии
-
-    .modal-content{
-        width: 30vw ;
-    }
-    
-    backdrop-filter: blur(8px);
-    background-color: #ffffff97;
-    input{
-        width: 100%;
-    }
-    p.validError{
-        margin-top: 1px;
-        font-size: 12px;
-        color: red;
-        height: 15px;
-        width: 100%;
-    }
-    // Здесь стилизация самих кнопок, таких как "Add", "GO TO", ...
-    .edit-btn{
-        background: #F47A1D;
-        border: none;
-        color:#FFF !important;
-    }
-    // Здесь input стилизация
     label.Mui-focused{
         color: #F47A1D;
     }
@@ -39,20 +15,146 @@
             border-color: #F47A1D;
         }
     }
-    // Здесь убрал свечени с кнопки Х
+    align-content: center;
+    align-items: center;
+
+    .modal-content {
+        min-height: 355px;
+        border-radius: 15px;
+    }
+
+    backdrop-filter: blur(8px);
+    background-color: #ffffff97;
+
+    input {
+        width: 100%;
+    }
+
+    p.validError {
+        margin-top: 1px;
+        font-size: 12px;
+        color: red;
+        height: 15px;
+        width: 100%;
+    }
+
+    .edit-btn {
+        background-color: $main;
+        border: none;
+        color: #fff;
+    }
+
+
+    @media (min-height: 620px) and (min-width: 575px) {
+        display: flex !important;
+
+        .modal-content {
+            min-height: 355px;
+            border-radius: 15px;
+            width: 460px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        display: flex !important;
+
+        .modal-content {
+            width: 350px !important;
+        }
+
+        .modal-dialog {
+            margin: 0 auto;
+        }
+
+    }
+
+    @media (max-width: 400px) {
+
+        .modal-content {
+            width: 300px !important;
+        }
+
+        .modal-dialog {
+            margin: 0 auto;
+        }
+
+    }
+
+    @media (max-width: 300px) {
+
+        .modal-content {
+            width: 260px !important;
+        }
+
+        .modal-dialog {
+            margin: 0 auto;
+        }
+    }
+
+}
+
+.search {
+   
     .btn-close:focus {
         outline: none;
         box-shadow: none;
     }
-    div.MuiFormControl-root {
-        div.MuiInputBase-root {
-            padding: 5px 15px;
-            &::before {
-                border-bottom: 1px solid #d9d9d9;
-            }
-            &::after {
-                border-bottom: 1px solid #F47A1D;
-            }
+
+    animation: fadeIn 0.1s;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
         }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    // .search__input {
+    //     padding: 10px;
+    //     border-radius: 15px;
+    //     border: solid $main;
+    //     height: 45px;
+    //     outline-color: $main;
+
+    //     &:focus {
+    //         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    //     }
+    // }
+
+    .btn-primary {
+        border: none;
+        background-color: $main;
+    }
+
+    .modal-header {
+        li {
+            cursor: pointer;
+        }
+    }
+
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+        display: none;
+    }
+
+    .dialog {
+        width: 500px;
+    }
+
+    .follow {
+        color: #fff;
+        background-color: $main;
+
+        &:hover {
+            color: $main;
+            background-color: #bcabab70;
+        }
+    }
+
+    .btn-close {
+        position: absolute;
+        right: 30px;
     }
 }

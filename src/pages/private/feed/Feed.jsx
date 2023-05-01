@@ -99,7 +99,7 @@ const FeedPage = observer(() => {
                 <h2 className="errorCase">Sorry any posts found</h2>
               ) : (
                 posts.slice().reverse().map((item) => (
-                  <PostCard item={item} key={item._id} />
+                  <PostCard item={item} key={item._id}/>
                 ))
               )}
             </div>

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useStores } from "../../../stores/MainStore";
 import { useNavigate } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
 import { Avatar } from "@mui/material";
 

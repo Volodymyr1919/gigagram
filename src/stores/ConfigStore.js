@@ -8,6 +8,7 @@ export default class ConfigStore {
     updatePosts = false;
     updateMe = false;
     myPosts = [];
+    userPosts = [];
     me = "";
     isShow = false;
     isShowFollowers = false;
@@ -54,6 +55,10 @@ export default class ConfigStore {
 
     setMyPost(myPosts){
         this.myPosts = myPosts
+    };
+    
+    setUserPost(userPosts){
+        this.userPosts = userPosts
     };
 
     setUpdateMe(updateMe) {

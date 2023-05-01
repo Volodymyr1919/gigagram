@@ -47,50 +47,25 @@ export default function PostCard(props) {
   });
 
   return (
-        <Card sx={{ 
-                width: 600,
-                borderRadius: "25px",
-                boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px"
-            }} key={item._id}>
-            <CardHeader 
-            avatar={
-              <Avatar onClick = {() => navigate(`/user/${item.user[0].username}`)}
-                className="user__avatar"
-                src={item && item.user[0] ? item.user[0].avatar : 'some defaul src'}
-                alt="my avatar"
-                sx={{ width: 60, height: 60 }}
-                aria-label="recipe"
-              ></Avatar>
-            }
-            title={item && item.user[0] ? item.user[0].username : 'some defaul src'}
-          />
-            {item.video && item.video !== "any" && item.image ? 
-                <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
-                    <CardMedia
-                        component="img"
-                        image={item.image}
-                        style={{
-                            objectFit: "contain",
-                            width: "100%",
-                            height: "fit-content"
-                        }}
-                    />
-                    <CardMedia
-                        component="video"
-                        image={item.video}
-                        autoPlay
-                        loop
-                        muted
-                        mediaGroup='mp4'
-                        style={{
-                            objectFit: "contain",
-                            width: "100%",
-                            height: "fit-content"
-                        }}
-                    />
-                </AliceCarousel>
-                
-            :
+        <Card className="postCard" sx={{ 
+            width: 600,
+            borderRadius: "25px",
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px"
+        }} key={item._id}>
+        <CardHeader 
+        avatar={
+          <Avatar onClick = {() => navigate(`/user/${item.user[0].username}`)}
+            className="user__avatar"
+            src={item && item.user[0] ? item.user[0].avatar : 'some defaul src'}
+            alt="my avatar"
+            sx={{ width: 60, height: 60 }}
+            aria-label="recipe"
+          ></Avatar>
+        }
+        title={item && item.user[0] ? item.user[0].username : 'some defaul src'}
+      />
+        {item.video && item.video !== "any" && item.image ? 
+            <AliceCarousel disableButtonsControls='true' touchTracking='true' touchMoveDefaultEvents='false'>
                 <CardMedia
                     component="img"
                     image={item.image}
@@ -100,7 +75,6 @@ export default function PostCard(props) {
                         height: "fit-content"
                     }}
                 />
-                ||
                 <CardMedia
                     component="video"
                     image={item.video}
@@ -114,27 +88,53 @@ export default function PostCard(props) {
                         height: "fit-content"
                     }}
                 />
-            }
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {item.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                </Typography>
-            </CardContent>
-            <CardActions style={{display: "flex", justifyContent: "space-between"}}>
-                <Box style={{display: "flex", alignItems: "center"}}>
-                    <Like like_id={item._id} userLikes={item.likes}/>
-                    <AvatarGroup sx={{ ml: 2}}>
-                    {avatars.map((element, index) => (
-                        <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
-                        ))}
-                        {!!surplus && <Avatar>+{surplus}</Avatar>}
-                    </AvatarGroup>
-                </Box>
-                <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
-            </CardActions>
-        </Card>
-  );
+            </AliceCarousel>
+            
+        :
+            <CardMedia
+                component="img"
+                image={item.image}
+                style={{
+                    objectFit: "contain",
+                    width: "100%",
+                    height: "fit-content"
+                }}
+            />
+            ||
+            <CardMedia
+                component="video"
+                image={item.video}
+                autoPlay
+                loop
+                muted
+                mediaGroup='mp4'
+                style={{
+                    objectFit: "contain",
+                    width: "100%",
+                    height: "fit-content"
+                }}
+            />
+        }
+        <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+                {item.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+                {item.description}
+            </Typography>
+        </CardContent>
+        <CardActions style={{display: "flex", justifyContent: "space-between"}}>
+            <Box style={{display: "flex", alignItems: "center"}}>
+                <Like like_id={item._id} userLikes={item.likes}/>
+                <AvatarGroup sx={{ ml: 2}}>
+                {avatars.map((element, index) => (
+                    <Avatar key={index + Math.random()} src={ConfigStore.url + "/avatar/" + element.fromUser}/>
+                    ))}
+                    {!!surplus && <Avatar>+{surplus}</Avatar>}
+                </AvatarGroup>
+            </Box>
+            <Button size="small" onClick={() => navigate(`/post/${item._id}`)}>Learn More</Button>
+        </CardActions>
+    </Card>
+);
 }

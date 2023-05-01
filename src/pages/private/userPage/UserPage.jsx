@@ -4,7 +4,7 @@ import { observer }                   from "mobx-react";
 import Followers                      from "../followers/FollowersView";
 import Followings                     from "../followings/FollowingsView";
 import Footer                         from "../../partial/footer/Footer";
-import styles                         from "./scss/myPage.scss";
+import styles                         from "../myPage/scss/myPage.scss";
 import { useStores }                  from "../../../stores/MainStore";
 import ProfilePosts                   from "./UserPosts";
 import Loading                        from "../../partial/Loading";

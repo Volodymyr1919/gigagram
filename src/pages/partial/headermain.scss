@@ -25,7 +25,6 @@
       height: 40px;
     }
   }
-  // Это стилизация кнопок поиска пользователя и добавления поста
   .search__button,
   .plus__button{
     transition: all ease-in-out .5s;
@@ -46,11 +45,16 @@
     }
   }
 }
-
 @media screen and (max-width: 330px) {
   .header {
+    .header__logo {
+      img{
+        height: 35px !important;
+      }
+    }
     a {
       margin-right: 5px !important;
+      min-width: 50px;
     }
   }
 }

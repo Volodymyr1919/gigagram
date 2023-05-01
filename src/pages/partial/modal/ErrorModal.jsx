@@ -18,7 +18,7 @@ const ErrorModal = observer(() => {
     }
 
     return(
-        <Modal show={ConfigStore.isShow} onHide={handleClose}>
+        <Modal className="modals" show={ConfigStore.isShow} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Error</Modal.Title>
             </Modal.Header>

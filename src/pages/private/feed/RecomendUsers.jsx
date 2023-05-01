@@ -46,16 +46,13 @@ const RecomendUsers = observer(() => {
   };
 
   return (
-    <List dense sx={{
-        width: '360px',
+    <List className='usersList' dense sx={{
+        width: '700px',
         maxWidth: 360,
         bgcolor: 'background.paper',
         height: 'fit-content',
         padding: '10px',
         paddingTop: '32px',
-        position: 'absolute',
-        top: 0,
-        right: 0,
         borderRadius: '5px',
         boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
         borderRadius: "25px"

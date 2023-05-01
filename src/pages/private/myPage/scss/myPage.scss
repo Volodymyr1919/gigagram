@@ -1,42 +1,110 @@
 @import "../../../../scss/colors.scss";
+@media (max-width: 1100px) {
+  p {
+    font-size: medium !important;
+  }
+
+  .profile-container {
+    min-height: calc(100vh - 140px);
+    width: 100% !important;
+
+    .posts_block {
+      div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .profile-picture {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 150px !important;
+      height: 150px !important;
+      object-fit: cover;
+    }
+  }
+
+  // .posts_block {
+  //   div{
+  //     ul{
+  //       grid-template-columns: repeat(2, 1fr) !important;
+  //     }
+  //   }
+  // }
+}
 
 .body_myPage {
-  height: calc(100vh - 80px);
   background: url("../../../../assets/img/MyPageBg1.jpg");
   background-position: center center;
   background-size: cover;
   position: relative;
 
+  div.postEmptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+
+    .postEmptyState__icon {
+      font-size: 200px;
+      color: rgb(211, 211, 211);
+    }
+
+    .errorCase {
+      color: rgb(211, 211, 211);
+    }
+  }
+
   .profile-container {
+    min-height: calc(100vh - 150px);
     margin: 0 auto;
     width: 70%;
     padding-bottom: 20px;
   }
 
-  .posts_block{
+  .posts_block {
     background-color: rgb(255 255 255 / 22%);
     padding: 10px 10px 5px;
     border-radius: 10px;
-    div.postEmptyState{
+  .imageListFlex{
+    display: flex;
+  }
+    div.postEmptyState {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 800px;
-      .postEmptyState__icon{
+
+      .postEmptyState__icon {
         font-size: 200px;
         color: rgb(211, 211, 211);
       }
-      .errorCase{
+
+      .errorCase {
         color: rgb(211, 211, 211);
       }
     }
+
+    ;
+
+    div {
+      ul {
+        overflow-y: hidden;
+      }
+    }
   }
-  
+
   .profile_info {
     .button_create {
-  
+
       .add_button {
         color: #fff;
         border: none;
@@ -46,21 +114,21 @@
         height: 55px;
         width: 55px;
         cursor: pointer;
-  
+
         &:hover {
           color: black;
           transform: scale(0.9);
           transition: all 0.3s ease;
         }
       }
-  
+
     }
-  
+
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
-  
+
     .profile-picture {
       margin-top: 20px;
       display: flex;
@@ -75,64 +143,60 @@
         object-fit: cover;
       }
     }
-  
+
     .user_title {
       display: flex;
       flex-direction: column;
       line-height: 0;
-  
+
       p:first-child {
         font-weight: bold;
         margin-top: 25px;
         text-align: center;
       }
-  
+
       p:last-child {
         text-align: center;
         color: $grey_br;
         font-size: 0.8rem;
         margin-bottom: 5px;
       }
-  
-  
+
+
     }
-  
+
     .profile-info {
       margin-top: 20px;
       font-weight: bold;
       text-align: center;
+
+      .profile-counts {
+        color: black;
+        display: "flex";
+      }
+
+      .count_block {
+        margin: 0 !important;
+        cursor: pointer;
+
+        :last-child {
+          margin: 0 0 0 10px;
+        }
+
+      }
+
+      .count {
+        margin: 0 5px;
+        color: black;
+      }
     }
   }
-  
-  
-  
-  .profile-counts {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  .count_block_followings{
-    margin-left: -4px;
-  }
-  .count_block {
-    margin: 0 10px;
-    cursor: pointer;
-  
-    .stat {
-      color: black;
-    }
-  }
-  
-  .count {
-    margin: 0 5px;
-    color: black;
-  }
-  
+
   .edit {
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  
+
   .edit-profile {
     background-color: #3897f0;
     color: #fff;
@@ -140,19 +204,34 @@
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-  
+
     &:hover {
       background-color: black;
       transform: scale(0.9);
       transition: all 0.3s ease;
     }
   }
-  .alice-carousel {
-    ul li{
-      display: none;
+
+  .set-icon {
+    right: 5px;
+    position: absolute;
+    color: #f8b81996;
+    background-color: transparent;
+    border-radius: 10%;
+  }
+
+  .item_video {
+    height: 100%;
+
+    img,
+    video {
+      min-height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+      margin: auto;
+      width: 100%;
+      height: auto,
     }
   }
 
 }
-
-
