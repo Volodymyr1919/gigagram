@@ -135,6 +135,7 @@ const PrivateHeader = observer(() => {
           
 
           <Box sx={{ flexGrow: 0 }}>
+            {/* Это сами кнопки поиска пользователя и добавления поста */}
             <button onClick={() => ConfigStore.setIsShowSearchModal(true)} className="search__button" >
               <SearchIcon className="search__icon"/>
             </button>

@@ -6,6 +6,7 @@ import { Avatar, ListItem, ListItemButton, ListItemText, ListItemAvatar, TextFie
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
 import { useNavigate }                from "react-router-dom/dist";
+// Здесь импорт иконки для поля ввода поиска пользователя
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 const SearchModal = observer(() => {
@@ -69,6 +70,7 @@ const SearchModal = observer(() => {
           placeholder="Username"
           multiline
           variant="standard"
+          // Здесь использование иконки для поля ввода поиска пользователя
           InputProps={{
             startAdornment: (
               <InputAdornment position="start" style={{ margin: 0, marginRight: "5px" }}>

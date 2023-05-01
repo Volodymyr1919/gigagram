@@ -10,6 +10,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+
+// ВНИМАТЕЛЬНО С ЭТИМ ФАЙЛОМ, ЗДЕСЬ ПРОПИСАНО ЧТОБЫ СНЕК БЫЛ С ПРАВОЙ СТОРОНЫ И ДИНАМИЧНО МЕНЯЛСЯ НА УСПЕШНЫЙ ИЛИ ОШИБКУ И ТЕКСТ ВНУТРИ НЕГО СООТВЕТСТВЕННО
+
 const Success = observer(() => {
 
   const { ConfigStore } = useStores();

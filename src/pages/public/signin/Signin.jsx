@@ -43,6 +43,7 @@ const Signin = observer(() => {
   const handlePasswordChange = (evnt) => {
     setPasswordInput(evnt.target.value);
   };
+  
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text");

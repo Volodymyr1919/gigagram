@@ -5,6 +5,8 @@ import { useStores } from '../../../stores/MainStore';
 
 function Like(props) {
 
+    // ПРИНИМАЙ ПОЛНОСТЬЮ ВЕСЬ ФАЙЛ КАК У МЕНЯ, ЧТОБЫ ВСЁ РАБОТАЛО И НИЧЕГО НЕ ПОТЕРЯЛОСЬ
+
     const { RequestsStore, ConfigStore } = useStores();
 
     const like = props.like_id.toString();

@@ -7,7 +7,7 @@ import { observer }             from "mobx-react";
 import { useStores }            from "../../../stores/MainStore";
 import Success                  from "../Success";
 
-const ModalWindow = observer((props) => {
+const ModalWindow = observer(() => {
   const { RequestsStore, ConfigStore } = useStores();
 
   const [newTitle, setNewTitle] = useState("");
