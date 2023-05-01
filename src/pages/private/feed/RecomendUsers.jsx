@@ -25,6 +25,12 @@ const RecomendUsers = observer(() => {
         } else {
           setUsers(users);
         }
+        if(users === "Forbidden"){
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+        } else {
+          setUsers(users);
+        }
       })
     },[]);
 

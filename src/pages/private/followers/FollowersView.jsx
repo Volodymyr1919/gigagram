@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useStores } from "../../../stores/MainStore";
 import { useNavigate } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
 import followersStyle from "./followers.scss";
 
 const Followers = observer((props) => {
@@ -25,6 +24,12 @@ const Followers = observer((props) => {
         return RequestsStore.doGet(ConfigStore.url + "/followers/" + username);
       })
       .then((foll) => {
+        if(foll === "Forbidden") {
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+        } else {
+          setFollowers(foll.followers);
+        }
         if (foll === "Forbidden") {
           ConfigStore.setErr("Token has been burned");
           ConfigStore.setIsShow(true);
