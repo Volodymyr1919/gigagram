@@ -51,7 +51,15 @@ const EditModal = observer((props) => {
 
   function handleClose() {
     ConfigStore.setIsShowEditModal(false);
-  }
+  };
+
+  const labelStyle1 = {
+    top: 0
+  };
+
+  const labelStyle2 = {
+    top: "-10px"
+  };
 
   return (
     <>
@@ -71,7 +79,7 @@ const EditModal = observer((props) => {
               label="username"
               fullWidth
               {...register("username")}
-              
+              size="small"
               defaultValue={me.username}
               onChange={(e) => setNewUsername(e.target.value)}
             />
@@ -84,6 +92,7 @@ const EditModal = observer((props) => {
               id="outlined-normal"
               label="fullname"
               fullWidth
+              size="small"
               {...register("fullname")}
                 defaultValue={me.fullName}
                 onChange={(e) => setNewFullname(e.target.value)}
@@ -96,6 +105,7 @@ const EditModal = observer((props) => {
               id="outlined-normal"
               label="avatar"
               fullWidth
+              size="small"
               {...register("avatar", {
                 pattern: {
                   message: "Invalid link",
@@ -112,6 +122,7 @@ const EditModal = observer((props) => {
               id="outlined-normal"
               label="age"
               fullWidth
+              size="small"
               {...register("age")}
                 defaultValue={me.age}
                 onChange={(e) => setNewAge(e.target.value)}
@@ -122,6 +133,7 @@ const EditModal = observer((props) => {
               id="outlined-normal"
               label="bio"
               fullWidth
+              size="small"
               {...register("bio")}
                 defaultValue={me.bio}
                 onChange={(e) => setNewBio(e.target.value)}

@@ -90,16 +90,14 @@ $white: #fff;
     }
 
     &-content {
-      margin-left: 20px;
+      margin-left: 8px;
       p{
+        max-width: 200px;
         margin: 0;
         color: $clear_black;
         font-size: 18px;
-      }
-
-      p {
-        margin-top: 5px;
-        color: $clear_black;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
@@ -168,7 +166,7 @@ $white: #fff;
     }
 
     .list-item-content {
-      margin-left: 10px;
+      margin-left: 8px;
     }
 
     .list-item-image{

@@ -20,7 +20,7 @@
     align-items: center;
 
     .modal-content {
-        min-height: 355px;
+        max-height: 460px;
         border-radius: 15px;
     }
 
@@ -60,7 +60,7 @@
         display: flex !important;
 
         .modal-content {
-            min-height: 355px;
+            max-height: 460px;
             border-radius: 15px;
             width: 460px;
         }
@@ -121,24 +121,6 @@
             .modal-body{
                 padding-bottom: 0;
             }
-            .MuiFormControl-root{
-                height: 30px;
-                label{
-                    font-size: 0.8rem;
-                    top: -10px;
-                }
-                label.Mui-focused{
-                    top: 0;
-                    transform: translate(14px, -9px) scale(0.9);
-                }
-                .MuiInputBase-root{
-                    height: 30px;
-                    input{
-                        padding: 0;
-                        padding-left: 5px;
-                    }
-                }
-            }
             .validError{
                 height: 12px;
                 font-size: 11px !important;
@@ -186,18 +168,6 @@
         }
     }
 
-    // .search__input {
-    //     padding: 10px;
-    //     border-radius: 15px;
-    //     border: solid $main;
-    //     height: 45px;
-    //     outline-color: $main;
-
-    //     &:focus {
-    //         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    //     }
-    // }
-
     .btn-primary {
         border: none;
         background-color: $main;
@@ -230,5 +200,18 @@
     .btn-close {
         position: absolute;
         right: 30px;
+    }
+}
+.ChildModal{
+    .MuiBox-root{
+        width: 400px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ChildModal{
+        .MuiBox-root{
+            width: 250px;
+        }
     }
 }

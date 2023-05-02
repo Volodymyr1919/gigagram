@@ -43,7 +43,6 @@ const ProfilePosts = observer((props) => {
             ConfigStore.setIsShow(true);
           } else {
             ConfigStore.setMyPost(myPosts);
-            console.log(myPosts)
             ConfigStore.setUpdatePosts(false);
           }
         });

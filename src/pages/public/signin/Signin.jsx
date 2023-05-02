@@ -33,16 +33,12 @@ const Signin = observer(() => {
       localStorage.setItem("token", resp.token);
       navigate("/feed");
     } else {
-      ConfigStore.setErr(resp);
+      ConfigStore.setErr(resp === "Bad Request" ? "Wrong username or password" : resp);
       ConfigStore.setIsShow(true);
     }
   };
 
   const [passwordType, setPasswordType] = useState("password");
-  const [passwordInput, setPasswordInput] = useState("");
-  const handlePasswordChange = (evnt) => {
-    setPasswordInput(evnt.target.value);
-  };
   
   const togglePassword = () => {
     if (passwordType === "password") {

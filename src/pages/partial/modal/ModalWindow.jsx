@@ -6,8 +6,10 @@ import modalStyle               from "./modal.scss";
 import { observer }             from "mobx-react";
 import { useStores }            from "../../../stores/MainStore";
 import Success                  from "../Success";
+import ChildModal from "./ChildModal";
 
 const ModalWindow = observer(() => {
+
   const { RequestsStore, ConfigStore } = useStores();
 
   const [newTitle, setNewTitle] = useState("");
@@ -15,7 +17,6 @@ const ModalWindow = observer(() => {
   const [newImg, setNewImg] = useState("");
   const [newVideo, setNewVideo] = useState("");
   const [reqMedia, setReqMedia] = useState("");
-  const [open, setOpen] = useState(false);
 
   const {
     register,
@@ -40,12 +41,13 @@ const ModalWindow = observer(() => {
         status: "active"
     })
     .then(() => {
-      ConfigStore.setUpdatePosts(true)
-      setOpen(true)
+      ConfigStore.setUpdatePosts(true);
+      ConfigStore.setSnackSeverity("success");
+      ConfigStore.setSnackText("Posted successfuly!");
+      ConfigStore.setIsShowSnack(true);
     })
-    console.log(resp);
   };
-  
+
   return (
     <>
       <Modal className="modals" show={ConfigStore.isShowModalWindow} onHide={handleClose}>
@@ -59,6 +61,7 @@ const ModalWindow = observer(() => {
               id="outlined-normal"
               label="Title"
               fullWidth
+              size="small"
               {...register("title", {
                 required: "The field is required",
                 value: newTitle,
@@ -73,6 +76,7 @@ const ModalWindow = observer(() => {
               id="outlined-normal"
               label="Description"
               fullWidth
+              size="small"
               {...register("description", {
                 required: "The field is required",
                 value: newDescription,
@@ -87,6 +91,7 @@ const ModalWindow = observer(() => {
               id="outlined-normal"
               label="Image"
               fullWidth
+              size="small"
               {...register("image", {
                 value: newImg,
                 onChange: (e) => {
@@ -100,6 +105,7 @@ const ModalWindow = observer(() => {
               id="outlined-normal"
               label="Video"
               fullWidth
+              size="small"
               {...register("video", {
                 value: newVideo,
                 onChange: (e) => {
@@ -109,14 +115,18 @@ const ModalWindow = observer(() => {
             />
             <p className="validError">{reqMedia}</p>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{
+            display: "flex",
+            justifyContent: "space-between"
+          }}>
+            <ChildModal />
             <Button variant="secondary" className="edit-btn" type="submit">
               Add
             </Button>
           </Modal.Footer>
         </form>
       </Modal>
-      <Success open={open} setOpen={setOpen}/>
+      <Success />
     </>
   );
 });

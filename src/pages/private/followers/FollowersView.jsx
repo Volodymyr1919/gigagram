@@ -66,10 +66,9 @@ const Followers = observer((props) => {
                     <Avatar src={arrayF.avatar} className="image__item" alt="" />
                   </div>
                   <div className="list-item-content">
-                    <h4>{arrayF.fullName}</h4>
                     <p>{arrayF.username}</p>
                   </div>
-                  <Button style={{background: "#F47A1D", border: "none", margin: "2em", marginLeft: "auto",float: "right" }} onClick={() => toUser(arrayF.username)}>GO TO</Button>
+                  <Button style={{background: "#F47A1D", border: "none", margin: "2em", float: "right" }} onClick={() => toUser(arrayF.username)}>GO TO</Button>
                 </li>
               ))
           }

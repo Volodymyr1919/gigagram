@@ -16,6 +16,7 @@ export default class ConfigStore {
     isShowEditModal = false;
     isShowModalWindow = false;
     isShowSnack = false;
+    isChildModalShow = false;
     snackSeverity = "";
     snackText = "";
     err = "";
@@ -31,6 +32,10 @@ export default class ConfigStore {
 
     setFollowings(followings) {
         this.followings = followings;
+    };
+
+    setIsChildModalShow(childModal) {
+        this.isChildModalShow = childModal;
     };
 
     setIsShowSnack(snack) {
