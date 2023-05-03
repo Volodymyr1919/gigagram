@@ -41,12 +41,12 @@ const ChildModal = observer(() => {
                 aria-describedby="child-modal-description"
                 className='ChildModal'
             >
-                <Box sx={{ ...style, width: 200 }}>
+                <Box sx={{ ...style, width: 200, borderRadius: "10px", border: "3px solid #0059f9" }}>
                     <h2 id="child-modal-title">Image and Video fields</h2>
                     <p id="child-modal-description">
                         The image and video fields are required URL, from services where they been hosted
                     </p>
-                    <Button onClick={handleClose}>Got It</Button>
+                    <Button onClick={handleClose}>How to do it?</Button>
                 </Box>
             </Modal>
         </React.Fragment>

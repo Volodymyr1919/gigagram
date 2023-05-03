@@ -8,13 +8,13 @@ export default function Slider1() {
       title: 'Название изображения 1',
       description: 'Описание изображения 1',
       url:
-        'https://tyyliniekka.fi/wp-content/uploads/2021/06/Porsche-1068x601.jpeg',
+        'https://ik.imagekit.io/rhwh9nfxa/Untitled__1_.mp4?updatedAt=1683151009879',
     },
     {
       title: 'Название изображения 2',
       description: 'Описание изображения 2',
       url:
-        'https://cdn.motor1.com/images/mgl/Kbbj1A/s1/porsche-tequipment-roof-tent.jpg',
+        'https://ik.imagekit.io/rhwh9nfxa/Untitled__1_.mp4?updatedAt=1683151009879',
     },
   ];
 
@@ -32,7 +32,7 @@ export default function Slider1() {
               </p>
             </div>
             <div className="block__img">
-              <img src={slide.url} alt={slide.title} />
+              <video controls src={slide.url} alt={slide.title} />
             </div>
           </div>
         </Carousel.Item>

@@ -1,16 +1,15 @@
-import * as React         from "react";
+import * as React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Card, Avatar, CardMedia, CardHeader } from "@mui/material";
-import { observer }       from "mobx-react";
+import { observer } from "mobx-react";
 import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
-import PostStyle          from "./postid.scss";
-import DeletePost         from "../../partial/modal/DeletePost";
-import AliceCarousel      from "react-alice-carousel";
+import PostStyle from "./postid.scss";
+import DeletePost from "../../partial/modal/DeletePost";
+import AliceCarousel from "react-alice-carousel";
 import ErrorModal from "../../partial/modal/ErrorModal";
 
 const PostId = observer(() => {
-
   const navigate = useNavigate();
 
   const { RequestsStore, ConfigStore } = useStores();
@@ -23,25 +22,30 @@ const PostId = observer(() => {
     new Promise((resolve, rejects) => {
       resolve();
     })
-    .then(() => {
-      return RequestsStore.doGet(ConfigStore.url + "/post/" + id);
-    })
-    .then((data) => {
-      if (data === "Forbidden") {
-        ConfigStore.setErr("Token has been burned");
-        ConfigStore.setIsShow(true);
-      } else {
-        setPost(data);
-      }
-    })
+      .then(() => {
+        return RequestsStore.doGet(ConfigStore.url + "/post/" + id);
+      })
+      .then((data) => {
+        if (data === "Forbidden") {
+          ConfigStore.setErr("Token has been burned");
+          ConfigStore.setIsShow(true);
+        } else {
+          setPost(data);
+        }
+      });
   }, [id]);
-  
+
   return (
     <>
-      <div className="postId" style={{
-        background: `url(${post.image})`,
-      }}>
-        {!post ? <div className="loader">Loading...</div> :
+      <div
+        className="postId"
+        style={{
+          background: `url(${post.image})`,
+        }}
+      >
+        {!post ? (
+          <div className="loader">Loading...</div>
+        ) : (
           <Card
             className="main__postid"
             sx={{
@@ -54,7 +58,8 @@ const PostId = observer(() => {
           >
             <CardHeader
               avatar={
-                <Avatar onClick = {() => navigate(`/user/${post.author.username}`)}
+                <Avatar
+                  onClick={() => navigate(`/user/${post.author.username}`)}
                   className="user__avatar"
                   src={post.author.avatar}
                   alt="my avatar"
@@ -65,7 +70,11 @@ const PostId = observer(() => {
               action={
                 <Box
                   sx={{ m: 2 }}
-                  style={post.author.username === ConfigStore.me.username ? {display: "block"} : {display: "none"}}
+                  style={
+                    post.author.username === ConfigStore.me.username
+                      ? { display: "block" }
+                      : { display: "none" }
+                  }
                 >
                   <DeletePost sx={{ m: 2 }} />
                 </Box>
@@ -81,22 +90,16 @@ const PostId = observer(() => {
                     <source src={post.video} />
                   </video>
                 </AliceCarousel>
+              ) : post.image ? (
+                <img src={post.image} alt="" className="container__img" />
               ) : (
-                (
-                  <img
-                    src={post.image}
-                    alt=""
-                    className="container__img"
-                  />
-                ) || (
-                  <video autoPlay loop muted className="container__video">
-                    <source src={post.video} />
-                  </video>
-                )
+                <video autoPlay loop muted className="container__video">
+                  <source src={post.video} />
+                </video>
               )}
             </CardMedia>
-          </Card>  
-        }
+          </Card>
+        )}
         <div className="bg_blur"></div>
       </div>
       <ErrorModal />

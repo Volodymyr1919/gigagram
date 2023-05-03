@@ -6,6 +6,7 @@ import Typography            from "@mui/material/Typography";
 import BgHome                from "../../../../backgrounds/BgHome";
 import Slider1               from "./Slider1";
 import Slider2               from "./Slider2";
+import ExpandMoreIcon        from '@mui/icons-material/ExpandMore';
 
 
 const Home = observer(() => {
@@ -25,7 +26,7 @@ const Home = observer(() => {
         }
       }
     }
-    
+
     animateOnScroll();
     
     window.addEventListener("scroll", animateOnScroll);
@@ -57,6 +58,8 @@ const Home = observer(() => {
             <NavLink to="/signup">
               <Button variant="contained" className="animate-on-scroll" style={{animationDelay: "2.5s"}}>Get started now</Button>
             </NavLink>
+
+            <span className="swipe"><ExpandMoreIcon /></span>
           </div>
         </div>
       </div>

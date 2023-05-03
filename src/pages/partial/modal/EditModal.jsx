@@ -6,7 +6,7 @@ import modalStyle                     from "./modal.scss";
 import { observer }                   from "mobx-react";
 import { useStores }                  from "../../../stores/MainStore";
 import Success                        from "../Success";
-
+import ChildModal                     from "./ChildModal";
 const EditModal = observer((props) => {
   const { RequestsStore, ConfigStore } = useStores();
 
@@ -100,22 +100,25 @@ const EditModal = observer((props) => {
             <p className="validError">
               {errors.fullname && errors.fullname.message}
             </p>
-            <TextField
-              type="url"
-              id="outlined-normal"
-              label="avatar"
-              fullWidth
-              size="small"
-              {...register("avatar", {
-                pattern: {
-                  message: "Invalid link",
-                },
-                value: newAvatar,
-                onChange: (e) => {
-                  setNewAvatar(e.target.value);
-                },
-              })}
-            />
+            {/* <div className="avatar-field"> */}
+              <TextField
+                type="url"
+                id="outlined-normal"
+                label="avatar"
+                fullWidth
+                size="small"
+                {...register("avatar", {
+                  pattern: {
+                    message: "Invalid link",
+                  },
+                  value: newAvatar,
+                  onChange: (e) => {
+                    setNewAvatar(e.target.value);
+                  },
+                })}
+              />
+              {/* <ChildModal /> */}
+            {/* </div> */}
             <p className="validError">{errors.avatar && errors.avatar.message}</p>
             <TextField
               type="number"

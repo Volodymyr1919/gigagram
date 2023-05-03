@@ -29,14 +29,11 @@
       object-fit: cover;
     }
   }
-
-  // .posts_block {
-  //   div{
-  //     ul{
-  //       grid-template-columns: repeat(2, 1fr) !important;
-  //     }
-  //   }
-  // }
+}
+@media (max-height: 800px) {
+  .profile-container {
+    min-height: calc(100vh - 120px) !important;
+}
 }
 
 .body_myPage {

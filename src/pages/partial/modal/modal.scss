@@ -54,6 +54,25 @@
     .search__header{
         padding-bottom: 0;
     }
+    .avatar-field {
+        span{
+            width: 0;
+        }
+        button {
+            right: 2%;
+            position: absolute;
+            cursor: pointer;
+            &:hover{
+                background: none !important;
+            }
+            &:active{
+                background-color:  none !important;
+            }
+            svg{
+                height: 27px
+            }
+        }
+    }
 
 
     @media (min-height: 620px) and (min-width: 575px) {
