@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap");
+@import '../../../scss/colors.scss';
 
 @media (max-width: 520px) {
    .main__postid {
@@ -87,7 +88,7 @@ div.postId{
           left: 0;
           div.alice-carousel__prev-btn-wrapper {
             p {
-              color: #fff;
+              color: $clear-white;
               font-size: 25px;
             }
           }
@@ -96,7 +97,7 @@ div.postId{
           right: 0;
           div.alice-carousel__next-btn-wrapper {
             p {
-              color: #fff;
+              color: $clear-white;
               font-size: 25px;
             }
           }
@@ -130,16 +131,16 @@ div.postId{
 
 a {
   text-decoration: none;
-  color: #000;
+  color: $clear_black;
 }
 
 .loader {
   margin: auto;
   width: 75px;
   height: 75px;
-  border: 10px solid rgba(249, 36, 3, 0.6);
+  border: 10px solid $loading_c2;
   border-radius: 50%;
-  border-left-color: #f6fe05;
+  border-left-color: $loading_c3;
   animation: loader 1.3s linear infinite;
 }
 @keyframes loader {

@@ -58,7 +58,7 @@ div.signup {
 
 .line-btn:hover {
   background: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid $clear_black;
 }
 
 .screen__content {
@@ -129,7 +129,6 @@ div.signup {
 .registration {
   width: 320px;
   padding: 30px;
-  // padding-top: 105px;
 }
 
 .registration__field {
@@ -142,7 +141,7 @@ div.signup {
 
 .registration__input {
   border: none;
-  border-bottom: 2px solid #dfe1d7;
+  border-bottom: 2px solid $light_grey_bg;
   background: none;
   padding: 10px;
   font-weight: 700;
@@ -216,8 +215,8 @@ div.signup {
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #000;
-  -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
+  -webkit-text-fill-color: $clear_black;
+  -webkit-box-shadow: 0 0 0px 40rem $clear-white inset;
 }
 @media (max-width: 500px) {
   height: calc(100vh - 120px);

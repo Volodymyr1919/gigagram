@@ -55,11 +55,11 @@
 
     .postEmptyState__icon {
       font-size: 200px;
-      color: rgb(211, 211, 211);
+      color: $light_grey_bg;
     }
 
     .errorCase {
-      color: rgb(211, 211, 211);
+      color: $light_grey_bg;
     }
   }
 
@@ -71,7 +71,7 @@
   }
 
   .posts_block {
-    background-color: rgb(255 255 255 / 22%);
+    background-color: $transparent_white;
     padding: 10px 10px 5px;
     border-radius: 10px;
   .imageListFlex{
@@ -87,11 +87,11 @@
 
       .postEmptyState__icon {
         font-size: 200px;
-        color: rgb(211, 211, 211);
+        color: $light_grey_bg;
       }
 
       .errorCase {
-        color: rgb(211, 211, 211);
+        color: $light_grey_bg;
       }
     }
 
@@ -107,7 +107,7 @@
   .profile_info {
     .button_create {
       .add_button {
-        color: #fff;
+        color: $clear-white;
         border: none;
         padding-left: 10px;
         padding-bottom: 5px;
@@ -117,7 +117,7 @@
         cursor: pointer;
 
         &:hover {
-          color: black;
+          color: $clear_black;
           transform: scale(0.9);
           transition: all 0.3s ease;
         }
@@ -178,7 +178,7 @@
       text-align: center;
 
       .profile-counts {
-        color: black;
+        color: $clear_black;
         display: "flex";
       }
 
@@ -194,7 +194,7 @@
 
       .count {
         margin: 0 5px;
-        color: black;
+        color: $clear_black;
       }
     }
   }
@@ -205,15 +205,15 @@
   }
 
   .edit-profile {
-    background-color: #3897f0;
-    color: #fff;
+    background-color: $secondary;
+    color: $clear-white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
 
     &:hover {
-      background-color: black;
+      background-color: $clear_black;
       transform: scale(0.9);
       transition: all 0.3s ease;
     }
@@ -222,7 +222,7 @@
   .set-icon {
     right: 5px;
     position: absolute;
-    color: #f8b81996;
+    color: $transparent_secondary;
     background-color: transparent;
     border-radius: 10%;
   }

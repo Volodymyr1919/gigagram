@@ -12,7 +12,7 @@
   }
 
   .posts_block {
-    background-color: rgb(255 255 255 / 22%);
+    background-color: $transparent_white;
     padding: 10px 10px 5px;
     border-radius: 10px;
     div.postEmptyState {
@@ -24,14 +24,14 @@
       height: 800px;
       .postEmptyState__icon {
         font-size: 200px;
-        color: rgb(211, 211, 211);
+        color: $light_grey_bg;
       }
       .errorCase {
-        color: rgb(211, 211, 211);
+        color: $light_grey_bg;
       }
     }
   .posts_block{
-    background-color: #ffffff5c;
+    background-color: $transparent_white;
     padding: 20px 20px 5px;
     border-radius: 10px;
   }
@@ -39,7 +39,7 @@
   .profile_info {
     .button_create {
       .add_button {
-        color: #fff;
+        color: $clear-white;
         border: none;
         padding-left: 10px;
         padding-bottom: 5px;
@@ -49,7 +49,7 @@
         cursor: pointer;
 
         &:hover {
-          color: black;
+          color: $clear_black;
           transform: scale(0.9);
           transition: all 0.3s ease;
         }
@@ -121,13 +121,13 @@
     cursor: pointer;
 
     .stat {
-      color: black;
+      color: $clear_black;
     }
   }
 
   .count {
     margin: 0 5px;
-    color: black;
+    color: $clear_black;
   }
 
   .edit {
@@ -136,15 +136,15 @@
   }
 
   .edit-profile {
-    background-color: #3897f0;
-    color: #fff;
+    background-color: $secondary !important;
+    color: $clear-white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
 
     &:hover {
-      background-color: black;
+      background-color: $clear_black;
       transform: scale(0.9);
       transition: all 0.3s ease;
     }

@@ -72,7 +72,7 @@
                 font-size: xx-large;
                 text-align: center;
                 font-weight: 400;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             .welcome {
@@ -84,18 +84,18 @@
             h3 {
                 font-size: xx-large;
                 text-align: center;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             button {
-                background-color: #f58404;
+                background-color: $main;
                 font-size: x-large;
                 height: 65%;
                 width: 100%;
                 margin-top: 20px;
 
                 &:hover {
-                    background-color: #ff6600;
+                    background-color: $main;
                 }
 
             }
@@ -164,7 +164,7 @@
         grid-template-columns: 40% 1fr;
         grid-gap: 2rem;
         height: auto;
-        background-color: black;
+        background-color: $clear_black;
         
 
         .block__img {
@@ -636,7 +636,7 @@
                 font-size: xx-large;
                 text-align: center;
                 font-weight: 400;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             .welcome {
@@ -648,18 +648,18 @@
             h3 {
                 font-size: xx-large;
                 text-align: center;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             button {
-                background-color: #f58404;
+                background-color: $main;
                 font-size: x-large;
                 height: 65%;
                 width: 100%;
                 margin-top: 20px;
 
                 &:hover {
-                    background-color: black;
+                    background-color: $clear_black;
                 }
 
             }

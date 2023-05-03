@@ -9,11 +9,11 @@
     }
 
     label.Mui-focused{
-        color: #F47A1D;
+        color: $main;
     }
     .MuiInputBase-root.Mui-focused{ 
         .MuiOutlinedInput-notchedOutline{
-            border-color: #F47A1D;
+            border-color: $main;
         }
     }
     align-content: center;
@@ -25,7 +25,7 @@
     }
 
     backdrop-filter: blur(8px);
-    background-color: #ffffff97;
+    background-color: $bg_modal;
 
     input {
         width: 100%;
@@ -42,12 +42,12 @@
     .edit-btn {
         background-color: $main;
         border: none;
-        color: #fff;
+        color: $clear-white;
     }
 
     .MuiInputBase-root{
         &::after{
-            border-bottom: 2px solid #F47A1D;
+            border-bottom: 2px solid $main;
         }
     }
     
@@ -188,12 +188,12 @@
     }
 
     .follow {
-        color: #fff;
+        color: $clear-white;
         background-color: $main;
 
         &:hover {
             color: $main;
-            background-color: #bcabab70;
+            background-color: $bg_modal_hover;
         }
     }
 
