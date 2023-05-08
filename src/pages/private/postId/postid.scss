@@ -7,6 +7,15 @@
     margin: 15px;
   }
 }
+@media (max-height: 660px) {
+  .postId{
+    overflow: hidden;
+    height: auto !important;
+    .main__postid{
+      height: 100% !important;
+    }
+  }
+}
 
 div.postId{
   display: flex;
@@ -56,8 +65,8 @@ div.postId{
                 overflow: hidden;
                 img,
                 video{
-                  width: 100%;
-                  height: 100%;
+                  max-width: 500px;
+                  max-height: 500px;
                   object-fit: contain;
                   transition: all ease-in-out 0.5s;
                 }
@@ -104,8 +113,8 @@ div.postId{
       }
       img,
       video{
-        width: 100%;
-        height: 100%;
+        max-width: 500px;
+        max-height: 500px;
         object-fit: contain;
         transition: all ease-in-out .5s;
       }

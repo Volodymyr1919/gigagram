@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  $offset: 187;
   $duration: 1.4s;
 
   .spinner {
@@ -21,7 +20,7 @@
   }
 
   .path {
-    stroke-dasharray: $offset;
+    stroke-dasharray: 187;
     stroke-dashoffset: 0;
     transform-origin: center;
     animation:
@@ -53,16 +52,16 @@
 
   @keyframes dash {
     0% {
-      stroke-dashoffset: $offset;
+      stroke-dashoffset: 187;
     }
 
     50% {
-      stroke-dashoffset: $offset/4;
+      stroke-dashoffset: 187/4;
       transform: rotate(135deg);
     }
 
     100% {
-      stroke-dashoffset: $offset;
+      stroke-dashoffset: 187;
       transform: rotate(450deg);
     }
   }

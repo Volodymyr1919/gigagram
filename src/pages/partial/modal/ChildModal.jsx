@@ -46,7 +46,7 @@ const ChildModal = observer(() => {
                     <p id="child-modal-description">
                         The image and video fields are required URL, from services where they been hosted
                     </p>
-                    <Button onClick={handleClose}>How to do it?</Button>
+                    <Button onClick={handleClose}>Got it</Button>
                 </Box>
             </Modal>
         </React.Fragment>

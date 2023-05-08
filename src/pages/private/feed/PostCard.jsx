@@ -77,11 +77,11 @@ export default function PostCard(props) {
           autoPlay
           loop
           muted
+          playsInline
           mediaGroup="mp4"
           style={{
             objectFit: "contain",
             width: "100%",
-            height: "fit-content",
           }}
         />
       ) : (
@@ -91,7 +91,6 @@ export default function PostCard(props) {
           style={{
             objectFit: "contain",
             width: "100%",
-            height: "fit-content",
           }}
         />
       )}
