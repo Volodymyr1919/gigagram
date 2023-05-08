@@ -32,10 +32,10 @@ const MyPage = observer(() => {
         ConfigStore.setIsShow(true);
       } else {
         ConfigStore.setMe(myInfo);
-        ConfigStore.setUpdateMe(false); //без этого не работает изменение данных при их обновлении
+        ConfigStore.setUpdateMe(false); 
       }
     })
-  }, [ConfigStore.updateMe, ConfigStore.loading]);
+  }, [ConfigStore.updateMe, ConfigStore.loading, ConfigStore.updatePosts]);
 
   return (
     <>  

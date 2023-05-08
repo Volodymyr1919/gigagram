@@ -57,7 +57,7 @@
         .swipe {
             position: absolute;
             top: 90%;
-            color: #c9c9c9d7;
+            color: $h_grey;
             svg{
                 font-size: 40px;
             }
@@ -90,7 +90,7 @@
                 font-size: xx-large;
                 text-align: center;
                 font-weight: 400;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             .welcome {
@@ -102,18 +102,18 @@
             h3 {
                 font-size: xx-large;
                 text-align: center;
-                color: #bdbbbb;
+                color: $h_grey;
             }
 
             button {
-                background-color: #f58404;
+                background-color: $main;
                 font-size: x-large;
                 height: 65%;
                 width: 100%;
                 margin-top: 20px;
 
                 &:hover {
-                    background-color: #ff6600;
+                    background-color: $main;
                 }
 
             }
@@ -128,6 +128,9 @@
         padding-top: 40px;
         h1{
             text-align: center;
+        }
+        h2{
+            color: $secondary !important;
         }
     }
     .second__block, .last__block{
@@ -192,7 +195,7 @@
         grid-template-columns: 40% 1fr;
         grid-gap: 2rem;
         height: auto;
-        background-color: black;
+        background-color: $clear-black;
         
 
         .block__img {
@@ -220,7 +223,8 @@
             grid-row: 1 / 2;
 
             h2 {
-                font-size: xx-large ;
+                font-size: xx-large;
+                color: $clear-white;
             }
 
             p {
@@ -249,11 +253,26 @@
             position: relative;
             max-width: 800px;
             margin: auto;
-            background: #000;
+            background: $clear-black;
             padding: 25px;
             border-radius: 25px;
             height: 400px;
             transition: all .3s;
+
+            a{
+                margin-top: 30px;
+                display: inline-flex;
+                background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+                padding: 15px 35px;
+                border-radius: 50px;
+                color: $clear-white;
+                box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
+                text-decoration: none;
+                font-weight: 500;
+                    justify-content: center;
+                text-align: center;
+                letter-spacing: 1px;
+            }
     
             &__item {
                 display: flex;
@@ -261,7 +280,7 @@
             }
     
             &__img {
-                border: 2px solid orange;
+                border: 2px solid $main;
                 width: 300px;
                 flex-shrink: 0;
                 height: 300px;
@@ -672,7 +691,34 @@
             } 
         }
     }
-
+    @media (max-width: 768px) {
+        .last__block{
+            .dev__container{
+                padding: 0;
+            }
+            .carousel-item{
+                height: 750px;
+            }
+            .blog-slider {
+                min-height: 500px;
+                height: auto;
+                margin: 180px auto;
+                &__item {
+                    flex-direction: column;
+                  }
+                .blog-slider__img{
+                    transform: translateY(-50%);
+                    width: 55%;
+                } 
+                
+                &__content{
+                    margin-top: -80px;
+                    text-align: center;
+                    padding: 0 30px;
+                } 
+            }
+        }
+    }
     @media screen and (max-width: 768px) and (min-width: 400px) and (min-height: 800px) {
 
         .info {
@@ -742,32 +788,6 @@
                 text-align: center;
             }
         }
-        .last__block{
-            .dev__container{
-                padding: 0;
-            }
-            .carousel-item{
-                height: 750px;
-            }
-            .blog-slider {
-                min-height: 500px;
-                height: auto;
-                margin: 180px auto;
-                &__item {
-                    flex-direction: column;
-                  }
-                .blog-slider__img{
-                    transform: translateY(-50%);
-                    width: 55%;
-                } 
-                
-                &__content{
-                    margin-top: -80px;
-                    text-align: center;
-                    padding: 0 30px;
-                } 
-            }
-        }
     }
     
     @media screen and (max-width: 758px) and (min-width: 600px) {
@@ -795,7 +815,7 @@
             } 
         }
     }
-    @media (max-width: 1100px) {
+    @media (max-width: 1105px) {
         .last__block{
             display: flex;
             flex-direction: column;
@@ -828,7 +848,7 @@
                 font-size: xx-large;
                 text-align: center;
                 font-weight: 400;
-                color: #bdbbbb;
+                color:$grey_br ;
             }
 
             .welcome {
@@ -840,18 +860,18 @@
             h3 {
                 font-size: xx-large;
                 text-align: center;
-                color: #bdbbbb;
+                color: $grey_br;
             }
 
             button {
-                background-color: #f58404;
+                background-color: $main;
                 font-size: x-large;
                 height: 65%;
                 width: 100%;
                 margin-top: 20px;
 
                 &:hover {
-                    background-color: black;
+                    background-color: $clear-black;
                 }
 
             }

@@ -1,5 +1,31 @@
 $main: #F47A1D;
-$secondary: #F8B819;
-$clear_white: #ffff;
-$clear_black: #000000;
-$grey_br: #D9D9D9;
+ $secondary: #F8B819;
+ $transparent_secondary: #f8b81996;
+ $clear_white: #ffff;
+ $transparent_white: rgb(255 255 255 / 22%);
+ $clear_black: #000000;
+ $grey_br: #D9D9D9; 
+ $light_grey_bg: #e8e8e8;
+ $light_grey_bg_hover: #ebebeb97;
+ $transparent_grey: #ffffffa0;
+ //home
+ $h_grey: #bdbbbb;
+ //like
+ $fill_heart: #e2264d;
+ $heart_animation1: #dd4688;
+ $heart_animation2: #d46abf;
+ $heart_animation3: #cc8ef5;
+ //modalW
+ $bg_modal: #ffffff97;
+ $bg_modal_hover: #bcabab70;
+ //loading
+ $loading_c1: #4285F4;
+ $loading_c2: #DE3E35;
+ $loading_c3: #f6fe05;
+ $loading_c4: #1B9A59;
+ //feed
+ $btn_bg_hover: #fdd27525;
+ //followers
+ $black_shadow: rgba(0, 0, 0, 0.2);
+ $item_border_grey: rgba(123, 123, 123, 0.498039);
+ $item_grey: rgb(153, 153, 153); 

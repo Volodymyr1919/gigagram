@@ -1,4 +1,4 @@
-@import '../../../scss/app.scss';
+@import '../../../scss/colors.scss';
 
 
 .modals {
@@ -9,11 +9,11 @@
     }
 
     label.Mui-focused{
-        color: #F47A1D;
+        color: $main;
     }
     .MuiInputBase-root.Mui-focused{ 
         .MuiOutlinedInput-notchedOutline{
-            border-color: #F47A1D;
+            border-color: $main;
         }
     }
     align-content: center;
@@ -23,9 +23,13 @@
         max-height: 535px;
         border-radius: 15px;
     }
+    .modal-footer {
+        display: flex;
+        justify-content: space-between !important;
+    }
 
     backdrop-filter: blur(8px);
-    background-color: #ffffff97;
+    background-color: $bg_modal;
 
     input {
         width: 100%;
@@ -42,12 +46,12 @@
     .edit-btn {
         background-color: $main;
         border: none;
-        color: #fff;
+        color: $clear_white;
     }
 
     .MuiInputBase-root{
         &::after{
-            border-bottom: 2px solid #F47A1D;
+            border-bottom: 2px solid $main;
         }
     }
     
@@ -145,6 +149,7 @@
                 font-size: 11px !important;
             }
             .modal-footer{
+
                 button{
                     width: 60px;
                     height: 25px;
@@ -207,12 +212,12 @@
     }
 
     .follow {
-        color: #fff;
+        color: $clear_white;
         background-color: $main;
 
         &:hover {
             color: $main;
-            background-color: #bcabab70;
+            background-color: $bg_modal_hover;
         }
     }
 
@@ -222,15 +227,28 @@
     }
 }
 .ChildModal{
+    a{
+        cursor: pointer;
+        color: dodgerblue
+    }
     .MuiBox-root{
+        border: 2px solid $secondary;
+        border-radius: 10px;
         width: 400px;
+        max-height: 500px;
+        overflow-y: scroll;
+        height: 100%;
+
+        button{
+            color: $main;
+        }
     }
 }
 
 @media (max-width: 400px) {
     .ChildModal{
         .MuiBox-root{
-            width: 250px;
+            width: 100%;
         }
     }
 }

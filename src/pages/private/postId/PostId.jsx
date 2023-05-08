@@ -8,6 +8,7 @@ import PostStyle from "./postid.scss";
 import DeletePost from "../../partial/modal/DeletePost";
 import AliceCarousel from "react-alice-carousel";
 import ErrorModal from "../../partial/modal/ErrorModal";
+import Footer     from "../../partial/footer/Footer"
 
 const PostId = observer(() => {
   const navigate = useNavigate();
@@ -57,13 +58,14 @@ const PostId = observer(() => {
             }}
           >
             <CardHeader
+              className="post__info"
               avatar={
                 <Avatar
                   onClick={() => navigate(`/user/${post.author.username}`)}
                   className="user__avatar"
                   src={post.author.avatar}
                   alt="my avatar"
-                  sx={{ width: 60, height: 60 }}
+                  style={{width: '60px', height: '60px'}}
                   aria-label="recipe"
                 ></Avatar>
               }
@@ -86,14 +88,14 @@ const PostId = observer(() => {
               {post.image && post.video ? (
                 <AliceCarousel className="blog-post__img">
                   <img src={post.image} alt={post.image} />
-                  <video autoPlay loop muted className="container__video">
+                  <video autoPlay loop muted playsInline className="container__video">
                     <source src={post.video} />
                   </video>
                 </AliceCarousel>
               ) : post.image ? (
                 <img src={post.image} alt="" className="container__img" />
               ) : (
-                <video autoPlay loop muted className="container__video">
+                <video autoPlay loop muted playsInline className="container__video">
                   <source src={post.video} />
                 </video>
               )}
@@ -103,6 +105,7 @@ const PostId = observer(() => {
         <div className="bg_blur"></div>
       </div>
       <ErrorModal />
+      <Footer />
     </>
   );
 });

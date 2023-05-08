@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap");
+@import "../../../scss/colors.scss";
 
 @media (max-width: 520px) {
    .main__postid {
@@ -7,12 +8,19 @@
     margin: 15px;
   }
 }
-@media (max-height: 660px) {
+@media (max-height: 700px) {
   .postId{
     overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
     height: auto !important;
     .main__postid{
       height: 100% !important;
+      video, .container__img{
+        min-height: 420px;
+        max-height: 430px !important;
+      }
+      
     }
   }
 }
@@ -26,13 +34,22 @@ div.postId{
   background-position: center center !important;
   background-size: cover !important;
   position: relative;
+
+  .post__info{
+    div{
+      max-height: 100px;
+      overflow-y: scroll;
+      height: 100%;
+    }
+  }
+
   .main__postid {
     display: flex;
     flex-direction: column;
     z-index: 200;
     width: 500px;
     height: fit-content;
-    background: #ffffffa0;
+    background: $transparent_grey;
     padding: 0;
     div.MuiCardHeader-root{
       z-index: 200;
@@ -74,6 +91,7 @@ div.postId{
             }
           }
         }
+       
         ul.alice-carousel__dots {
           margin: 0;
           padding: 0;
@@ -96,7 +114,7 @@ div.postId{
           left: 0;
           div.alice-carousel__prev-btn-wrapper {
             p {
-              color: #fff;
+              color: $clear-white;
               font-size: 25px;
             }
           }
@@ -105,7 +123,7 @@ div.postId{
           right: 0;
           div.alice-carousel__next-btn-wrapper {
             p {
-              color: #fff;
+              color: $clear-white;
               font-size: 25px;
             }
           }
@@ -132,23 +150,22 @@ div.postId{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.02);
     backdrop-filter: blur(6px);
   }
 }
 
 a {
   text-decoration: none;
-  color: #000;
+  color: $clear_black;
 }
 
 .loader {
   margin: auto;
   width: 75px;
   height: 75px;
-  border: 10px solid rgba(249, 36, 3, 0.6);
+  border: 10px solid $loading_c2;
   border-radius: 50%;
-  border-left-color: #f6fe05;
+  border-left-color: $loading_c3;
   animation: loader 1.3s linear infinite;
 }
 @keyframes loader {

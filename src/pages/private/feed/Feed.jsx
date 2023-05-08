@@ -7,6 +7,7 @@ import ErrorModal from "../../partial/modal/ErrorModal";
 import { useStores } from "../../../stores/MainStore";
 // eslint-disable-next-line no-unused-vars
 import feed from "./feed.scss";
+import Loading from "../../partial/Loading"
 import Footer from "../../partial/footer/Footer";
 import Aside from "./Aside";
 import { Fade, Toolbar, useScrollTrigger, Fab, Box } from '@mui/material';
@@ -60,6 +61,7 @@ const FeedPage = observer(() => {
       return RequestsStore.doGet(ConfigStore.url + "/posts");
     })
     .then((post) => {
+       ConfigStore.setLoading(false);
       if(post === "Forbidden") {
         ConfigStore.setErr("Token has been burned");
         ConfigStore.setIsShow(true);
@@ -83,6 +85,7 @@ const FeedPage = observer(() => {
   return (
     <>
       <Toolbar id="back-to-top-anchor" style={{position: "absolute", top: 0, zIndex: "-1"}} />
+      {ConfigStore.loading ? <Loading /> : 
       <div className="main__feed">
         <div className="feed__header">
           <h2>Feed page | Favoriets from students</h2>
@@ -108,6 +111,7 @@ const FeedPage = observer(() => {
         </main>
         <ErrorModal />
       </div>
+      } 
       <Footer />
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">

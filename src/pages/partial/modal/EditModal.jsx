@@ -144,6 +144,7 @@ const EditModal = observer((props) => {
             <p className="validError">{errors.bio && errors.age.bio}</p>
           </Modal.Body>
           <Modal.Footer>
+          <ChildModal />
             <Button variant="secondary" className="edit-btn" type="submit">
               Edit
             </Button>

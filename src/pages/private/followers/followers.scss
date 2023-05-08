@@ -1,6 +1,6 @@
 @import "../../../scss/colors.scss";
 $color: #555;
-$white: #fff;
+
 
 .followers {
   align-items: center;
@@ -21,7 +21,7 @@ $white: #fff;
   }
 
   .list {
-    background: $white;
+    background: $clear_white;
     border-radius: 2px;
     list-style: none;
     padding: 10px 20px;
@@ -62,7 +62,7 @@ $white: #fff;
     display: flex;
     align-items: center;
     height: 100%;
-    border: 0px solid rgba(123, 123, 123, 0.498039);
+    border: 0px solid $item_border_grey;
     border-radius: 4px;
     color: rgb(153, 153, 153);
     line-height: 90px;
@@ -70,8 +70,8 @@ $white: #fff;
     margin: 15px;
     font-size: 24px;
     font-weight: 400;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+    background-color: $clear_white;
+    box-shadow: $black_shadow 0px 2px 4px 0px;
 
     &:last-child {
       border-bottom: none;

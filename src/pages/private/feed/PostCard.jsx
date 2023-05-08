@@ -78,7 +78,6 @@ export default function PostCard(props) {
           loop
           muted
           playsInline
-          mediaGroup="mp4"
           style={{
             objectFit: "contain",
             width: "100%",
