@@ -6,9 +6,18 @@ import Typography            from "@mui/material/Typography";
 import BgHome                from "../../../../backgrounds/BgHome";
 import Slider1               from "./Slider1";
 import Slider2               from "./Slider2";
+import Slider3               from "./Slider3";
+import ExpandMoreIcon        from '@mui/icons-material/ExpandMore';
 
 
 const Home = observer(() => {
+
+  const handleScrollDownClick = () => {
+    window.scrollBy({
+      top: 900,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const elements = document.querySelectorAll(".animate-on-scroll");
@@ -25,7 +34,7 @@ const Home = observer(() => {
         }
       }
     }
-    
+
     animateOnScroll();
     
     window.addEventListener("scroll", animateOnScroll);
@@ -51,17 +60,20 @@ const Home = observer(() => {
             </Typography>
 
             <Typography variant="h3" gutterBottom className="animate-on-scroll" style={{animationDelay: "1.5s"}}>
-              A New Way For Creators to Deepen Connections With Followers
+              A New Way for Creators to Deepen Connections With Followers
             </Typography>
 
             <NavLink to="/signup">
               <Button variant="contained" className="animate-on-scroll" style={{animationDelay: "2.5s"}}>Get started now</Button>
             </NavLink>
+
+            <span className="swipe" onClick={handleScrollDownClick} style={{cursor: "pointer"}}><ExpandMoreIcon /></span>
           </div>
         </div>
       </div>
       <Slider1 />
       <Slider2 />
+      <Slider3 />
     </div>
   );
 }

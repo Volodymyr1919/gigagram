@@ -1,3 +1,5 @@
+@import "../../scss/colors.scss";
+
 .loading {
   height: calc(100vh - 80px);
   display: flex;
@@ -32,22 +34,27 @@
   @keyframes colors {
     0% {
       stroke: #4285F4;
+      stroke: $loading_c1;
     }
 
     25% {
       stroke: #DE3E35;
+      stroke: $loading_c2;
     }
 
     50% {
       stroke: #F7C223;
+      stroke: $loading_c3;
     }
 
     75% {
       stroke: #1B9A59;
+      stroke: $loading_c4;
     }
 
     100% {
       stroke: #4285F4;
+      stroke: $loading_c1;
     }
   }
 

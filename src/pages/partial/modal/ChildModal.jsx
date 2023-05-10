@@ -41,12 +41,23 @@ const ChildModal = observer(() => {
                 aria-describedby="child-modal-description"
                 className='ChildModal'
             >
-                <Box sx={{ ...style, width: 200 }}>
+                <Box sx={{ ...style, width: 100}}>
                     <h2 id="child-modal-title">Image and Video fields</h2>
                     <p id="child-modal-description">
-                        The image and video fields are required URL, from services where they been hosted
+                        The image and video fields are required URL, from services where they been hosted.
                     </p>
-                    <Button onClick={handleClose}>Got It</Button>
+                    <p><b>To upload your media to our social network, follow these simple steps:</b></p>
+                    <a href="https://imgbb.com/">Click me to get the link of the image</a> <br/> 
+                    <a href="https://imagekit.io/">Click me to get the link of the video</a> <br/> <br/>
+                    <p>1. Choose the link for either your image or video upload.</p>
+                    <p>
+                        2. For an image upload, click on the link and repeat the actions in the video or follow the instructions. Click on the 'Start Uploading' button and upload the desired image. Once you get the link, copy it and paste it into your web browser. You will be redirected to a page with the photo. Right-click on the image and select 'Copy Image Address'. You're done!
+                    </p>
+                    <p>
+                        3. For a video upload, click on the link and repeat the actions in the video or follow the instructions. After logging in to the website, you will be redirected to the main page. Then click on the 'Media library' in the sidebar and start uploading your video by clicking the 'New' button in the upper-right corner. You will be redirected to a page with the video. Right-click on the video and select 'Copy Video Address'. Good job!
+                    </p>
+                    <p>4. You can now use the link you copied to upload your media to our social network.</p>
+                    <Button onClick={handleClose}>Got it</Button>
                 </Box>
             </Modal>
         </React.Fragment>

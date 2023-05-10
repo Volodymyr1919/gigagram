@@ -1,6 +1,8 @@
+@import "../../../scss/colors.scss";
+
 #like-content {
   display: flex;
-  background: white;
+  background: $clear_white;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -26,7 +28,7 @@ svg#heart-svg {
 .like-input:checked + label svg {
   #heart {
     transform: scale(0.2);
-    fill: #e2264d;
+    fill: $fill_heart;
     animation: animateHeart 0.3s linear forwards 0.25s;
   }
   #main-circ {
@@ -162,44 +164,44 @@ svg#heart-svg {
   40% {
     transform: scale(10);
     opacity: 1;
-    fill: #dd4688;
+    fill: $heart_animation1;
   }
   55% {
     transform: scale(11);
     opacity: 1;
-    fill: #d46abf;
+    fill:  $heart_animation2;
   }
   65% {
     transform: scale(12);
     opacity: 1;
-    fill: #cc8ef5;
+    fill: $heart_animation3;
   }
   75% {
     transform: scale(13);
     opacity: 1;
     fill: transparent;
-    stroke: #cc8ef5;
+    stroke: $heart_animation3;
     stroke-width: 0.5;
   }
   85% {
     transform: scale(17);
     opacity: 1;
     fill: transparent;
-    stroke: #cc8ef5;
+    stroke: $heart_animation3;
     stroke-width: 0.2;
   }
   95% {
     transform: scale(18);
     opacity: 1;
     fill: transparent;
-    stroke: #cc8ef5;
+    stroke: $heart_animation3;
     stroke-width: 0.1;
   }
   100% {
     transform: scale(19);
     opacity: 1;
     fill: transparent;
-    stroke: #cc8ef5;
+    stroke: $heart_animation3;
     stroke-width: 0;
   }
 }

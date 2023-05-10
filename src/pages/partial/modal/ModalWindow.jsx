@@ -6,7 +6,7 @@ import modalStyle               from "./modal.scss";
 import { observer }             from "mobx-react";
 import { useStores }            from "../../../stores/MainStore";
 import Success                  from "../Success";
-import ChildModal from "./ChildModal";
+import ChildModal               from "./ChildModal";
 
 const ModalWindow = observer(() => {
 

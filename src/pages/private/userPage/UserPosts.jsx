@@ -70,7 +70,7 @@ const UserProfilePosts = observer((props) => {
       <h2 className="errorCase"> Sorry any posts found</h2>
     </div>
   ) : (
-        ConfigStore.myPosts.map((item) => (
+          ConfigStore.myPosts.slice().reverse().map((item) => (
           <ImageListItem
             key={item._id + Math.random()}
             style={{ cursor: "pointer" }}

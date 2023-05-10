@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
-@import "../../../scss/colors.scss";
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import "../../../scss/colors.scss";
 
 div.main__feed{
     @media (max-width: 580px) {
@@ -41,14 +41,14 @@ div.main__feed{
     justify-content: space-between;
     width: 100%;
     height: fit-content;
-    background: #e8e8e8;
+    background: $grey_br;
     section.gigagram{
         width: 360px;
         height: 620px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #ffff;
+        background: $clear_white;
         border-radius: 25px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         span{
@@ -122,7 +122,7 @@ div.main__feed{
             }
             &:hover{
                 cursor: pointer;
-                background: #ebebeb97;
+                background: $grey_br;
             }
         }
     }
@@ -132,6 +132,7 @@ div.main__feed{
         justify-content: center;
         width: 100%;
         div.feed__posts{
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -146,7 +147,7 @@ div.main__feed{
                 padding: 5px 15px;
                 border-radius: 20px;
                 &::before {
-                    border-bottom: 1px solid #d9d9d9;
+                    border-bottom: 1px solid $clear_white;
                     width: 91%;
                     margin-left: 5%;
                 }
@@ -155,7 +156,7 @@ div.main__feed{
                     
                 }
                 &::after {
-                    border-bottom: 1px solid #F47A1D;
+                    border-bottom: 1px solid $main;
                     width: 91%;
                     margin-left: 5%;
                 }
@@ -171,9 +172,9 @@ div.main__feed{
         }
         div.MuiCardActions-root {
             button {
-                color:#F47A1D !important;
+                color: $main !important;
                 &:hover {
-                    background-color: #fdd27525;
+                    background-color: $btn_bg_hover;
                 }
             }
         }
@@ -182,7 +183,7 @@ div.main__feed{
                 font-size: 12px;
                 color:#F47A1D !important;
                 &:hover {
-                    background-color: #fdd27525;
+                    background-color: $btn_bg_hover;
                 }
             }
         }
