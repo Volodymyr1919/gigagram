@@ -1,38 +1,28 @@
 import React, { useState } from 'react';
 import { Carousel }           from 'react-bootstrap';
 import Typography            from '@mui/material/Typography';
-import gigacom               from '../../../../assets/img/gigacom.png'
+import gigalogo               from '../../../../assets/img/gigacom.png'
 export default function Slider1() {
-  
-  const slides1 = [
-    {
-      title: 'GIGAGRAM',
-      description: "First, go to the link above where you will host your image. Repeat the actions in the video or follow the instructions. Click on the 'Start Uploading' button and upload the desired image. Once you get the link, copy it and paste it into your web browser. You will be redirected to a page with the photo. Right-click on the image and select 'Copy Image Address'. You're done! You can now use this link to upload the photo to our social network. ",
-      second_description: "If you want to see how to host videos, go to the next slide by clicking on the buttons below.",
-      url: gigacom,
-    }
-  ];
 
   return (
     <Carousel fade className='slider' interval={null} >
-      {slides1.map((slide, index) => (
-        <Carousel.Item key={index}>
+        <Carousel.Item>
           <div className="second__block">
             <div className="block__info">
               <Typography variant="h2" gutterBottom className="animate-on-scroll" style={{ animationDelay: '0s' }}>
-                {slide.title}
+                INTRO
               </Typography>
               <p className="animate-on-scroll" style={{ animationDelay: '0.3s' }}>
-                {slide.description}
+              <b>Welcome to GIGAGRAM</b> - the ultimate social network created just for you! Whether you're a seasoned IT professional or just starting out, GIGAGRAM is the perfect platform to connect with like-minded individuals, expand your knowledge, and make valuable industry connections.
               </p>
-              <p className="animate-on-scroll" style={{ animationDelay: '0.6s', color: '#F8B819' }}>{slide.second_description}</p>
+              <p> Join our community and unlock a world of possibilities! Share your coding tips, project ideas, and even fun photos and videos related to IT. Customize your profile to showcase your skills. Ready to join us? Simply sign up with your email address and start exploring everything GIGAGRAM has to offer. Join a community of passionate individuals who share your love for technology and innovation, and take your IT journey to the next level with GIGAGRAM!
+              </p>
             </div>
             <div className="block__img">
-              <img src={slide.url} alt={slide.title} />
+              <img src={gigalogo} alt=""/>
             </div>
           </div>
         </Carousel.Item>
-      ))}
     </Carousel>
   );
 }
