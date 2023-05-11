@@ -67,17 +67,13 @@ export default class RequestsStore {
             headers: this.headers(),
             body: JSON.stringify(this.data)
         })
-        // .then((response) => {
-        //     if(response.ok) {
-        //         return response.json();
-        //     } else {
-        //         return response;
-        //     }
-        // })
-        // .catch((response) => {
-        //     console.log("error doPut")
-        //     return response;
-        // })
+        .then((response) => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                return response;
+            }
+        })
     };
 
     doDelete(url) {

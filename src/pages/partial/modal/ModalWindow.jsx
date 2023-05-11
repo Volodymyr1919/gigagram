@@ -41,6 +41,7 @@ const ModalWindow = observer(() => {
         status: "active"
     })
     .then(() => {
+      handleClose();
       ConfigStore.setUpdatePosts(true);
       ConfigStore.setSnackSeverity("success");
       ConfigStore.setSnackText("Posted successfuly!");
@@ -54,7 +55,7 @@ const ModalWindow = observer(() => {
         <Modal.Header closeButton>
           <Modal.Title>Add post</Modal.Title>
         </Modal.Header>
-        <form onSubmit={handleSubmit((data) => {onSubmit(data); handleClose()})}>
+        <form onSubmit={handleSubmit((data) => onSubmit(data))}>
           <Modal.Body>
             <TextField
               type="text"

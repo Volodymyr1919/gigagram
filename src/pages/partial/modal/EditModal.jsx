@@ -17,10 +17,9 @@ const EditModal = observer((props) => {
   const [newAvatar, setNewAvatar] = useState();
   const [newAge, setNewAge] = useState();
   const [newBio, setNewBio] = useState();
-  const [open, setOpen] = useState(false); 
+
   const {
     register,
-    setError,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onChange" });
@@ -34,31 +33,23 @@ const EditModal = observer((props) => {
       fullName: data.fullname,
     })
     .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
-      if(response.errors) {
-        console.log("resp",response)
-        setError('username', { type: 'custom', message: 'This username is already taken' });
+      if(response._id) {
+        handleClose();
+        ConfigStore.setUpdateMe(true);
+        ConfigStore.setSnackSeverity("success");
+        ConfigStore.setSnackText("Updated successfully!");
+        ConfigStore.setIsShowSnack(true);
       }
       else{
-        ConfigStore.setUpdateMe(true);
-        setOpen(true)
-        handleClose();
+        ConfigStore.setSnackSeverity("error");
+        response.status === 400 ? ConfigStore.setSnackText("Username has been taken already") : ConfigStore.setSnackText(response.statusText);
+        ConfigStore.setIsShowSnack(true);
       }
     });
   };
 
   function handleClose() {
     ConfigStore.setIsShowEditModal(false);
-  };
-
-  const labelStyle1 = {
-    top: 0
-  };
-
-  const labelStyle2 = {
-    top: "-10px"
   };
 
   return (
@@ -100,7 +91,6 @@ const EditModal = observer((props) => {
             <p className="validError">
               {errors.fullname && errors.fullname.message}
             </p>
-            {/* <div className="avatar-field"> */}
               <TextField
                 type="url"
                 id="outlined-normal"
@@ -117,8 +107,6 @@ const EditModal = observer((props) => {
                   },
                 })}
               />
-              {/* <ChildModal /> */}
-            {/* </div> */}
             <p className="validError">{errors.avatar && errors.avatar.message}</p>
             <TextField
               type="number"
@@ -151,7 +139,7 @@ const EditModal = observer((props) => {
           </Modal.Footer>
         </form>
       </Modal>
-      <Success open={open} setOpen={setOpen}/>
+      <Success />
     </>
   );
 });

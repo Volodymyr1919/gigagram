@@ -24,7 +24,7 @@ const slides = [
     },
     {
         title: 'Volodymyr Ziubrytskiy',
-        description: 'Описание изображения 1',
+        description: "I am 24 years old and I've got bachelor degree in marine education as Electrical Technical Officer. And successfully worked on board the vessel. But it's not good fit with family, so I decided to completely change my life",
         url: volodymyr,
         link: "https://www.linkedin.com/in/volodymyr-ziubrytskyi/"
     },
@@ -32,7 +32,7 @@ const slides = [
         title: 'Alexander Nosov',
         description: 'I am 37 years old and live in sunny Turkey. I switched to IT after 12 years of active work in civil and industrial construction projects as a civil engineer. I obtained a degree in "Construction of Motorways" from a technical university.',
         url: alex,
-        link: ""
+        link: "https://www.linkedin.com/in/aleksandr-nosov"
     },
     {
         title: 'Vladyslav Sizov',
